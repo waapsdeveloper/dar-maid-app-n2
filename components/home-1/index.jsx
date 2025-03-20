@@ -13,6 +13,10 @@ import Hero1 from "../hero/hero-1";
 import JobCategorie1 from "../job-categories/JobCategorie1";
 import JobFeatured1 from "../job-featured/JobFeatured1";
 import Testimonial from "../testimonial/Testimonial";
+import About2 from "../about/About2";
+import TopCompany from "../top-company/TopCompany";
+import Candidates from "../candidates/Candidates";
+
 
 const index = () => {
   return (
@@ -71,6 +75,24 @@ const index = () => {
           </div>
         </div>
       </section>
+
+       <section className="top-companies">
+              <div className="auto-container">
+                <div className="sec-title">
+                  <h2>Top Rated Employers</h2>
+                  <div className="text">
+                    Some of the companies we have helped recruit excellent applicants
+                    over the years.
+                  </div>
+                </div>
+      
+                <div className="carousel-outer" data-aos="fade-up">
+                  <div className="companies-carousel">
+                    <TopCompany />
+                  </div>
+                </div>
+              </div>
+            </section>
       {/* End Job Featured Section */}
 
       <section className="clients-section">
@@ -81,20 +103,34 @@ const index = () => {
           </ul>
         </div>
       </section>
-      {/* <!-- End Clients Section--> */}
 
-      <section className="about-section">
+
+      <section className="candidates-section">
         <div className="auto-container">
-          <div className="row">
-            <About />
+          <div className="sec-title">
+            <h2>Recent Registered Employee</h2>
+            <div className="text">
+              Lorem ipsum dolor sit amet elit, sed do eiusmod tempor
+            </div>
           </div>
 
-          {/* <!-- Fun Fact Section --> */}
-        
-          {/* <!-- Fun Fact Section --> */}
+          <div className="carousel-outer" data-aos="fade-up">
+            <div className="candidates-carousel default-dots">
+              <Candidates />
+            </div>
+          </div>
         </div>
       </section>
+      {/* <!-- End Clients Section--> */}
+
    
+      <section className="about-section-two">
+        <div className="auto-container">
+          <div className="row">
+            <About2 />
+          </div>
+        </div>
+      </section>
 
       <FooterDefault />
       {/* <!-- End Main Footer --> */}
