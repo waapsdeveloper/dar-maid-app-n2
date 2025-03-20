@@ -3,8 +3,8 @@ import dynamic from "next/dynamic";
 import BlogList from "@/components/blog-meu-pages/blog-list-v1";
 
 export const metadata = {
-  title: "Blog List V1 || Superio - Job Borad React NextJS Template",
-  description: "Superio - Job Borad React NextJS Template",
+  title: "Blog List V1 || DarMaid - Job Board",
+  description: "DarMaid - Job Board",
 };
 const index = () => {
   return (

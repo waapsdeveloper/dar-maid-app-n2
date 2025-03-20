@@ -14,8 +14,8 @@ import Image from "next/image";
 
 export const metadata = {
   title:
-    "Candidate Single Dyanmic V3 || Superio - Job Borad React NextJS Template",
-  description: "Superio - Job Borad React NextJS Template",
+    "Candidate Single Dyanmic V3 || DarMaid - Job Board",
+  description: "DarMaid - Job Board",
 };
 
 const CandidateSingleDynamicV3 = ({ params }) => {

@@ -13,6 +13,10 @@ import Hero1 from "../hero/hero-1";
 import JobCategorie1 from "../job-categories/JobCategorie1";
 import JobFeatured1 from "../job-featured/JobFeatured1";
 import Testimonial from "../testimonial/Testimonial";
+import About2 from "../about/About2";
+import TopCompany from "../top-company/TopCompany";
+import Candidates from "../candidates/Candidates";
+
 
 const index = () => {
   return (
@@ -71,26 +75,25 @@ const index = () => {
           </div>
         </div>
       </section>
-      {/* End Job Featured Section */}
 
-      <section className="testimonial-section">
-        <div className="container-fluid">
-          {/* <!-- Sec Title --> */}
-          <div className="sec-title text-center">
-            <h2>Testimonials From Our Customers</h2>
-            <div className="text">
-              Lorem ipsum dolor sit amet elit, sed do eiusmod tempor
-            </div>
-          </div>
-        </div>
-        <div className="carousel-outer" data-aos="fade-up">
-          {/* <!-- Testimonial Carousel --> */}
-          <div className="testimonial-carousel gap-x25 center-item-active slick-list-visible">
-            <Testimonial />
-          </div>
-        </div>
-      </section>
-      {/* <!-- End Testimonial Section --> */}
+       <section className="top-companies">
+              <div className="auto-container">
+                <div className="sec-title">
+                  <h2>Top Rated Employers</h2>
+                  <div className="text">
+                    Some of the companies we have helped recruit excellent applicants
+                    over the years.
+                  </div>
+                </div>
+      
+                <div className="carousel-outer" data-aos="fade-up">
+                  <div className="companies-carousel">
+                    <TopCompany />
+                  </div>
+                </div>
+              </div>
+            </section>
+      {/* End Job Featured Section */}
 
       <section className="clients-section">
         <div className="sponsors-outer" data-aos="fade">
@@ -100,50 +103,34 @@ const index = () => {
           </ul>
         </div>
       </section>
+
+
+      <section className="candidates-section">
+        <div className="auto-container">
+          <div className="sec-title">
+            <h2>Recent Registered Employee</h2>
+            <div className="text">
+              Lorem ipsum dolor sit amet elit, sed do eiusmod tempor
+            </div>
+          </div>
+
+          <div className="carousel-outer" data-aos="fade-up">
+            <div className="candidates-carousel default-dots">
+              <Candidates />
+            </div>
+          </div>
+        </div>
+      </section>
       {/* <!-- End Clients Section--> */}
 
-      <section className="about-section">
+   
+      <section className="about-section-two">
         <div className="auto-container">
           <div className="row">
-            <About />
-          </div>
-
-          {/* <!-- Fun Fact Section --> */}
-          <div className="fun-fact-section">
-            <div className="row">
-              <Funfact />
-            </div>
-          </div>
-          {/* <!-- Fun Fact Section --> */}
-        </div>
-      </section>
-      {/* <!-- End About Section --> */}
-
-      <section className="news-section">
-        <div className="auto-container">
-          <div className="sec-title text-center">
-            <h2>Recent News Articles</h2>
-            <div className="text">
-              Fresh job related news content posted each day.
-            </div>
-          </div>
-          {/* End ."sec-title */}
-          <div className="row" data-aos="fade-up">
-            <Blog />
+            <About2 />
           </div>
         </div>
       </section>
-      {/* <!-- End News Section --> */}
-
-      <section className="app-section">
-        <div className="auto-container">
-          <AppSection />
-        </div>
-      </section>
-      {/* <!-- End App Section --> */}
-
-      <CallToAction />
-      {/* <!-- End Call To Action --> */}
 
       <FooterDefault />
       {/* <!-- End Main Footer --> */}
