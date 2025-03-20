@@ -32,14 +32,14 @@ const HeaderNavContent = () => {
           </li>
           {/* End homepage menu items */}
 
-          <li
+          {/* <li
             className={`${
               isActiveParent(findJobItems, usePathname()) ? "current" : ""
             } has-mega-menu`}
             id="has-mega-menu"
           >
            <Link href="/job-list-v1"><span>Find Jobs</span></Link>
-          </li>
+          </li> */}
           {/* End findjobs menu items */}
 
           <li
