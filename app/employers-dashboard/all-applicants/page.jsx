@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import AllApplicants from "@/components/dashboard-pages/employers-dashboard/all-applicants";
 
 export const metadata = {
-  title: "All Applicants || Superio - Job Borad React NextJS Template",
-  description: "Superio - Job Borad React NextJS Template",
+  title: "All Applicants || DarMaid - Job Board",
+  description: "DarMaid - Job Board",
 };
 
 const index = () => {

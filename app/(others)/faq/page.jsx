@@ -3,9 +3,9 @@ import dynamic from "next/dynamic";
 import Faq from "@/components/pages-menu/faq";
 
 export const metadata = {
-  title: 'Faq || Superio - Job Borad React NextJS Template',
+  title: 'Faq || DarMaid - Job Board',
   description:
-    'Superio - Job Borad React NextJS Template',
+    'DarMaid - Job Board',
   
 }
 
