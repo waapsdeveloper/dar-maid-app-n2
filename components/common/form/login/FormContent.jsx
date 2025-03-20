@@ -70,7 +70,7 @@ const FormContent = () => {
           <span>or</span>
         </div>
 
-        <LoginWithSocial />
+        {/* <LoginWithSocial /> */}
       </div>
       {/* End bottom-box LoginWithSocial */}
     </div>

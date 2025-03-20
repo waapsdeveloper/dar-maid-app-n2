@@ -52,7 +52,7 @@ const index = () => {
       </section>
       {/* End Job Categorie Section */}
 
-      <section className="job-section">
+      {/* <section className="job-section">
         <div className="auto-container">
           <div className="sec-title text-center">
             <h2>Featured Jobs</h2>
@@ -74,7 +74,7 @@ const index = () => {
             </Link>
           </div>
         </div>
-      </section>
+      </section> */}
 
        <section className="top-companies">
               <div className="auto-container">

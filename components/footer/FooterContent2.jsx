@@ -37,7 +37,7 @@ const FooterContent2 = () => {
   ];
   return (
     <>
-      <div className="footer-column col-lg-3 col-md-6 col-sm-12">
+      {/* <div className="footer-column col-lg-3 col-md-6 col-sm-12">
         <div className="footer-widget links-widget">
           <h4 className="widget-title">Find Jobs</h4>
           <div className="widget-content">
@@ -50,7 +50,7 @@ const FooterContent2 = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* End .footer-column */}
 
       <div className="footer-column col-lg-5 col-md-6 col-sm-12">
