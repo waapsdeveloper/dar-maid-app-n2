@@ -57,7 +57,7 @@ const HeaderNavContent = () => {
           </li>
           {/* End homepage menu items */}
 
-          <li
+          {/* <li
             className={`${
               isActiveParent(findJobItems, usePathname()) ? "current" : ""
             } dropdown has-mega-menu`}
@@ -90,7 +90,7 @@ const HeaderNavContent = () => {
                 ))}
               </div>
             </div>
-          </li>
+          </li> */}
           {/* End findjobs menu items */}
 
           <li
