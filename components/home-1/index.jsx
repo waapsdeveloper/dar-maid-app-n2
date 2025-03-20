@@ -73,25 +73,6 @@ const index = () => {
       </section>
       {/* End Job Featured Section */}
 
-      <section className="testimonial-section">
-        <div className="container-fluid">
-          {/* <!-- Sec Title --> */}
-          <div className="sec-title text-center">
-            <h2>Testimonials From Our Customers</h2>
-            <div className="text">
-              Lorem ipsum dolor sit amet elit, sed do eiusmod tempor
-            </div>
-          </div>
-        </div>
-        <div className="carousel-outer" data-aos="fade-up">
-          {/* <!-- Testimonial Carousel --> */}
-          <div className="testimonial-carousel gap-x25 center-item-active slick-list-visible">
-            <Testimonial />
-          </div>
-        </div>
-      </section>
-      {/* <!-- End Testimonial Section --> */}
-
       <section className="clients-section">
         <div className="sponsors-outer" data-aos="fade">
           {/* <!--Sponsors Carousel--> */}
@@ -109,41 +90,11 @@ const index = () => {
           </div>
 
           {/* <!-- Fun Fact Section --> */}
-          <div className="fun-fact-section">
-            <div className="row">
-              <Funfact />
-            </div>
-          </div>
+        
           {/* <!-- Fun Fact Section --> */}
         </div>
       </section>
-      {/* <!-- End About Section --> */}
-
-      <section className="news-section">
-        <div className="auto-container">
-          <div className="sec-title text-center">
-            <h2>Recent News Articles</h2>
-            <div className="text">
-              Fresh job related news content posted each day.
-            </div>
-          </div>
-          {/* End ."sec-title */}
-          <div className="row" data-aos="fade-up">
-            <Blog />
-          </div>
-        </div>
-      </section>
-      {/* <!-- End News Section --> */}
-
-      <section className="app-section">
-        <div className="auto-container">
-          <AppSection />
-        </div>
-      </section>
-      {/* <!-- End App Section --> */}
-
-      <CallToAction />
-      {/* <!-- End Call To Action --> */}
+   
 
       <FooterDefault />
       {/* <!-- End Main Footer --> */}
