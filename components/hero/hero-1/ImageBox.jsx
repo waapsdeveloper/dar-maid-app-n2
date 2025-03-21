@@ -48,7 +48,7 @@ const ImageBox = () => {
       <div className="info_block_four" data-aos="fade-in" data-aos-delay="2500">
         <span className="icon flaticon-file"></span>
         <div className="inner">
-          <p>Upload Your CV</p>
+          <p>Find People</p>
           <span className="sub-text">It only takes a few seconds</span>
         </div>
       </div>{" "}
