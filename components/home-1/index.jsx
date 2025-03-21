@@ -81,8 +81,7 @@ const index = () => {
                 <div className="sec-title">
                   <h2>Top Rated Employers</h2>
                   <div className="text">
-                    Some of the companies we have helped recruit excellent applicants
-                    over the years.
+                    Some of the companies we have helped recruit excellent applicants over the years.
                   </div>
                 </div>
       
