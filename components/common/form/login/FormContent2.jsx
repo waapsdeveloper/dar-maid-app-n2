@@ -58,11 +58,11 @@ const FormContent2 = () => {
           Don&apos;t have an account? <Link href="/register">Signup</Link>
         </div>
 
-        <div className="divider">
+        {/* <div className="divider">
           <span>or</span>
-        </div>
+        </div> 
 
-        <LoginWithSocial />
+        <LoginWithSocial /> */}
       </div>
       {/* End bottom-box LoginWithSocial */}
     </div>

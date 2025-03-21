@@ -66,12 +66,12 @@ const DefaulHeader2 = () => {
             >
               Login / Register
             </a>
-            <Link
+            {/* <Link
               href="/employers-dashboard/post-jobs"
               className="theme-btn btn-style-one"
             >
               Job Post
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

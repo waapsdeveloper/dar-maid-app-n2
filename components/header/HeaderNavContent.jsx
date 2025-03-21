@@ -51,7 +51,7 @@ const HeaderNavContent = () => {
             }`}
           >
             
-            <Link href="employers-list-v1"><span>Employers</span></Link>
+            <Link href="employers-list-v2"><span>Employers</span></Link>
 
           </li>
           {/* End Employers menu items */}
@@ -66,7 +66,7 @@ const HeaderNavContent = () => {
                 : ""
             } `}
           >
-              <Link href="/candidates-list-v1"><span>Candidates</span></Link>
+              <Link href="/candidates-list-v2"><span>Candidates</span></Link>
             
           </li>
           {/* End Candidates menu items */}

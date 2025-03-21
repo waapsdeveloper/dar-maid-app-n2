@@ -94,14 +94,13 @@ const index = () => {
             </section>
       {/* End Job Featured Section */}
 
-      <section className="clients-section">
-        <div className="sponsors-outer" data-aos="fade">
-          {/* <!--Sponsors Carousel--> */}
+      {/* <section className="clients-section">
+        <div className="sponsors-outer" data-aos="fade">          
           <ul className="sponsors-carousel">
             <Partner />
           </ul>
         </div>
-      </section>
+      </section> */}
 
 
       <section className="candidates-section">

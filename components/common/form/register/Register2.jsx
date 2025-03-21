@@ -48,10 +48,10 @@ const Register2 = () => {
             LogIn
           </Link>
         </div>
-        <div className="divider">
+        {/* <div className="divider">
           <span>or</span>
         </div>
-        <LoginWithSocial />
+        <LoginWithSocial /> */}
       </div>
       {/* End bottom-box LoginWithSocial */}
     </div>
