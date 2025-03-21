@@ -21,7 +21,7 @@ const index = () => {
             <MobileMenu />
             {/* End MobileMenu */}
 
-            <Breadcrumb title="Find Jobs" meta="Jobs" />
+            <Breadcrumb title="Find Agency" meta="Agency" />
             {/* <!--End Breadcrumb Start--> */}
 
             <section className="ls-section">

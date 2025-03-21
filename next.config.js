@@ -17,7 +17,7 @@ const nextConfig = {
       },
       {
         source: '/agency',
-        destination: '/candidates-list-v3',
+        destination: '/job-list-v1',
       },
       // Complex rewrite with parameters: /services/digital-marketing → /offerings/digital-marketing
       {
