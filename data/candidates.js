@@ -4,7 +4,7 @@ module.exports = [
         avatar: "/images/profile-pictures/1.jpeg",
         name: "Darlene Robertson",
         designation: "Agriculturer",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "99",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -22,7 +22,7 @@ module.exports = [
         avatar: "/images/profile-pictures/2.jpg",
         name: "Wade Warren",
         designation: "Housekeeping",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "94",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -40,7 +40,7 @@ module.exports = [
         avatar: "/images/profile-pictures/3.jpg",
         name: "Leslie Alexander",
         designation: "Driving",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "99",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -58,7 +58,7 @@ module.exports = [
         avatar: "/images/profile-pictures/4.jpg",
         name: "Floyd Miles",
         designation: "Childcare",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "88",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -76,7 +76,7 @@ module.exports = [
         avatar: "/images/profile-pictures/5.jpg",
         name: "Darlene Robertson",
         designation: "Agriculturer",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "77",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -94,7 +94,7 @@ module.exports = [
         avatar: "/images/profile-pictures/6.jpg",
         name: "Wade Warren",
         designation: "Housekeeping",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "66",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -112,7 +112,7 @@ module.exports = [
         avatar: "/images/profile-pictures/7.jpg",
         name: "Leslie Alexander",
         designation: "Driving",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "99",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -130,7 +130,7 @@ module.exports = [
         avatar: "/images/profile-pictures/3.jpg",
         name: "Floyd Miles",
         designation: "Childcare",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "89",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -148,7 +148,7 @@ module.exports = [
         avatar: "/images/profile-pictures/8.jpeg",
         name: "Darlene Robertson",
         designation: "Agriculturer",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "79",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -166,7 +166,7 @@ module.exports = [
         avatar: "/images/profile-pictures/1.jpeg",
         name: "Wade Warren",
         designation: "Housekeeping",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "99",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -184,7 +184,7 @@ module.exports = [
         avatar: "/images/profile-pictures/1.jpeg",
         name: "Leslie Alexander",
         designation: "Driving",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "34",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -202,7 +202,7 @@ module.exports = [
         avatar: "/images/profile-pictures/1.jpeg",
         name: "Floyd Miles",
         designation: "Childcare",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "99",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -220,7 +220,7 @@ module.exports = [
         avatar: "/images/profile-pictures/1.jpeg",
         name: "lbert Flores",
         designation: "President of Sales",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "91",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -238,7 +238,7 @@ module.exports = [
         avatar: "/images/profile-pictures/1.jpeg",
         name: "Jerome Bell",
         designation: "Marketing Coordinator",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "98",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -256,7 +256,7 @@ module.exports = [
         avatar: "/images/profile-pictures/1.jpeg",
         name: "Darlene Robertson",
         designation: "Dog Trainer",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "99",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -274,7 +274,7 @@ module.exports = [
         avatar: "/images/index-12/candidates/4.png",
         name: "Theresa Webb",
         designation: "Web Designer",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "66",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -292,7 +292,7 @@ module.exports = [
         avatar: "/images/index-12/candidates/2.png",
         name: "Wade Warren",
         designation: "Housekeeping",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "22",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -311,7 +311,7 @@ module.exports = [
         avatar: "/images/resource/candidate-1.png",
         name: "Darlene Robertson",
         designation: "Agriculturer",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "44",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -329,7 +329,7 @@ module.exports = [
         avatar: "/images/resource/candidate-2.png",
         name: "Wade Warren",
         designation: "Housekeeping",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "99",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -347,7 +347,7 @@ module.exports = [
         avatar: "/images/resource/candidate-3.png",
         name: "Leslie Alexander",
         designation: "Digital Marketer",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "88",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -365,7 +365,7 @@ module.exports = [
         avatar: "/images/resource/candidate-4.png",
         name: "Floyd Miles",
         designation: "Front-end Housekeeping",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "44",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -383,7 +383,7 @@ module.exports = [
         avatar: "/images/resource/candidate-5.png",
         name: "Cameron Williamson",
         designation: "Backend Housekeeping",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "99",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -401,7 +401,7 @@ module.exports = [
         avatar: "/images/resource/candidate-6.png",
         name: "Robert Fox",
         designation: "Software Engineer",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "77",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -419,7 +419,7 @@ module.exports = [
         avatar: "/images/resource/candidate-7.png",
         name: "Esther Howard",
         designation: "Agriculturer",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "99",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -437,7 +437,7 @@ module.exports = [
         avatar: "/images/resource/candidate-8.png",
         name: "Jerome Bell",
         designation: "Graphic Designer",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "66",
         tags: ["App", "Design", "Digital"],
         destination: {
@@ -455,7 +455,7 @@ module.exports = [
         avatar: "/images/resource/candidate-9.png",
         name: "Annette Black",
         designation: "Content Writer",
-        location: "London, UK",
+        location: "Samaheej, Bahrain",
         hourlyRate: "33",
         tags: ["App", "Design", "Digital"],
         destination: {

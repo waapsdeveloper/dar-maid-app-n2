@@ -156,8 +156,6 @@ const index = () => {
         </div>
       </section>
 
-      <FooterDefault />
-      {/* <!-- End Main Footer --> */}
     </>
   );
 };
