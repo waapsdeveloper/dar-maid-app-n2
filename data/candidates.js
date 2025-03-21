@@ -1,7 +1,7 @@
 module.exports = [
     {
         id: 1,
-        avatar: "/images/resource/candidate-1.png",
+        avatar: "/images/profile-pictures/1.jpeg",
         name: "Darlene Robertson",
         designation: "UI Designer",
         location: "London, UK",
@@ -19,7 +19,7 @@ module.exports = [
     },
     {
         id: 2,
-        avatar: "/images/resource/candidate-2.png",
+        avatar: "/images/profile-pictures/2.jpg",
         name: "Wade Warren",
         designation: "Developer",
         location: "London, UK",
@@ -37,7 +37,7 @@ module.exports = [
     },
     {
         id: 3,
-        avatar: "/images/resource/candidate-3.png",
+        avatar: "/images/profile-pictures/3.jpg",
         name: "Leslie Alexander",
         designation: "Marketing Expert",
         location: "London, UK",
@@ -55,7 +55,7 @@ module.exports = [
     },
     {
         id: 4,
-        avatar: "/images/resource/candidate-4.png",
+        avatar: "/images/profile-pictures/4.jpg",
         name: "Floyd Miles",
         designation: "Charted Accountant",
         location: "London, UK",
@@ -73,7 +73,7 @@ module.exports = [
     },
     {
         id: 5,
-        avatar: "/images/resource/candidate-1.png",
+        avatar: "/images/profile-pictures/5.jpg",
         name: "Darlene Robertson",
         designation: "UI Designer",
         location: "London, UK",
@@ -91,7 +91,7 @@ module.exports = [
     },
     {
         id: 6,
-        avatar: "/images/resource/candidate-2.png",
+        avatar: "/images/profile-pictures/6.jpg",
         name: "Wade Warren",
         designation: "Developer",
         location: "London, UK",
@@ -109,7 +109,7 @@ module.exports = [
     },
     {
         id: 7,
-        avatar: "/images/resource/candidate-3.png",
+        avatar: "/images/profile-pictures/7.jpg",
         name: "Leslie Alexander",
         designation: "Marketing Expert",
         location: "London, UK",
@@ -127,7 +127,7 @@ module.exports = [
     },
     {
         id: 8,
-        avatar: "/images/resource/candidate-4.png",
+        avatar: "/images/profile-pictures/3.jpg",
         name: "Floyd Miles",
         designation: "Charted Accountant",
         location: "London, UK",
@@ -145,7 +145,7 @@ module.exports = [
     },
     {
         id: 9,
-        avatar: "/images/resource/candidate-1.png",
+        avatar: "/images/profile-pictures/8.jpeg",
         name: "Darlene Robertson",
         designation: "UI Designer",
         location: "London, UK",
@@ -163,7 +163,7 @@ module.exports = [
     },
     {
         id: 10,
-        avatar: "/images/resource/candidate-2.png",
+        avatar: "/images/profile-pictures/1.jpeg",
         name: "Wade Warren",
         designation: "Developer",
         location: "London, UK",
@@ -181,7 +181,7 @@ module.exports = [
     },
     {
         id: 11,
-        avatar: "/images/resource/candidate-3.png",
+        avatar: "/images/profile-pictures/1.jpeg",
         name: "Leslie Alexander",
         designation: "Marketing Expert",
         location: "London, UK",
@@ -199,7 +199,7 @@ module.exports = [
     },
     {
         id: 12,
-        avatar: "/images/resource/candidate-4.png",
+        avatar: "/images/profile-pictures/1.jpeg",
         name: "Floyd Miles",
         designation: "Charted Accountant",
         location: "London, UK",
@@ -217,7 +217,7 @@ module.exports = [
     },
     {
         id: 13,
-        avatar: "/images/index-12/candidates/1.png",
+        avatar: "/images/profile-pictures/1.jpeg",
         name: "lbert Flores",
         designation: "President of Sales",
         location: "London, UK",
@@ -235,7 +235,7 @@ module.exports = [
     },
     {
         id: 14,
-        avatar: "/images/index-12/candidates/2.png",
+        avatar: "/images/profile-pictures/1.jpeg",
         name: "Jerome Bell",
         designation: "Marketing Coordinator",
         location: "London, UK",
@@ -253,7 +253,7 @@ module.exports = [
     },
     {
         id: 15,
-        avatar: "/images/index-12/candidates/3.png",
+        avatar: "/images/profile-pictures/1.jpeg",
         name: "Darlene Robertson",
         designation: "Dog Trainer",
         location: "London, UK",

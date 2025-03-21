@@ -33,7 +33,7 @@ const SearchForm = () => {
             className="theme-btn btn-style-one"
             onClick={() => router.push("/job-list-v1")}
           >
-            <span className="btn-title">Find Jobs</span>
+            <span className="btn-title">Find Employees</span>
           </button>
         </div>
       </div>
