@@ -6,7 +6,7 @@ module.exports = [
     company: "Segment",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -43,7 +43,7 @@ module.exports = [
     company: "Catalyst",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -80,7 +80,7 @@ module.exports = [
     company: "Invision",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -113,7 +113,7 @@ module.exports = [
     company: "Upwork",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -150,7 +150,7 @@ module.exports = [
     company: "Medium",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -187,7 +187,7 @@ module.exports = [
     company: "Figma",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -224,7 +224,7 @@ module.exports = [
     company: "Segment",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -261,7 +261,7 @@ module.exports = [
     company: "Catalyst",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -294,7 +294,7 @@ module.exports = [
     company: "Invision",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -327,7 +327,7 @@ module.exports = [
     company: "Figma",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -356,7 +356,7 @@ module.exports = [
     company: "Upwork",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -385,7 +385,7 @@ module.exports = [
     company: "Segment",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -418,7 +418,7 @@ module.exports = [
     company: "Catalyst",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -451,7 +451,7 @@ module.exports = [
     company: "Invision",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -484,7 +484,7 @@ module.exports = [
     company: "Upwork",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -517,7 +517,7 @@ module.exports = [
     company: "Medium",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -550,7 +550,7 @@ module.exports = [
     company: "lively",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -582,7 +582,7 @@ module.exports = [
     company: "Udemy",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -614,7 +614,7 @@ module.exports = [
     company: "Twilio",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -646,7 +646,7 @@ module.exports = [
     company: "Figma",
     location: "Busaiteen, Bahrain",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -680,7 +680,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Segment",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -718,7 +718,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Catalyst",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -756,7 +756,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Invision",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -794,7 +794,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Upwork",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -832,7 +832,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Medium",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -870,7 +870,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Figma",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -907,7 +907,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Spectrap",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -944,7 +944,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Dropbox",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -981,7 +981,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Segment",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -1019,7 +1019,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Catalyst",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -1057,7 +1057,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Invision",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -1095,7 +1095,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Upwork",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
@@ -1133,7 +1133,7 @@ module.exports = [
     location: "Busaiteen, Bahrain",
     company: "Medium",
     time: "11 hours ago",
-    salary: "$35k - $45k",
+    salary: "BHD35k - BHD45k",
     jobType: [
       {
         styleClass: "time",
