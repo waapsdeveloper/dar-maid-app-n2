@@ -71,7 +71,7 @@ const FilterTopBox = () => {
     ?.sort(sortFilter)
     ?.map((company) => (
       <div
-        className="company-block-four col-xl-3 col-lg-6 col-md-6 col-sm-12"
+        className="company-block-four col-xl-4 col-lg-6 col-md-6 col-sm-12"
         key={company.id}
       >
         <div className="inner-box">
