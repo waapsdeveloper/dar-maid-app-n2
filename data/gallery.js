@@ -1,6 +1,6 @@
 module.exports = [
-  { id: 1, img: "/images/resource/employers-single-1.png" },
-  { id: 2, img: "/images/resource/employers-single-2.png" },
-  { id: 3, img: "/images/resource/employers-single-3.png" },
-  { id: 4, img: "/images/resource/employers-single-4.png" },
+  { id: 1, img: "/images/maid-gallery/1.jpeg" },
+  { id: 2, img: "/images/maid-gallery/2.jpeg" },
+  { id: 3, img: "/images/maid-gallery/3.jpeg" },
+  { id: 4, img: "/images/maid-gallery/4.jpeg" },
 ];

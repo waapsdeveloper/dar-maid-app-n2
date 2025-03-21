@@ -33,7 +33,7 @@ const Applicants = () => {
                   {candidate.location}
                 </li>
                 <li>
-                  <span className="icon flaticon-money"></span> $
+                  <span className="icon flaticon-money"></span> BHD 
                   {candidate.hourlyRate} / hour
                 </li>
               </ul>

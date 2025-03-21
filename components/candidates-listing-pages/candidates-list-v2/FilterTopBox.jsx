@@ -143,8 +143,8 @@ const FilterTopBox = () => {
               {candidate.location}
             </li>
             <li>
-              <span className="icon flaticon-money"></span> $
-              {candidate.hourlyRate} / hour
+              <span className="icon flaticon-money"></span>  BHD 
+              { candidate.hourlyRate} / hour
             </li>
           </ul>
           {/* End candidate-info */}

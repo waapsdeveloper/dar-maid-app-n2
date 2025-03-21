@@ -67,8 +67,8 @@ const CandidateSingleDynamicV3 = ({ params }) => {
                       {candidate?.location}
                     </li>
                     <li>
-                      <span className="icon flaticon-money"></span> $
-                      {candidate?.hourlyRate} / hour
+                      <span className="icon flaticon-money"></span>  BHD 
+                      { candidate?.hourlyRate} / hour
                     </li>
                     <li>
                       <span className="icon flaticon-clock"></span> Member

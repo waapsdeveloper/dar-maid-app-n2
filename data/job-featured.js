@@ -2,9 +2,9 @@ module.exports = [
   {
     id: 1,
     logo: "/images/resource/company-logo/1-1.png",
-    jobTitle: "Software Engineer (Android), Libraries",
+    jobTitle: "Al Rashid Group",
     company: "Segment",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -39,9 +39,9 @@ module.exports = [
   {
     id: 2,
     logo: "/images/resource/company-logo/1-2.png",
-    jobTitle: "Recruiting Coordinator",
+    jobTitle: "Gulf Connections",
     company: "Catalyst",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -76,9 +76,9 @@ module.exports = [
   {
     id: 3,
     logo: "/images/resource/company-logo/1-3.png",
-    jobTitle: "Product Manager, Studio",
+    jobTitle: "Manpower Bahrain & Al Safwa HR",
     company: "Invision",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -109,9 +109,9 @@ module.exports = [
   {
     id: 4,
     logo: "/images/resource/company-logo/1-4.png",
-    jobTitle: "Senior Product Designer",
+    jobTitle: "Al Tayyar Manpower Co., W.L.L.",
     company: "Upwork",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -146,9 +146,9 @@ module.exports = [
   {
     id: 5,
     logo: "/images/resource/company-logo/1-5.png",
-    jobTitle: "Senior Full Stack Engineer, Creator Success",
+    jobTitle: "Unique Facility Services W.L.L.",
     company: "Medium",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -183,9 +183,9 @@ module.exports = [
   {
     id: 6,
     logo: "/images/resource/company-logo/1-6.png",
-    jobTitle: "Software Engineer (Android), Libraries",
+    jobTitle: "AJEETS",
     company: "Figma",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -220,9 +220,9 @@ module.exports = [
   {
     id: 7,
     logo: "/images/resource/company-logo/1-1.png",
-    jobTitle: "Software Engineer (Android), Libraries",
+    jobTitle: "TARMAC",
     company: "Segment",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -257,9 +257,9 @@ module.exports = [
   {
     id: 8,
     logo: "/images/resource/company-logo/1-2.png",
-    jobTitle: "Recruiting Coordinator",
+    jobTitle: "Dynamic Staffing Services",
     company: "Catalyst",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -290,9 +290,9 @@ module.exports = [
   {
     id: 9,
     logo: "/images/resource/company-logo/1-3.png",
-    jobTitle: "Product Manager, Studio",
+    jobTitle: "RVS Global",
     company: "Invision",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -323,9 +323,9 @@ module.exports = [
   {
     id: 10,
     logo: "/images/resource/company-logo/1-6.png",
-    jobTitle: "Web Developer",
+    jobTitle: "RVS Global",
     company: "Figma",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -352,9 +352,9 @@ module.exports = [
   {
     id: 11,
     logo: "/images/resource/company-logo/1-4.png",
-    jobTitle: "Senior Product Designer",
+    jobTitle: "AJEETS",
     company: "Upwork",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -383,7 +383,7 @@ module.exports = [
     logo: "/images/resource/company-logo/2-1.png",
     jobTitle: "Software Engineer",
     company: "Segment",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -416,7 +416,7 @@ module.exports = [
     logo: "/images/resource/company-logo/2-2.png",
     jobTitle: "Recruiting Coordinator",
     company: "Catalyst",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -449,7 +449,7 @@ module.exports = [
     logo: "/images/resource/company-logo/2-3.png",
     jobTitle: "Product Manager, Studio",
     company: "Invision",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -480,9 +480,9 @@ module.exports = [
   {
     id: 15,
     logo: "/images/resource/company-logo/2-4.png",
-    jobTitle: "Senior Product Designer",
+    jobTitle: "AJEETS",
     company: "Upwork",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -513,9 +513,9 @@ module.exports = [
   {
     id: 16,
     logo: "/images/resource/company-logo/2-5.png",
-    jobTitle: "Product Manager, Risk",
+    jobTitle: "Manpower Bahrain & Al Safwa HR",
     company: "Medium",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -548,7 +548,7 @@ module.exports = [
     logo: "/images/resource/company-logo/2-6.png",
     jobTitle: "Technical Architect",
     company: "lively",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -578,9 +578,9 @@ module.exports = [
   {
     id: 18,
     logo: "/images/resource/company-logo/2-7.png",
-    jobTitle: "Web Developer",
+    jobTitle: "RVS Global",
     company: "Udemy",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -610,9 +610,9 @@ module.exports = [
   {
     id: 19,
     logo: "/images/resource/company-logo/2-8.png",
-    jobTitle: "Senior Product Designer",
+    jobTitle: "AJEETS",
     company: "Twilio",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -644,7 +644,7 @@ module.exports = [
     logo: "/images/resource/company-logo/2-9.png",
     jobTitle: "Senior BI Analyst",
     company: "Figma",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     time: "11 hours ago",
     salary: "$35k - $45k",
     jobType: [
@@ -677,7 +677,7 @@ module.exports = [
     id: 21,
     logo: "/images/resource/company-logo/3-1.png",
     jobTitle: "Software Engineer (Android), Libraries",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     company: "Segment",
     time: "11 hours ago",
     salary: "$35k - $45k",
@@ -715,7 +715,7 @@ module.exports = [
     id: 22,
     logo: "/images/resource/company-logo/3-2.png",
     jobTitle: "Software Engineer (Android), Libraries",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     company: "Catalyst",
     time: "11 hours ago",
     salary: "$35k - $45k",
@@ -753,7 +753,7 @@ module.exports = [
     id: 23,
     logo: "/images/resource/company-logo/3-3.png",
     jobTitle: "Lead Software Engineer",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     company: "Invision",
     time: "11 hours ago",
     salary: "$35k - $45k",
@@ -791,7 +791,7 @@ module.exports = [
     id: 24,
     logo: "/images/resource/company-logo/3-4.png",
     jobTitle: "Software Engineer (Android), Libraries",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     company: "Upwork",
     time: "11 hours ago",
     salary: "$35k - $45k",
@@ -828,8 +828,8 @@ module.exports = [
   {
     id: 25,
     logo: "/images/resource/company-logo/3-5.png",
-    jobTitle: "Siniour Web Developer",
-    location: "London, UK",
+    jobTitle: "Siniour RVS Global",
+    location: "Busaiteen, Bahrain",
     company: "Medium",
     time: "11 hours ago",
     salary: "$35k - $45k",
@@ -867,7 +867,7 @@ module.exports = [
     id: 26,
     logo: "/images/resource/company-logo/3-6.png",
     jobTitle: "Senior BI Analyst",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     company: "Figma",
     time: "11 hours ago",
     salary: "$35k - $45k",
@@ -904,7 +904,7 @@ module.exports = [
     id: 27,
     logo: "/images/resource/company-logo/3-7.png",
     jobTitle: "Software Engineer (Android), Libraries",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     company: "Spectrap",
     time: "11 hours ago",
     salary: "$35k - $45k",
@@ -941,7 +941,7 @@ module.exports = [
     id: 28,
     logo: "/images/resource/company-logo/3-8.png",
     jobTitle: "Senior BI Analyst",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     company: "Dropbox",
     time: "11 hours ago",
     salary: "$35k - $45k",
@@ -978,7 +978,7 @@ module.exports = [
     id: 29,
     logo: "/images/resource/company-logo/3-1.png",
     jobTitle: "Software Engineer (Android), Libraries",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     company: "Segment",
     time: "11 hours ago",
     salary: "$35k - $45k",
@@ -1016,7 +1016,7 @@ module.exports = [
     id: 30,
     logo: "/images/resource/company-logo/3-2.png",
     jobTitle: "Software Engineer (Android), Libraries",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     company: "Catalyst",
     time: "11 hours ago",
     salary: "$35k - $45k",
@@ -1054,7 +1054,7 @@ module.exports = [
     id: 31,
     logo: "/images/resource/company-logo/3-3.png",
     jobTitle: "Lead Software Engineer",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     company: "Invision",
     time: "11 hours ago",
     salary: "$35k - $45k",
@@ -1092,7 +1092,7 @@ module.exports = [
     id: 32,
     logo: "/images/resource/company-logo/3-4.png",
     jobTitle: "Software Engineer (Android), Libraries",
-    location: "London, UK",
+    location: "Busaiteen, Bahrain",
     company: "Upwork",
     time: "11 hours ago",
     salary: "$35k - $45k",
@@ -1129,8 +1129,8 @@ module.exports = [
   {
     id: 33,
     logo: "/images/resource/company-logo/3-5.png",
-    jobTitle: "Siniour Web Developer",
-    location: "London, UK",
+    jobTitle: "Siniour RVS Global",
+    location: "Busaiteen, Bahrain",
     company: "Medium",
     time: "11 hours ago",
     salary: "$35k - $45k",

@@ -15,7 +15,7 @@ const AboutVideo = () => {
         channel="youtube"
         autoplay
         isOpen={isOpen}
-        videoId="DY2gJhJaQfI"
+        videoId="RIoTmCikD6U"
         onClose={() => setOpen(false)}
       />
       {/* End popup modal video */}
@@ -25,7 +25,7 @@ const AboutVideo = () => {
             <Image
               width={815}
               height={364}
-              src="/images/resource/video-img.jpg"
+              src="/images/RIoTmCikD6U-MQ.jpg"
               alt="video banner"
             />
             <i className="icon flaticon-play-button-3" aria-hidden="true"></i>

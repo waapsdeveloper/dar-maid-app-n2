@@ -1,7 +1,7 @@
 module.exports = [
     {
         id: 1,
-        avatar: "/images/profile-pictures/1.jpeg",
+        avatar: "/images/profession.jpeg",
         name: "Darlene Robertson",
         designation: "Agriculturer",
         location: "Samaheej, Bahrain",
@@ -19,7 +19,7 @@ module.exports = [
     },
     {
         id: 2,
-        avatar: "/images/profile-pictures/2.jpg",
+        avatar: "/images/profession.jpeg",
         name: "Wade Warren",
         designation: "Housekeeping",
         location: "Samaheej, Bahrain",
@@ -37,7 +37,7 @@ module.exports = [
     },
     {
         id: 3,
-        avatar: "/images/profile-pictures/3.jpg",
+        avatar: "/images/profession.jpeg",
         name: "Leslie Alexander",
         designation: "Driving",
         location: "Samaheej, Bahrain",
@@ -55,7 +55,7 @@ module.exports = [
     },
     {
         id: 4,
-        avatar: "/images/profile-pictures/4.jpg",
+        avatar: "/images/profession.jpeg",
         name: "Floyd Miles",
         designation: "Childcare",
         location: "Samaheej, Bahrain",
@@ -73,7 +73,7 @@ module.exports = [
     },
     {
         id: 5,
-        avatar: "/images/profile-pictures/5.jpg",
+        avatar: "/images/profession.jpeg",
         name: "Darlene Robertson",
         designation: "Agriculturer",
         location: "Samaheej, Bahrain",
@@ -91,7 +91,7 @@ module.exports = [
     },
     {
         id: 6,
-        avatar: "/images/profile-pictures/6.jpg",
+        avatar: "/images/profession.jpeg",
         name: "Wade Warren",
         designation: "Housekeeping",
         location: "Samaheej, Bahrain",
@@ -109,7 +109,7 @@ module.exports = [
     },
     {
         id: 7,
-        avatar: "/images/profile-pictures/7.jpg",
+        avatar: "/images/profession.jpeg",
         name: "Leslie Alexander",
         designation: "Driving",
         location: "Samaheej, Bahrain",
@@ -127,7 +127,7 @@ module.exports = [
     },
     {
         id: 8,
-        avatar: "/images/profile-pictures/3.jpg",
+        avatar: "/images/profession.jpeg",
         name: "Floyd Miles",
         designation: "Childcare",
         location: "Samaheej, Bahrain",
@@ -145,7 +145,7 @@ module.exports = [
     },
     {
         id: 9,
-        avatar: "/images/profile-pictures/8.jpeg",
+        avatar: "/images/profession.jpeg",
         name: "Darlene Robertson",
         designation: "Agriculturer",
         location: "Samaheej, Bahrain",
@@ -163,7 +163,7 @@ module.exports = [
     },
     {
         id: 10,
-        avatar: "/images/profile-pictures/1.jpeg",
+        avatar: "/images/profession.jpeg",
         name: "Wade Warren",
         designation: "Housekeeping",
         location: "Samaheej, Bahrain",
@@ -181,7 +181,7 @@ module.exports = [
     },
     {
         id: 11,
-        avatar: "/images/profile-pictures/1.jpeg",
+        avatar: "/images/profession.jpeg",
         name: "Leslie Alexander",
         designation: "Driving",
         location: "Samaheej, Bahrain",
@@ -199,7 +199,7 @@ module.exports = [
     },
     {
         id: 12,
-        avatar: "/images/profile-pictures/1.jpeg",
+        avatar: "/images/profession.jpeg",
         name: "Floyd Miles",
         designation: "Childcare",
         location: "Samaheej, Bahrain",
@@ -217,7 +217,7 @@ module.exports = [
     },
     {
         id: 13,
-        avatar: "/images/profile-pictures/1.jpeg",
+        avatar: "/images/profession.jpeg",
         name: "lbert Flores",
         designation: "President of Sales",
         location: "Samaheej, Bahrain",
@@ -235,7 +235,7 @@ module.exports = [
     },
     {
         id: 14,
-        avatar: "/images/profile-pictures/1.jpeg",
+        avatar: "/images/profession.jpeg",
         name: "Jerome Bell",
         designation: "Marketing Coordinator",
         location: "Samaheej, Bahrain",
@@ -253,7 +253,7 @@ module.exports = [
     },
     {
         id: 15,
-        avatar: "/images/profile-pictures/1.jpeg",
+        avatar: "/images/profession.jpeg",
         name: "Darlene Robertson",
         designation: "Dog Trainer",
         location: "Samaheej, Bahrain",
@@ -271,7 +271,7 @@ module.exports = [
     },
     {
         id: 16,
-        avatar: "/images/index-12/candidates/4.png",
+        avatar: "/images/profession.jpeg",
         name: "Theresa Webb",
         designation: "Web Designer",
         location: "Samaheej, Bahrain",
@@ -289,7 +289,7 @@ module.exports = [
     },
     {
         id: 17,
-        avatar: "/images/index-12/candidates/2.png",
+        avatar: "/images/profession.jpeg",
         name: "Wade Warren",
         designation: "Housekeeping",
         location: "Samaheej, Bahrain",
@@ -308,7 +308,7 @@ module.exports = [
     // candidate list v1 data
     {
         id: 18,
-        avatar: "/images/resource/candidate-1.png",
+        avatar: "/images/profession.jpeg",
         name: "Darlene Robertson",
         designation: "Agriculturer",
         location: "Samaheej, Bahrain",
@@ -326,7 +326,7 @@ module.exports = [
     },
     {
         id: 19,
-        avatar: "/images/resource/candidate-2.png",
+        avatar: "/images/profession.jpeg",
         name: "Wade Warren",
         designation: "Housekeeping",
         location: "Samaheej, Bahrain",
@@ -344,7 +344,7 @@ module.exports = [
     },
     {
         id: 20,
-        avatar: "/images/resource/candidate-3.png",
+        avatar: "/images/profession.jpeg",
         name: "Leslie Alexander",
         designation: "Digital Marketer",
         location: "Samaheej, Bahrain",
@@ -362,7 +362,7 @@ module.exports = [
     },
     {
         id: 21,
-        avatar: "/images/resource/candidate-4.png",
+        avatar: "/images/profession.jpeg",
         name: "Floyd Miles",
         designation: "Front-end Housekeeping",
         location: "Samaheej, Bahrain",
@@ -380,7 +380,7 @@ module.exports = [
     },
     {
         id: 22,
-        avatar: "/images/resource/candidate-5.png",
+        avatar: "/images/profession.jpeg",
         name: "Cameron Williamson",
         designation: "Backend Housekeeping",
         location: "Samaheej, Bahrain",
@@ -398,7 +398,7 @@ module.exports = [
     },
     {
         id: 23,
-        avatar: "/images/resource/candidate-6.png",
+        avatar: "/images/profession.jpeg",
         name: "Robert Fox",
         designation: "Software Engineer",
         location: "Samaheej, Bahrain",
@@ -416,7 +416,7 @@ module.exports = [
     },
     {
         id: 24,
-        avatar: "/images/resource/candidate-7.png",
+        avatar: "/images/profession.jpeg",
         name: "Esther Howard",
         designation: "Agriculturer",
         location: "Samaheej, Bahrain",
@@ -434,7 +434,7 @@ module.exports = [
     },
     {
         id: 25,
-        avatar: "/images/resource/candidate-8.png",
+        avatar: "/images/profession.jpeg",
         name: "Jerome Bell",
         designation: "Graphic Designer",
         location: "Samaheej, Bahrain",
@@ -452,7 +452,7 @@ module.exports = [
     },
     {
         id: 26,
-        avatar: "/images/resource/candidate-9.png",
+        avatar: "/images/profession.jpeg",
         name: "Annette Black",
         designation: "Content Writer",
         location: "Samaheej, Bahrain",
