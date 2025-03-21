@@ -40,7 +40,7 @@ const JobSearchForm = () => {
                             type="submit"
                             className="theme-btn btn-style-one"
                         >
-                            Find Jobs
+                            Find People
                         </button>
                     </div>
                     {/* <!-- Form Group --> */}

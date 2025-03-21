@@ -24,7 +24,7 @@ const SearchBox = () => {
             <input
                 type="text"
                 name="listing-search"
-                placeholder="Job title, keywords, or company"
+                placeholder="keywords, or Employers"
                 value={getKeyWord}
                 onChange={keywordHandler}
             />
