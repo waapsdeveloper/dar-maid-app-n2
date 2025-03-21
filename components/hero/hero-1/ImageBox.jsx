@@ -8,7 +8,7 @@ const ImageBox = () => {
           width={486}
           height={589}
           layout="responsive"
-          src="/images/resource/background-2.jpg"
+          src="/images/resource/background-2.png"
           alt="hero image"
         />
       </figure>
