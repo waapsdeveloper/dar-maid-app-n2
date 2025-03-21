@@ -37,12 +37,12 @@ const HeaderNavContent = () => {
           <li
             className={`${
               isActiveParent(employerItems, usePathname()) ||
-              usePathname()?.split("/")[1] === "employers-dashboard"
+              usePathname()?.split("/")[1] === "employers"
                 ? "current"
                 : ""
             }`}
           >
-            <Link href="employers-list-v3">
+            <Link href="employers">
               <span>Employers</span>
             </Link>
           </li>
@@ -51,12 +51,12 @@ const HeaderNavContent = () => {
           <li
             className={`${
               isActiveParent(candidateItems, usePathname()) ||
-              usePathname()?.split("/")[1] === "candidates-dashboard"
+              usePathname()?.split("/")[1] === "candidates"
                 ? "current"
                 : ""
             }`}
           >
-            <Link href="/candidates-list-v2">
+            <Link href="/candidates">
               <span>Candidates</span>
             </Link>
           </li>
@@ -65,12 +65,12 @@ const HeaderNavContent = () => {
           <li
             className={`${
               isActiveParent(candidateItems, usePathname()) ||
-              usePathname()?.split("/")[1] === "candidates-dashboard"
+              usePathname()?.split("/")[1] === "agency"
                 ? "current"
                 : ""
             }`}
           >
-            <Link href="/candidates-list-v3">
+            <Link href="/agency">
               <span>Agency</span>
             </Link>
           </li>
