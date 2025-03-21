@@ -130,7 +130,7 @@ const FilterTopBox = () => {
               alt="candidates"
             />
           </span>
-          <h3 className="name">
+          <h3 className="name employer-name">
             <Link href={`/candidates-single-v1/${candidate.id}`}>
               {candidate.name}
             </Link>

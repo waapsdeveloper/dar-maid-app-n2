@@ -48,19 +48,7 @@ const EmployersSingleV2 = ({ params }) => {
                 <JobDetailsDescriptions />
                 {/* End job-detail */}
 
-                {/* <!-- Related Jobs --> */}
-                <div className="related-jobs">
-                  <div className="title-box">
-                    <h3>3 Others jobs available</h3>
-                    <div className="text">
-                      2020 jobs live - 293 added today.
-                    </div>
-                  </div>
-                  {/* End .title-box */}
-
-                  <RelatedJobs />
-                  {/* End RelatedJobs */}
-                </div>
+               
                 {/* <!-- Related Jobs --> */}
               </div>
               {/* End .content-column */}

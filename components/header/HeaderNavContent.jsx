@@ -33,47 +33,7 @@ const HeaderNavContent = () => {
             </Link>
           </li>
 
-          {/* Employers */}
-          <li
-            className={`${
-              isActiveParent(employerItems, usePathname()) ||
-              usePathname()?.split("/")[1] === "employers"
-                ? "current"
-                : ""
-            }`}
-          >
-            <Link href="employers">
-              <span>Employers</span>
-            </Link>
-          </li>
 
-          {/* Candidates */}
-          <li
-            className={`${
-              isActiveParent(candidateItems, usePathname()) ||
-              usePathname()?.split("/")[1] === "candidates"
-                ? "current"
-                : ""
-            }`}
-          >
-            <Link href="/candidates">
-              <span>Candidates</span>
-            </Link>
-          </li>
-
-          {/* Agency */}
-          <li
-            className={`${
-              isActiveParent(candidateItems, usePathname()) ||
-              usePathname()?.split("/")[1] === "agency"
-                ? "current"
-                : ""
-            }`}
-          >
-            <Link href="/agency">
-              <span>Agency</span>
-            </Link>
-          </li>
 
           {/* Direct Page Links - Former "Others" dropdown items */}
           {pageItems.map((item, i) => (
@@ -88,6 +48,8 @@ const HeaderNavContent = () => {
               </Link>
             </li>
           ))}
+
+          
         </ul>
       </nav>
     </>

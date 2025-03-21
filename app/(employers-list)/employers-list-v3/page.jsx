@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import EmployersList from "@/components/employers-listing-pages/employers-list-v3";
 
 export const metadata = {
-  title: "Employers List V3 || DarMaid - Job Board",
+  title: "Employers",
   description: "DarMaid - Job Board",
 };
 
