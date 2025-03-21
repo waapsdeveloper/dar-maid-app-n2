@@ -25,10 +25,10 @@ const About2 = () => {
             <li>But I must explain to you how all this</li>
           </ul>
           <Link
-            href="/employers-dashboard/post-jobs"
+            href="/candidates-dashboard/dashboard"
             className="theme-btn btn-style-one"
           >
-            Post a Job
+            Find Peoples
           </Link>
         </div>
       </div>
