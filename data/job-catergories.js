@@ -1,19 +1,19 @@
 module.exports = [
   {
     id: 1,
-    icon: "flaticon-farm",
+    icon: "fi fi-tr-farm",
     catTitle: "Agricultural Skills",
     jobNumber: "Farming and cultivation techniques",
   },
   {
     id: 2,
-    icon: "flaticon-broom",
+    icon: "fi fi-tr-vacuum",
     catTitle: "Housekeeping",
     jobNumber: "Cleaning and maintaining a tidy home",
   },
   {
     id: 3,
-    icon: "flaticon-chef",
+    icon: "fi fi-rs-hat-chef",
     catTitle: "Culinary Arts",
     jobNumber: "Cooking and food preparation (Chef skills)",
   },
@@ -25,25 +25,25 @@ module.exports = [
   },
   {
     id: 5,
-    icon: "flaticon-baby",
+    icon: "fi fi-rr-child-head",
     catTitle: "Childcare & Parenting",
     jobNumber: "Taking care of babies and children",
   },
   {
     id: 6,
-    icon: "flaticon-pawprint",
+    icon: "fi fi-rr-paw",
     catTitle: "Pet Care & Animal Husbandry",
     jobNumber: "Caring for pets and domestic animals",
   },
   {
     id: 7,
-    icon: "flaticon-tools",
+    icon: "fi fi-tr-tools",
     catTitle: "Home Maintenance & Repair",
     jobNumber: "Fixing and maintaining household systems",
   },
   {
     id: 8,
-    icon: "flaticon-laundry",
+    icon: "fi fi-ts-dryer-alt",
     catTitle: "Laundry & Garment Care",
     jobNumber: "Washing, ironing, and fabric maintenance",
   },
