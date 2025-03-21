@@ -69,6 +69,19 @@ const HeaderNavContent = () => {
               <Link href="/candidates-list-v2"><span>Candidates</span></Link>
             
           </li>
+          <li
+            className={`${
+              isActiveParent(candidateItems, usePathname()) ||
+              usePathname()?.split("/")[1] === "candidates-dashboard"
+                ? "current"
+                : ""
+                ? "current"
+                : ""
+            } `}
+          >
+              <Link href="/candidates-list-v3"><span>Agency</span></Link>
+            
+          </li>
           {/* End Candidates menu items */}
 
           <li
