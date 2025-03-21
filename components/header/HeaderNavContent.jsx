@@ -22,92 +22,72 @@ const HeaderNavContent = () => {
     <>
       <nav className="nav main-menu">
         <ul className="navigation" id="navbar">
-          {/* current dropdown */}
+          {/* Home */}
           <li
             className={`${
               isActiveParent(homeItems, usePathname()) ? "current" : ""
-            } `}
+            }`}
           >
-            <Link href={"/"}><span>Home</span></Link>
+            <Link href="/">
+              <span>Home</span>
+            </Link>
           </li>
-          {/* End homepage menu items */}
 
-          {/* <li
-            className={`${
-              isActiveParent(findJobItems, usePathname()) ? "current" : ""
-            } has-mega-menu`}
-            id="has-mega-menu"
-          >
-           <Link href="/job-list-v1"><span>Find Jobs</span></Link>
-          </li> */}
-          {/* End findjobs menu items */}
-
+          {/* Employers */}
           <li
             className={`${
               isActiveParent(employerItems, usePathname()) ||
               usePathname()?.split("/")[1] === "employers-dashboard"
-              ? "current"
-              : ""
+                ? "current"
+                : ""
             }`}
           >
-            
-            <Link href="employers-list-v3"><span>Employers</span></Link>
-
+            <Link href="employers-list-v3">
+              <span>Employers</span>
+            </Link>
           </li>
-          {/* End Employers menu items */}
 
+          {/* Candidates */}
           <li
             className={`${
               isActiveParent(candidateItems, usePathname()) ||
               usePathname()?.split("/")[1] === "candidates-dashboard"
                 ? "current"
                 : ""
-                ? "current"
-                : ""
-            } `}
+            }`}
           >
-              <Link href="/candidates-list-v2"><span>Candidates</span></Link>
-            
+            <Link href="/candidates-list-v2">
+              <span>Candidates</span>
+            </Link>
           </li>
+
+          {/* Agency */}
           <li
             className={`${
               isActiveParent(candidateItems, usePathname()) ||
               usePathname()?.split("/")[1] === "candidates-dashboard"
                 ? "current"
                 : ""
-                ? "current"
-                : ""
-            } `}
+            }`}
           >
-              <Link href="/candidates-list-v3"><span>Agency</span></Link>
-            
+            <Link href="/candidates-list-v3">
+              <span>Agency</span>
+            </Link>
           </li>
-          {/* End Candidates menu items */}
 
-          <li
-            className={`${
-              isActiveParentChaild(pageItems, usePathname()) ||
-              isActiveParentChaild(shopItems[0].items, usePathname())
-                ? "current "
-                : ""
-            } dropdown`}
-          >
-            <span>Others</span>
-            <ul>
-
-              {pageItems.map((item, i) => (
-                <li
-                  className={
-                    isActiveLink(item.routePath, usePathname()) ? "current" : ""
-                  }
-                  key={i}
-                >
-                  <Link href={item.routePath}>{item.name}</Link>
-                </li>
-              ))}
-            </ul>
-          </li>
-          {/* End Pages menu items */}
+          {/* Direct Page Links - Former "Others" dropdown items */}
+          {pageItems.map((item, i) => (
+            <li
+              className={`${
+                isActiveLink(item.routePath, usePathname()) ? "current" : ""
+              }`}
+              key={i}
+            >
+              <Link href={item.routePath}>
+                <span>{item.name}</span>
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </>

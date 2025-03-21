@@ -5,8 +5,8 @@ import FooterContent from "./FooterContent";
 const index = ({ footerStyle = "" }) => {
   return (
     <footer className={`main-footer ${footerStyle}`}>
-      <div className="auto-container">
-        {/* <!--Widgets Section--> */}
+      {/* <div className="auto-container">
+       
         <div className="widgets-section" data-aos="fade-up">
           <div className="row">
             <div className="big-column col-xl-4 col-lg-3 col-md-12">
@@ -42,7 +42,7 @@ const index = ({ footerStyle = "" }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* End auto-container */}
 
       <CopyrightFooter />

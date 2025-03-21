@@ -37,7 +37,7 @@ const index = () => {
         <div className="auto-container">
           <div className="sec-title text-center">
             <h2>Popular Employees Categories</h2>
-            <div className="text">2020 jobs live - 293 added today.</div>
+            <div className="text">2025 Listings - 293 added today.</div>
           </div>
 
           <div
@@ -155,6 +155,7 @@ const index = () => {
           </div>
         </div>
       </section>
+      <FooterDefault />
 
     </>
   );
