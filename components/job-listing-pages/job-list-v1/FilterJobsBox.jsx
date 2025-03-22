@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import jobs from "../../../data/job-featured";
-import JobSearchForm from "./JobSearchForm";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addCategory,
@@ -200,13 +199,6 @@ const FilterJobsBox = () => {
 
   return (
     <>
-      <section className="page-title">
-        <div className="auto-container">
-          <JobSearchForm />
-          {/* <!-- Job Search Form --> */}
-        </div>
-      </section>
-
       <div className="Job-block-parent">{content}</div>
       {/* <!-- List Show More --> */}
       <div className="ls-show-more">
