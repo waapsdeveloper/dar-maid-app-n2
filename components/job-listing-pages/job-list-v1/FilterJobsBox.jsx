@@ -213,9 +213,6 @@ const FilterJobsBox = () => {
           </div>
           {/* Collapsible sidebar button */}
 
-          <div className="text">
-            Show <strong>{content?.length}</strong> Agency
-          </div>
         </div>
         {/* End show-result */}
 
