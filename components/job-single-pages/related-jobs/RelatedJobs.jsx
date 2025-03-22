@@ -6,7 +6,7 @@ const RelatedJobs = () => {
   return (
     <>
       {jobs.slice(3, 7).map((item) => (
-        <div className="job-block" key={item.id}>
+        <div className="job-block w-100" key={item.id}>
           <div className="inner-box">
             <div className="content">
               <span className="company-logo">
