@@ -211,9 +211,6 @@ const FilterTopBox = () => {
           </div>
           {/* Collapsible sidebar button */}
 
-          <div className="text">
-            <strong>{content?.length}</strong> jobs
-          </div>
         </div>
         {/* End showing-result */}
 
