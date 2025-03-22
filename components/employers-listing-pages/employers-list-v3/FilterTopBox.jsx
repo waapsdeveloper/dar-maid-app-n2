@@ -1,6 +1,4 @@
-
-
-'use client'
+"use client";
 
 import Link from "next/link";
 import companyData from "../../../data/topCompany";
@@ -89,8 +87,8 @@ const FilterTopBox = () => {
                 alt="company brand"
               />
             </span>
-            <h4>
-              <Link href={`/employers-single-v2/${company.id}`}>
+            <h4 className="employer-name">
+              <Link href={`/employers-single-v2/${company.id}`} >
                 {company.name}
               </Link>
             </h4>

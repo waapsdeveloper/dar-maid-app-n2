@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Contact from "@/components/pages-menu/contact";
 
 export const metadata = {
-  title: 'Contact || DarMaid - Job Board',
+  title: 'Contact',
   description:
     'DarMaid - Job Board',
   

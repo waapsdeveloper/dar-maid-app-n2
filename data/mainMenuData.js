@@ -307,6 +307,18 @@ export const pageItems = [
     routePath: "/about",
   },
   {
+    name: "Employers",
+    routePath: "/employers",
+  },
+  {
+    name: "Candidates",
+    routePath: "/candidates",
+  },
+  {
+    name: "Agency",
+    routePath: "/agency",
+  },
+  {
     name: "FAQ's",
     routePath: "/faq",
   },

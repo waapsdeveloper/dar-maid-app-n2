@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Terms from "@/components/pages-menu/terms";
 
 export const metadata = {
-  title: 'Terms || DarMaid - Job Board',
+  title: 'Terms ',
   description:
     'DarMaid - Job Board',
   

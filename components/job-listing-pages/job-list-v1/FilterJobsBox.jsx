@@ -1,6 +1,4 @@
-
-
-'use client'
+"use client";
 
 import Link from "next/link";
 import jobs from "../../../data/job-featured";
@@ -297,7 +295,7 @@ const FilterJobsBox = () => {
         </div>
       </div>
       {/* End top filter bar box */}
-      {content}
+      <div className="Job-block-parent">{content}</div>
       {/* <!-- List Show More --> */}
       <div className="ls-show-more">
         <p>Show 36 of 497 Jobs</p>
