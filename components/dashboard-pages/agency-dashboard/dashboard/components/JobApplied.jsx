@@ -1,11 +1,11 @@
 import Link from "next/link";
-import jobFeatured from "../../data/job-featured";
+import recentJobApplied from "../../../../../data/job-featured";
 import Image from "next/image";
 
-const JobFeatured1 = () => {
+const JobApplied = () => {
   return (
     <>
-      {jobFeatured.slice(0, 6).map((item) => (
+      {recentJobApplied.slice(0, 6).map((item) => (
         <div className="job-block col-lg-6 col-md-12 col-sm-12" key={item.id}>
           <div className="inner-box">
             <div className="content">
@@ -18,7 +18,7 @@ const JobFeatured1 = () => {
                 />
               </span>
               <h4>
-                <Link href={`/agency-details/${item.id}`}>{item.jobTitle}</Link>
+                <Link href={`/job-single-v1/${item.id}`}>{item.jobTitle}</Link>
               </h4>
 
               <ul className="job-info">
@@ -64,4 +64,4 @@ const JobFeatured1 = () => {
   );
 };
 
-export default JobFeatured1;
+export default JobApplied;

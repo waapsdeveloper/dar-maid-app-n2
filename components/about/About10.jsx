@@ -28,9 +28,7 @@ const About10 = () => {
                     interdum tortor.
                   </div>
                 </div>
-                <a href="#" className="theme-btn -blue-outline mt-56 md:mt-16">
-                  All Services
-                </a>
+                
               </div>
             </div>
             {/* <!-- Content Column --> */}

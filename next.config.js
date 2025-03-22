@@ -27,6 +27,19 @@ const nextConfig = {
       source:"/agency-details/:slug",
       destination: "/job-single-v1/:slug",
       },
+      {
+        source: "/employer-dashboard",
+        destination: "/employers-dashboard/dashboard",
+        
+      },
+      {
+        source: "/candidate-dashboard",
+        destination: "/candidates-dashboard/dashboard",
+      },
+      {
+        source :"/agency-dashboard",
+        destination: "/agency-dashboard/dashboard",
+      }
     ];
   },
 
