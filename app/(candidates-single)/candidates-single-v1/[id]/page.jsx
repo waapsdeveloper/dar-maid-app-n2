@@ -83,7 +83,7 @@ const CandidateSingleDynamicV1 = ({ params }) => {
                     href="/images/sample.pdf"
                     download
                   >
-                    Download CV
+                      Request for Interview 
                   </a>
                   <button className="bookmark-btn">
                     <i className="flaticon-bookmark"></i>

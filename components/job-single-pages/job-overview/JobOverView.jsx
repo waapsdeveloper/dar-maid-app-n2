@@ -19,7 +19,7 @@ const JobOverView = () => {
         </li>
         <li>
           <i className="icon icon-user-2"></i>
-          <h5>Job Title:</h5>
+          <h5>Agency Title:</h5>
           <span>Designer</span>
         </li>
         <li>

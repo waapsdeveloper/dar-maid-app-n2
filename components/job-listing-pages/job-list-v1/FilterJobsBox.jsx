@@ -117,14 +117,14 @@ const FilterJobsBox = () => {
     ?.sort(sortFilter)
     .slice(perPage.start, perPage.end !== 0 ? perPage.end : 10)
     ?.map((item) => (
-      <div className="job-block" key={item.id}>
+      <div className="job-block w-100" key={item.id}>
         <div className="inner-box">
           <div className="content">
             <span className="company-logo">
               <Image width={50} height={49} src={item.logo} alt="item brand" />
             </span>
             <h4>
-              <Link href={`/job-single-v1/${item.id}`}>{item.jobTitle}</Link>
+              <Link href={`/agency-details/${item.id}`}>{item.jobTitle}</Link>
             </h4>
 
             <ul className="job-info">
@@ -156,12 +156,13 @@ const FilterJobsBox = () => {
                 </li>
               ))}
             </ul>
-            {/* End .job-other-info */}
-
+            
             <button className="bookmark-btn">
               <span className="flaticon-bookmark"></span>
             </button>
           </div>
+            
+        <div className=" w-100 mt-3 theme-btn btn-style-three" >Request For Interview</div>
         </div>
       </div>
       // End all jobs

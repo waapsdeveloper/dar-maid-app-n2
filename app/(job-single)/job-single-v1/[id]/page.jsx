@@ -96,7 +96,7 @@ const JobSingleDynamicV1 = ({ params }) => {
                     data-bs-toggle="modal"
                     data-bs-target="#applyJobModal"
                   >
-                    Apply For Job
+                    Request For Interview 
                   </a>
                   <button className="bookmark-btn">
                     <i className="flaticon-bookmark"></i>
@@ -114,7 +114,7 @@ const JobSingleDynamicV1 = ({ params }) => {
                   <div className="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div className="apply-modal-content modal-content">
                       <div className="text-center">
-                        <h3 className="title">Apply for this job</h3>
+                        <h3 className="title">Apply for this Agency</h3>
                         <button
                           type="button"
                           className="closed-modal"
@@ -147,7 +147,7 @@ const JobSingleDynamicV1 = ({ params }) => {
 
                 <div className="other-options">
                   <div className="social-share">
-                    <h5>Share this job</h5>
+                    <h5>Share this Agency</h5>
                     <SocialTwo />
                   </div>
                 </div>
@@ -155,9 +155,9 @@ const JobSingleDynamicV1 = ({ params }) => {
 
                 <div className="related-jobs">
                   <div className="title-box">
-                    <h3>Related Jobs</h3>
+                    <h3>Related Listing</h3>
                     <div className="text">
-                      2020 jobs live - 293 added today.
+                      2020 listing live - 293 added today.
                     </div>
                   </div>
                   {/* End title box */}
@@ -172,11 +172,11 @@ const JobSingleDynamicV1 = ({ params }) => {
                 <aside className="sidebar">
                   <div className="sidebar-widget">
                     {/* <!-- Job Overview --> */}
-                    <h4 className="widget-title">Job Overview</h4>
+                    <h4 className="widget-title">Agency Overview</h4>
                     <JobOverView />
 
                     {/* <!-- Map Widget --> */}
-                    <h4 className="widget-title mt-5">Job Location</h4>
+                    <h4 className="widget-title mt-5">Agency Location</h4>
                     <div className="widget-content">
                       <div className="map-outer">
                         <div style={{ height: "300px", width: "100%" }}>
@@ -186,7 +186,7 @@ const JobSingleDynamicV1 = ({ params }) => {
                     </div>
                     {/* <!--  Map Widget --> */}
 
-                    <h4 className="widget-title">Job Skills</h4>
+                    <h4 className="widget-title">Agency Skills</h4>
                     <div className="widget-content">
                       <JobSkills />
                     </div>
@@ -207,7 +207,7 @@ const JobSingleDynamicV1 = ({ params }) => {
                         </div>
                         <h5 className="company-name">{company.company}</h5>
                         <a href="#" className="profile-link">
-                          View company profile
+                          View Agency  profile
                         </a>
                       </div>
                       {/* End company title */}

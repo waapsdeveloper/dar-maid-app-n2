@@ -58,7 +58,7 @@ const ApplyJobModalContent = () => {
             type="submit"
             name="submit-form"
           >
-            Apply Job
+            Request For Interview
           </button>
         </div>
         {/* End .col */}

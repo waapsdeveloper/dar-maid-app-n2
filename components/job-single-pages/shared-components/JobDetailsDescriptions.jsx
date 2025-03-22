@@ -1,7 +1,7 @@
 const JobDetailsDescriptions = () => {
   return (
     <div className="job-detail">
-      <h4>Job Description</h4>
+      <h4>Agency Description</h4>
       <p>
         As a Product Designer, you will work within a Product Delivery Team
         fused with UX, engineering, product and data talent. You will help the
