@@ -8,8 +8,16 @@ const nextConfig = {
         destination: "/employers-list-v3",
       },
       {
+        source: "/employers-details/:slug",
+        destination: "/employers-single-v2/:slug",
+      },
+      {
         source: "/candidates",
         destination: "/candidates-list-v2",
+      },
+      {
+        source: "/candidates-details/:slug",
+        destination: "/candidates-single-v1/:slug",
       },
       {
         source: "/agency",
@@ -18,10 +26,6 @@ const nextConfig = {
       {
       source:"/agency-details/:slug",
       destination: "/job-single-v1/:slug",
-      },
-      {
-        source: "/services/:slug",
-        destination: "/offerings/:slug",
       },
     ];
   },

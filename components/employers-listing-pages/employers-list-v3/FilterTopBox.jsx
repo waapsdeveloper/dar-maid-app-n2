@@ -88,7 +88,7 @@ const FilterTopBox = () => {
               />
             </span>
             <h4 className="employer-name">
-              <Link href={`/employers-single-v2/${company.id}`} >
+              <Link href={`/employers-details/${company.id}`} >
                 {company.name}
               </Link>
             </h4>

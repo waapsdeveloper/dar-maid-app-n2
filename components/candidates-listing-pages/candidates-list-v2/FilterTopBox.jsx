@@ -128,12 +128,12 @@ const FilterTopBox = () => {
               height={90}
               src={candidate.avatar}
               alt="candidates"
-              href={`/candidates-single-v1/${candidate.id}`}
+              href={`/candidates-details/${candidate.id}`}
 
             />
           </span>
           <h3 className="name employer-name">
-            <Link href={`/candidates-single-v1/${candidate.id}`}>
+            <Link href={`/candidates-details/${candidate.id}`}>
               {candidate.name}
             </Link>
           </h3>
@@ -161,7 +161,7 @@ const FilterTopBox = () => {
           {/* End tags */}
 
           <Link
-            href={`/candidates-single-v1/${candidate.id}`}
+            href={`/candidates-details/${candidate.id}`}
             className="theme-btn btn-style-three"
           >
             Request for Interview

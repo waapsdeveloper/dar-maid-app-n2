@@ -13,7 +13,7 @@ import Image from "next/image";
 
 export const metadata = {
   title:
-    "Employers Single Dyanmic V2 || DarMaid - Job Board",
+    "Employers Details",
   description: "DarMaid - Job Board",
 };
 
