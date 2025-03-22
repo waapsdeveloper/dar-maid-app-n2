@@ -133,9 +133,7 @@ const FilterTopBox = () => {
     <>
       <div className="ls-switcher">
         <div className="showing-result">
-          <div className="text">
-            <strong>{content?.length}</strong> jobs
-          </div>
+        
         </div>
         {/* End showing-result */}
         <div className="sort-by">

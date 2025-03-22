@@ -16,6 +16,10 @@ const nextConfig = {
         destination: "/job-list-v1",
       },
       {
+      source:"/agency-details/:slug",
+      destination: "/job-single-v1/:slug",
+      },
+      {
         source: "/services/:slug",
         destination: "/offerings/:slug",
       },
