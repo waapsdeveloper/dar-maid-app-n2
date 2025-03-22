@@ -15,7 +15,10 @@ const JobCategorie1 = () => {
               <h4>
                 <Link href="/job-list-v1">{item.catTitle}</Link>
               </h4>
-              <p>({item.jobNumber} open positions)</p>
+              <p>{item.jobDescription}</p>
+              <p className="mt-2">
+                <strong>({item.jobNumber} open positions)</strong>
+              </p>
             </div>
           </div>
         </div>

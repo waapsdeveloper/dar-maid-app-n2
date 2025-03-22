@@ -18,7 +18,7 @@ const SidebarFooter = () => {
             329 Queensberry Street, North Melbourne VIC <br />
             3051, Australia.
           </span> */}
-          <a href="mailto:support@superio.com" className="email">
+          <a href="mailto:support@Darmaid.com" className="email">
             support@DarMaid.com
           </a>
         </div>
