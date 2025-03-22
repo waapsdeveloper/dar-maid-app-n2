@@ -100,7 +100,7 @@ const index = () => {
           <div className="sec-title text-center">
             <h2>Top Rated Agency</h2>
             <div className="text">
-              Know your worth and find the job that qualify your life
+              Know your worth and find the Agency that qualify your life
             </div>
           </div>
 
