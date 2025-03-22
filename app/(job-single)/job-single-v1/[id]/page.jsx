@@ -96,7 +96,7 @@ const JobSingleDynamicV1 = ({ params }) => {
                     data-bs-toggle="modal"
                     data-bs-target="#applyJobModal"
                   >
-                    Apply For Job
+                    Request For Interview 
                   </a>
                   <button className="bookmark-btn">
                     <i className="flaticon-bookmark"></i>

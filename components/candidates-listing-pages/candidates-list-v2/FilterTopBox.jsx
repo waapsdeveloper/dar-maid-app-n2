@@ -128,6 +128,8 @@ const FilterTopBox = () => {
               height={90}
               src={candidate.avatar}
               alt="candidates"
+              href={`/candidates-single-v1/${candidate.id}`}
+
             />
           </span>
           <h3 className="name employer-name">
@@ -162,7 +164,7 @@ const FilterTopBox = () => {
             href={`/candidates-single-v1/${candidate.id}`}
             className="theme-btn btn-style-three"
           >
-            View Profile
+            Request for Interview
           </Link>
         </div>
       </div>

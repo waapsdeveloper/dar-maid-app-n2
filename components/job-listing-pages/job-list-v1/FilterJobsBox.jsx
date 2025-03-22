@@ -156,12 +156,13 @@ const FilterJobsBox = () => {
                 </li>
               ))}
             </ul>
-            {/* End .job-other-info */}
-
+            
             <button className="bookmark-btn">
               <span className="flaticon-bookmark"></span>
             </button>
           </div>
+            
+        <div className=" w-100 mt-3 theme-btn btn-style-three" >Request For Interview</div>
         </div>
       </div>
       // End all jobs
