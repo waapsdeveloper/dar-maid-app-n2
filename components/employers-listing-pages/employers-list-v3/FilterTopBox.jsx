@@ -103,8 +103,7 @@ const FilterTopBox = () => {
               </li>
             </ul>
           </div>
-
-          <div className="job-type me-0">Open Jobs – {company.jobNumber}</div>
+          <div className="theme-btn btn-style-three  me-0">Open to Work</div>
         </div>
       </div>
     ));

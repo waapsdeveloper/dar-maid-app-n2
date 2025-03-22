@@ -65,9 +65,9 @@ const Index = () => {
           </MenuItem>
 
           <MenuItem
-            onClick={() => router.push("/employers-list-v2")}
+            onClick={() => router.push("/employers")}
             className={
-              isActiveLink("/employers-list-v2", usePathname())
+              isActiveLink("/employer", usePathname())
                 ? "menu-active-link"
                 : ""
             }
@@ -78,9 +78,9 @@ const Index = () => {
 
           {/* Candidates - Direct Link */}
           <MenuItem
-            onClick={() => router.push("/candidates-list-v2")}
+            onClick={() => router.push("/candidates")}
             className={
-              isActiveLink("/candidates-list-v2", usePathname())
+              isActiveLink("/candidates", usePathname())
                 ? "menu-active-link"
                 : ""
             }
@@ -89,9 +89,9 @@ const Index = () => {
             Candidates
           </MenuItem>
           <MenuItem
-            onClick={() => router.push("/candidates-list-v3")}
+            onClick={() => router.push("/agency")}
             className={
-              isActiveLink("/candidates-list-v2", usePathname())
+              isActiveLink("/agency", usePathname())
                 ? "menu-active-link"
                 : ""
             }
@@ -102,7 +102,7 @@ const Index = () => {
           <MenuItem
             onClick={() => router.push("/about")}
             className={
-              isActiveLink("/candidates-list-v2", usePathname())
+              isActiveLink("/about", usePathname())
                 ? "menu-active-link"
                 : ""
             }
@@ -111,7 +111,7 @@ const Index = () => {
             About
           </MenuItem>
           <MenuItem
-            onClick={() => router.push("/about")}
+            onClick={() => router.push("/faq")}
             className={
               isActiveLink("/faq", usePathname()) ? "menu-active-link" : ""
             }
@@ -121,7 +121,7 @@ const Index = () => {
           </MenuItem>
 
           <MenuItem
-            onClick={() => router.push("/about")}
+            onClick={() => router.push("/terms")}
             className={
               isActiveLink("/terms", usePathname()) ? "menu-active-link" : ""
             }
@@ -130,7 +130,7 @@ const Index = () => {
             Terms
           </MenuItem>
           <MenuItem
-            onClick={() => router.push("/about")}
+            onClick={() => router.push("/contact")}
             className={
               isActiveLink("/contact", usePathname()) ? "menu-active-link" : ""
             }
