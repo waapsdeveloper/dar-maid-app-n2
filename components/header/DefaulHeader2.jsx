@@ -5,9 +5,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import HeaderNavContent from "./HeaderNavContent";
 import Image from "next/image";
+import { useSelector, useDispatch } from "react-redux";
+
 
 const DefaulHeader2 = () => {
   const [navbar, setNavbar] = useState(false);
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
+  
 
   const changeBackground = () => {
     if (window.scrollY >= 10) {
@@ -57,22 +61,31 @@ const DefaulHeader2 = () => {
             Upload your CV
           </Link> */}
           {/* <!-- Login/Register --> */}
-          <div className="btn-box">
-            <a
-              href="#"
-              className="theme-btn btn-style-three call-modal"
-              data-bs-toggle="modal"
-              data-bs-target="#loginPopupModal"
-            >
-              Login / Register
-            </a>
-            {/* <Link
-              href="/employers-dashboard/post-jobs"
-              className="theme-btn btn-style-one"
-            >
-              Job Post
-            </Link> */}
-          </div>
+          {isAuthenticated ? (
+            <div>
+              <p>Name: {user.name}</p>
+              <p>Email: {user.email}</p>
+              <button onClick={() => dispatch(logout())}>Logout</button>
+            </div>
+          ) : (
+            <div className="btn-box">
+              <a
+                href="#"
+                className="theme-btn btn-style-three call-modal"
+                data-bs-toggle="modal"
+                data-bs-target="#loginPopupModal"
+              >
+                Login / Register
+              </a>
+              {/* <Link
+                href="/employers-dashboard/post-jobs"
+                className="theme-btn btn-style-one"
+              >
+                Job Post
+              </Link> */}
+            </div>
+          )}
+          
         </div>
       </div>
     </header>

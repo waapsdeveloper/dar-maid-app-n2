@@ -7,9 +7,11 @@ import employerFilterSlice from "../features/filter/employerFilterSlice";
 import candidateSlice from "../features/candidate/candidateSlice";
 import candidateFilterSlice from "../features/filter/candidateFilterSlice";
 import shopSlice from "../features/shop/shopSlice";
+import authReducer from "../features/auth/authSlice";
 
 export const store = configureStore({
     reducer: {
+        auth: authReducer,
         job: jobSlice,
         toggle: toggleSlice,
         filter: filterSlice,
