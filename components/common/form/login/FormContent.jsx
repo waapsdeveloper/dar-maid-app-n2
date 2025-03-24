@@ -4,8 +4,15 @@ import { useState } from "react";
 import Link from "next/link";
 import LoginWithSocial from "./LoginWithSocial";
 import { userService  } from "@/services/user.service";
+import { useDispatch } from "react-redux";
+import { login } from "@/features/auth/authSlice";
+import { useEffect, useRef } from "react";
 
 const FormContent = () => {
+
+  const dispatch = useDispatch();
+  const modalRef = useRef(null);
+
   // State to hold form values
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -26,6 +33,16 @@ const FormContent = () => {
     if(!userData) {
       alert("Invalid credentials");
       return false;
+    }
+
+    // Dispatch login action
+    
+    dispatch(login(userData));
+    if (modalRef.current) {
+      const modalInstance = bootstrap.Modal.getInstance(modalRef.current);
+      if (modalInstance) {
+        modalInstance.hide();
+      }
     }
     
     if(userData.role === "employer") {

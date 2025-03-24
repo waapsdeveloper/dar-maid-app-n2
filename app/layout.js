@@ -5,7 +5,8 @@ import "../styles/index.scss";
 import { useEffect } from "react";
 import ScrollToTop from "../components/common/ScrollTop";
 import { Provider } from "react-redux";
-import { store } from "../store/store";
+import { store, persistor } from "../store/store";
+import { PersistGate } from "redux-persist/integration/react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 
@@ -32,10 +33,7 @@ export default function RootLayout({ children }) {
           name="keywords"
           content="	candidates, career, employment, indeed, job board, job listing, job portal, job postings, job search, job seeker, jobs, recruiters, recruiting, recruitment, resume"
         />
-        <meta
-          name="description"
-          content="DarMaid - Job Board"
-        />
+        <meta name="description" content="DarMaid - Job Board" />
         <meta name="ibthemes" content="ATFN" />
 
         <link rel="icon" href="./favicon.ico" />
@@ -43,25 +41,27 @@ export default function RootLayout({ children }) {
 
       <body>
         <Provider store={store}>
-          <div className="page-wrapper">
-            {children}
+          <PersistGate loading={null} persistor={persistor}>
+            <div className="page-wrapper">
+              {children}
 
-            {/* Toastify */}
-            <ToastContainer
-              position="bottom-right"
-              autoClose={500}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="colored"
-            />
-            {/* <!-- Scroll To Top --> */}
-            <ScrollToTop />
-          </div>
+              {/* Toastify */}
+              <ToastContainer
+                position="bottom-right"
+                autoClose={500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+              />
+              {/* <!-- Scroll To Top --> */}
+              <ScrollToTop />
+            </div>
+          </PersistGate>
         </Provider>
       </body>
     </html>
