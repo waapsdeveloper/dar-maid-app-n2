@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import LoginWithSocial from "./LoginWithSocial";
+import { userService  } from "@/services/user.service";
 
 const FormContent = () => {
   // State to hold form values
@@ -11,15 +12,18 @@ const FormContent = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent page reload on form submit
 
-    // Log form values to the console
-    console.log({
+    let obj = {
       username,
       password,
       rememberMe,
-    });
+    }
+
+    const userData = await userService.loginUser(obj);
+
+    
   };
 
   return (
