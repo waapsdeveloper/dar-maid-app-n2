@@ -7,7 +7,6 @@ import HeaderNavContent from "./HeaderNavContent";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 
-
 const DefaulHeader2 = () => {
   const [navbar, setNavbar] = useState(false);
   const { user, isAuthenticated } = useSelector((state) => state.auth);
@@ -62,11 +61,38 @@ const DefaulHeader2 = () => {
           </Link> */}
           {/* <!-- Login/Register --> */}
           {isAuthenticated ? (
-            <div>
-              <p>Name: {user.name}</p>
-              <p>Email: {user.email}</p>
-              <button onClick={() => dispatch(logout())}>Logout</button>
-            </div>
+           <div className="dropdown dashboard-option">
+           <a
+             className="dropdown-toggle"
+             role="button"
+             data-bs-toggle="dropdown"
+             aria-expanded="false"
+           >
+             <Image
+               alt="avatar"
+               className="thumb"
+               src={user?.avatar || "/images/resource/company-6.png"} // Use user's avatar or fallback
+               width={50}
+               height={50}
+             />
+             <span className="name">My Account</span>
+           </a>
+
+           <ul className="dropdown-menu">
+             {/* Display user info and logout inside the dropdown */}
+             <li className="user-info">
+               <p>Name: {user?.name}</p>
+               <p>Email: {user?.email}</p>
+             </li>
+
+             <li className="logout-btn">
+               <button onClick={() => dispatch(logout())} className="theme-btn btn-style-one">
+                 Logout
+               </button>
+             </li>
+
+           </ul>
+         </div>
           ) : (
             <div className="btn-box">
               <a
