@@ -1,5 +1,12 @@
 [
     {
-        
+        "id": "1",
+        "name": "Super Admin", 
+        "email": "superadmin@mail.com",
+        "password": "password123",
+        "role": "superadmin",
+        "status": "active",
+        "token": "",
+        "picture" : "https://via.placeholder.com/150"
     }
 ]
