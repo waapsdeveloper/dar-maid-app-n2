@@ -13,7 +13,7 @@ module.exports = [
       {
         id: "2",
         name: "Employer",
-        email: "employeradmin@mail.com",
+        email: "employer@mail.com",
         password: "password123",
         role: "employer",
         status: "active",
