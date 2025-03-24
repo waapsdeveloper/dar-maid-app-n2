@@ -8,65 +8,30 @@ module.exports = [
   },
   {
     id: 2,
-    name: "Company Profile",
-    icon: "la-user-tie",
-    routePath: "/employers-dashboard/company-profile",
+    name: "Profile",  // Changed from "Company Profile"
+    icon: "la-user-circle",
+    routePath: "/employers-dashboard/profile",
     active: "",
   },
   {
     id: 3,
-    name: "Post a New Job",
-    icon: "la-paper-plane",
-    routePath: "/employers-dashboard/post-jobs",
+    name: "Employee",  // Changed from "Post a New Job"
+    icon: "la-user-friends",
+    routePath: "/employers-dashboard/employees",
     active: "",
   },
   {
     id: 4,
-    name: "Manage Jobs",
-    icon: "la-briefcase",
-    routePath: "/employers-dashboard/manage-jobs",
+    name: "Agency",  // Changed from "Manage Jobs"
+    icon: "la-building",
+    routePath: "/employers-dashboard/agencies",
     active: "",
   },
   {
     id: 5,
-    name: "All Applicants",
-    icon: "la-file-invoice",
-    routePath: "/employers-dashboard/all-applicants",
-    active: "",
-  },
-  {
-    id: 6,
-    name: "Shortlisted Resumes",
-    icon: "la-bookmark-o",
-    routePath: "/employers-dashboard/shortlisted-resumes",
-    active: "",
-  },
-  {
-    id: 7,
-    name: "Packages",
-    icon: "la-box",
-    routePath: "/employers-dashboard/packages",
-    active: "",
-  },
-  {
-    id: 8,
-    name: "Messages",
-    icon: "la-comment-o",
-    routePath: "/employers-dashboard/messages",
-    active: "",
-  },
-  {
-    id: 9,
-    name: "Resume Alerts",
-    icon: "la-bell",
-    routePath: "/employers-dashboard/resume-alerts",
-    active: "",
-  },
-  {
-    id: 10,
-    name: "Change Password",
-    icon: "la-lock",
-    routePath: "/employers-dashboard/change-password",
+    name: "Interview",  // Changed from "All Applicants"
+    icon: "la-comments",
+    routePath: "/employers-dashboard/interviews",
     active: "",
   },
   {
@@ -76,11 +41,5 @@ module.exports = [
     routePath: "/login",
     active: "",
   },
-  {
-    id: 12,
-    name: "Delete Profile",
-    icon: "la-trash",
-    routePath: "/",
-    active: "",
-  },
+  // ... rest of your original entries
 ];
