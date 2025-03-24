@@ -3,13 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import LoginWithSocial from "./LoginWithSocial";
-import { userService  } from "@/services/user.service";
+import { userService } from "@/services/user.service";
 import { useDispatch } from "react-redux";
 import { login } from "@/features/auth/authSlice";
 import { useEffect, useRef } from "react";
 
 const FormContent = () => {
-
   const dispatch = useDispatch();
   const modalRef = useRef(null);
 
@@ -26,17 +25,17 @@ const FormContent = () => {
       username,
       password,
       rememberMe,
-    }
+    };
 
     const userData = await userService.loginUser(obj);
     console.log(userData);
-    if(!userData) {
+    if (!userData) {
       alert("Invalid credentials");
       return false;
     }
 
     // Dispatch login action
-    
+
     dispatch(login(userData));
     if (modalRef.current) {
       const modalInstance = bootstrap.Modal.getInstance(modalRef.current);
@@ -44,22 +43,26 @@ const FormContent = () => {
         modalInstance.hide();
       }
     }
-    
-    if(userData.role === "employer") {
+    const closeButton = document.querySelector(
+      "#loginPopupModal .closed-modal"
+    );
+    if (closeButton) {
+      closeButton.click();
+    }
+
+    if (userData.role === "employer") {
       window.location.href = "/employer-dashboard";
     }
-    if(userData.role === "employee") {
+    if (userData.role === "employee") {
       window.location.href = "/candidate-dashboard";
     }
-    if(userData.role === "agency") {
+    if (userData.role === "agency") {
       window.location.href = "/agency-dashboard";
     }
-    if(userData.role === "superadmin") {
+    if (userData.role === "superadmin") {
       window.location.href = "/superadmin-dashboard";
     }
     // window.location.href = "/employer-dashboard";
-
-    
   };
 
   return (
@@ -117,6 +120,7 @@ const FormContent = () => {
             className="theme-btn btn-style-one"
             type="submit"
             name="log-in"
+            data-bs-dismiss="modal"
           >
             Log In
           </button>

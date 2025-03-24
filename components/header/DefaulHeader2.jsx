@@ -68,13 +68,13 @@ const DefaulHeader2 = () => {
              data-bs-toggle="dropdown"
              aria-expanded="false"
            >
-             <Image
+             {/* <Image
                alt="avatar"
                className="thumb"
                src={user?.avatar || "/images/resource/company-6.png"} // Use user's avatar or fallback
                width={50}
                height={50}
-             />
+             /> */}
              <span className="name">My Account</span>
            </a>
 

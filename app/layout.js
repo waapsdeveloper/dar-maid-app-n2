@@ -9,6 +9,7 @@ import { store, persistor } from "../store/store";
 import { PersistGate } from "redux-persist/integration/react";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap");

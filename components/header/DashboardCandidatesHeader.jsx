@@ -84,7 +84,7 @@ const DashboardCandidatesHeader = () => {
                                     width={50}
                                     height={50}
                                 />
-                                <span className="name">My Account</span>
+                                {/* <span className="name">My Account</span> */}
                             </a>
 
                             <ul className="dropdown-menu">

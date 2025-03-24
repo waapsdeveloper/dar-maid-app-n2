@@ -30,7 +30,6 @@ const LoginPopup = () => {
           {/* End modal-content */}
         </div>
       </div>
-      {/* <!-- Login Popup Modal --> */}
 
       <div className="modal fade" id="registerModal">
         <div className="modal-dialog modal-lg modal-dialog-centered login-modal modal-dialog-scrollable">
@@ -58,7 +57,6 @@ const LoginPopup = () => {
           {/* End modal-content */}
         </div>
       </div>
-      {/* <!-- Login Popup Modal --> */}
     </>
   );
 };
