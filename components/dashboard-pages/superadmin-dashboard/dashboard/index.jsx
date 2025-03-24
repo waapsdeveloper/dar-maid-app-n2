@@ -1,13 +1,13 @@
 import MobileMenu from "../../../header/MobileMenu";
+import DashboardHeader from "../../../header/DashboardHeader";
 import LoginPopup from "../../../common/form/login/LoginPopup";
-import DashboardAgencySidebar from "../../../header/DashboardAgencySidebar";
+import DashboardSuperAdminSidebar from "../../../header/DashboardSuperAdminSidebar";
 import BreadCrumb from "../../BreadCrumb";
 import TopCardBlock from "./components/TopCardBlock";
 import ProfileChart from "./components/ProfileChart";
 import Notification from "./components/Notification";
+import Applicants from "./components/Applicants";
 import CopyrightFooter from "../../CopyrightFooter";
-import JobApplied from "./components/JobApplied";
-import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
 import MenuToggler from "../../MenuToggler";
 
 const Index = () => {
@@ -19,18 +19,18 @@ const Index = () => {
       <LoginPopup />
       {/* End Login Popup Modal */}
 
-      <DashboardCandidatesHeader />
+      <DashboardHeader />
       {/* End Header */}
 
       <MobileMenu />
       {/* End MobileMenu */}
-      <DashboardAgencySidebar />
-      {/* <!-- End Candidates Sidebar Menu --> */}
+      <DashboardSuperAdminSidebar />
+      {/* <!-- End User Sidebar Menu --> */}
 
       {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
         <div className="dashboard-outer">
-          <BreadCrumb title="Howdy, Jerome!!" />
+          <BreadCrumb title="Dashboard Home!" />
           {/* breadCrumb */}
 
           <MenuToggler />
@@ -68,13 +68,13 @@ const Index = () => {
               {/* <!-- applicants Widget --> */}
               <div className="applicants-widget ls-widget">
                 <div className="widget-title">
-                  <h4>Jobs Applied Recently</h4>
+                  <h4>Recent Applicants</h4>
                 </div>
                 <div className="widget-content">
                   <div className="row">
                     {/* <!-- Candidate block three --> */}
 
-                    <JobApplied />
+                    <Applicants />
                   </div>
                 </div>
               </div>
