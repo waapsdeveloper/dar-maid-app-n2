@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import employerMenuData from "../../data/employerMenuData";
 import HeaderNavContent from "./HeaderNavContent";
 import { isActiveLink } from "../../utils/linkActiveChecker";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { logout } from "@/features/auth/authSlice"; // Apni Redux action import karo
 
