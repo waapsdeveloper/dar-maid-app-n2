@@ -39,6 +39,10 @@ const nextConfig = {
       {
         source :"/agency-dashboard",
         destination: "/agency-dashboard/dashboard",
+      },
+      {
+        source :"/superadmin-dashboard",
+        destination: "/superadmin-dashboard/dashboard",
       }
     ];
   },

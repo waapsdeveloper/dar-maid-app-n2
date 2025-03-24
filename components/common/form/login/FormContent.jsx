@@ -22,12 +22,25 @@ const FormContent = () => {
     }
 
     const userData = await userService.loginUser(obj);
+    console.log(userData);
     if(!userData) {
       alert("Invalid credentials");
       return false;
     }
-
-    window.location.href = "/dashboard";
+    
+    if(userData.role === "employer") {
+      window.location.href = "/employer-dashboard";
+    }
+    if(userData.role === "employee") {
+      window.location.href = "/candidate-dashboard";
+    }
+    if(userData.role === "agency") {
+      window.location.href = "/agency-dashboard";
+    }
+    if(userData.role === "superadmin") {
+      window.location.href = "/superadmin-dashboard";
+    }
+    // window.location.href = "/employer-dashboard";
 
     
   };
