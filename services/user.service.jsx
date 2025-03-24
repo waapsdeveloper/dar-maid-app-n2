@@ -1,3 +1,4 @@
+import { dataService } from "./data.service";
 
 
 class UserService {
@@ -5,8 +6,23 @@ class UserService {
 
 
     async loginUser(data) {
-        // create user
-        console.log(data);
+        // create user        
+        let d = await dataService.returnUser(data.username, data.password);
+        console.log(d);
+
+        if(d){
+            // set user to storage 
+            localStorage.setItem('user', JSON.stringify(d));
+
+            // set token to storage
+            localStorage.setItem('token', d.token);
+
+            return d
+        } else {
+            return null
+        }
+
+
     }
 
 

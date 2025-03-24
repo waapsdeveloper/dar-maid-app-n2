@@ -22,6 +22,12 @@ const FormContent = () => {
     }
 
     const userData = await userService.loginUser(obj);
+    if(!userData) {
+      alert("Invalid credentials");
+      return false;
+    }
+
+    window.location.href = "/dashboard";
 
     
   };
