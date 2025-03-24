@@ -1,18 +1,44 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import LoginWithSocial from "./LoginWithSocial";
 
 const FormContent = () => {
+  // State to hold form values
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevent page reload on form submit
+
+    // Log form values to the console
+    console.log({
+      username,
+      password,
+      rememberMe,
+    });
+  };
+
   return (
     <div className="form-inner">
       <h3>Login to Darmaid</h3>
 
-      {/* <!--Login Form--> */}
-      <form method="post">
+      {/* Login Form */}
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Username</label>
-          <input type="text" name="username" placeholder="Username" required />
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            required
+            value={username} // Controlled input
+            onChange={(e) => setUsername(e.target.value)} // Update state on input change
+          />
         </div>
-        {/* name */}
 
         <div className="form-group">
           <label>Password</label>
@@ -21,14 +47,21 @@ const FormContent = () => {
             name="password"
             placeholder="Password"
             required
+            value={password} // Controlled input
+            onChange={(e) => setPassword(e.target.value)} // Update state on input change
           />
         </div>
-        {/* password */}
 
         <div className="form-group">
           <div className="field-outer">
             <div className="input-group checkboxes square">
-              <input type="checkbox" name="remember-me" id="remember" />
+              <input
+                type="checkbox"
+                name="remember-me"
+                id="remember"
+                checked={rememberMe} // Controlled input
+                onChange={(e) => setRememberMe(e.target.checked)} // Update state on checkbox change
+              />
               <label htmlFor="remember" className="remember">
                 <span className="custom-checkbox"></span> Remember me
               </label>
@@ -38,7 +71,6 @@ const FormContent = () => {
             </a>
           </div>
         </div>
-        {/* forgot password */}
 
         <div className="form-group">
           <button
@@ -49,9 +81,7 @@ const FormContent = () => {
             Log In
           </button>
         </div>
-        {/* login */}
       </form>
-      {/* End form */}
 
       <div className="bottom-box">
         <div className="text">
@@ -65,14 +95,7 @@ const FormContent = () => {
             Signup
           </Link>
         </div>
-
-        {/* <div className="divider">
-          <span>or</span>
-        </div> */}
-
-        {/* <LoginWithSocial /> */}
       </div>
-      {/* End bottom-box LoginWithSocial */}
     </div>
   );
 };
