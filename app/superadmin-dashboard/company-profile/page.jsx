@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import CompanyProfile from "@/components/dashboard-pages/employers-dashboard/company-profile";
+import CompanyProfile from "@/components/dashboard-pages/superadmin-dashboard/company-profile";
 
 export const metadata = {
   title: "Company Profile || Domesta  - Job Board",
