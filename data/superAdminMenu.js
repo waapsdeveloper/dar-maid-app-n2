@@ -46,14 +46,14 @@ module.exports = [
     id: 5,
     name: "Audit Log",
     icon: "la-clipboard-list",
-    routePath: "/superadmin-dashboard/audit-log",
+    routePath: "/superadmin-dashboard/auditlog",
     active: "",
   },
   {
     id: 6,
     name: "Report and Statistics",
     icon: "la-chart-bar",
-    routePath: "/superadmin-dashboard/reports",
+    routePath: "/superadmin-dashboard/report-statistics",
     active: "",
   },
   {
