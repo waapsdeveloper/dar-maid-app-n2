@@ -64,7 +64,7 @@ const FormContent = () => {
 
   return (
     <div className="form-inner">
-      <h3>Login to Darmaid</h3>
+      <h3>Login to Domesta </h3>
 
       {/* Login Form */}
       <form onSubmit={handleSubmit}>

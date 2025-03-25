@@ -6,7 +6,7 @@ const CopyrightFooter = () => {
       <div className="auto-container">
         <div className="outer-box">
           <div className="copyright-text">
-            © {new Date().getFullYear()} Darmaid by{" "}
+            © {new Date().getFullYear()} Domesta  by{" "}
             <a
               href="https://themeforest.net/user/ib-themes"
               target="_blank"

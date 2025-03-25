@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import Checkout from "@/components/shop/checkout";
 
 export const metadata = {
-  title: "Checkout || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+  title: "Checkout || Domesta  - Job Board",
+  description: "Domesta  - Job Board",
 };
 
 const index = () => {

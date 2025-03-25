@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import ChangePassword from "@/components/dashboard-pages/employers-dashboard/change-password";
 
 export const metadata = {
-  title: "Change Password || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+  title: "Change Password || Domesta  - Job Board",
+  description: "Domesta  - Job Board",
 };
 
 const index = () => {

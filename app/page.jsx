@@ -2,8 +2,8 @@ import Wrapper from "@/layout/Wrapper";
 import Home from "@/components/home-1";
 
 export const metadata = {
-  title: "DarMaid",
-  description: "DarMaid - Job Borad",
+  title: "Domesta ",
+  description: "Domesta  - Job Borad",
 };
 
 export default function page() {

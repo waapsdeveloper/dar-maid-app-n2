@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
           name="keywords"
           content="	candidates, career, employment, indeed, job board, job listing, job portal, job postings, job search, job seeker, jobs, recruiters, recruiting, recruitment, resume"
         />
-        <meta name="description" content="DarMaid - Job Board" />
+        <meta name="description" content="Domesta  - Job Board" />
         <meta name="ibthemes" content="ATFN" />
 
         <link rel="icon" href="./favicon.ico" />

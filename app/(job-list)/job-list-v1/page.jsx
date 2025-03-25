@@ -3,7 +3,7 @@ import JobList from "@/components/job-listing-pages/job-list-v1";
 
 export const metadata = {
   title: "Jobs",
-  description: "DarMaid - Job Board",
+  description: "Domesta  - Job Board",
 };
 
 const index = () => {

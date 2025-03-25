@@ -14,7 +14,7 @@ import Image from "next/image";
 export const metadata = {
   title:
     "Employers Details",
-  description: "DarMaid - Job Board",
+  description: "Domesta  - Job Board",
 };
 
 const EmployersSingleV2 = ({ params }) => {

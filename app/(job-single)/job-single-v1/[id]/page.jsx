@@ -16,7 +16,7 @@ import Image from "next/image";
 
 export const metadata = {
   title: "Agency Details",
-  description: "DarMaid - Job Board",
+  description: "Domesta  - Job Board",
 };
 
 const JobSingleDynamicV1 = ({ params }) => {

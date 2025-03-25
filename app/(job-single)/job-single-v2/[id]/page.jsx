@@ -14,8 +14,8 @@ import ApplyJobModalContent from "@/components/job-single-pages/shared-component
 import Image from "next/image";
 
 export const metadata = {
-  title: "Job Single Dyanmic V2 || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+  title: "Job Single Dyanmic V2 || Domesta  - Job Board",
+  description: "Domesta  - Job Board",
 };
 
 const JobSingleDynamicV2 = ({ params }) => {

@@ -54,8 +54,8 @@ const Footer = () => {
                 <p className="address">
                   329 Queensberry Street, North Melbourne VIC
                   <br /> 3051, Australia. <br />
-                  <a href="mailto:support@Darmaid.com" className="email">
-                    support@Darmaid.com
+                  <a href="mailto:support@Domesta .com" className="email">
+                    support@Domesta .com
                   </a>
                 </p>
               </div>

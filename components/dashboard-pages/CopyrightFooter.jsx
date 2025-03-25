@@ -2,7 +2,7 @@ const CopyrightFooter = () => {
   return (
     <div className="copyright-text">
       <p>
-        © {new Date().getFullYear()} Darmaid by{" "}
+        © {new Date().getFullYear()} Domesta  by{" "}
         <a
           href="https://themeforest.net/user/ib-themes"
           target="_blank"

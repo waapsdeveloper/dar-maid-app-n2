@@ -15,7 +15,7 @@ import Image from "next/image";
 export const metadata = {
   title:
     "Candidates Details",
-  description: "DarMaid - Job Board",
+  description: "Domesta  - Job Board",
 };
 
 const CandidateSingleDynamicV1 = ({ params }) => {
