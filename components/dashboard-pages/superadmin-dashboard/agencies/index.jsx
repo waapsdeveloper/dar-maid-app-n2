@@ -26,7 +26,8 @@ const index = () => {
       <DashboardSuperAdminSidebar />
       {/* <!-- End User Sidebar Menu --> */}
 
-      {/* <!-- Dashboard --> */}
+
+  {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
         <div className="dashboard-outer">
           <BreadCrumb title="All Applicants!" />
@@ -41,7 +42,7 @@ const index = () => {
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
-                    <h4>Applicant</h4>
+                    <h4>Agencies</h4>
                     <WidgetTopFilterBox />
                   </div>
                   {/* End top widget filter bar */}

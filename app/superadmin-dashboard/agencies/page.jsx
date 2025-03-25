@@ -1,15 +1,15 @@
 import dynamic from "next/dynamic";
-import AllApplicants from "@/components/dashboard-pages/superadmin-dashboard/all-applicants";
+import Agencies from "@/components/dashboard-pages/superadmin-dashboard/agencies";
 
 export const metadata = {
-  title: "All Applicants || Domesta  - Job Board",
+  title: "All Agencies || Domesta  - Job Board",
   description: "Domesta  - Job Board",
 };
 
 const index = () => {
   return (
     <>
-      <AllApplicants />
+      <Agencies />
     </>
   );
 };
