@@ -9,11 +9,12 @@ import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { logout } from "@/features/auth/authSlice"; // Apni Redux action import karo
+import { useRouter } from "next/navigation";
 
 const DashboardHeader = () => {
   const [navbar, setNavbar] = useState(false);
   const dispatch = useDispatch();
- const router = useRouter();
+  const router = useRouter();
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
