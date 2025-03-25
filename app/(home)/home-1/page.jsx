@@ -2,8 +2,8 @@ import React from "react";
 import Home from "@/components/home-1";
 
 export const metadata = {
-  title: "Home-1 || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+  title: "Home-1 || Domesta  - Job Board",
+  description: "Domesta  - Job Board",
 };
 
 const index = () => {

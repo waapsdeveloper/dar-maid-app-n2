@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import JobList from "@/components/job-listing-pages/job-list-v8";
 
 export const metadata = {
-  title: "Job List V8 || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+  title: "Job List V8 || Domesta  - Job Board",
+  description: "Domesta  - Job Board",
 };
 
 const index = () => {

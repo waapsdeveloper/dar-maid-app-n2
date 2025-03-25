@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import CvManager from "@/components/dashboard-pages/candidates-dashboard/cv-manager";
 
 export const metadata = {
-  title: "CV Manager || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+  title: "CV Manager || Domesta  - Job Board",
+  description: "Domesta  - Job Board",
 };
 
 const index = () => {

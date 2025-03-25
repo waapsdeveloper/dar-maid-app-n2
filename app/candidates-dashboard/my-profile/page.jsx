@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import MyProfile from "@/components/dashboard-pages/candidates-dashboard/my-profile";
 
 export const metadata = {
-  title: "My Profile || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+  title: "My Profile || Domesta  - Job Board",
+  description: "Domesta  - Job Board",
 };
 
 const index = () => {

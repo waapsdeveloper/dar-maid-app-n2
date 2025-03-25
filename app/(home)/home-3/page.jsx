@@ -3,8 +3,8 @@ import React from "react";
 import Home from "@/components/home-3";
 
 export const metadata = {
-  title: "Home-3 || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+  title: "Home-3 || Domesta  - Job Board",
+  description: "Domesta  - Job Board",
 };
 
 const index = () => {
