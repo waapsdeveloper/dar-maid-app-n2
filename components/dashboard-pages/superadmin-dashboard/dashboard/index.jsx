@@ -95,3 +95,5 @@ const Index = () => {
 };
 
 export default Index;
+
+<div>Hello </div>
