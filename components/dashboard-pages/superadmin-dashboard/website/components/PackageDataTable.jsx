@@ -1,62 +1,62 @@
 const PackageDataTable = () => {
-  // Sample data
-  const queryData = [
+  // Sample event data
+  const eventData = [
     {
       id: 1,
-      queryId: "#593677663",
-      title: "Payment Issue",
-      message: "Unable to process subscription payment for premium package",
+      key: "profile_update",
+      value: "Updated contact information",
+      event: "Aq4LUIuDpU",
     },
     {
       id: 2,
-      queryId: "#593677901",
-      title: "Account Verification",
-      message: "Documents pending for employer account verification",
+      key: "server_health",
+      value: "CPU usage 85%",
+      event: "Aq4LUIuDpU",
     },
     {
       id: 3,
-      queryId: "#593678245",
-      title: "Job Posting Error",
-      message: "Getting error when trying to post new job listing",
+      key: "/v1/users/create",
+      value: "New user created: ID-2345",
+      event: "Aq4LUIuDpU",
     },
     {
       id: 4,
-      queryId: "#593678567",
-      title: "Profile Update",
-      message: "Unable to update company profile information",
+      key: "login_attempt",
+      value: "Failed login from 192.168.1.1",
+      event: "Aq4LUIuDpU",
     },
     {
       id: 5,
-      queryId: "#593678892",
-      title: "CV Access",
-      message: "Premium CV access not activated despite payment",
-    },
+      key: "job_listing",
+      value: "Modified listing ID-JB-789",
+      event: "Aq4LUIuDpU",
+    }
   ];
+
 
   return (
     <table className="default-table manage-job-table">
       <thead>
         <tr>
-          <th>S No</th>
-          <th>Query ID</th>
-          <th>Title</th>
-          <th>Message</th>
-          <th>Action</th>
+         
+          <th>Key</th>
+          <th>Value</th>
+          <th>event</th>
+          <th>Actions</th>
         </tr>
       </thead>
 
       <tbody>
-        {queryData.map((query) => (
-          <tr key={query.id}>
-            <td>{query.id}</td>
-            <td className="query-id">{query.queryId}</td>
-            <td className="title">{query.title}</td>
-            <td className="message">{query.message}</td>
+        {eventData.map((event) => (
+          <tr key={event.id}>
+          
+            <td className="key"><code>{event.key}</code></td>
+            <td className="value">{event.value}</td>
+            <td className="event">{event.event}</td>
             <td className="action">
               <div className="option-box d-flex gap-2 justify-content-center">
-                <ul className="option-list d-flex list-unstyled m-0 p-0 gap-2"
-                >
-                   <li>
+                <ul className="option-list d-flex list-unstyled m-0 p-0 gap-2">
+                <li>
                     <button data-text="Add">
                       <span className="la la-plus-circle"></span>
                     </button>

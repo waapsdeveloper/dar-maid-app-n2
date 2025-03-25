@@ -24,7 +24,7 @@ module.exports = [
     id: 10,
     name: "Employer",
     icon: "la-briefcase",
-    routePath: "/supradmin-dashboard/employers",
+    routePath: "/superadmin-dashboard/employers",
     active: "",
   },
   
@@ -32,7 +32,7 @@ module.exports = [
     id: 3,
     name: "Queries",
     icon: "la-question-circle",
-    routePath: "/superadmin-dashboard/queries",
+    routePath: "/superadmin-dashboard/packages",
     active: "",
   },
   {

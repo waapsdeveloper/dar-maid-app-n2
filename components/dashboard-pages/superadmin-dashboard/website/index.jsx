@@ -28,7 +28,7 @@ const index = () => {
       {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
         <div className="dashboard-outer">
-          <BreadCrumb title="Queries!" />
+          <BreadCrumb title="Website!" />
           {/* breadCrumb */}
 
           <MenuToggler />
@@ -39,7 +39,7 @@ const index = () => {
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
-                    <h4>Queries</h4>
+                    <h4>Website</h4>
                   </div>
                   {/* End widget-title */}
 
@@ -60,6 +60,7 @@ const index = () => {
       </section>
       {/* <!-- End Dashboard --> */}
       <Pagination />
+
 
       <CopyrightFooter />
       {/* <!-- End Copyright --> */}

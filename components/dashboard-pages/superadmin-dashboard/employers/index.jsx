@@ -4,9 +4,10 @@ import LoginPopup from "../../../common/form/login/LoginPopup";
 import DashboardSuperAdminSidebar from "../../../header/DashboardSuperAdminSidebar";
 import BreadCrumb from "../../BreadCrumb";
 import CopyrightFooter from "../../CopyrightFooter";
-import PackageDataTable from "./components/PackageDataTable";
+import WidgetContentBox from "./components/WidgetContentBox";
+import WidgetTopFilterBox from "./components/WidgetTopFilterBox";
 import MenuToggler from "../../MenuToggler";
-import Pagination from "./components/pagination";
+import Pagination from "./components/Pagination";
 const index = () => {
   return (
     <div className="page-wrapper dashboard">
@@ -25,10 +26,11 @@ const index = () => {
       <DashboardSuperAdminSidebar />
       {/* <!-- End User Sidebar Menu --> */}
 
-      {/* <!-- Dashboard --> */}
+
+  {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
         <div className="dashboard-outer">
-          <BreadCrumb title="Queries!" />
+          <BreadCrumb title="All Employers!" />
           {/* breadCrumb */}
 
           <MenuToggler />
@@ -36,22 +38,19 @@ const index = () => {
 
           <div className="row">
             <div className="col-lg-12">
+              {/* <!-- Ls widget --> */}
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
-                    <h4>Queries</h4>
+                    <h4>Employers</h4>
+                    <WidgetTopFilterBox />
                   </div>
-                  {/* End widget-title */}
+                  {/* End top widget filter bar */}
 
-                  <div className="widget-content">
-                    <div className="table-outer">
-                      <PackageDataTable />
-                    </div>
-                  </div>
+                  <WidgetContentBox />
                   {/* End widget-content */}
                 </div>
               </div>
-              {/* <!-- Ls widget --> */}
             </div>
           </div>
           {/* End .row */}
@@ -64,6 +63,7 @@ const index = () => {
       <CopyrightFooter />
       {/* <!-- End Copyright --> */}
     </div>
+
     // End page-wrapper
   );
 };

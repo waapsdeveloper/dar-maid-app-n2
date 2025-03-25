@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import Packages from "@/components/dashboard-pages/superadmin-dashboard/packages";
+import Website from "@/components/dashboard-pages/superadmin-dashboard/website";
 
 export const metadata = {
   title: "Queries || Domesta  - Job Board",
@@ -9,7 +9,7 @@ export const metadata = {
 const index = () => {
   return (
     <>
-      <Packages />
+      <Website />
     </>
   );
 };
