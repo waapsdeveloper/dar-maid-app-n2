@@ -7,7 +7,8 @@ import CopyrightFooter from "../../CopyrightFooter";
 import WidgetContentBox from "./components/WidgetContentBox";
 import WidgetTopFilterBox from "./components/WidgetTopFilterBox";
 import MenuToggler from "../../MenuToggler";
-import Pagination from "./components/Pagination";
+import Pagination from "./components/pagination";
+
 const index = () => {
   return (
     <div className="page-wrapper dashboard">
