@@ -42,13 +42,7 @@ const FormContent = () => {
       if (modalInstance) {
         modalInstance.hide();
       }
-    }
-    const closeButton = document.querySelector(
-      "#loginPopupModal .closed-modal"
-    );
-    if (closeButton) {
-      closeButton.click();
-    }
+    }    
 
     if (userData.role === "employer") {
       window.location.href = "/employer-dashboard";
