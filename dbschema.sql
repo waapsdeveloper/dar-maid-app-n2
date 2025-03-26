@@ -128,6 +128,7 @@ INSERT INTO website_settings (setting_key, setting_value) VALUES
 
 CREATE TABLE categories (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    icon VARCHAR(255) NULL,
     title VARCHAR(255) NOT NULL,  -- Category or service name
     description TEXT NULL, -- Brief description
     no_of_listings INT UNSIGNED DEFAULT 0, -- Tracks the number of active listings
@@ -221,6 +222,8 @@ CREATE TABLE employee_agency_associations (
     FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE,
     FOREIGN KEY (agency_id) REFERENCES agencies(id) ON DELETE CASCADE
 );
+
+
 
 
 
