@@ -1,4 +1,3 @@
-
 'use client'
 
 import Link from "next/link";
@@ -8,15 +7,19 @@ import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "@/features/auth/authSlice";
 import { useRouter } from "next/navigation";
+import employerMenuData from "../../data/employerMenuData";
+import { isActiveLink } from "../../utils/linkActiveChecker";
+import { usePathname } from "next/navigation";
 
 const DefaulHeader2 = () => {
-  
+
   const dispatch = useDispatch();
   const router = useRouter();
-  
+
   const [navbar, setNavbar] = useState(false);
   const { user, isAuthenticated } = useSelector((state) => state.auth);
-  
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const pathname = usePathname();
 
   const changeBackground = () => {
     if (window.scrollY >= 10) {
@@ -35,12 +38,34 @@ const DefaulHeader2 = () => {
     router.push("/"); // Redirect to home page
   };
 
+  const handleClick = (item, e) => {
+    e.preventDefault();
+
+    if (item.name !== "Logout") {
+
+      switch (user.role) {
+        case "employer":
+          router.push("/employer-dashboard");
+          break;
+        case "employee":
+          router.push("/candidate-dashboard");
+          break;
+        case "agency":
+          router.push("/agency-dashboard");
+          break;
+        case "superadmin":
+          router.push("/superadmin-dashboard");
+          break;
+        default:
+          router.push("/login"); // Default fallback
+      }
+    }
+  };
+
   return (
     // <!-- Main Header-->
     <header
-      className={`main-header  ${
-        navbar ? "fixed-header animated slideInDown" : ""
-      }`}
+      className={`main-header  ${navbar ? "fixed-header animated slideInDown" : ""}`}
     >
       {/* <!-- Main box --> */}
       <div className="main-box">
@@ -72,38 +97,43 @@ const DefaulHeader2 = () => {
           </Link> */}
           {/* <!-- Login/Register --> */}
           {isAuthenticated ? (
-           <div className="dropdown dashboard-option">
-           <a
-             className="dropdown-toggle"
-             role="button"
-             data-bs-toggle="dropdown"
-             aria-expanded="false"
-           >
-             {/* <Image
-               alt="avatar"
-               className="thumb"
-               src={user?.avatar || "/images/resource/company-6.png"} // Use user's avatar or fallback
-               width={50}
-               height={50}
-             /> */}
-             <span className="name">{user?.name}</span>
-           </a>
+            <div className="dropdown dashboard-option">
+              <button
+                className="dropdown-toggle"
+                role="button"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              >
+                <Image
+                  alt="avatar"
+                  className="thumb"
+                  src="/images/resource/company-6.png"
+                  width={50}
+                  height={50}
+                />
+                <span className="name">{user?.name}</span>
+              </button>
 
-           <ul className="dropdown-menu">
-             {/* Display user info and logout inside the dropdown */}
-             <li className="user-info">
-               <p>Name: {user?.name}</p>
-               <p>Email: {user?.email}</p>
-             </li>
-
-             <li className="logout-btn">
-               <button onClick={handleLogout} className="theme-btn btn-style-one">
-                 Logout
-               </button>
-             </li>
-
-           </ul>
-         </div>
+              {dropdownOpen && (
+                <ul className="dropdown-menu show">
+                  {employerMenuData.map((item) => (
+                    <li
+                      className={`${isActiveLink(item.routePath, pathname) ? "active" : ""} mb-1`}
+                      key={item.id}
+                    >
+                      {item.name === "Logout" ? (
+                        <button onClick={handleLogout} className="dropdown-item">
+                          <i className={`la ${item.icon}`}></i> {item.name}
+                        </button>
+                      ) : (
+                        <a onClick={(e) => handleClick(item, e)}>
+                          <i className={`la ${item.icon}`}></i> {item.name}
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           ) : (
             <div className="btn-box">
               <a
@@ -122,7 +152,6 @@ const DefaulHeader2 = () => {
               </Link> */}
             </div>
           )}
-          
         </div>
       </div>
     </header>
