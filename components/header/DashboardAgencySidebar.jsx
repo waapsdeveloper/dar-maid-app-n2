@@ -1,21 +1,30 @@
 'use client'
 
 import Link from "next/link";
-import  agencyMenuData from "../../data/agencyMenuData";
+import agencyMenuData from "../../data/agencyMenuData";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 
 import { useDispatch, useSelector } from "react-redux";
 import { menuToggle } from "../../features/toggle/toggleSlice";
 import { usePathname } from "next/navigation";
+import { logout } from "@/features/auth/authSlice";
+import { useRouter } from "next/navigation";
 
 const DashboardAgencySidebar = () => {
 
+  
+    const router = useRouter();
     const { menu } = useSelector((state) => state.toggle);
 
     const dispatch = useDispatch();
     // menu togggle handler
     const menuToggleHandler = () => {
         dispatch(menuToggle());
+    };
+
+    const handleLogout = () => {
+        dispatch(logout()); // ✅ FIXED: Use the existing dispatch
+        router.push("/"); // Redirect to home page
     };
 
     return (
@@ -31,19 +40,18 @@ const DashboardAgencySidebar = () => {
             <div className="sidebar-inner">
                 <ul className="navigation">
                     {agencyMenuData.map((item) => (
-                        <li
-                            className={`${
-                                isActiveLink(item.routePath, usePathname())
-                                    ? "active"
-                                    : ""
-                            } mb-1`}
-                            key={item.id}
-                            onClick={menuToggleHandler}
-                        >
-                            <Link href={item.routePath}>
-                                <i className={`la ${item.icon}`}></i>{" "}
-                                {item.name}
-                            </Link>
+                        <li className={`${isActiveLink(item.routePath, usePathname()) ? "active" : ""} mb-1`} key={item.id} onClick={menuToggleHandler} >
+                            {item.name === "Logout" ? (
+                                <Link href="/" onClick={handleLogout} > 
+                                    <i className={`la ${item.icon}`}></i> {item.name}
+                                </Link>
+                            ) : (
+                                <Link href={item.routePath}>
+                                    <i className={`la ${item.icon}`}></i>{" "}
+                                    {item.name}
+                                </Link>
+                            )}
+
                         </li>
                     ))}
                 </ul>
