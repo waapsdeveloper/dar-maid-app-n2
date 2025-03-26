@@ -6,8 +6,14 @@ import { useEffect, useState } from "react";
 import HeaderNavContent from "./HeaderNavContent";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
+import { logout } from "@/features/auth/authSlice";
+import { useRouter } from "next/navigation";
 
 const DefaulHeader2 = () => {
+  
+  const dispatch = useDispatch();
+  const router = useRouter();
+  
   const [navbar, setNavbar] = useState(false);
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   
@@ -23,6 +29,11 @@ const DefaulHeader2 = () => {
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
   }, []);
+
+  const handleLogout = () => {
+    dispatch(logout()); // ✅ FIXED: Use the existing dispatch
+    router.push("/"); // Redirect to home page
+  };
 
   return (
     // <!-- Main Header-->
@@ -86,7 +97,7 @@ const DefaulHeader2 = () => {
              </li>
 
              <li className="logout-btn">
-               <button onClick={() => dispatch(logout())} className="theme-btn btn-style-one">
+               <button onClick={handleLogout} className="theme-btn btn-style-one">
                  Logout
                </button>
              </li>

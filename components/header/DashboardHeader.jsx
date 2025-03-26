@@ -16,6 +16,7 @@ const DashboardHeader = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { user } = useSelector((state) => state.auth);
+  const pathname = usePathname(); // ✅ FIXED: Use it at the top
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -33,29 +34,21 @@ const DashboardHeader = () => {
       window.removeEventListener("scroll", changeBackground);
     };
   }, []);
+
   const handleLogout = () => {
-    dispatch(logout()); // Redux state clear karo
-    router.push("/"); // Redux store clear karo
-    localStorage.clear(); // localStorage remove karo
+    dispatch(logout()); // ✅ FIXED: Use the existing dispatch
+    router.push("/"); // Redirect to home page
   };
 
   return (
-    <header
-      className={`main-header header-shaddow ${navbar ? "fixed-header" : ""}`}
-    >
+    <header className={`main-header header-shaddow ${navbar ? "fixed-header" : ""}`}>
       <div className="container-fluid">
         <div className="main-box">
           <div className="nav-outer">
             <div className="logo-box">
               <div className="logo">
                 <Link href="/">
-                  <Image
-                    alt="brand"
-                    src="/images/logo.png"
-                    width={154}
-                    height={50}
-                    priority
-                  />
+                  <Image alt="brand" src="/images/logo.png" width={154} height={50} priority />
                 </Link>
               </div>
             </div>
@@ -92,19 +85,9 @@ const DashboardHeader = () => {
               {dropdownOpen && (
                 <ul className="dropdown-menu show">
                   {employerMenuData.map((item) => (
-                    <li
-                      className={`${
-                        isActiveLink(item.routePath, usePathname())
-                          ? "active"
-                          : ""
-                      } mb-1`}
-                      key={item.id}
-                    >
+                    <li className={`${isActiveLink(item.routePath, pathname) ? "active" : ""} mb-1`} key={item.id}>
                       {item.name === "Logout" ? (
-                        <button
-                          onClick={handleLogout}
-                          className="dropdown-item"
-                        >
+                        <button onClick={handleLogout} className="dropdown-item">
                           <i className={`la ${item.icon}`}></i> {item.name}
                         </button>
                       ) : (
