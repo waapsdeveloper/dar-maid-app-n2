@@ -5,7 +5,7 @@ import Terms from "@/components/pages-menu/terms";
 export const metadata = {
   title: 'Terms ',
   description:
-    'Domesta  - Job Board',
+    'Domesta  - Listing Board',
   
 }
 

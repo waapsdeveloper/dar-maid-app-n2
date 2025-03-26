@@ -30,11 +30,11 @@ export default function RootLayout({ children }) {
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta
           name="keywords"
-          content="	candidates, career, employment, indeed, job board, job listing, job portal, job postings, job search, job seeker, jobs, recruiters, recruiting, recruitment, resume"
+          content="	candidates, career, employment, indeed, listing board, listing listing, listing portal, listing postings, listing search, listing seeker, listings, recruiters, recruiting, recruitment, resume"
         />
         <meta
           name="description"
-          content="Superio - Job Borad React NextJS Template"
+          content="Domesta - Listing Borad"
         />
         <meta name="ibthemes" content="ATFN" />
 

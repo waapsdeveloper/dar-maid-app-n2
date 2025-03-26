@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import DashboadHome from "@/components/dashboard-pages/agency-dashboard/dashboard";
 
 export const metadata = {
-  title: "Candidates Dashboard || Domesta  - Job Board",
-  description: "Domesta  - Job Board",
+  title: "Candidates Dashboard || Domesta  - Listing Board",
+  description: "Domesta  - Listing Board",
 };
 
 const index = () => {

@@ -52,14 +52,15 @@ const ApplyJobModalContent = () => {
         </div>
         {/* End .col */}
 
+        {/* type="submit"
+            name="submit-form" */}
         <div className="col-lg-12 col-md-12 col-sm-12 form-group">
-          <button
-            className="theme-btn btn-style-one w-100"
-            type="submit"
-            name="submit-form"
+          <Link
+            href="/new-request"
+            className="theme-btn btn-style-one w-100"            
           >
             Request For Interview
-          </button>
+          </Link>
         </div>
         {/* End .col */}
       </div>

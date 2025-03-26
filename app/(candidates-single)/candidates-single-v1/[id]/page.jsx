@@ -11,11 +11,12 @@ import Social from "@/components/candidates-single-pages/social/Social";
 import JobSkills from "@/components/candidates-single-pages/shared-components/JobSkills";
 import AboutVideo from "@/components/candidates-single-pages/shared-components/AboutVideo";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata = {
   title:
     "Candidates Details",
-  description: "Domesta  - Job Board",
+  description: "Domesta - Listing Board",
 };
 
 const CandidateSingleDynamicV1 = ({ params }) => {
@@ -78,13 +79,13 @@ const CandidateSingleDynamicV1 = ({ params }) => {
                 </div>
 
                 <div className="btn-box">
-                  <a
+                  <Link
                     className="theme-btn btn-style-one"
-                    href="/images/sample.pdf"
+                    href="/new-request"
                     download
                   >
                       Request for Interview 
-                  </a>
+                  </Link>
                   <button className="bookmark-btn">
                     <i className="flaticon-bookmark"></i>
                   </button>

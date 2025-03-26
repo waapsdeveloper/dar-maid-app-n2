@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import OrderCompleted from "@/components/shop/order-completed";
 
 export const metadata = {
-  title: "Order Completed || Domesta  - Job Board",
-  description: "Domesta  - Job Board",
+  title: "Order Completed || Domesta  - Listing Board",
+  description: "Domesta  - Listing Board",
 };
 
 const index = () => {

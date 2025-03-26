@@ -7,7 +7,7 @@ const Seo = ({ pageTitle }) => (
     {/* <Head>
       <title>
         {pageTitle &&
-          `${pageTitle} || Domesta  - Job Board}`}
+          `${pageTitle} || Domesta  - Listing Board}`}
       </title>
       <meta
         name="viewport"

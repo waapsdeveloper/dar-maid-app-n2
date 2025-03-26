@@ -3,9 +3,9 @@ import dynamic from "next/dynamic";
 import CandidatesList from "@/components/candidates-listing-pages/candidates-list-v3";
 
 export const metadata = {
-  title: 'Candidates List V3 || Domesta  - Job Board',
+  title: 'Candidates List V3 || Domesta - Listing Board',
   description:
-    'Domesta  - Job Board',
+    'Domesta - Listing Board',
   
 }
 

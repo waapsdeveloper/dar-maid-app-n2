@@ -27,6 +27,14 @@ module.exports = [
     routePath: "/superadmin-dashboard/employers",
     active: "",
   },
+  {
+    id: 14,
+    name: "Interview Requests",
+    icon: "la-briefcase",
+    routePath: "/superadmin-dashboard/interview-requests",
+    active: "",
+  },
+
   
   {
     id: 3,

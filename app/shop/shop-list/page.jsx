@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import ShopList from "@/components/shop/shop-list";
 
 export const metadata = {
-  title: "Shop List || Domesta  - Job Board",
-  description: "Domesta  - Job Board",
+  title: "Shop List || Domesta  - Listing Board",
+  description: "Domesta  - Listing Board",
 };
 
 const index = () => {

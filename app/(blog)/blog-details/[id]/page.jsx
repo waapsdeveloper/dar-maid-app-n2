@@ -8,8 +8,8 @@ import blogs from "@/data/blogs";
 import Image from "next/image";
 
 export const metadata = {
-  title: "Blog Details Dyanmic V1 || Domesta  - Job Board",
-  description: "Domesta  - Job Board",
+  title: "Blog Details Dyanmic V1 || Domesta  - Listing Board",
+  description: "Domesta - Listing Board",
 };
 
 const BlogDetailsDynamic = ({ params }) => {

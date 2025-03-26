@@ -5,7 +5,7 @@ import Contact from "@/components/pages-menu/contact";
 export const metadata = {
   title: 'Contact',
   description:
-    'Domesta  - Job Board',
+    'Domesta  - Listing Board',
   
 }
 

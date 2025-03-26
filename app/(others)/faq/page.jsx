@@ -5,7 +5,7 @@ import Faq from "@/components/pages-menu/faq";
 export const metadata = {
   title: 'Faq ',
   description:
-    'Domesta  - Job Board',
+    'Domesta  - Listing Board',
   
 }
 
