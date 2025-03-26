@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata = {
-  title: "Page Not Found || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+  title: "Page Not Found || Domesta - Listing Board",
+  description: "Domesta - Listing Board",
 };
 
 const index = () => {

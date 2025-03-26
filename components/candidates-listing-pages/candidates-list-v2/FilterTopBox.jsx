@@ -160,8 +160,9 @@ const FilterTopBox = () => {
           </ul>
           {/* End tags */}
 
-          <Link
-            href={`/candidates-details/${candidate.id}`}
+          {/* // href={`/candidates-details/${candidate.id}`} */}
+          <Link            
+            href="/new-request"
             className="theme-btn btn-style-three"
           >
             Request for Interview

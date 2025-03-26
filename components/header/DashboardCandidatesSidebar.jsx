@@ -5,6 +5,8 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import candidatesuData from "../../data/candidatesMenuData";
 import { isActiveLink } from "../../utils/linkActiveChecker";
+import { logout } from "@/features/auth/authSlice";
+import { useRouter } from "next/navigation";
 
 import { useDispatch, useSelector } from "react-redux";
 import { menuToggle } from "../../features/toggle/toggleSlice";
@@ -14,12 +16,18 @@ const DashboardCandidatesSidebar = () => {
   const { menu } = useSelector((state) => state.toggle);
   const percentage = 30;
 
-
+  const router = useRouter();
   const dispatch = useDispatch();
   // menu togggle handler
   const menuToggleHandler = () => {
     dispatch(menuToggle());
   };
+  
+      const handleLogout = () => {
+          dispatch(logout()); // ✅ FIXED: Use the existing dispatch
+          router.push("/"); // Redirect to home page
+      };
+  
 
   return (
     <div className={`user-sidebar ${menu ? "sidebar_open" : ""}`}>
@@ -32,21 +40,23 @@ const DashboardCandidatesSidebar = () => {
       {/* End sidebar close icon */}
 
       <div className="sidebar-inner">
-        <ul className="navigation">
-          {candidatesuData.map((item) => (
-            <li
-              className={`${
-                isActiveLink(item.routePath, usePathname()) ? "active" : ""
-              } mb-1`}
-              key={item.id}
-              onClick={menuToggleHandler}
-            >
-              <Link href={item.routePath}>
-                <i className={`la ${item.icon}`}></i> {item.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <ul className="navigation">
+                    {candidatesuData.map((item) => (
+                        <li className={`${isActiveLink(item.routePath, usePathname()) ? "active" : ""} mb-1`} key={item.id} onClick={menuToggleHandler} >
+                            {item.name === "Logout" ? (
+                                <Link href="/" onClick={handleLogout} > 
+                                    <i className={`la ${item.icon}`}></i> {item.name}
+                                </Link>
+                            ) : (
+                                <Link href={item.routePath}>
+                                    <i className={`la ${item.icon}`}></i>{" "}
+                                    {item.name}
+                                </Link>
+                            )}
+
+                        </li>
+                    ))}
+                </ul>
         {/* End navigation */}
 
         <div className="skills-percentage">

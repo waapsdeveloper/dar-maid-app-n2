@@ -14,8 +14,8 @@ import Image from "next/image";
 
 export const metadata = {
   title:
-    "Candidate Single Dynamic V2 || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+    "Candidate Single Dynamic V2 || Domesta - Listing Board",
+  description: "Domesta - Listing Board",
 };
 
 const CandidateSingleDynamicV2 = ({ params }) => {

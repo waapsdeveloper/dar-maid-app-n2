@@ -16,7 +16,7 @@ import Image from "next/image";
 
 export const metadata = {
   title: "Agency Details",
-  description: "DarMaid - Job Board",
+  description: "Domesta  - Listing Board",
 };
 
 const JobSingleDynamicV1 = ({ params }) => {
@@ -90,11 +90,11 @@ const JobSingleDynamicV1 = ({ params }) => {
                 {/* End .content */}
 
                 <div className="btn-box">
+                  {/* data-bs-toggle="modal"
+                    data-bs-target="#applyJobModal" */}
                   <a
-                    href="#"
-                    className="theme-btn btn-style-one"
-                    data-bs-toggle="modal"
-                    data-bs-target="#applyJobModal"
+                    href="/new-request"
+                    className="theme-btn btn-style-one"                    
                   >
                     Request For Interview 
                   </a>

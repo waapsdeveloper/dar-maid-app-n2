@@ -3,9 +3,9 @@ import dynamic from "next/dynamic";
 import Pricing from "@/components/pages-menu/pricing";
 
 export const metadata = {
-  title: 'Pricing || DarMaid - Job Board',
+  title: 'Pricing || Domesta  - Listing Board',
   description:
-    'DarMaid - Job Board',
+    'Domesta  - Listing Board',
   
 }
 

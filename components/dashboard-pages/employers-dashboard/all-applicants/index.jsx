@@ -7,7 +7,7 @@ import CopyrightFooter from "../../CopyrightFooter";
 import WidgetContentBox from "./components/WidgetContentBox";
 import WidgetTopFilterBox from "./components/WidgetTopFilterBox";
 import MenuToggler from "../../MenuToggler";
-
+import Pagination from "./components/pagination";
 const index = () => {
   return (
     <div className="page-wrapper dashboard">
@@ -57,10 +57,12 @@ const index = () => {
         {/* End dashboard-outer */}
       </section>
       {/* <!-- End Dashboard --> */}
+      <Pagination />
 
       <CopyrightFooter />
       {/* <!-- End Copyright --> */}
     </div>
+
     // End page-wrapper
   );
 };

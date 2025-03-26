@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic";
-import Packages from "@/components/dashboard-pages/employers-dashboard/packages";
+import Packages from "@/components/dashboard-pages/superadmin-dashboard/packages";
 
 export const metadata = {
-  title: "Packages || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+  title: "Queries || Domesta  - Listing Board",
+  description: "Domesta  - Listing Board",
 };
 
 const index = () => {

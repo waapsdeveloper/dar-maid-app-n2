@@ -5,7 +5,7 @@ import CandidatesList from "@/components/candidates-listing-pages/candidates-lis
 export const metadata = {
   title: 'Candidates',
   description:
-    'DarMaid - Job Board',
+    'Domesta - Listing Board',
   
 }
 

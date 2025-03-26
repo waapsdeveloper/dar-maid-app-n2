@@ -33,6 +33,10 @@ const nextConfig = {
         
       },
       {
+        source: "/employer-dashboard/interviews",
+        destination: "/employers-dashboard/interview",
+      },
+      {
         source: "/candidate-dashboard",
         destination: "/candidates-dashboard/dashboard",
       },
@@ -43,7 +47,12 @@ const nextConfig = {
       {
         source :"/superadmin-dashboard",
         destination: "/superadmin-dashboard/dashboard",
+      },      
+      {
+        source :"/new-request",
+        destination: "/employers-dashboard/interview/new-interview-request",
       }
+
     ];
   },
 

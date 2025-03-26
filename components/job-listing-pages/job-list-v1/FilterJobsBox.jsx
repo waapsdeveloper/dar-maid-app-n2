@@ -162,9 +162,10 @@ const FilterJobsBox = () => {
             </button>
           </div>
 
-          <div className=" w-100 mt-3 theme-btn btn-style-three">
+
+          <Link href="/new-request" className=" w-100 mt-3 theme-btn btn-style-three">
             Request For Interview
-          </div>
+          </Link>
         </div>
       </div>
       // End all jobs

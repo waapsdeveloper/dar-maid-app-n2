@@ -9,6 +9,8 @@ import CopyrightFooter from "../../CopyrightFooter";
 import JobApplied from "./components/JobApplied";
 import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
 import MenuToggler from "../../MenuToggler";
+import Applicants from "./components/Applicants";
+
 
 const Index = () => {
   return (
@@ -75,6 +77,21 @@ const Index = () => {
                     {/* <!-- Candidate block three --> */}
 
                     <JobApplied />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-12">
+              {/* <!-- applicants Widget --> */}
+              <div className="applicants-widget ls-widget">
+                <div className="widget-title">
+                  <h4>Agency Employees</h4>
+                </div>
+                <div className="widget-content">
+                  <div className="row">
+                    {/* <!-- Candidate block three --> */}
+
+                    <Applicants />
                   </div>
                 </div>
               </div>

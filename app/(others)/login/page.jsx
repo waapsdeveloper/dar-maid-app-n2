@@ -3,9 +3,9 @@ import dynamic from "next/dynamic";
 import LogIn from "@/components/pages-menu/login";
 
 export const metadata = {
-  title: 'Login || DarMaid - Job Board',
+  title: 'Login || Domesta  - Listing Board',
   description:
-    'DarMaid - Job Board',
+    'Domesta  - Listing Board',
   
 }
 

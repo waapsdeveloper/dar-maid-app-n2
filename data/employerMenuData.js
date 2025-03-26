@@ -10,14 +10,14 @@ module.exports = [
     id: 2,
     name: "Profile",  // Changed from "Company Profile"
     icon: "la-user-circle",
-    routePath: "/employers-dashboard/profile",
+    routePath: "/employers-dashboard/company-profile",
     active: "",
   },
   {
     id: 3,
     name: "Employee",  // Changed from "Post a New Job"
     icon: "la-user-friends",
-    routePath: "/employers-dashboard/employees",
+    routePath: "/employers-dashboard/all-applicants",
     active: "",
   },
   {
@@ -31,14 +31,14 @@ module.exports = [
     id: 5,
     name: "Interview",  // Changed from "All Applicants"
     icon: "la-comments",
-    routePath: "/employers-dashboard/interviews",
+    routePath: "/employers-dashboard/interview",
     active: "",
   },
   {
     id: 11,
     name: "Logout",
     icon: "la-sign-out",
-    routePath: "/login",
+    routePath: "/",
     active: "",
   },
   // ... rest of your original entries

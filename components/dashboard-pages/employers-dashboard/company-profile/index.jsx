@@ -8,7 +8,9 @@ import SocialNetworkBox from "./components/SocialNetworkBox";
 import ContactInfoBox from "./components/ContactInfoBox";
 import CopyrightFooter from "../../CopyrightFooter";
 import MenuToggler from "../../MenuToggler";
-
+import JobPreference from "./components/JobPreference";
+import InterviewManagement from "./components/InterviewManagement";
+import DocumentVerification from "./components/DocumentVerification";
 const index = () => {
     return (
         <div className="page-wrapper dashboard">
@@ -30,7 +32,7 @@ const index = () => {
             {/* <!-- Dashboard --> */}
             <section className="user-dashboard">
                 <div className="dashboard-outer">
-                    <BreadCrumb title="Company Profile!" />
+                    <BreadCrumb title="Profile!" />
                     {/* breadCrumb */}
 
                     <MenuToggler />
@@ -46,6 +48,55 @@ const index = () => {
                                     <MyProfile />
                                 </div>
                             </div>
+                            <div className="ls-widget">
+                                <div className="tabs-box">
+                                    <div className="widget-title">
+                                        <h4>Contact Information</h4>
+                                    </div>
+                                    {/* End .widget-title */}
+
+                                    <div className="widget-content">
+                                        <ContactInfoBox />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="ls-widget">
+                                <div className="tabs-box">
+                                    <div className="widget-title">
+                                        <h4>Job Preference</h4>
+                                    </div>
+                                    {/* End .widget-title */}
+
+                                    <div className="widget-content">
+                                        <JobPreference />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="ls-widget">
+                                <div className="tabs-box">
+                                    <div className="widget-title">
+                                        <h4>Interview Management</h4>
+                                    </div>
+                                    {/* End .widget-title */}
+
+                                    <div className="widget-content">
+                                        <InterviewManagement />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="ls-widget">
+                                <div className="tabs-box">
+                                    <div className="widget-title">
+                                        <h4>Document Verification</h4>
+                                    </div>
+                                    {/* End .widget-title */}
+
+                                    <div className="widget-content">
+                                        <DocumentVerification />
+                                    </div>
+                                </div>
+                            </div>
+                           
                             {/* <!-- Ls widget --> */}
 
                             <div className="ls-widget">
@@ -61,18 +112,6 @@ const index = () => {
                             </div>
                             {/* <!-- Ls widget --> */}
 
-                            <div className="ls-widget">
-                                <div className="tabs-box">
-                                    <div className="widget-title">
-                                        <h4>Contact Information</h4>
-                                    </div>
-                                    {/* End .widget-title */}
-
-                                    <div className="widget-content">
-                                        <ContactInfoBox />
-                                    </div>
-                                </div>
-                            </div>
                             {/* <!-- Ls widget --> */}
                         </div>
                     </div>

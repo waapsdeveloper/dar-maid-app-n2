@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic";
-import AllApplicants from "@/components/dashboard-pages/employers-dashboard/all-applicants";
+import AllApplicants from "@/components/dashboard-pages/superadmin-dashboard/all-applicants";
 
 export const metadata = {
-  title: "All Applicants || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+  title: "All Applicants || Domesta  - Listing Board",
+  description: "Domesta  - Listing Board",
 };
 
 const index = () => {

@@ -3,8 +3,8 @@ import dynamic from "next/dynamic";
 import BlogList from "@/components/blog-meu-pages/blog-list-v3";
 
 export const metadata = {
-  title: "Blog List V3 || DarMaid - Job Board",
-  description: "DarMaid - Job Board",
+  title: "Blog List V3 || Domesta - Listing Board",
+  description: "Domesta - Listing Board",
 };
 
 const index = () => {

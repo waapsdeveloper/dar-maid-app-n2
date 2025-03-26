@@ -5,7 +5,7 @@ import About from "@/components/pages-menu/about";
 export const metadata = {
   title: 'About',
   description:
-    'DarMaid - Job Board',
+    'Domesta  - Listing Board',
   
 }
 

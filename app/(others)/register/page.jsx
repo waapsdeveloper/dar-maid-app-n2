@@ -3,9 +3,9 @@ import dynamic from "next/dynamic";
 import RegisterForm from "@/components/pages-menu/register";
 
 export const metadata = {
-  title: 'Register || DarMaid - Job Board',
+  title: 'Register || Domesta  - Listing Board',
   description:
-    'DarMaid - Job Board',
+    'Domesta  - Listing Board',
   
 }
 

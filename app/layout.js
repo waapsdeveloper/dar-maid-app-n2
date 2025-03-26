@@ -5,11 +5,9 @@ import "../styles/index.scss";
 import { useEffect } from "react";
 import ScrollToTop from "../components/common/ScrollTop";
 import { Provider } from "react-redux";
-import { store, persistor } from "../store/store";
-import { PersistGate } from "redux-persist/integration/react";
+import { store } from "../store/store";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 if (typeof window !== "undefined") {
   require("bootstrap/dist/js/bootstrap");
@@ -32,9 +30,12 @@ export default function RootLayout({ children }) {
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta
           name="keywords"
-          content="	candidates, career, employment, indeed, job board, job listing, job portal, job postings, job search, job seeker, jobs, recruiters, recruiting, recruitment, resume"
+          content="	candidates, career, employment, indeed, listing board, listing listing, listing portal, listing postings, listing search, listing seeker, listings, recruiters, recruiting, recruitment, resume"
         />
-        <meta name="description" content="DarMaid - Job Board" />
+        <meta
+          name="description"
+          content="Domesta - Listing Borad"
+        />
         <meta name="ibthemes" content="ATFN" />
 
         <link rel="icon" href="./favicon.ico" />
@@ -42,27 +43,25 @@ export default function RootLayout({ children }) {
 
       <body>
         <Provider store={store}>
-          <PersistGate loading={null} persistor={persistor}>
-            <div className="page-wrapper">
-              {children}
+          <div className="page-wrapper">
+            {children}
 
-              {/* Toastify */}
-              <ToastContainer
-                position="bottom-right"
-                autoClose={500}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="colored"
-              />
-              {/* <!-- Scroll To Top --> */}
-              <ScrollToTop />
-            </div>
-          </PersistGate>
+            {/* Toastify */}
+            <ToastContainer
+              position="bottom-right"
+              autoClose={500}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
+            {/* <!-- Scroll To Top --> */}
+            <ScrollToTop />
+          </div>
         </Provider>
       </body>
     </html>

@@ -7,10 +7,12 @@ import { userService } from "@/services/user.service";
 import { useDispatch } from "react-redux";
 import { login } from "@/features/auth/authSlice";
 import { useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const FormContent = () => {
   const dispatch = useDispatch();
   const modalRef = useRef(null);
+  const router = useRouter();
 
   // State to hold form values
   const [username, setUsername] = useState("");
@@ -42,32 +44,29 @@ const FormContent = () => {
       if (modalInstance) {
         modalInstance.hide();
       }
-    }
-    const closeButton = document.querySelector(
-      "#loginPopupModal .closed-modal"
-    );
-    if (closeButton) {
-      closeButton.click();
-    }
+    }    
 
-    if (userData.role === "employer") {
-      window.location.href = "/employer-dashboard";
+    switch (userData.role) {
+      case "employer":
+        router.push("/employer-dashboard");
+        break;
+      case "employee":
+        router.push("/candidate-dashboard");
+        break;
+      case "agency":
+        router.push("/agency-dashboard");
+        break;
+      case "superadmin":
+        router.push("/superadmin-dashboard");
+        break;
+      default:
+        router.push("/login"); // Default fallback
     }
-    if (userData.role === "employee") {
-      window.location.href = "/candidate-dashboard";
-    }
-    if (userData.role === "agency") {
-      window.location.href = "/agency-dashboard";
-    }
-    if (userData.role === "superadmin") {
-      window.location.href = "/superadmin-dashboard";
-    }
-    // window.location.href = "/employer-dashboard";
   };
 
   return (
     <div className="form-inner">
-      <h3>Login to Darmaid</h3>
+      <h3>Login to Domesta </h3>
 
       {/* Login Form */}
       <form onSubmit={handleSubmit}>

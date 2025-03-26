@@ -1,7 +1,7 @@
 import MobileMenu from "../../../header/MobileMenu";
 import DashboardHeader from "../../../header/DashboardHeader";
 import LoginPopup from "../../../common/form/login/LoginPopup";
-import DashboardEmployerSidebar from "../../../header/DashboardEmployerSidebar";
+import DashboardSuperAdminSidebar from "../../../header/DashboardSuperAdminSidebar";
 import BreadCrumb from "../../BreadCrumb";
 import MyProfile from "./components/my-profile";
 import SocialNetworkBox from "./components/SocialNetworkBox";
@@ -24,7 +24,7 @@ const index = () => {
             <MobileMenu />
             {/* End MobileMenu */}
 
-            <DashboardEmployerSidebar />
+            <DashboardSuperAdminSidebar />
             {/* <!-- End User Sidebar Menu --> */}
 
             {/* <!-- Dashboard --> */}

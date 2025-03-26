@@ -3,7 +3,7 @@ import EmployersList from "@/components/employers-listing-pages/employers-list-v
 
 export const metadata = {
   title: "Employers",
-  description: "DarMaid - Job Board",
+  description: "Domesta  - Listing Board",
 };
 
 const index = () => {
