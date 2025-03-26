@@ -6,6 +6,18 @@ CREATE TABLE roles (
     name VARCHAR(50) UNIQUE NOT NULL -- (Employee, Employer, Agency, Admin)
 );
 
+
+CREATE TABLE categories (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    icon VARCHAR(255) NULL,
+    title VARCHAR(255) NOT NULL,  -- Category or service name
+    description TEXT NULL, -- Brief description
+    no_of_listings INT UNSIGNED DEFAULT 0, -- Tracks the number of active listings
+    parent_id BIGINT UNSIGNED NULL, -- Reference to the same table for sub-categories
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
 -- Assign Default Roles (Run this after table creation)
 INSERT INTO roles (id, name) VALUES 
 (1, 'Employee'), 
@@ -15,6 +27,7 @@ INSERT INTO roles (id, name) VALUES
 
 CREATE TABLE users (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    profile_image VARCHAR(255) NULL,
     role_id TINYINT UNSIGNED NOT NULL,  -- (1 = Employee, 2 = Employer, 3 = Agency, 4 = Admin)
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) UNIQUE NOT NULL,
@@ -28,9 +41,12 @@ CREATE TABLE users (
 CREATE TABLE employees (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id BIGINT UNSIGNED NOT NULL UNIQUE, -- Reference to Users table
+    contact_number VARCHAR(50) NULL,
+    address TEXT NULL,
+    city VARCHAR(100) NOT NULL,
+    country VARCHAR(100) NOT NULL,
     nationality VARCHAR(100) NOT NULL,
     experience_years INT DEFAULT 0,
-    skills TEXT NOT NULL, -- JSON format (e.g., ["Cleaning", "Cooking", "Babysitting"])
     availability ENUM('Available', 'Not Available') DEFAULT 'Available',
     preferred_interview_time VARCHAR(50) NULL, -- Free-text or predefined values
     document_verification_status ENUM('Pending', 'Verified', 'Rejected') DEFAULT 'Pending',
@@ -39,23 +55,87 @@ CREATE TABLE employees (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+-- Employee Job Listing Preferences Table
+CREATE TABLE employee_job_preferences (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    employee_id BIGINT UNSIGNED NOT NULL, -- Reference to Employees table
+    preferred_job_type ENUM('Remote', 'Contract', 'Full-time', 'Part-time') NOT NULL,
+    preferred_location VARCHAR(255) NULL,
+    minimum_salary DECIMAL(10, 2) DEFAULT 0.00,
+    maximum_salary DECIMAL(10, 2) DEFAULT 0.00,
+    availability ENUM('Available', 'Not Available') DEFAULT 'Available',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
+);
+
+-- Employee Rates Table (For storing different rates for employees)
+CREATE TABLE employee_rates (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    employee_id BIGINT UNSIGNED NOT NULL, -- Reference to Employees table
+    rate_type ENUM('Hourly', 'Monthly') NOT NULL,
+    rate DECIMAL(10, 2) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
+);
+
+-- Employee Categories Table (For storing multiple categories an employee is expert in)
+CREATE TABLE employee_categories (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    employee_id BIGINT UNSIGNED NOT NULL, -- Reference to Employees table
+    category_id BIGINT UNSIGNED NOT NULL, -- Reference to Categories table
+    skill_level ENUM('Beginner', 'Intermediate', 'Expert') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+);
+
+-- Employee Work Experiences Table
+CREATE TABLE employee_work_experiences (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    employee_id BIGINT UNSIGNED NOT NULL, -- Reference to Employees table
+    company_name VARCHAR(255) NOT NULL,
+    job_title VARCHAR(255) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NULL, -- NULL if currently working
+    description TEXT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
+);
+
+
+
 -- Employers Table (Only for Role: Employer)
 CREATE TABLE employers (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id BIGINT UNSIGNED NOT NULL UNIQUE, -- Reference to Users table
     company_name VARCHAR(255) NULL,
     contact_number VARCHAR(50) NULL,
-    job_preferences TEXT NULL, -- JSON format (e.g., ["Maid", "Babysitter"])
+    contact_number VARCHAR(50) NULL,
+    address TEXT NULL,
+    city VARCHAR(100) NOT NULL,
+    country VARCHAR(100) NOT NULL,
+    nationality VARCHAR(100) NOT NULL,    
     profile_verification_status ENUM('Pending', 'Verified', 'Rejected') DEFAULT 'Pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+
+
 -- Agencies Table (Only for Role: Agency)
 CREATE TABLE agencies (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id BIGINT UNSIGNED NOT NULL UNIQUE, -- Reference to Users table
+    contact_number VARCHAR(50) NULL,
+    address TEXT NULL,
+    city VARCHAR(100) NOT NULL,
+    country VARCHAR(100) NOT NULL,
+    nationality VARCHAR(100) NOT NULL,
     agency_name VARCHAR(255) NOT NULL,
     contact_person VARCHAR(255) NOT NULL,
     registration_number VARCHAR(100) UNIQUE NULL,
@@ -126,15 +206,6 @@ INSERT INTO website_settings (setting_key, setting_value) VALUES
 ('privacy_policy', 'Your data privacy is our priority.'),
 ('terms_conditions', 'By using this site, you agree to our terms.');
 
-CREATE TABLE categories (
-    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    icon VARCHAR(255) NULL,
-    title VARCHAR(255) NOT NULL,  -- Category or service name
-    description TEXT NULL, -- Brief description
-    no_of_listings INT UNSIGNED DEFAULT 0, -- Tracks the number of active listings
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
 
 CREATE TABLE listings (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -172,6 +243,30 @@ CREATE TABLE reviews (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (booking_id) REFERENCES bookings(id) ON DELETE CASCADE
+);
+
+CREATE TABLE agency_reviews (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    agency_id BIGINT UNSIGNED NOT NULL, -- Reference to Agencies table
+    employee_id BIGINT UNSIGNED NOT NULL, -- Reference to Employees table
+    rating TINYINT UNSIGNED NOT NULL, -- 1 to 5
+    review_text TEXT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (agency_id) REFERENCES agencies(id) ON DELETE CASCADE,
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
+);
+
+CREATE TABLE employer_reviews (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    employer_id BIGINT UNSIGNED NOT NULL, -- Reference to Employers table
+    employee_id BIGINT UNSIGNED NOT NULL, -- Reference to Employees table
+    rating TINYINT UNSIGNED NOT NULL, -- 1 to 5
+    review_text TEXT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (employer_id) REFERENCES employers(id) ON DELETE CASCADE,
+    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
 CREATE TABLE notifications (
@@ -222,6 +317,35 @@ CREATE TABLE employee_agency_associations (
     FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE,
     FOREIGN KEY (agency_id) REFERENCES agencies(id) ON DELETE CASCADE
 );
+
+CREATE TABLE contact_us_queries (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    subject VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    status ENUM('Pending', 'Resolved') DEFAULT 'Pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE faqs (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    question TEXT NOT NULL,
+    answer TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE terms (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+
 
 
 
