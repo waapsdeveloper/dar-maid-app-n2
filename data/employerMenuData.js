@@ -10,7 +10,7 @@ module.exports = [
     id: 2,
     name: "Profile",  // Changed from "Company Profile"
     icon: "la-user-circle",
-    routePath: "/employers-dashboard/profile",
+    routePath: "/employers-dashboard/company-profile",
     active: "",
   },
   {
@@ -38,7 +38,7 @@ module.exports = [
     id: 11,
     name: "Logout",
     icon: "la-sign-out",
-    routePath: "/login",
+    routePath: "/",
     active: "",
   },
   // ... rest of your original entries
