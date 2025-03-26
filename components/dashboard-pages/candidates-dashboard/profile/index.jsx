@@ -9,6 +9,7 @@ import CopyrightFooter from "../../CopyrightFooter";
 import MenuToggler from "../../MenuToggler";
 import DashboardCandidatesSidebar from "@/components/header/DashboardCandidatesSidebar";
 import EmployementDetail from "./components/my-profile/EmployementDetail";
+import { ApplicationManagement, InterviewManagement,EmploymentDetails ,InterviewAvailability,Document} from "./components/my-profile/EmployementDetail";
 const index = () => {
   return (
     <div className="page-wrapper dashboard">
@@ -59,7 +60,67 @@ const index = () => {
                   </div>
                 </div>
               </div>
-            
+
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
+                    <h4>Employement Detail</h4>
+                  </div>
+                  {/* End .widget-title */}
+
+                  <div className="widget-content">
+                    <EmploymentDetails />
+                  </div>
+                </div>
+              </div>
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
+                    <h4>Interview Availability</h4>
+                  </div>
+                  {/* End .widget-title */}
+
+                  <div className="widget-content">
+                    <InterviewAvailability />
+                  </div>
+                </div>
+              </div>
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
+                    <h4>Document</h4>
+                  </div>
+                  {/* End .widget-title */}
+
+                  <div className="widget-content">
+                    <Document />
+                  </div>
+                </div>
+              </div>
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
+                    <h4>Application Management</h4>
+                  </div>
+                  {/* End .widget-title */}
+
+                  <div className="widget-content">
+                    <ApplicationManagement />
+                  </div>
+                </div>
+              </div>
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
+                    <h4>Interview Management</h4>
+                  </div>
+                  {/* End .widget-title */}
+
+                  <div className="widget-content">
+                    <InterviewManagement />
+                  </div>
+                </div>
+              </div>
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
