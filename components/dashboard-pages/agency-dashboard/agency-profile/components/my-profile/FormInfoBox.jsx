@@ -10,7 +10,7 @@ const FormInfoBox = () => {
         <div className="row">
             {/* Full Name/Company Name */}
             <div className="form-group col-lg-6 col-md-12">
-                <label>Full Name / Company Name</label>
+                <label>Full Name / Agency Name</label>
                 <input
                     type="text"
                     name="fullName"
@@ -18,33 +18,27 @@ const FormInfoBox = () => {
                     required
                 />
             </div>
-            <div className="form-group col-lg-6 col-md-12 gap-2">
-            <label>Date of Birth</label> 
-            <br />
-            <input
-              type="datetime-local"
-              name="interviewDate"
-              required
-            />
-          </div>
-           
-            {/* Type Selection */}
             <div className="form-group col-lg-6 col-md-12">
-                <label>Gender</label>
-                <select className="chosen-single form-select" required>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-            </div>
-            <div className="form-group col-lg-6 col-md-12">
-                <label>Nationality</label>
+                <label>Contact Person Name</label>
                 <input
                     type="text"
                     name="fullName"
-                    placeholder="Country"
+                    placeholder="John Doe / Company XYZ"
                     required
                 />
             </div>
+            <div className="form-group col-lg-6 col-md-12">
+                <label>Agency Registration Number</label>
+                <input
+                    type="text"
+                    name="fullName"
+                    placeholder="dfaj21132"
+                    required
+                />
+            </div>
+           
+          
+          
     
             {/* Profile Picture/Logo Upload */}
             <div className="form-group col-lg-6 col-md-12">
