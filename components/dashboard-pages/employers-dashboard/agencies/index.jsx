@@ -8,6 +8,7 @@ import WidgetContentBox from "./components/WidgetContentBox";
 import WidgetTopFilterBox from "./components/WidgetTopFilterBox";
 import MenuToggler from "../../MenuToggler";
 import Pagination from "./components/pagination";
+
 const index = () => {
   return (
     <div className="page-wrapper dashboard">
@@ -23,13 +24,13 @@ const index = () => {
       <MobileMenu />
       {/* End MobileMenu */}
 
-      <DashboardEmployerSidebar />
-      {/* <!-- End User Sidebar Menu --> */}
+      <DashboardEmployerSidebar /> {/* <!-- End User Sidebar Menu --> */}
 
-      {/* <!-- Dashboard --> */}
+
+  {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
         <div className="dashboard-outer">
-          <BreadCrumb title="All Applicants!" />
+          <BreadCrumb title="All Agency!" />
           {/* breadCrumb */}
 
           <MenuToggler />
@@ -41,7 +42,7 @@ const index = () => {
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
-                    <h4>Applicant</h4>
+                    <h4>Agencies</h4>
                     <WidgetTopFilterBox />
                   </div>
                   {/* End top widget filter bar */}
