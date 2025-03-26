@@ -90,42 +90,49 @@ module.exports = [
       id: 1,
       name: "Dashboard",
       icon: "la-home",
-      routePath: "/employers-dashboard/dashboard",
+      routePath: "/agency-dashboard/dashboard",
       active: "active",
     },
     {
       id: 2,
       name: "Profile",  // Changed from "Company Profile"
       icon: "la-user-circle",
-      routePath: "/employers-dashboard/profile",
+      routePath: "/agency-dashboard/agency-profile",
       active: "",
     },
     {
       id: 3,
       name: "Our Employee",  // Changed from "Post a New Job"
       icon: "la-user-friends",
-      routePath: "/employers-dashboard/employees",
+      routePath: "/agency-dashboard/candidates",
       active: "",
     },
     // {
     //   id: 4,
     //   name: "Agency Profile",  // Changed from "Manage Jobs"
     //   icon: "la-building",
-    //   routePath: "/employers-dashboard/agencies",
+    //   routePath: "/agency-dashboard/agencies",
     //   active: "",
     // },
     {
       id: 5,
       name: "Interview",  // Changed from "All Applicants"
       icon: "la-comments",
-      routePath: "/employers-dashboard/interviews",
+      routePath: "/agency-dashboard/interviews",
+      active: "",
+    },
+    {
+      id: 6,
+      name: "Employers Interview",  // Changed from "All Applicants"
+      icon: "la-comments",
+      routePath: "/agency-dashboard/employers-interviews",
       active: "",
     },
     {
       id: 11,
       name: "Logout",
       icon: "la-sign-out",
-      routePath: "/login",
+      routePath: "/",
       active: "",
     },
     // ... rest of your original entries
