@@ -7,7 +7,7 @@ import employerMenuData from "../../data/employerMenuData";
 import HeaderNavContent from "./HeaderNavContent";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logout } from "@/features/auth/authSlice"; // Apni Redux action import karo
 import { useRouter } from "next/navigation";
 
@@ -15,6 +15,7 @@ const DashboardHeader = () => {
   const [navbar, setNavbar] = useState(false);
   const dispatch = useDispatch();
   const router = useRouter();
+  const { user } = useSelector((state) => state.auth);
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -85,7 +86,7 @@ const DashboardHeader = () => {
                   width={50}
                   height={50}
                 />
-                <span className="name">My Account</span>
+                <span className="name">{user?.name}</span>
               </button>
 
               {dropdownOpen && (
