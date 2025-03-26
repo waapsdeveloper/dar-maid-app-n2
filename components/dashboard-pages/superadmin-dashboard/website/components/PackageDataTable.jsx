@@ -53,10 +53,16 @@ const PackageDataTable = () => {
             <td className="key"><code>{event.key}</code></td>
             <td className="value">{event.value}</td>
             <td className="event">{event.event}</td>
-            <td className="action">
-              <div className="option-box d-flex gap-2 justify-content-center">
-                <ul className="option-list d-flex list-unstyled m-0 p-0 gap-2">
-                <li>
+            <td className="action" style={{ textAlign: "left", width: "1%" }}>
+              <div
+                className="option-box d-flex gap-2 justify-content-center"
+                style={{ width: "100%" }}
+              >
+                <ul
+                  className="option-list d-flex list-unstyled m-0 p-0 gap-2"
+                  style={{ justifyContent: "flex-start", width: "100%" }}
+                >
+                  <li>
                     <button data-text="Add">
                       <span className="la la-plus-circle"></span>
                     </button>

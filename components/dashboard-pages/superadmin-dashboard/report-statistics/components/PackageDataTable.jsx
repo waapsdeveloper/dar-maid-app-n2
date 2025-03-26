@@ -121,22 +121,33 @@ const PackageDataTable = () => {
                 {log.status}
               </span>
             </td>
-            <td className="action">
-              <div className="option-box d-flex gap-2 justify-content-center">
-                <ul className="option-list d-flex list-unstyled m-0 p-0 gap-2">
+            <td className="action" style={{ textAlign: "left", width: "1%" }}>
+              <div
+                className="option-box d-flex gap-2 justify-content-center"
+                style={{ width: "100%" }}
+              >
+                <ul
+                  className="option-list d-flex list-unstyled m-0 p-0 gap-2"
+                  style={{ justifyContent: "flex-start", width: "100%" }}
+                >
                   <li>
-                    <button data-text="View Details" className="btn btn-sm btn-light">
-                      <i className="la la-eye"></i>
+                    <button data-text="Add">
+                      <span className="la la-plus-circle"></span>
                     </button>
                   </li>
                   <li>
-                    <button data-text="Export" className="btn btn-sm btn-primary">
-                      <i className="la la-download"></i>
+                    <button data-text="View Details">
+                      <span className="la la-eye"></span>
                     </button>
                   </li>
                   <li>
-                    <button data-text="Flag" className="btn btn-sm btn-warning">
-                      <i className="la la-flag"></i>
+                    <button data-text="Edit">
+                      <span className="la la-pencil"></span>
+                    </button>
+                  </li>
+                  <li>
+                    <button data-text="Delete">
+                      <span className="la la-trash"></span>
                     </button>
                   </li>
                 </ul>
