@@ -24,35 +24,60 @@ const nextConfig = {
         destination: "/job-list-v1",
       },
       {
-      source:"/agency-details/:slug",
-      destination: "/job-single-v1/:slug",
+        source: "/agency-details/:slug",
+        destination: "/job-single-v1/:slug",
       },
       {
         source: "/employer-dashboard",
         destination: "/employers-dashboard/dashboard",
-        
       },
       {
         source: "/employer-dashboard/interviews",
         destination: "/employers-dashboard/interview",
       },
       {
-        source: "/candidate-dashboard",
+        source: "/candidate/dashboard",
         destination: "/candidates-dashboard/dashboard",
       },
       {
-        source :"/agency-dashboard",
+        source: "/agency/dashboard",
         destination: "/agency-dashboard/dashboard",
       },
       {
-        source :"/superadmin-dashboard",
+        source: "/superadmin/dashboard",
         destination: "/superadmin-dashboard/dashboard",
-      },      
+      },
       {
-        source :"/new-request",
+        source: "/new-request",
         destination: "/employers-dashboard/interview/new-interview-request",
-      }
+      },
+      {
+        source: "/candidate/profile",
+        destination: "/candidates-dashboard/profile",
+      },
+      {
+        source : "/candidate/employers",
+        destination : "/candidates-dashboard/employers"
+      },
+      {
+        source : "/candidate/agencies",
+        destination : "/candidates-dashboard/agencies"
+      },
+      {
+        source : "/candidate/interviews",
+        destination : "/candidates-dashboard/interview"
+      },
+      
+      
 
+      {
+        source: "/employer/profile",
+        destination: "/employers-dashboard/company-profile",
+      },
+      {
+        source: "/agency/profile",
+        destination: "/agency-dashboard/agency-profile",
+      },
     ];
   },
 
