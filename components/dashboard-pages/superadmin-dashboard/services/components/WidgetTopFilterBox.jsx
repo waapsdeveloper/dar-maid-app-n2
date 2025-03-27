@@ -1,13 +1,9 @@
-'use client'; // Add this directive at the top to mark it as a Client Component
+'use client';
 
-import { useRouter } from 'next/navigation'; // Using Next.js router instead of react-router-dom
+import { useRouter } from "next/navigation";
 
 const WidgetTopFilterBox = () => {
   const router = useRouter();
-
-  const handleAddNewItem = () => {
-    router.push('/'); // Use Next.js router navigation
-  };
 
   return (
     <div className="chosen-outer">
@@ -27,15 +23,14 @@ const WidgetTopFilterBox = () => {
         <option>Last 5 year</option>
       </select>
 
-     
       <button 
         className="btn btn-main" 
-        onClick={handleAddNewItem}
+        onClick={() => router.push("/superadmin-dashboard/services/add")} // Navigate to add service page
         style={{
           backgroundColor: '#007bff',
           color: 'white',
           borderRadius: '5px',
-        border: 'none',
+          border: 'none',
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
