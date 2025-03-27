@@ -1,3 +1,6 @@
+"use client";
+import { useState } from "react";
+
 import MobileMenu from "../../../header/MobileMenu";
 import DashboardHeader from "../../../header/DashboardHeader";
 import LoginPopup from "../../../common/form/login/LoginPopup";
@@ -8,8 +11,11 @@ import ContactInfoBox from "./components/ContactInfoBox";
 import CopyrightFooter from "../../CopyrightFooter";
 import MenuToggler from "../../MenuToggler";
 import DashboardCandidatesSidebar from "@/components/header/DashboardCandidatesSidebar";
-import EmployementDetail from "./components/my-profile/EmployementDetail";
 import { ApplicationManagement, InterviewManagement,EmploymentDetails ,InterviewAvailability,Document} from "./components/my-profile/EmployementDetail";
+import EmploymentInfoBox from "./components/EmploymentInfoBox";
+import WorkExperiencesBox from "./components/WorkExperiencesBox";
+
+
 const index = () => {
   return (
     <div className="page-wrapper dashboard">
@@ -57,6 +63,28 @@ const index = () => {
 
                   <div className="widget-content">
                     <ContactInfoBox />
+                  </div>
+                </div>
+              </div>
+
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
+                    <h4>Employment Information</h4>
+                  </div>
+                  <div className="widget-content">
+                    <EmploymentInfoBox />
+                  </div>
+                </div>
+              </div>
+
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
+                    <h4>Work Experiences</h4>
+                  </div>
+                  <div className="widget-content">
+                    <WorkExperiencesBox/>
                   </div>
                 </div>
               </div>
