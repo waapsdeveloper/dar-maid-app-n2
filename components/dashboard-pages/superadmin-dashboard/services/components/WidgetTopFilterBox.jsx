@@ -6,7 +6,7 @@ const WidgetTopFilterBox = () => {
   const router = useRouter();
 
   const handleAddNewItem = () => {
-    router.push('/new-item'); // Use Next.js router navigation
+    router.push('/'); // Use Next.js router navigation
   };
 
   return (
