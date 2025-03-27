@@ -45,7 +45,7 @@ const DefaulHeader2 = () => {
 
       switch (user.role) {
         case "employer":
-          router.push("/employer-dashboard");
+          router.push("/employer/dashboard");
           break;
         case "employee":
           router.push("/candidate-dashboard");

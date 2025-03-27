@@ -3,14 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   async rewrites() {
     return [
-      {
-        source: "/employers",
-        destination: "/employers-list-v3",
-      },
-      {
-        source: "/employers-details/:slug",
-        destination: "/employers-single-v2/:slug",
-      },
+      // Employees / Candidates
       {
         source: "/candidates",
         destination: "/candidates-list-v2",
@@ -20,6 +13,79 @@ const nextConfig = {
         destination: "/candidates-single-v1/:slug",
       },
       {
+        source: "/candidate/dashboard",
+        destination: "/candidates-dashboard/dashboard",
+      },
+      {
+        source: "/candidate/profile",
+        destination: "/candidates-dashboard/profile",
+      },
+      {
+        source: "/candidate/employers",
+        destination: "/candidates-dashboard/employers",
+      },
+      {
+        source: "/candidate/agencies",
+        destination: "/candidates-dashboard/agencies",
+      },
+      {
+        source: "/candidate/interviews",
+        destination: "/candidates-dashboard/interview",
+      },
+
+
+
+
+
+
+
+
+      // Employers
+      {
+        source: "/employers",
+        destination: "/employers-list-v3",
+      },
+      {
+        source: "/employers-details/:slug",
+        destination: "/employers-single-v2/:slug",
+      },
+      {
+        source: "/employer/dashboard",
+        destination: "/employers-dashboard/dashboard",
+      },
+      {
+        source: "/employer/profile",
+        destination: "/employers-dashboard/company-profile",
+      },
+      {
+        source: "/employer/employees",
+        destination: "/employers-dashboard/all-applicants",
+      },
+      {
+        source: "/employer/agencies",
+        destination: "/employers-dashboard/agencies",
+      },
+      {
+        source: "/employer/interviews",
+        destination: "/employers-dashboard/interview",
+      },
+      {
+        source: "/employer-dashboard/interviews",
+        destination: "/employers-dashboard/interview",
+      },
+      {
+        source: "/employer/profile",
+        destination: "/employers-dashboard/company-profile",
+      },
+
+
+
+
+
+    // Agency 
+  
+
+      {
         source: "/agency",
         destination: "/job-list-v1",
       },
@@ -27,18 +93,7 @@ const nextConfig = {
         source: "/agency-details/:slug",
         destination: "/job-single-v1/:slug",
       },
-      {
-        source: "/employer-dashboard",
-        destination: "/employers-dashboard/dashboard",
-      },
-      {
-        source: "/employer-dashboard/interviews",
-        destination: "/employers-dashboard/interview",
-      },
-      {
-        source: "/candidate/dashboard",
-        destination: "/candidates-dashboard/dashboard",
-      },
+
       {
         source: "/agency/dashboard",
         destination: "/agency-dashboard/dashboard",
@@ -51,29 +106,7 @@ const nextConfig = {
         source: "/new-request",
         destination: "/employers-dashboard/interview/new-interview-request",
       },
-      {
-        source: "/candidate/profile",
-        destination: "/candidates-dashboard/profile",
-      },
-      {
-        source : "/candidate/employers",
-        destination : "/candidates-dashboard/employers"
-      },
-      {
-        source : "/candidate/agencies",
-        destination : "/candidates-dashboard/agencies"
-      },
-      {
-        source : "/candidate/interviews",
-        destination : "/candidates-dashboard/interview"
-      },
-      
-      
 
-      {
-        source: "/employer/profile",
-        destination: "/employers-dashboard/company-profile",
-      },
       {
         source: "/agency/profile",
         destination: "/agency-dashboard/agency-profile",
