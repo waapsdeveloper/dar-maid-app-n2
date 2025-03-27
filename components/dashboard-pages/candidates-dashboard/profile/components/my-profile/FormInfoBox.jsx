@@ -17,58 +17,57 @@ const FormInfoBox = () => {
 
     return (
         <form className="default-form">
-        <div className="row">
-            {/* Full Name/Company Name */}
-            <div className="form-group col-lg-6 col-md-12">
-                <label>Full Name / Company Name</label>
-                <input
-                    type="text"
-                    name="fullName"
-                    placeholder="John Doe / Company XYZ"
-                    required
-                />
+            <div className="row">
+                {/* Full Name/Company Name */}
+                <div className="form-group col-lg-6 col-md-12">
+                    <label>Full Name</label>
+                    <input
+                        type="text"
+                        name="fullName"
+                        placeholder="John Doe"
+                        required
+                    />
+                </div>
+
+                <div className="form-group col-lg-6 col-md-12">
+                    <label>Email</label>
+                    <input
+                        type="text"
+                        name="fullName"
+                        placeholder="employee@gmail.com"
+                        readOnly
+                    />
+                </div>
+
+                <div className="form-group col-lg-6 col-md-12">
+                    <label>Role</label>
+                    <input
+                        type="text"
+                        name="fullName"
+                        placeholder="Employee"
+                        readOnly
+                    />
+                </div>
+
+                {/* Profile Picture/Logo Upload */}
+                <div className="form-group col-lg-6 col-md-12">
+                    <label>Profile Picture / Logo</label>
+                    <input
+                        type="file"
+                        name="profileImage"
+                        accept="image/*"
+                        className="form-control"
+                        required
+                    />
+                </div>
+
+                <div className="form-group col-lg-12 col-md-12">
+                    <button type="submit" className="theme-btn btn-style-one">
+                        Save
+                    </button>
+                </div>
             </div>
-            <div className="form-group col-lg-6 col-md-12 gap-2">
-            <label>Date of Birth</label> 
-            <br />
-            <input
-              type="datetime-local"
-              name="interviewDate"
-              required
-            />
-          </div>
-           
-            {/* Type Selection */}
-            <div className="form-group col-lg-6 col-md-12">
-                <label>Gender</label>
-                <select className="chosen-single form-select" required>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                </select>
-            </div>
-            <div className="form-group col-lg-6 col-md-12">
-                <label>Nationality</label>
-                <input
-                    type="text"
-                    name="fullName"
-                    placeholder="Country"
-                    required
-                />
-            </div>
-    
-            {/* Profile Picture/Logo Upload */}
-            <div className="form-group col-lg-6 col-md-12">
-                <label>Profile Picture / Logo</label>
-                <input
-                    type="file"
-                    name="profileImage"
-                    accept="image/*"
-                    className="form-control"
-                    required
-                />
-            </div>
-        </div>
-    </form>
+        </form>
     );
 };
 

@@ -1,25 +1,51 @@
-import Map from "../../../Map";
-
 const ContactInfoBox = () => {
   return (
     <form className="default-form">
       <div className="row">
         {/* Contact Details */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Phone Number</label>
-         <input type="number"
-         placeholder="+924322321133"
-         name="number" />
+          <label>Dail Code</label>
+          <input type="number"
+            placeholder="+92"
+            name="number" />
         </div>
 
         <div className="form-group col-lg-6 col-md-12">
-          <label>Email Address</label>
+          <label>Phone Number</label>
+          <input type="number"
+            placeholder="4322321133"
+            name="number" />
+        </div>
+
+        <div className="form-group col-lg-12 col-md-12">
+          <label>Address</label>
           <input
-            type="email"
-            name="email"
-            placeholder="contact@example.com"
+            type="text"
+            name="name"
+            placeholder="329 Queensberry Street, North Melbourne VIC 3051, Australia."
             required
           />
+        </div>
+
+        <div className="form-group col-lg-6 col-md-12">
+          <label>City</label>
+          <select className="chosen-single form-select" required>
+            <option>Melbourne</option>
+            <option>Pakistan</option>
+            <option>Chaina</option>
+            <option>Japan</option>
+            <option>India</option>
+          </select>
+        </div>
+
+        <div className="form-group col-lg-6 col-md-12">
+          <label>State</label>
+          <select className="chosen-single form-select" required>
+            <option>Sindh</option>
+            <option>Punjab</option>
+            <option>Balochistan</option>
+            <option>Khyber Pakhtun Khuwa</option>
+          </select>
         </div>
 
         {/* <!-- Input --> */}
@@ -34,65 +60,6 @@ const ContactInfoBox = () => {
           </select>
         </div>
 
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>City</label>
-          <select className="chosen-single form-select" required>
-            <option>Melbourne</option>
-            <option>Pakistan</option>
-            <option>Chaina</option>
-            <option>Japan</option>
-            <option>India</option>
-          </select>
-        </div>
-
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-12 col-md-12">
-          <label>Complete Address</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="329 Queensberry Street, North Melbourne VIC 3051, Australia."
-            required
-          />
-        </div>
-
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Find On Map</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="329 Queensberry Street, North Melbourne VIC 3051, Australia."
-            required
-          />
-        </div>
-
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>Latitude</label>
-          <input type="text" name="name" placeholder="Melbourne" required />
-        </div>
-
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>Longitude</label>
-          <input type="text" name="name" placeholder="Melbourne" required />
-        </div>
-
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-12 col-md-12">
-          <button className="theme-btn btn-style-three">Search Location</button>
-        </div>
-
-        <div className="form-group col-lg-12 col-md-12">
-          <div className="map-outer">
-            <div style={{ height: "420px", width: "100%" }}>
-              <Map />
-            </div>
-          </div>
-        </div>
-        {/* End MapBox */}
 
         {/* <!-- Input --> */}
         <div className="form-group col-lg-12 col-md-12">
