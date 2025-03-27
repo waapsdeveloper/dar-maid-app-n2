@@ -58,11 +58,11 @@ const Register = () => {
     // Determine redirect route based on selected tab
     let redirectRoute = "/";
     if (selectedTab === 0) {
-      redirectRoute = "/candidate-dashboard";
+      redirectRoute = "/candidate-dashboard/profile";
     } else if (selectedTab === 1) {
-      redirectRoute = "/agency-dashboard";
+      redirectRoute = "/agency-dashboard/agency-profile";
     } else if (selectedTab === 2) {
-      redirectRoute = "/employer-dashboard";
+      redirectRoute = "/employer-dashboard/company-profile";
     }
 
     // alert(`Redirecting to: ${redirectRoute}`);
