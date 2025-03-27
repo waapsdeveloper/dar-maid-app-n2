@@ -33,13 +33,6 @@ const nextConfig = {
         destination: "/candidates-dashboard/interview",
       },
 
-
-
-
-
-
-
-
       // Employers
       {
         source: "/employers",
@@ -52,6 +45,10 @@ const nextConfig = {
       {
         source: "/employer/dashboard",
         destination: "/employers-dashboard/dashboard",
+      },
+      {
+        source: "/new-request",
+        destination: "/employers-dashboard/interview/new-interview-request",
       },
       {
         source: "/employer/profile",
@@ -78,12 +75,7 @@ const nextConfig = {
         destination: "/employers-dashboard/company-profile",
       },
 
-
-
-
-
-    // Agency 
-  
+      // Agency
 
       {
         source: "/agency",
@@ -99,34 +91,67 @@ const nextConfig = {
         destination: "/agency-dashboard/dashboard",
       },
       {
-        source : "/agency/profile",
-        destination : "/agency-dashboard/agency-profile"
+        source: "/agency/profile",
+        destination: "/agency-dashboard/agency-profile",
       },
       {
-        source : "/agency/employees",
-        destination : "/agency-dashboard/candidates",
+        source: "/agency/employees",
+        destination: "/agency-dashboard/candidates",
       },
       {
-        source : "/agency/employers/interviews",
-        destination: "/agency-dashboard/employers-interviews"
+        source: "/agency/employers/interviews",
+        destination: "/agency-dashboard/employers-interviews",
       },
       {
-        source : "/agency/candidate/interview",
-        destination : "/agency-dashboard/interviews"
+        source: "/agency/candidate/interview",
+        destination: "/agency-dashboard/interviews",
       },
+
+      // Super Admin
 
       {
         source: "/superadmin/dashboard",
         destination: "/superadmin-dashboard/dashboard",
       },
       {
-        source: "/new-request",
-        destination: "/employers-dashboard/interview/new-interview-request",
+        source: "/superadmin/employees",
+        destination: "/superadmin-dashboard/all-applicants",
       },
-
       {
-        source: "/agency/profile",
-        destination: "/agency-dashboard/agency-profile",
+        source: "/superadmin/agencies",
+        destination: "/superadmin-dashboard/agencies",
+      },
+      {
+        source: "/superadmin/employers",
+        destination: "/superadmin-dashboard/employers",
+      },
+      {
+        source: "/superadmin/interview-requests",
+        destination: "/superadmin-dashboard/interview-requests",
+      },
+      {
+        source: "/superadmin/query",
+        destination: "/superadmin-dashboard/packages",
+      },
+      {
+        source: "/superadmin/websites",
+        destination: "/superadmin-dashboard/website",
+      },
+      {
+        source: "/superadmin/auditlog",
+        destination: "/superadmin-dashboard/auditlog",
+      },
+      {
+        source: "/superadmin/report",
+        destination: "/superadmin-dashboard/report-statistics",
+      },
+      {
+        source: "/superadmin/services",
+        destination: "/superadmin-dashboard/services",
+      },
+      {
+        source: "/superadmin/profile",
+        destination: "/superadmin-dashboard/company-profile",
       },
     ];
   },
