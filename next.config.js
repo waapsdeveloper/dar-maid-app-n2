@@ -99,6 +99,23 @@ const nextConfig = {
         destination: "/agency-dashboard/dashboard",
       },
       {
+        source : "/agency/profile",
+        destination : "/agency-dashboard/agency-profile"
+      },
+      {
+        source : "/agency/employees",
+        destination : "/agency-dashboard/candidates",
+      },
+      {
+        source : "/agency/employers/interviews",
+        destination: "/agency-dashboard/employers-interviews"
+      },
+      {
+        source : "/agency/candidate/interview",
+        destination : "/agency-dashboard/interviews"
+      },
+
+      {
         source: "/superadmin/dashboard",
         destination: "/superadmin-dashboard/dashboard",
       },
