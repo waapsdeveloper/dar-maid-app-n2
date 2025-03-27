@@ -7,7 +7,7 @@ const JobExperienceCard = () => {
   const addExperience = () => {
     setExperiences([
       ...experiences,
-      { id: Date.now(), jobTitle: "", company: "", years: "" },
+      { id: Date.now(), jobTitle: "", company: "", startDate: "", endDate: "" },
     ]);
   };
 
@@ -52,12 +52,26 @@ const JobExperienceCard = () => {
               />
             </div>
             <div className="form-group col-lg-6 col-md-12">
+              <label>Start Date</label>
+              <br />
               <input
-                type="number"
-                placeholder="Years Worked"
+                type="date"
+                placeholder="Start Date"
                 value={exp.years}
                 min="0"
-                onChange={(e) => updateExperience(exp.id, "years", e.target.value)}
+                onChange={(e) => updateExperience(exp.id, "startDate", e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-group col-lg-6 col-md-12">
+              <label>End Date</label>
+              <br />
+              <input
+                type="date"
+                placeholder="End Date"
+                value={exp.years}
+                min="0"
+                onChange={(e) => updateExperience(exp.id, "endDate", e.target.value)}
                 required
               />
             </div>
