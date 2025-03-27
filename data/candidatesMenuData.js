@@ -90,35 +90,35 @@ module.exports = [
     id: 1,
     name: "Dashboard",
     icon: "la-home",
-    routePath: "/candidates-dashboard/dashboard",
+    routePath: "/candidate/dashboard",
     active: "active",
   },
   {
     id: 2,
     name: "Profile",  // Changed from "Company Profile"
     icon: "la-user-circle",
-    routePath: "/candidates-dashboard/profile",
+    routePath: "/candidate/profile",
     active: "",
   },
   {
     id: 3,
     name: "Employer",  // Changed from "Post a New Job"
     icon: "la-user-friends",
-    routePath: "/candidates-dashboard/employers",
+    routePath: "/candidate/employers",
     active: "",
   },
   {
     id: 4,
     name: "Agency",  // Changed from "Manage Jobs"
     icon: "la-building",
-    routePath: "/candidates-dashboard/agencies",
+    routePath: "/candidate/agencies",
     active: "",
   },
   {
     id: 5,
     name: "Interview",  // Changed from "All Applicants"
     icon: "la-comments",
-    routePath: "/candidates-dashboard/interview",
+    routePath: "/candidate/interviews",
     active: "",
   },
   {
