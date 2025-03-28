@@ -2,7 +2,7 @@ module.exports = [
   {
     id: 1,
     name: "Dashboard",
-    icon: "la-home",  // Or "la-tachometer" for speedometer style
+    icon: "la-home", // Or "la-tachometer" for speedometer style
     routePath: "/superadmin/dashboard",
     active: "active",
   },
@@ -24,18 +24,17 @@ module.exports = [
     id: 10,
     name: "Employer",
     icon: "la-briefcase",
-    routePath:  "/superadmin/employers",
+    routePath: "/superadmin/employers",
     active: "",
   },
   {
     id: 14,
     name: "Interview Requests",
     icon: "la-briefcase",
-    routePath:  "/superadmin/interview-requests",
+    routePath: "/superadmin/interview-requests",
     active: "",
   },
 
-  
   {
     id: 3,
     name: "Queries",
@@ -47,7 +46,7 @@ module.exports = [
     id: 4,
     name: "Website",
     icon: "la-globe",
-    routePath:"/superadmin/websites",
+    routePath: "/superadmin/websites",
     active: "",
   },
   {
@@ -68,14 +67,14 @@ module.exports = [
     id: 7,
     name: "Service",
     icon: "la-concierge-bell",
-    routePath:"/superadmin/services",
+    routePath: "/superadmin/services",
     active: "",
   },
   {
     id: 2,
     name: "Profile",
     icon: "la-user-tie",
-    routePath:"/superadmin/profile",
+    routePath: "/superadmin/profile",
     active: "",
   },
   {
@@ -85,5 +84,4 @@ module.exports = [
     routePath: "/",
     active: "",
   },
-  
 ];
