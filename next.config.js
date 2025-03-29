@@ -153,6 +153,14 @@ const nextConfig = {
         source: "/superadmin/profile",
         destination: "/superadmin-dashboard/company-profile",
       },
+      {
+        source: "/superadmin/roles",
+        destination: "/superadmin-dashboard/roles",
+      },
+      {
+        source: "/superadmin/add-roles",
+        destination: "/superadmin-dashboard/add-roles",
+      },
     ];
   },
 

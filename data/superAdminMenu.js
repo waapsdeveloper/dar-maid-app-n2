@@ -7,6 +7,13 @@ module.exports = [
     active: "active",
   },
   {
+    id: 15,
+    name: "Roles",
+    icon: "la-home", // Or "la-tachometer" for speedometer style
+    routePath: "/superadmin/roles",
+    active: "active",
+  },
+  {
     id: 8,
     name: "Employee",
     icon: "la-users",
