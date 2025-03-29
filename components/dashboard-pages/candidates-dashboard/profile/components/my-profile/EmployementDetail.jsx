@@ -204,81 +204,81 @@ const EmploymentDetails = () => {
               </select>
             </div>
 
-         {/* Expected Salary and Document Upload - 50% width each */} 
-<div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
-  {/* Expected Salary - 50% width */}
-  <div style={{ flex: "1 1 100%" }}>
-    <label
-      style={{
-        display: "block",
-        marginBottom: "0.5rem",
-        color: "#4a5568",
-        fontWeight: "600",
-      }}
-    >
-      Expected Salary
-    </label>
-    <input
-      type="text"
-      style={{
-        width: "100%",
-        padding: "0.75rem",
-        border: "2px solid #cbd5e0",
-        borderRadius: "0.5rem",
-        fontSize: "1rem",
-      }}
-      placeholder="$800 - $1200"
-      value={formData.salary}
-      onChange={(e) =>
-        setFormData({ ...formData, salary: e.target.value })
-      }
-      required
-    />
-  </div>
+            {/* Expected Salary and Document Upload - 50% width each */}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
+              {/* Expected Salary - 50% width */}
+              <div style={{ flex: "1 1 100%" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "0.5rem",
+                    color: "#4a5568",
+                    fontWeight: "600",
+                  }}
+                >
+                  Expected Salary
+                </label>
+                <input
+                  type="text"
+                  style={{
+                    width: "100%",
+                    padding: "0.75rem",
+                    border: "2px solid #cbd5e0",
+                    borderRadius: "0.5rem",
+                    fontSize: "1rem",
+                  }}
+                  placeholder="$800 - $1200"
+                  value={formData.salary}
+                  onChange={(e) =>
+                    setFormData({ ...formData, salary: e.target.value })
+                  }
+                  required
+                />
+              </div>
 
-  {/* Document Upload - 50% width on next line */}
-  <div style={{ flex: "1 1 50%" }}>
-    <label
-      style={{
-        display: "block",
-        marginBottom: "0.5rem",
-        color: "#4a5568",
-        fontWeight: "600",
-      }}
-    >
-      Supporting Documents
-    </label>
-    <div
-      style={{
-        border: "2px dashed #cbd5e0",
-        borderRadius: "0.5rem",
-        padding: "1rem",
-        textAlign: "center",
-        backgroundColor: "#f7fafc",
-        cursor: "pointer",
-      }}
-    >
-      <label
-        style={{
-          display: "block",
-          color: "#a0aec0",
-          fontSize: "1rem",
-          cursor: "pointer",
-        }}
-      >
-        Click to upload documents
-        <input
-          type="file"
-          style={{ display: "none" }}
-          accept=".pdf,.doc,.docx,image/*"
-          onChange={handleFileChange}
-          multiple
-        />
-      </label>
-    </div>
-  </div>
-</div>
-</div>
+              {/* Document Upload - 50% width on next line */}
+              <div style={{ flex: "1 1 50%" }}>
+                <label
+                  style={{
+                    display: "block",
+                    marginBottom: "0.5rem",
+                    color: "#4a5568",
+                    fontWeight: "600",
+                  }}
+                >
+                  Supporting Documents
+                </label>
+                <div
+                  style={{
+                    border: "2px dashed #cbd5e0",
+                    borderRadius: "0.5rem",
+                    padding: "1rem",
+                    textAlign: "center",
+                    backgroundColor: "#f7fafc",
+                    cursor: "pointer",
+                  }}
+                >
+                  <label
+                    style={{
+                      display: "block",
+                      color: "#a0aec0",
+                      fontSize: "1rem",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Click to upload documents
+                    <input
+                      type="file"
+                      style={{ display: "none" }}
+                      accept=".pdf,.doc,.docx,image/*"
+                      onChange={handleFileChange}
+                      multiple
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* Uploaded Documents Preview */}
           {uploadedDocuments.map((doc, index) => (
