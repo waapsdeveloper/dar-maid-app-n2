@@ -165,6 +165,14 @@ const nextConfig = {
         source: "/superadmin/add-roles",
         destination: "/superadmin-dashboard/crud/roles/add-roles",
       },
+      {
+        source: "/superadmin/add-employee",
+        destination: "/superadmin-dashboard/crud/employee/add-employee",
+      },
+      {
+        source: "/superadmin/edit-employee",
+        destination: "/superadmin-dashboard/crud/employee/edit-employee",
+      },
     ];
   },
 

@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import AddEmployee from "@/components/dashboard-pages/superadmin-dashboard/crud/employee/add-employee";
+import EditEmployee from "@/components/dashboard-pages/superadmin-dashboard/crud/employee/edit-employee";
 
 export const metadata = {
   title: "Company Profile || Domesta  - Listing Board",
@@ -9,7 +9,7 @@ export const metadata = {
 const index = () => {
   return (
     <>
-      <AddEmployee />
+      <EditEmployee />
     </>
   );
 };
