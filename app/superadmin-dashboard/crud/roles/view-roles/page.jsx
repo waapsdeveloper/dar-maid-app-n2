@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import AddRoles from "@/components/dashboard-pages/superadmin-dashboard/add-roles";
+import ViewRoles from "@/components/dashboard-pages/superadmin-dashboard/crud/view-roles";
 
 export const metadata = {
   title: "Company Profile || Domesta  - Listing Board",
@@ -9,7 +9,7 @@ export const metadata = {
 const index = () => {
   return (
     <>
-      <AddRoles />
+      <ViewRoles />
     </>
   );
 };

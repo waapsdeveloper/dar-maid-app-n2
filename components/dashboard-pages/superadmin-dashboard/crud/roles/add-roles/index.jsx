@@ -1,11 +1,11 @@
-import MobileMenu from "../../../header/MobileMenu";
-import DashboardHeader from "../../../header/DashboardHeader";
-import LoginPopup from "../../../common/form/login/LoginPopup";
-import BreadCrumb from "../../BreadCrumb";
+import MobileMenu from "../../../../../header/MobileMenu";
+import DashboardHeader from "../../../../../header/DashboardHeader";
+import LoginPopup from "../../../../../common/form/login/LoginPopup";
+import BreadCrumb from "../../../../BreadCrumb";
 import MyProfile from "./components/my-profile";
-import CopyrightFooter from "../../CopyrightFooter";
-import DashboardSuperAdminSidebar from "../../../header/DashboardSuperAdminSidebar";
-import MenuToggler from "../../MenuToggler";
+import CopyrightFooter from "../../../../CopyrightFooter";
+import DashboardSuperAdminSidebar from "../../../../../header/DashboardSuperAdminSidebar";
+import MenuToggler from "../../../../MenuToggler";
 
 const index = () => {
   return (

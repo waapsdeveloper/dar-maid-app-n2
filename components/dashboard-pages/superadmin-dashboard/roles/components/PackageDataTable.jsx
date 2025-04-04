@@ -36,7 +36,7 @@ const PackageDataTable = () => {
                   </li> */}
                     <li>
                       <button data-text="View Details">
-                        <span className="la la-eye"></span>
+                        <span className="la la-eye" onClick={() => router.push(`/superadmin/view-roles?id=${event.id}`)}></span>
                       </button>
                     </li>
                     <li>
