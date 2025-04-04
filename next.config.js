@@ -159,11 +159,11 @@ const nextConfig = {
       },
       {
         source: "/superadmin/view-roles",
-        destination: "/superadmin-dashboard/crud/view-roles",
+        destination: "/superadmin-dashboard/crud/roles/view-roles",
       },
       {
         source: "/superadmin/add-roles",
-        destination: "/superadmin-dashboard/crud/add-roles",
+        destination: "/superadmin-dashboard/crud/roles/add-roles",
       },
     ];
   },
