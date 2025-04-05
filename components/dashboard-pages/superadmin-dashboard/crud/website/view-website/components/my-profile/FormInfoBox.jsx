@@ -2,124 +2,126 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const ViewInterviewRequest = () => {
+const ViewWebsiteSetting = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const requestId = searchParams.get("id");
+  const settingId = searchParams.get("id");
 
-  // Sample data with additional entries
-  const interviewRequests = [
+  // Sample website settings data
+  const websiteSettings = [
     {
       id: "1",
-      employer_id: "19",
-      employee_id: "45",
-      interview_mode: "In-Person",
-      interview_date: "2024-03-15",
-      interview_time: "14:30",
-      status: "Pending",
-      additional_notes: "Bring portfolio documents and ID proof"
+      setting_key: "site_title",
+      setting_value: "Job Portal Pro",
+      created_at: "2024-03-01 09:00:00",
+      updated_at: "2024-03-15 14:30:00"
     },
     {
       id: "2",
-      employer_id: "22",
-      employee_id: "78",
-      interview_mode: "Online",
-      interview_date: "2024-03-18",
-      interview_time: "10:00",
-      status: "Accepted",
-      additional_notes: "Zoom meeting - Link shared via email"
+      setting_key: "maintenance_mode",
+      setting_value: "false",
+      created_at: "2024-03-01 09:00:00",
+      updated_at: "2024-03-01 09:00:00"
+    },
+    {
+      id: "3",
+      setting_key: "theme_config",
+      setting_value: JSON.stringify({
+        primary_color: "#2196f3",
+        secondary_color: "#ff9800",
+        dark_mode: true
+      }, null, 2),
+      created_at: "2024-03-10 10:00:00",
+      updated_at: "2024-03-12 16:45:00"
     }
   ];
 
-  const [requestData, setRequestData] = useState({
-    employer_id: "",
-    employee_id: "",
-    interview_mode: "",
-    interview_date: "",
-    interview_time: "",
-    status: "",
-    additional_notes: ""
+  const [settingData, setSettingData] = useState({
+    setting_key: "",
+    setting_value: "",
+    created_at: "",
+    updated_at: ""
   });
 
   useEffect(() => {
-    if (requestId) {
-      const request = interviewRequests.find(r => r.id === requestId);
-      if (request) {
-        setRequestData({
-          employer_id: request.employer_id,
-          employee_id: request.employee_id,
-          interview_mode: request.interview_mode,
-          interview_date: request.interview_date,
-          interview_time: request.interview_time,
-          status: request.status,
-          additional_notes: request.additional_notes
+    if (settingId) {
+      const setting = websiteSettings.find(s => s.id === settingId);
+      if (setting) {
+        setSettingData({
+          setting_key: setting.setting_key,
+          setting_value: setting.setting_value,
+          created_at: setting.created_at,
+          updated_at: setting.updated_at
         });
       }
     }
-  }, [requestId]);
+  }, [settingId]);
+
+  // Format datetime display
+  const formatDateTime = (datetime) => {
+    return new Date(datetime).toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
+  // Try to pretty-print JSON values
+  const formatSettingValue = (value) => {
+    try {
+      const parsed = JSON.parse(value);
+      return JSON.stringify(parsed, null, 2);
+    } catch (e) {
+      return value;
+    }
+  };
 
   return (
     <div className="default-form">
       <div className="row">
         <div className="col-lg-6 col-md-12">
           <div className="form-group">
-            <label className="fw-bold text-secondary">Employer ID</label>
-            <div className="form-control-plaintext">
-              Employer #{requestData.employer_id}
+            <label className="fw-bold text-secondary">Setting Key</label>
+            <div className="form-control-plaintext code-font">
+              {settingData.setting_key}
             </div>
           </div>
 
           <div className="form-group">
-            <label className="fw-bold text-secondary">Employee ID</label>
+            <label className="fw-bold text-secondary">Created At</label>
             <div className="form-control-plaintext">
-              Employee #{requestData.employee_id}
+              {formatDateTime(settingData.created_at)}
             </div>
           </div>
 
           <div className="form-group">
-            <label className="fw-bold text-secondary">Interview Mode</label>
-            <div className="form-control-plaintext text-capitalize">
-              {requestData.interview_mode}
+            <label className="fw-bold text-secondary">Updated At</label>
+            <div className="form-control-plaintext">
+              {formatDateTime(settingData.updated_at)}
             </div>
           </div>
         </div>
 
         <div className="col-lg-6 col-md-12">
           <div className="form-group">
-            <label className="fw-bold text-secondary">Interview Date</label>
-            <div className="form-control-plaintext">
-              {new Date(requestData.interview_date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
-            </div>
+            <label className="fw-bold text-secondary">Setting Value</label>
+            <pre className="setting-value-container bg-light p-3 rounded">
+              {formatSettingValue(settingData.setting_value)}
+            </pre>
           </div>
 
-          <div className="form-group">
-            <label className="fw-bold text-secondary">Interview Time</label>
-            <div className="form-control-plaintext">
-              {new Date(`1970-01-01T${requestData.interview_time}`).toLocaleTimeString([], {
-                hour: '2-digit',
-                minute: '2-digit',
-                hour12: true
-              })}
+          {settingData.setting_key === 'maintenance_mode' && (
+            <div className="form-group">
+              <label className="fw-bold text-secondary">Current Status</label>
+              <div className={`status-badge ${
+                settingData.setting_value === 'true' ? 'active' : 'inactive'
+              }`}>
+                {settingData.setting_value === 'true' ? 'Active' : 'Inactive'}
+              </div>
             </div>
-          </div>
-
-          <div className="form-group">
-            <label className="fw-bold text-secondary">Status</label>
-            <div className={`badge ${requestData.status.toLowerCase()}-badge`}>
-              {requestData.status}
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label className="fw-bold text-secondary">Additional Notes</label>
-            <div className="notes-container bg-light p-3 rounded">
-              {requestData.additional_notes || "No additional notes provided"}
-            </div>
-          </div>
+          )}
         </div>
       </div>
 
@@ -127,35 +129,37 @@ const ViewInterviewRequest = () => {
         <button
           type="button"
           className="btn btn-primary"
-          onClick={() => router.push("/superadmin/interview-requests")}
+          onClick={() => router.push("/superadmin/website-settings")}
         >
-          Back to Requests
+          Back to Settings
         </button>
       </div>
 
       <style jsx>{`
-        .pending-badge {
-          background-color: #fff3cd;
-          color: #856404;
-          padding: 0.5rem 1rem;
-          border-radius: 20px;
-        }
-        .accepted-badge {
-          background-color: #d4edda;
-          color: #155724;
-          padding: 0.5rem 1rem;
-          border-radius: 20px;
-        }
-        .declined-badge {
-          background-color: #f8d7da;
-          color: #721c24;
-          padding: 0.5rem 1rem;
-          border-radius: 20px;
-        }
-        .notes-container {
-          min-height: 100px;
+        .setting-value-container {
+          min-height: 200px;
           white-space: pre-wrap;
           border: 1px solid #dee2e6;
+          font-family: 'Courier New', monospace;
+          font-size: 0.9rem;
+        }
+        .status-badge {
+          padding: 0.5rem 1rem;
+          border-radius: 20px;
+          display: inline-block;
+          font-weight: 500;
+        }
+        .status-badge.active {
+          background-color: #d4edda;
+          color: #155724;
+        }
+        .status-badge.inactive {
+          background-color: #fff3cd;
+          color: #856404;
+        }
+        .code-font {
+          font-family: 'Courier New', monospace;
+          color: #2c3e50;
         }
         .form-control-plaintext {
           padding: 0.5rem 0;
@@ -167,4 +171,4 @@ const ViewInterviewRequest = () => {
   );
 };
 
-export default ViewInterviewRequest;
+export default ViewWebsiteSetting;

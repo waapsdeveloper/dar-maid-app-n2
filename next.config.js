@@ -228,6 +228,30 @@ const nextConfig = {
         source: "/superadmin/view-website",
         destination: "/superadmin-dashboard/crud/website/view-website",
       },
+      {
+        source: "/superadmin/add-auditlog",
+        destination: "/superadmin-dashboard/crud/website/add-auditlog",
+      },
+      {
+        source: "/superadmin/edit-auditlog",
+        destination: "/superadmin-dashboard/crud/website/edit-auditlog",
+      },
+      {
+        source: "/superadmin/view-auditlog",
+        destination: "/superadmin-dashboard/crud/website/view-auditlog",
+      },
+      {
+        source: "/superadmin/add-report-statistics",
+        destination: "/superadmin-dashboard/crud/website/add-report-statistics",
+      },
+      {
+        source: "/superadmin/edit-report-statistics",
+        destination: "/superadmin-dashboard/crud/website/edit-report-statistics",
+      },
+      {
+        source: "/superadmin/view-report-statistics",
+        destination: "/superadmin-dashboard/crud/website/view-report-statistics",
+      },
     ];
   },
 
