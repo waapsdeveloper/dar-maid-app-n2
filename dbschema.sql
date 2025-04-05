@@ -350,6 +350,8 @@ CREATE TABLE terms (
 CREATE TABLE countries (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL UNIQUE, -- Country name
+    dail_code VARCHAR(10) NOT NULL, -- Dialing code
+    currency VARCHAR(10) NOT NULL, -- Currency code (e.g., USD, EUR)
     iso_code VARCHAR(3) NOT NULL UNIQUE, -- ISO 3166-1 alpha-3 code
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
