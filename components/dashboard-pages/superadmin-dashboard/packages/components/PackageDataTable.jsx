@@ -1,4 +1,7 @@
+"use client";
+import { useRouter } from "next/navigation";
 const PackageDataTable = () => {
+  const router = useRouter();
   // Sample data
   const queryData = [
     {
@@ -61,17 +64,20 @@ const PackageDataTable = () => {
                   className="option-list d-flex list-unstyled m-0 p-0 gap-2"
                   style={{ justifyContent: "flex-start", width: "100%" }}
                 >
-                  <li>
-                    <button data-text="Add">
-                      <span className="la la-plus-circle"></span>
-                    </button>
-                  </li>
-                  <li>
-                    <button data-text="View Details">
+                  <li
+                    onClick={() => {
+                      router.push(`/superadmin/view-query?id=1`);
+                    }}
+                  >
+                    <button data-text="View">
                       <span className="la la-eye"></span>
                     </button>
                   </li>
-                  <li>
+                  <li
+                    onClick={() => {
+                      router.push("/superadmin/edit-query?id=1");
+                    }}
+                  >
                     <button data-text="Edit">
                       <span className="la la-pencil"></span>
                     </button>

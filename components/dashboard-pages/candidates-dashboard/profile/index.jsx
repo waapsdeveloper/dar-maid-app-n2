@@ -1,3 +1,6 @@
+"use client";
+import { useState } from "react";
+
 import MobileMenu from "../../../header/MobileMenu";
 import DashboardHeader from "../../../header/DashboardHeader";
 import LoginPopup from "../../../common/form/login/LoginPopup";
@@ -8,14 +11,17 @@ import ContactInfoBox from "./components/ContactInfoBox";
 import CopyrightFooter from "../../CopyrightFooter";
 import MenuToggler from "../../MenuToggler";
 import DashboardCandidatesSidebar from "@/components/header/DashboardCandidatesSidebar";
-import EmployementDetail from "./components/my-profile/EmployementDetail";
-import { ApplicationManagement, InterviewManagement,EmploymentDetails ,InterviewAvailability,Document} from "./components/my-profile/EmployementDetail";
+import { ApplicationManagement, InterviewManagement,EmploymentDetails ,InterviewAvailability} from "./components/my-profile/EmployementDetail";
+import EmploymentInfoBox from "./components/EmploymentInfoBox";
+import WorkExperiencesBox from "./components/WorkExperiencesBox";
+import {Document,FileCard} from "./components/my-profile/Document";
+
 const index = () => {
   return (
     <div className="page-wrapper dashboard">
       <span className="header-span"></span>
       {/* <!-- Header Span for hight --> */}
-
+s
       <LoginPopup />
       {/* End Login Popup Modal */}
 
@@ -64,6 +70,28 @@ const index = () => {
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
+                    <h4>Employment Information</h4>
+                  </div>
+                  <div className="widget-content">
+                    <EmploymentInfoBox />
+                  </div>
+                </div>
+              </div>
+
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
+                    <h4>Work Experiences</h4>
+                  </div>
+                  <div className="widget-content">
+                    <WorkExperiencesBox/>
+                  </div>
+                </div>
+              </div>
+
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
                     <h4>Employement Detail</h4>
                   </div>
                   {/* End .widget-title */}
@@ -88,7 +116,19 @@ const index = () => {
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
-                    <h4>Document</h4>
+                    <h4>Documents</h4>
+                  </div>
+                  {/* End .widget-title */}
+
+                  <div className="widget-content">
+                    <FileCard />
+                  </div>
+                </div>
+              </div>
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
+                    <h4>Upload Document</h4>
                   </div>
                   {/* End .widget-title */}
 

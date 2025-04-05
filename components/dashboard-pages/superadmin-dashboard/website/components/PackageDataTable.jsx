@@ -1,4 +1,7 @@
+'use client'
+import { useRouter } from "next/navigation";
 const PackageDataTable = () => {
+  const router = useRouter();
   // Sample event data
   const eventData = [
     {
@@ -54,7 +57,7 @@ const PackageDataTable = () => {
             <td className="value">{event.value}</td>
             <td className="event">{event.event}</td>
             <td className="action" style={{ textAlign: "left", width: "1%" }}>
-              <div
+            <div
                 className="option-box d-flex gap-2 justify-content-center"
                 style={{ width: "100%" }}
               >
@@ -62,17 +65,20 @@ const PackageDataTable = () => {
                   className="option-list d-flex list-unstyled m-0 p-0 gap-2"
                   style={{ justifyContent: "flex-start", width: "100%" }}
                 >
-                  <li>
-                    <button data-text="Add">
-                      <span className="la la-plus-circle"></span>
-                    </button>
-                  </li>
-                  <li>
-                    <button data-text="View Details">
+                  <li
+                    onClick={() => {
+                      router.push(`/superadmin/view-website?id=1`);
+                    }}
+                  >
+                    <button data-text="View">
                       <span className="la la-eye"></span>
                     </button>
                   </li>
-                  <li>
+                  <li
+                    onClick={() => {
+                      router.push("/superadmin/edit-website?id=1");
+                    }}
+                  >
                     <button data-text="Edit">
                       <span className="la la-pencil"></span>
                     </button>

@@ -4,8 +4,10 @@ import jobFeaturedData from "../../../../../data/job-featured";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const WidgetContentBox = () => {
+  const router = useRouter();
   return (
     <div className="widget-content">
       <div className="tabs-box">
@@ -39,7 +41,7 @@ const WidgetContentBox = () => {
                           />
                         </figure>
                         <h4 className="name">
-                          <Link href={`/jobs-single-v1/${job.id}`}>
+                          <Link href={`/agency-details/${job.id}`}>
                             {job.jobTitle}
                           </Link>
                         </h4>
@@ -74,12 +76,19 @@ const WidgetContentBox = () => {
 
                       <div className="option-box">
                         <ul className="option-list">
-                          <li>
+                          <li 
+                          onClick={() => {
+                            router.push(`/agency-details/${job.id}`)
+                          }}
+                          >
                             <button data-text="View Applications">
                               <span className="la la-eye"></span>
                             </button>
                           </li>
-                          <li>
+                          <li 
+                           onClick={() => {
+                            router.push(`superadmin/edit-agency?id=${job.id}`)
+                          }}>
                             <button data-text="Edit Job">
                               <span className="la la-pencil"></span>
                             </button>

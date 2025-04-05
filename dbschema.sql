@@ -41,11 +41,12 @@ CREATE TABLE users (
 CREATE TABLE employees (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     user_id BIGINT UNSIGNED NOT NULL UNIQUE, -- Reference to Users table
+    dail_code VARCHAR(50) NULL,
     contact_number VARCHAR(50) NULL,
     address TEXT NULL,
     city VARCHAR(100) NOT NULL,
+    state VARCHAR(100) NOT NULL,
     country VARCHAR(100) NOT NULL,
-    nationality VARCHAR(100) NOT NULL,
     experience_years INT DEFAULT 0,
     availability ENUM('Available', 'Not Available') DEFAULT 'Available',
     preferred_interview_time VARCHAR(50) NULL, -- Free-text or predefined values

@@ -3,35 +3,35 @@ module.exports = [
     id: 1,
     name: "Dashboard",
     icon: "la-home",
-    routePath: "/employers-dashboard/dashboard",
+    routePath: "/employer/dashboard",
     active: "active",
   },
   {
     id: 2,
     name: "Profile",  // Changed from "Company Profile"
     icon: "la-user-circle",
-    routePath: "/employers-dashboard/company-profile",
+    routePath: "/employer/profile",
     active: "",
   },
   {
     id: 3,
     name: "Employee",  // Changed from "Post a New Job"
     icon: "la-user-friends",
-    routePath: "/employers-dashboard/all-applicants",
+    routePath: "/employer/employees",
     active: "",
   },
   {
     id: 4,
     name: "Agency",  // Changed from "Manage Jobs"
     icon: "la-building",
-    routePath: "/employers-dashboard/agencies",
+    routePath: "/employer/agencies",
     active: "",
   },
   {
     id: 5,
     name: "Interview",  // Changed from "All Applicants"
     icon: "la-comments",
-    routePath: "/employers-dashboard/interview",
+    routePath: "/employer/interviews",
     active: "",
   },
   {

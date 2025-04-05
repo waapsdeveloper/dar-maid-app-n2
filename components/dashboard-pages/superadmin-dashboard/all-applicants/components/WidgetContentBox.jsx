@@ -4,8 +4,11 @@ import candidatesData from "../../../../../data/candidates";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const WidgetContentBox = () => {
+  const router = useRouter();
+
   return (
     <div className="widget-content">
       <div className="tabs-box">
@@ -53,7 +56,7 @@ const WidgetContentBox = () => {
                             {candidate.location}
                           </li>
                           <li>
-                            <span className="icon flaticon-money"></span>  BHD 
+                            <span className="icon flaticon-money"></span> BHD
                             {candidate.hourlyRate} / hour
                           </li>
                         </ul>
@@ -71,23 +74,28 @@ const WidgetContentBox = () => {
 
                       <div className="option-box">
                         <ul className="option-list">
-                          <li>
-                            <button data-text="View Aplication">
+                          <li
+                            onClick={() =>
+                              router.push(`/candidates-details/${candidate.id}`)
+                             }
+                          >
+                            <button data-text="View Application">
                               <span className="la la-eye"></span>
                             </button>
                           </li>
-                          <li>
-                            <button data-text="Approve Aplication">
-                              <span className="la la-check"></span>
+                          <li
+                            onClick={() =>
+                              router.push(
+                                `/superadmin/edit-employee?id=${candidate.id}`
+                              )
+                            }
+                          >
+                            <button data-text="Edit Application">
+                              <span className="la la-pencil"></span>
                             </button>
                           </li>
                           <li>
-                            <button data-text="Reject Aplication">
-                              <span className="la la-times-circle"></span>
-                            </button>
-                          </li>
-                          <li>
-                            <button data-text="Delete Aplication">
+                            <button data-text="Delete Application">
                               <span className="la la-trash"></span>
                             </button>
                           </li>
@@ -133,7 +141,7 @@ const WidgetContentBox = () => {
                             {candidate.location}
                           </li>
                           <li>
-                            <span className="icon flaticon-money"></span> BHD 
+                            <span className="icon flaticon-money"></span> BHD
                             {candidate.hourlyRate} / hour
                           </li>
                         </ul>
@@ -152,22 +160,21 @@ const WidgetContentBox = () => {
                       <div className="option-box">
                         <ul className="option-list">
                           <li>
-                            <button data-text="View Aplication">
+                            <button data-text="View Application">
                               <span className="la la-eye"></span>
                             </button>
                           </li>
-                          <li>
-                            <button data-text="Approve Aplication">
-                              <span className="la la-check"></span>
+                          <li
+                            onClick={() =>
+                              router.push(`/superadmin/edit-employee`)
+                            }
+                          >
+                            <button data-text="Edit Application">
+                              <span className="la la-pencil"></span>
                             </button>
                           </li>
                           <li>
-                            <button data-text="Reject Aplication">
-                              <span className="la la-times-circle"></span>
-                            </button>
-                          </li>
-                          <li>
-                            <button data-text="Delete Aplication">
+                            <button data-text="Delete Application">
                               <span className="la la-trash"></span>
                             </button>
                           </li>
@@ -213,7 +220,7 @@ const WidgetContentBox = () => {
                             {candidate.location}
                           </li>
                           <li>
-                            <span className="icon flaticon-money"></span> BHD 
+                            <span className="icon flaticon-money"></span> BHD
                             {candidate.hourlyRate} / hour
                           </li>
                         </ul>
@@ -232,22 +239,21 @@ const WidgetContentBox = () => {
                       <div className="option-box">
                         <ul className="option-list">
                           <li>
-                            <button data-text="View Aplication">
+                            <button data-text="View Application">
                               <span className="la la-eye"></span>
                             </button>
                           </li>
-                          <li>
-                            <button data-text="Approve Aplication">
-                              <span className="la la-check"></span>
+                          <li
+                            onClick={() =>
+                              router.push(`/superadmin/edit-employee`)
+                            }
+                          >
+                            <button data-text="Edit Application">
+                              <span className="la la-pencil"></span>
                             </button>
                           </li>
                           <li>
-                            <button data-text="Reject Aplication">
-                              <span className="la la-times-circle"></span>
-                            </button>
-                          </li>
-                          <li>
-                            <button data-text="Delete Aplication">
+                            <button data-text="Delete Application">
                               <span className="la la-trash"></span>
                             </button>
                           </li>

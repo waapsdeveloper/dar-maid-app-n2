@@ -90,21 +90,21 @@ module.exports = [
       id: 1,
       name: "Dashboard",
       icon: "la-home",
-      routePath: "/agency-dashboard/dashboard",
+      routePath:"/agency/dashboard",
       active: "active",
     },
     {
       id: 2,
       name: "Profile",  // Changed from "Company Profile"
       icon: "la-user-circle",
-      routePath: "/agency-dashboard/agency-profile",
+      routePath: "/agency/profile",
       active: "",
     },
     {
       id: 3,
       name: "Our Employee",  // Changed from "Post a New Job"
       icon: "la-user-friends",
-      routePath: "/agency-dashboard/candidates",
+      routePath:  "/agency/employees",
       active: "",
     },
     // {
@@ -118,14 +118,14 @@ module.exports = [
       id: 5,
       name: "Interview",  // Changed from "All Applicants"
       icon: "la-comments",
-      routePath: "/agency-dashboard/interviews",
+      routePath: "/agency/candidate/interview",
       active: "",
     },
     {
       id: 6,
       name: "Employers Interview",  // Changed from "All Applicants"
       icon: "la-comments",
-      routePath: "/agency-dashboard/employers-interviews",
+      routePath: "/agency/employers/interviews",
       active: "",
     },
     {

@@ -45,16 +45,16 @@ const DefaulHeader2 = () => {
 
       switch (user.role) {
         case "employer":
-          router.push("/employer-dashboard");
+          router.push("/employer/dashboard");
           break;
         case "employee":
-          router.push("/candidate-dashboard");
+          router.push("/candidate/dashboard");
           break;
         case "agency":
-          router.push("/agency-dashboard");
+          router.push("/agency/dashboard");
           break;
         case "superadmin":
-          router.push("/superadmin-dashboard");
+          router.push("/superadmin/dashboard");
           break;
         default:
           router.push("/login"); // Default fallback
