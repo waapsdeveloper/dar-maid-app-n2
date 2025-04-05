@@ -150,6 +150,18 @@ const nextConfig = {
         destination: "/superadmin-dashboard/services",
       },
       {
+        source: "/superadmin/countries",
+        destination: "/superadmin-dashboard/countries",
+      },
+      {
+        source: "/superadmin/cities",
+        destination: "/superadmin-dashboard/cities",
+      },
+      {
+        source: "/superadmin/states",
+        destination: "/superadmin-dashboard/states",
+      },
+      {
         source: "/superadmin/profile",
         destination: "/superadmin-dashboard/company-profile",
       },

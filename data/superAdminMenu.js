@@ -78,6 +78,27 @@ module.exports = [
     active: "",
   },
   {
+    id: 12,
+    name: "Countries",
+    icon: "la-flag",
+    routePath: "/superadmin/countries",
+    active: "",
+  },
+  {
+    id: 13,
+    name: "States",
+    icon: "la-map-marker",
+    routePath: "/superadmin/states",
+    active: "",
+  },
+  {
+    id: 16,
+    name: "Cities",
+    icon: "la-city",
+    routePath: "/superadmin/cities",
+    active: "",
+  },
+  {
     id: 2,
     name: "Profile",
     icon: "la-user-tie",
