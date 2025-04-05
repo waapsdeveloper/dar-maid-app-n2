@@ -181,6 +181,26 @@ const nextConfig = {
         source: "/superadmin/edit-agency",
         destination: "/superadmin-dashboard/crud/agency/edit-agency",
       },
+      {
+        source: "/superadmin/add-employer",
+        destination: "/superadmin-dashboard/crud/employers/add-employer",
+      },
+      {
+        source: "/superadmin/edit-employer",
+        destination: "/superadmin-dashboard/crud/employers/edit-employer",
+      },
+      {
+        source: "/superadmin/view-interview-requests",
+        destination: "/superadmin-dashboard/crud/interview-request/view-interview",
+      },
+      {
+        source: "/superadmin/edit-interview-requests",
+        destination: "/superadmin-dashboard/crud/interview-request/edit-interview",
+      },
+      {
+        source: "/superadmin/add-interview-requests",
+        destination: "/superadmin-dashboard/crud/interview-request/add-interview",
+      },
     ];
   },
 

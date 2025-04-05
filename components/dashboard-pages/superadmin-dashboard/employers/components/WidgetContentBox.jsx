@@ -4,7 +4,10 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Link from "next/link";
 import Image from "next/image";
 import employersData from "../../../../../data/topCompany";
+import { useRouter } from "next/navigation";
 const WidgetContentBox = () => {
+  
+  const router = useRouter();
   return (
     <div className="widget-content">
       <div className="tabs-box">
@@ -46,7 +49,7 @@ const WidgetContentBox = () => {
                           />
                         </span>
                         <h4>
-                          <Link href={`/employers-single-v3/${company.id}`}>
+                          <Link href={`/employers-details/${company.id}`}>
                             {company.name}
                           </Link>
                         </h4>
@@ -65,25 +68,29 @@ const WidgetContentBox = () => {
                       <div className="job-type me-0">
                         Open Jobs – {company.jobNumber}
                       </div>
-                      <div className="option-box   d-flex justify-content-center mt-4">
+                      <div className="option-box d-flex justify-content-center mt-4">
                         <ul className="option-list">
-                          <li>
-                            <button data-text="View Aplication">
+                          <li 
+                            onClick={() => {
+                              router.push(`/employers-details/${company.id}`)
+  
+                            }}>
+                            <button data-text="View Application">
                               <span className="la la-eye"></span>
                             </button>
                           </li>
-                          <li>
-                            <button data-text="Approve Aplication">
-                              <span className="la la-check"></span>
+                          <li  
+                          onClick={() => {
+                            router.push(`/superadmin/edit-employer?id=${company.id}`)
+
+                          }}
+                        >
+                            <button data-text="Edit Application">
+                              <span className="la la-pencil"></span>
                             </button>
                           </li>
                           <li>
-                            <button data-text="Reject Aplication">
-                              <span className="la la-times-circle"></span>
-                            </button>
-                          </li>
-                          <li>
-                            <button data-text="Delete Aplication">
+                            <button data-text="Delete Application">
                               <span className="la la-trash"></span>
                             </button>
                           </li>
