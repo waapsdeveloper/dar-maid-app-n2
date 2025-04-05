@@ -75,7 +75,7 @@ const PackageDataTable = () => {
                 >
                   <li
                     onClick={() => {
-                      router.push(`/superadmin/view-country?id=${country.id}`);
+                      router.push(`/superadmin/view-countries?id=1`);
                     }}
                   >
                     <button data-text="View">
@@ -84,7 +84,7 @@ const PackageDataTable = () => {
                   </li>
                   <li
                     onClick={() => {
-                      router.push(`/superadmin/edit-country?id=${country.id}`);
+                      router.push(`/superadmin/edit-countries?id=1`);
                     }}
                   >
                     <button data-text="Edit">

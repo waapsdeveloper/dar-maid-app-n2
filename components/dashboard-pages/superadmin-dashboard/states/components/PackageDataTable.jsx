@@ -73,7 +73,7 @@ const StateDataTable = () => {
                 >
                   <li
                     onClick={() => {
-                      router.push(`/superadmin/view-state?id=${state.id}`);
+                      router.push(`/superadmin/view-states?id=1`);
                     }}
                   >
                     <button data-text="View">
@@ -82,7 +82,7 @@ const StateDataTable = () => {
                   </li>
                   <li
                     onClick={() => {
-                      router.push(`/superadmin/edit-state?id=${state.id}`);
+                      router.push(`/superadmin/edit-states?id=1`);
                     }}
                   >
                     <button data-text="Edit">

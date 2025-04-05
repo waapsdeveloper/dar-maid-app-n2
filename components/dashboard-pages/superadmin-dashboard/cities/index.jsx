@@ -54,7 +54,7 @@ const index = () => {
                     <button
                       className="theme-btn btn-style-one"
                       onClick={() => {
-                        router.push("/superadmin/add-query")
+                        router.push("/superadmin/add-cities");
                        } }
                       style={{
                         minWidth: "150px",

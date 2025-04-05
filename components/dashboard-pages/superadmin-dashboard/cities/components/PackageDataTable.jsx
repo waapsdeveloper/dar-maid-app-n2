@@ -96,7 +96,7 @@ const CityDataTable = () => {
                 >
                   <li
                     onClick={() => {
-                      router.push(`/superadmin/view-city?id=${city.id}`);
+                      router.push(`/superadmin/view-cities?id=1`);
                     }}
                   >
                     <button data-text="View">
@@ -105,7 +105,9 @@ const CityDataTable = () => {
                   </li>
                   <li
                     onClick={() => {
-                      router.push(`/superadmin/edit-city?id=${city.id}`);
+                      router.push(`/superadmin/edit-cities?id=1`
+                        
+                      );
                     }}
                   >
                     <button data-text="Edit">

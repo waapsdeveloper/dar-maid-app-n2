@@ -264,6 +264,42 @@ const nextConfig = {
         source: "/superadmin/view-report-statistics",
         destination: "/superadmin-dashboard/crud/website/view-report-statistics",
       },
+      {
+        source: "/superadmin/add-cities",
+        destination: "/superadmin-dashboard/crud/cities/add-cities",
+      },
+      {
+        source: "/superadmin/edit-cities",
+        destination: "/superadmin-dashboard/crud/cities/edit-cities",
+      },
+      {
+        source: "/superadmin/view-cities",
+        destination: "/superadmin-dashboard/crud/cities/view-cities",
+      },
+      {
+        source: "/superadmin/add-countries",
+        destination: "/superadmin-dashboard/crud/countries/add-countries",
+      },
+      {
+        source: "/superadmin/edit-countries",
+        destination: "/superadmin-dashboard/crud/countries/edit-countries",
+      },
+      {
+        source: "/superadmin/view-countries",
+        destination: "/superadmin-dashboard/crud/countries/view-countries",
+      },
+      {
+        source: "/superadmin/add-states",
+        destination: "/superadmin-dashboard/crud/states/add-states",
+      },
+      {
+        source: "/superadmin/edit-states",
+        destination: "/superadmin-dashboard/crud/states/edit-states",
+      },
+      {
+        source: "/superadmin/view-states",
+        destination: "/superadmin-dashboard/crud/states/view-states",
+      },
     ];
   },
 
