@@ -173,6 +173,14 @@ const nextConfig = {
         source: "/superadmin/edit-employee",
         destination: "/superadmin-dashboard/crud/employee/edit-employee",
       },
+      {
+        source: "/superadmin/add-agency",
+        destination: "/superadmin-dashboard/crud/agency/add-agency",
+      },
+      {
+        source: "/superadmin/edit-agency",
+        destination: "/superadmin-dashboard/crud/agency/edit-agency",
+      },
     ];
   },
 
