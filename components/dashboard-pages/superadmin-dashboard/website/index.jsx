@@ -1,4 +1,6 @@
+'use client'
 import MobileMenu from "../../../header/MobileMenu";
+
 import DashboardHeader from "../../../header/DashboardHeader";
 import LoginPopup from "../../../common/form/login/LoginPopup";
 import DashboardSuperAdminSidebar from "../../../header/DashboardSuperAdminSidebar";
@@ -7,7 +9,9 @@ import CopyrightFooter from "../../CopyrightFooter";
 import PackageDataTable from "./components/PackageDataTable";
 import MenuToggler from "../../MenuToggler";
 import Pagination from "./components/pagination";
+import { useRouter, useSearchParams } from "next/navigation";
 const index = () => {
+  const router = useRouter();
   return (
     <div className="page-wrapper dashboard">
       <span className="header-span"></span>
@@ -38,8 +42,34 @@ const index = () => {
             <div className="col-lg-12">
               <div className="ls-widget">
                 <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Website</h4>
+                  <div
+                    className="widget-title"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      padding: "15px 20px",
+                      borderBottom: "1px solid #eee",
+                    }}
+                  >
+                    <h4 style={{ margin: 0 }}>Website</h4>
+                    <button
+                      className="theme-btn btn-style-one"
+                      onClick={() => {
+                        router.push("/superadmin/add-website")
+                       } }
+                      style={{
+                        minWidth: "150px",
+                        padding: "10px 20px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        gap: "8px",
+                      }}
+                    >
+                      <span className="la la-plus"></span>
+                      Add New
+                    </button>
                   </div>
                   {/* End widget-title */}
 

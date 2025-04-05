@@ -191,15 +191,42 @@ const nextConfig = {
       },
       {
         source: "/superadmin/view-interview-requests",
-        destination: "/superadmin-dashboard/crud/interview-request/view-interview",
-      },
-      {
-        source: "/superadmin/edit-interview-requests",
-        destination: "/superadmin-dashboard/crud/interview-request/edit-interview",
+        destination:
+          "/superadmin-dashboard/crud/interview-request/view-interview",
       },
       {
         source: "/superadmin/add-interview-requests",
-        destination: "/superadmin-dashboard/crud/interview-request/add-interview",
+        destination:
+          "/superadmin-dashboard/crud/interview-request/add-interview",
+      },
+      {
+        source: "/superadmin/edit-interview-requests",
+        destination:
+          "/superadmin-dashboard/crud/interview-request/edit-interview",
+      },
+      {
+        source: "/superadmin/add-query",
+        destination: "/superadmin-dashboard/crud/query/add-query",
+      },
+      {
+        source: "/superadmin/edit-query",
+        destination: "/superadmin-dashboard/crud/query/edit-query",
+      },
+      {
+        source: "/superadmin/view-query",
+        destination: "/superadmin-dashboard/crud/query/view-query",
+      },
+      {
+        source: "/superadmin/add-website",
+        destination: "/superadmin-dashboard/crud/website/add-website",
+      },
+      {
+        source: "/superadmin/edit-website",
+        destination: "/superadmin-dashboard/crud/website/edit-website",
+      },
+      {
+        source: "/superadmin/view-website",
+        destination: "/superadmin-dashboard/crud/website/view-website",
       },
     ];
   },

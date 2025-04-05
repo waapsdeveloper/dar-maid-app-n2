@@ -1,5 +1,8 @@
+'use client';
+import { useRouter } from "next/navigation";
 const PackageDataTable = () => {
   // Sample audit log data
+  const router = useRouter();
   const auditData = [
     {
       id: 1,
@@ -12,7 +15,7 @@ const PackageDataTable = () => {
       device: "Chrome/Windows 10",
       location: "Manama, Bahrain",
       changes: "+3 fields added",
-      status: "Success"
+      status: "Success",
     },
     {
       id: 2,
@@ -25,7 +28,7 @@ const PackageDataTable = () => {
       device: "Safari/iOS 15",
       location: "Riffa, Bahrain",
       changes: "Salary field modified",
-      status: "Warning"
+      status: "Warning",
     },
     {
       id: 3,
@@ -38,7 +41,7 @@ const PackageDataTable = () => {
       device: "System Process",
       location: "Localhost",
       changes: "-1 record removed",
-      status: "Critical"
+      status: "Critical",
     },
     {
       id: 4,
@@ -51,18 +54,23 @@ const PackageDataTable = () => {
       device: "Firefox/Android",
       location: "Muharraq, Bahrain",
       changes: "2FA enabled",
-      status: "Info"
-    }
+      status: "Info",
+    },
   ];
 
   // Status styling
   const getStatusClass = (status) => {
-    switch(status.toLowerCase()) {
-      case 'success': return 'badge bg-success';
-      case 'warning': return 'badge bg-warning text-dark';
-      case 'critical': return 'badge bg-danger';
-      case 'info': return 'badge bg-info';
-      default: return 'badge bg-secondary';
+    switch (status.toLowerCase()) {
+      case "success":
+        return "badge bg-success";
+      case "warning":
+        return "badge bg-warning text-dark";
+      case "critical":
+        return "badge bg-danger";
+      case "info":
+        return "badge bg-info";
+      default:
+        return "badge bg-secondary";
     }
   };
 
@@ -95,7 +103,7 @@ const PackageDataTable = () => {
               </span>
             </td>
             <td className="target">
-              {log.target} <br/>
+              {log.target} <br />
               <small className="text-muted">ID: {log.targetId}</small>
             </td>
             <td className="ip-address">
@@ -104,11 +112,11 @@ const PackageDataTable = () => {
             <td className="device">{log.device}</td>
             <td className="location">{log.location}</td>
             <td className="changes">
-              {log.changes.includes('+') ? (
+              {log.changes.includes("+") ? (
                 <span className="text-success">
                   <i className="la la-plus"></i> {log.changes}
                 </span>
-              ) : log.changes.includes('-') ? (
+              ) : log.changes.includes("-") ? (
                 <span className="text-danger">
                   <i className="la la-minus"></i> {log.changes}
                 </span>
@@ -117,9 +125,7 @@ const PackageDataTable = () => {
               )}
             </td>
             <td className="status">
-              <span className={getStatusClass(log.status)}>
-                {log.status}
-              </span>
+              <span className={getStatusClass(log.status)}>{log.status}</span>
             </td>
             <td className="action" style={{ textAlign: "left", width: "1%" }}>
               <div
@@ -130,17 +136,20 @@ const PackageDataTable = () => {
                   className="option-list d-flex list-unstyled m-0 p-0 gap-2"
                   style={{ justifyContent: "flex-start", width: "100%" }}
                 >
-                  <li>
-                    <button data-text="Add">
-                      <span className="la la-plus-circle"></span>
-                    </button>
-                  </li>
-                  <li>
-                    <button data-text="View Details">
+                  <li
+                    onClick={() => {
+                      router.push(`/superadmin/view-query?id=1`);
+                    }}
+                  >
+                    <button data-text="View">
                       <span className="la la-eye"></span>
                     </button>
                   </li>
-                  <li>
+                  <li
+                    onClick={() => {
+                      router.push("/superadmin/edit-query?id=1");
+                    }}
+                  >
                     <button data-text="Edit">
                       <span className="la la-pencil"></span>
                     </button>
