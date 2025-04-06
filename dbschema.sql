@@ -6,6 +6,23 @@ CREATE TABLE roles (
     name VARCHAR(50) UNIQUE NOT NULL -- (Employee, Employer, Agency, Admin)
 );
 
+// permissions Table (For Managing User Permissions)
+CREATE TABLE permissions (
+    id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) UNIQUE NOT NULL -- (e.g., 'view_users', 'edit_users', etc.)    
+);
+
+-- Role-Permission Association Table
+CREATE TABLE role_permissions (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    role_id TINYINT UNSIGNED NOT NULL, -- Reference to Roles table
+    permission_id TINYINT UNSIGNED NOT NULL, -- Reference to Permissions table
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE,
+    FOREIGN KEY (permission_id) REFERENCES permissions(id) ON DELETE CASCADE
+);
+
 
 CREATE TABLE categories (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -376,6 +393,18 @@ CREATE TABLE cities (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (state_id) REFERENCES states(id) ON DELETE CASCADE
 );
+
+-- Cities Table
+CREATE TABLE cities (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    state_id BIGINT UNSIGNED NOT NULL, -- Reference to States table
+    name VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (state_id) REFERENCES states(id) ON DELETE CASCADE
+);
+
+
 
 
 
