@@ -1,13 +1,11 @@
-import MobileMenu from "../../../header/MobileMenu";
-import DashboardHeader from "../../../header/DashboardHeader";
-import LoginPopup from "../../../common/form/login/LoginPopup";
-import DashboardSuperAdminSidebar from "../../../header/DashboardSuperAdminSidebar";
-import BreadCrumb from "../../BreadCrumb";
-import CopyrightFooter from "../../CopyrightFooter";
-import WidgetContentBox from "./components/WidgetContentBox";
-import WidgetTopFilterBox from "./components/WidgetTopFilterBox";
-import MenuToggler from "../../MenuToggler";
+import LoginPopup from "@/components/common/form/login/LoginPopup";
 import Pagination from "./components/pagination";
+import DashboardHeader from "@/components/header/DashboardHeader";
+import MobileMenu from "@/components/header/MobileMenu";
+import DashboardSuperAdminSidebar from "@/components/header/DashboardSuperAdminSidebar";
+import BreadCrumb from "@/components/dashboard-pages/BreadCrumb";
+import MenuToggler from "@/components/dashboard-pages/MenuToggler";
+import CopyrightFooter from "@/components/dashboard-pages/CopyrightFooter";
 
 const index = () => {
   return (
@@ -27,8 +25,7 @@ const index = () => {
       <DashboardSuperAdminSidebar />
       {/* <!-- End User Sidebar Menu --> */}
 
-
-  {/* <!-- Dashboard --> */}
+      {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
         <div className="dashboard-outer">
           <BreadCrumb title="All Services!" />
@@ -44,7 +41,7 @@ const index = () => {
                 <div className="tabs-box">
                   <div className="widget-title">
                     <h4>Services</h4>
-               
+                  </div>
                 </div>
               </div>
             </div>
@@ -59,9 +56,8 @@ const index = () => {
       <CopyrightFooter />
       {/* <!-- End Copyright --> */}
     </div>
-
-    // End page-wrapper
   );
+  // End page-wrapper
 };
 
 export default index;
