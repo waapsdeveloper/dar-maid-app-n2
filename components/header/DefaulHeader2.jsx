@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -12,7 +12,6 @@ import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 
 const DefaulHeader2 = () => {
-
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -31,18 +30,18 @@ const DefaulHeader2 = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
+    return () => window.removeEventListener("scroll", changeBackground);
   }, []);
 
   const handleLogout = () => {
-    dispatch(logout()); // ✅ FIXED: Use the existing dispatch
-    router.push("/"); // Redirect to home page
+    dispatch(logout());
+    router.push("/");
   };
 
   const handleClick = (item, e) => {
     e.preventDefault();
 
     if (item.name !== "Logout") {
-
       switch (user.role) {
         case "employer":
           router.push("/employer/dashboard");
@@ -57,45 +56,27 @@ const DefaulHeader2 = () => {
           router.push("/superadmin/dashboard");
           break;
         default:
-          router.push("/login"); // Default fallback
+          router.push("/login");
       }
     }
   };
 
   return (
-    // <!-- Main Header-->
-    <header
-      className={`main-header  ${navbar ? "fixed-header animated slideInDown" : ""}`}
-    >
-      {/* <!-- Main box --> */}
+    <header className={`main-header ${navbar ? "fixed-header animated slideInDown" : ""}`}>
       <div className="main-box">
-        {/* <!--Nav Outer --> */}
         <div className="nav-outer">
           <div className="logo-box">
             <div className="logo">
               <Link href="/">
-                <Image
-                  width={154}
-                  height={50}
-                  src="/images/logo.png"
-                  alt="brand"
-                />
+                <Image width={154} height={50} src="/images/logo.png" alt="brand" />
               </Link>
             </div>
           </div>
-          {/* End .logo-box */}
 
           <HeaderNavContent />
-          {/* <!-- Main Menu End--> */}
         </div>
-        {/* End .nav-outer */}
 
         <div className="outer-box">
-          {/* <!-- Add Listing --> */}
-          {/* <Link href="/candidates-dashboard/cv-manager" className="upload-cv">
-            Upload your CV
-          </Link> */}
-          {/* <!-- Login/Register --> */}
           {isAuthenticated ? (
             <div className="dropdown dashboard-option">
               <button
@@ -113,9 +94,10 @@ const DefaulHeader2 = () => {
                 <span className="name">{user?.name}</span>
               </button>
 
-              {dropdownOpen && (
-                <ul className="dropdown-menu show">
-                  {employerMenuData.map((item) => (
+              {/* Dropdown: Always render <ul>, conditionally populate it */}
+              <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
+                {dropdownOpen &&
+                  employerMenuData.map((item) => (
                     <li
                       className={`${isActiveLink(item.routePath, pathname) ? "active" : ""} mb-1`}
                       key={item.id}
@@ -131,8 +113,7 @@ const DefaulHeader2 = () => {
                       )}
                     </li>
                   ))}
-                </ul>
-              )}
+              </ul>
             </div>
           ) : (
             <div className="btn-box">
@@ -144,12 +125,6 @@ const DefaulHeader2 = () => {
               >
                 Login / Register
               </a>
-              {/* <Link
-                href="/employers-dashboard/post-jobs"
-                className="theme-btn btn-style-one"
-              >
-                Job Post
-              </Link> */}
             </div>
           )}
         </div>

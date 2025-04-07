@@ -2,7 +2,32 @@ import { dataService } from "./data.service";
 
 
 class UserService {
+
     constructor() {}
+
+    // check if user is logged in
+    async isLoggedIn() {
+        // check if user is in local storage
+        let token = localStorage.getItem('token');
+        if(token){
+
+            // check if token is valid
+            let user = JSON.parse(localStorage.getItem('user'));
+            if(!user) return false;
+            // check if token is valid
+            const res = await networkService.getUser('/user');
+            console.log(res);
+
+            // let d = dataService.checkToken(token, user.username);
+
+
+
+
+            return true
+        } else {
+            return false
+        }
+    }
 
 
     async loginUser(data) {

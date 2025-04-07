@@ -6,8 +6,7 @@ const ImageBox = () => {
       <figure className="main-image" data-aos="fade-in" data-aos-delay="500">
         <Image
           width={486}
-          height={589}
-          layout="responsive"
+          height={589}          
           src="/images/resource/background-2.png"
           alt="hero image"
         />
