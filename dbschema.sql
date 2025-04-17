@@ -6,7 +6,7 @@ CREATE TABLE roles (
     name VARCHAR(50) UNIQUE NOT NULL -- (Employee, Employer, Agency, Admin)
 );
 
-// permissions Table (For Managing User Permissions)
+-- permissions Table (For Managing User Permissions)
 CREATE TABLE permissions (
     id TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) UNIQUE NOT NULL -- (e.g., 'view_users', 'edit_users', etc.)    
@@ -22,7 +22,6 @@ CREATE TABLE role_permissions (
     FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE,
     FOREIGN KEY (permission_id) REFERENCES permissions(id) ON DELETE CASCADE
 );
-
 
 CREATE TABLE categories (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -56,21 +55,57 @@ CREATE TABLE users (
 
 -- Employees Table (Only for Role: Employee)
 CREATE TABLE employees (
-    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    user_id BIGINT UNSIGNED NOT NULL UNIQUE, -- Reference to Users table
-    dail_code VARCHAR(50) NULL,
-    contact_number VARCHAR(50) NULL,
-    address TEXT NULL,
-    city VARCHAR(100) NOT NULL,
-    state VARCHAR(100) NOT NULL,
-    country VARCHAR(100) NOT NULL,
-    experience_years INT DEFAULT 0,
-    availability ENUM('Available', 'Not Available') DEFAULT 'Available',
-    preferred_interview_time VARCHAR(50) NULL, -- Free-text or predefined values
-    document_verification_status ENUM('Pending', 'Verified', 'Rejected') DEFAULT 'Pending',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    password VARCHAR(255),
+
+    -- Basic Info
+    gender VARCHAR(10),
+    date_of_birth DATE,
+    age INT,
+    nationality VARCHAR(100),
+    passport_copy TEXT,
+    visa_copy TEXT,
+    cpr_copy TEXT,
+    current_location VARCHAR(100),
+    in_bahrain BOOLEAN,
+    outside_country VARCHAR(100),
+    work_available ENUM('Immediately', 'After Days'),
+    no_of_days_available VARCHAR(50),
+
+    -- Contact Details
+    whatsapp_number VARCHAR(20),
+
+    -- Employment Details
+    expected_salary DECIMAL(10,2),
+    notice_period VARCHAR(50),
+    need_air_ticket BOOLEAN,
+    other_benefits TEXT,
+
+    -- Category & Type
+    employee_category ENUM('Driver', 'Cook', 'Maid', 'Nanny', 'Elderly Care'),
+    employee_type ENUM('Independent', 'Agency Managed'),
+
+    -- Additional Info
+    religion VARCHAR(50),
+    marital_status VARCHAR(50),
+    number_of_children TINYINT,
+    education_level VARCHAR(100),
+    facebook_profile TEXT,
+    visa_status ENUM('Own Visa', 'Needs Sponsorship'),
+    visa_expiry_date DATE,
+    interview_mode ENUM('In-person', 'Phone', 'Video Call'),
+    willing_to_livein ENUM('Yes', 'No', 'Conditional'),
+    relocation_flexibility BOOLEAN,
+    max_work_hours_per_day TINYINT,
+    flexible_weekends BOOLEAN,
+    preferred_household_type ENUM('Local', 'Expat', 'No Preference'),
+    preferred_language_for_communication VARCHAR(50),
+    height_cm DECIMAL(5,2),
+    weight_kg DECIMAL(5,2),
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Employee Job Listing Preferences Table
@@ -124,7 +159,92 @@ CREATE TABLE employee_work_experiences (
     FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
+-- Work Experience
+CREATE TABLE employee_experiences (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT,
+    employer_name VARCHAR(255),
+    employment_location VARCHAR(255),
+    employer_contact VARCHAR(255),
+    start_date DATE,
+    end_date DATE,
+    designation VARCHAR(100),
+    employment_details TEXT,
+    salary DECIMAL(10,2),
+    benefits TEXT,
+    rating TINYINT,
+    review TEXT,
+    country VARCHAR(100),
+    resend_review_token VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (employee_id) REFERENCES employees(id)
+);
 
+-- Documents
+CREATE TABLE employee_documents (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT,
+    file_type ENUM('Visa', 'CPR', 'Passport', 'Certificate', 'License', 'Reference', 'Work Photo'),
+    file_url TEXT,
+    uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (employee_id) REFERENCES employees(id)
+);
+
+-- Languages
+CREATE TABLE employee_languages (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT,
+    language VARCHAR(50),
+    proficiency TINYINT,
+    FOREIGN KEY (employee_id) REFERENCES employees(id)
+);
+
+-- Pets Experience
+CREATE TABLE employee_pets_experience (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT,
+    has_experience BOOLEAN,
+    details TEXT,
+    FOREIGN KEY (employee_id) REFERENCES employees(id)
+);
+
+-- Skills
+CREATE TABLE employee_skills (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT,
+    skill_name VARCHAR(100),
+    skill_category ENUM('Cooking', 'Cleaning', 'Laundry', 'Babysitting', 'Elderly Care', 'Pet Care', 'Driving'),
+    rating TINYINT,
+    FOREIGN KEY (employee_id) REFERENCES employees(id)
+);
+
+-- Education
+CREATE TABLE employee_education (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT,
+    education_level VARCHAR(100),
+    details TEXT,
+    FOREIGN KEY (employee_id) REFERENCES employees(id)
+);
+
+-- Employment Preferences
+CREATE TABLE employee_employment_preferences (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT,
+    preference ENUM('Live-In', 'Live-Out', 'Full-Time', 'Part-Time', 'Monthly', 'Temporary', 'Nanny (Newborns)'),
+    FOREIGN KEY (employee_id) REFERENCES employees(id)
+);
+
+-- Contract History
+CREATE TABLE employee_contracts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT,
+    contract_start DATE,
+    contract_end DATE,
+    last_salary DECIMAL(10,2),
+    duration VARCHAR(50),
+    FOREIGN KEY (employee_id) REFERENCES employees(id)
+);
 
 -- Employers Table (Only for Role: Employer)
 CREATE TABLE employers (
@@ -132,52 +252,60 @@ CREATE TABLE employers (
     user_id BIGINT UNSIGNED NOT NULL UNIQUE, -- Reference to Users table
     company_name VARCHAR(255) NULL,
     contact_number VARCHAR(50) NULL,
-    contact_number VARCHAR(50) NULL,
-    address TEXT NULL,
-    city VARCHAR(100) NOT NULL,
-    country VARCHAR(100) NOT NULL,
-    nationality VARCHAR(100) NOT NULL,    
-    profile_verification_status ENUM('Pending', 'Verified', 'Rejected') DEFAULT 'Pending',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-);
-
-
-
--- Agencies Table (Only for Role: Agency)
-CREATE TABLE agencies (
-    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    user_id BIGINT UNSIGNED NOT NULL UNIQUE, -- Reference to Users table
-    contact_number VARCHAR(50) NULL,
     address TEXT NULL,
     city VARCHAR(100) NOT NULL,
     country VARCHAR(100) NOT NULL,
     nationality VARCHAR(100) NOT NULL,
-    agency_name VARCHAR(255) NOT NULL,
-    contact_person VARCHAR(255) NOT NULL,
-    registration_number VARCHAR(100) UNIQUE NULL,
-    managed_employees_count INT DEFAULT 0, -- Track the number of employees under this agency
     profile_verification_status ENUM('Pending', 'Verified', 'Rejected') DEFAULT 'Pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
+-- Agencies Table (Only for Role: Agency)
+CREATE TABLE agencies (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    
+    -- Basic Info
+    name VARCHAR(100) NOT NULL,
+    logo VARCHAR(255), -- URL or file path to logo
+    company_name VARCHAR(100) NOT NULL,
+    office_address TEXT,
+    country VARCHAR(100),
+
+    -- Contact Info
+    phone_number VARCHAR(20),
+    email_address VARCHAR(100),
+
+    -- Legal & Compliance Info
+    trade_license_number VARCHAR(100),
+    license_expiry_date DATE,
+    trade_license_pdf VARCHAR(255), -- File path or URL to uploaded PDF
+    years_in_operation INT UNSIGNED,
+    registered_legal_name VARCHAR(100),
+    agency_type ENUM('Local', 'International', 'Referral Only', 'Full-Service'),
+
+    -- Service Offering Details
+    services_provided JSON, -- e.g., ["Recruitment", "Visa Sponsorship"]
+    countries_of_operation JSON,
+    languages_spoken JSON,
+    employee_nationalities JSON,
+
+    -- Timestamps
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
 -- Interview Requests Table
 CREATE TABLE interview_requests (
-    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    employer_id BIGINT UNSIGNED NOT NULL, -- Reference to Employers table
-    employee_id BIGINT UNSIGNED NOT NULL, -- Reference to Employees table
-    interview_mode ENUM('Online', 'In-Person') NOT NULL,
-    interview_date DATE NOT NULL,
-    interview_time TIME NOT NULL,
-    status ENUM('Pending', 'Accepted', 'Declined') DEFAULT 'Pending',
-    additional_notes TEXT NULL,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    employee_id INT,
+    employer_id INT,
+    requested_date DATETIME,
+    status ENUM('Pending', 'Accepted', 'Rejected'),
+    scheduled_time DATETIME,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (employer_id) REFERENCES employers(id) ON DELETE CASCADE,
-    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employees(id)
 );
 
 -- Interview Request History Table
@@ -223,7 +351,6 @@ INSERT INTO website_settings (setting_key, setting_value) VALUES
 ('about_us', 'Welcome to our website. We connect people and businesses efficiently.'),
 ('privacy_policy', 'Your data privacy is our priority.'),
 ('terms_conditions', 'By using this site, you agree to our terms.');
-
 
 CREATE TABLE listings (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -275,16 +402,17 @@ CREATE TABLE agency_reviews (
     FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
 );
 
+-- Reviews / Ratings
 CREATE TABLE employer_reviews (
-    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    employer_id BIGINT UNSIGNED NOT NULL, -- Reference to Employers table
-    employee_id BIGINT UNSIGNED NOT NULL, -- Reference to Employees table
-    rating TINYINT UNSIGNED NOT NULL, -- 1 to 5
-    review_text TEXT NULL,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    experience_id INT,
+    reviewer_email VARCHAR(255),
+    rating TINYINT,
+    review TEXT,
+    token VARCHAR(255),
+    expires_at DATETIME,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (employer_id) REFERENCES employers(id) ON DELETE CASCADE,
-    FOREIGN KEY (employee_id) REFERENCES employees(id) ON DELETE CASCADE
+    FOREIGN KEY (experience_id) REFERENCES employee_experiences(id)
 );
 
 CREATE TABLE notifications (
@@ -296,7 +424,6 @@ CREATE TABLE notifications (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
-
 
 -- Messages Table
 CREATE TABLE messages (
@@ -364,15 +491,15 @@ CREATE TABLE terms (
 );
 
 -- Countries Table
-    CREATE TABLE countries (
-        id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        name VARCHAR(255) NOT NULL UNIQUE, -- Country name
-        dail_code VARCHAR(10) NOT NULL, -- Dialing code
-        currency VARCHAR(10) NOT NULL, -- Currency code (e.g., USD, EUR)
-        iso_code VARCHAR(3) NOT NULL UNIQUE, -- ISO 3166-1 alpha-3 code
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-    );
+CREATE TABLE countries (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE, -- Country name
+    dail_code VARCHAR(10) NOT NULL, -- Dialing code
+    currency VARCHAR(10) NOT NULL, -- Currency code (e.g., USD, EUR)
+    iso_code VARCHAR(3) NOT NULL UNIQUE, -- ISO 3166-1 alpha-3 code
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 
 -- States Table
 CREATE TABLE states (
@@ -393,17 +520,6 @@ CREATE TABLE cities (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (state_id) REFERENCES states(id) ON DELETE CASCADE
 );
-
--- Cities Table
-CREATE TABLE cities (
-    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    state_id BIGINT UNSIGNED NOT NULL, -- Reference to States table
-    name VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (state_id) REFERENCES states(id) ON DELETE CASCADE
-);
-
 
 
 
