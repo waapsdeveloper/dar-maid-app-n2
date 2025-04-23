@@ -12,6 +12,8 @@ import EmployementDetail from "./components/my-profile/EmployementDetail";
 import InterviewAvailability from "./components/my-profile/InterviewAvailability";
 import Document from "./components/my-profile/Document";
 import {ApplicationManagement,InterviewManagement}  from "./components/my-profile/JobApplication";
+import LegalComplianceInfo from "./components/my-profile/LegalComplianceInfo";
+import ServiceOfferingDetails from "./components/my-profile/ServicesOffering";
 const index = () => {
   return (
     <div className="page-wrapper dashboard">
@@ -47,6 +49,30 @@ const index = () => {
                     <h4>My Profile</h4>
                   </div>
                   <MyProfile />
+                </div>
+              </div>
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
+                    <h4>Legal & Compliance</h4>
+                  </div>
+                  {/* End .widget-title */}
+
+                  <div className="widget-content">
+                    <LegalComplianceInfo />
+                  </div>
+                </div>
+              </div>
+              <div className="ls-widget">
+                <div className="tabs-box">
+                  <div className="widget-title">
+                    <h4>Services Offering Details</h4>
+                  </div>
+                  {/* End .widget-title */}
+
+                  <div className="widget-content">
+                    <ServiceOfferingDetails />
+                  </div>
                 </div>
               </div>
               <div className="ls-widget">
