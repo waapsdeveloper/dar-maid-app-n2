@@ -9,6 +9,10 @@ const EmploymentDetails = () => {
     skills: "",
     workingHours: "9 AM - 5 PM",
     salary: "",
+    noticePeriod: "",
+    needAirTicket: "",
+    otherBenefits: "",
+    employmentPreference: "",
   });
 
   const handleFileChange = (e) => {
@@ -204,78 +208,207 @@ const EmploymentDetails = () => {
               </select>
             </div>
 
-            {/* Expected Salary and Document Upload - 50% width each */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1.5rem" }}>
-              {/* Expected Salary - 50% width */}
-              <div style={{ flex: "1 1 100%" }}>
-                <label
-                  style={{
-                    display: "block",
-                    marginBottom: "0.5rem",
-                    color: "#4a5568",
-                    fontWeight: "600",
-                  }}
-                >
-                  Expected Salary
-                </label>
-                <input
-                  type="text"
-                  style={{
-                    width: "100%",
-                    padding: "0.75rem",
-                    border: "2px solid #cbd5e0",
-                    borderRadius: "0.5rem",
-                    fontSize: "1rem",
-                  }}
-                  placeholder="$800 - $1200"
-                  value={formData.salary}
-                  onChange={(e) =>
-                    setFormData({ ...formData, salary: e.target.value })
-                  }
-                  required
-                />
-              </div>
+            {/* Expected Salary */}
+            <div style={{ flex: "1 1 300px" }}>
+              <label
+                style={{
+                  display: "block",
+                  marginBottom: "0.5rem",
+                  color: "#4a5568",
+                  fontWeight: "600",
+                }}
+              >
+                Expected Salary (BHD)
+              </label>
+              <input
+                type="number"
+                style={{
+                  width: "100%",
+                  padding: "0.75rem",
+                  border: "2px solid #cbd5e0",
+                  borderRadius: "0.5rem",
+                  fontSize: "1rem",
+                }}
+                placeholder="500"
+                min="0"
+                value={formData.salary}
+                onChange={(e) =>
+                  setFormData({ ...formData, salary: e.target.value })
+                }
+                required
+              />
+            </div>
 
-              {/* Document Upload - 50% width on next line */}
-              <div style={{ flex: "1 1 50%" }}>
+            {/* Notice Period */}
+            <div style={{ flex: "1 1 300px" }}>
+              <label
+                style={{
+                  display: "block",
+                  marginBottom: "0.5rem",
+                  color: "#4a5568",
+                  fontWeight: "600",
+                }}
+              >
+                Notice Period
+              </label>
+              <input
+                type="text"
+                style={{
+                  width: "100%",
+                  padding: "0.75rem",
+                  border: "2px solid #cbd5e0",
+                  borderRadius: "0.5rem",
+                  fontSize: "1rem",
+                }}
+                placeholder="30 days"
+                value={formData.noticePeriod}
+                onChange={(e) =>
+                  setFormData({ ...formData, noticePeriod: e.target.value })
+                }
+                required
+              />
+            </div>
+
+            {/* Need Air Ticket */}
+            <div style={{ flex: "1 1 300px" }}>
+              <label
+                style={{
+                  display: "block",
+                  marginBottom: "0.5rem",
+                  color: "#4a5568",
+                  fontWeight: "600",
+                }}
+              >
+                Need Air Ticket
+              </label>
+              <select
+                style={{
+                  width: "100%",
+                  padding: "0.75rem",
+                  border: "2px solid #cbd5e0",
+                  borderRadius: "0.5rem",
+                  fontSize: "1rem",
+                  backgroundColor: "white",
+                }}
+                value={formData.needAirTicket}
+                onChange={(e) =>
+                  setFormData({ ...formData, needAirTicket: e.target.value })
+                }
+                required
+              >
+                <option value="">Select Option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+              </select>
+            </div>
+
+            {/* Other Benefits Requirement */}
+            <div style={{ flex: "1 1 300px" }}>
+              <label
+                style={{
+                  display: "block",
+                  marginBottom: "0.5rem",
+                  color: "#4a5568",
+                  fontWeight: "600",
+                }}
+              >
+                Other Benefits Requirement
+              </label>
+              <input
+                type="text"
+                style={{
+                  width: "100%",
+                  padding: "0.75rem",
+                  border: "2px solid #cbd5e0",
+                  borderRadius: "0.5rem",
+                  fontSize: "1rem",
+                }}
+                placeholder="Health insurance, accommodation"
+                value={formData.otherBenefits}
+                onChange={(e) =>
+                  setFormData({ ...formData, otherBenefits: e.target.value })
+                }
+                required
+              />
+            </div>
+
+            {/* Type of Employment Preference */}
+            <div style={{ flex: "1 1 300px" }}>
+              <label
+                style={{
+                  display: "block",
+                  marginBottom: "0.5rem",
+                  color: "#4a5568",
+                  fontWeight: "600",
+                }}
+              >
+                Type of Employment Preference
+              </label>
+              <select
+                style={{
+                  width: "100%",
+                  padding: "0.75rem",
+                  border: "2px solid #cbd5e0",
+                  borderRadius: "0.5rem",
+                  fontSize: "1rem",
+                  backgroundColor: "white",
+                }}
+                value={formData.employmentPreference}
+                onChange={(e) =>
+                  setFormData({ ...formData, employmentPreference: e.target.value })
+                }
+                required
+              >
+                <option value="">Select Preference</option>
+                <option value="Live in">Live in</option>
+                <option value="Full-Time">Full-Time</option>
+                <option value="Live-out">Live-out</option>
+                <option value="Part-Time">Part-Time</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Temporary">Temporary</option>
+                <option value="Nanny for Newborns">Nanny for Newborns</option>
+              </select>
+            </div>
+
+            {/* Document Upload */}
+            <div style={{ flex: "1 1 300px" }}>
+              <label
+                style={{
+                  display: "block",
+                  marginBottom: "0.5rem",
+                  color: "#4a5568",
+                  fontWeight: "600",
+                }}
+              >
+                Supporting Documents
+              </label>
+              <div
+                style={{
+                  border: "2px dashed #cbd5e0",
+                  borderRadius: "0.5rem",
+                  padding: "1rem",
+                  textAlign: "center",
+                  backgroundColor: "#f7fafc",
+                  cursor: "pointer",
+                }}
+              >
                 <label
                   style={{
                     display: "block",
-                    marginBottom: "0.5rem",
-                    color: "#4a5568",
-                    fontWeight: "600",
-                  }}
-                >
-                  Supporting Documents
-                </label>
-                <div
-                  style={{
-                    border: "2px dashed #cbd5e0",
-                    borderRadius: "0.5rem",
-                    padding: "1rem",
-                    textAlign: "center",
-                    backgroundColor: "#f7fafc",
+                    color: "#a0aec0",
+                    fontSize: "1rem",
                     cursor: "pointer",
                   }}
                 >
-                  <label
-                    style={{
-                      display: "block",
-                      color: "#a0aec0",
-                      fontSize: "1rem",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Click to upload documents
-                    <input
-                      type="file"
-                      style={{ display: "none" }}
-                      accept=".pdf,.doc,.docx,image/*"
-                      onChange={handleFileChange}
-                      multiple
-                    />
-                  </label>
-                </div>
+                  Click to upload documents
+                  <input
+                    type="file"
+                    style={{ display: "none" }}
+                    accept=".pdf,.doc,.docx,image/*"
+                    onChange={handleFileChange}
+                    multiple
+                  />
+                </label>
               </div>
             </div>
           </div>

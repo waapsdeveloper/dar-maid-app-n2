@@ -2,7 +2,7 @@ const ContactInfoBox = () => {
   return (
     <form className="default-form">
       <div className="row">
-        {/* Contact Details */}
+        {/* Original Fields */}
         <div className="form-group col-lg-6 col-md-12">
           <label>Dail Code</label>
           <input type="number"
@@ -15,6 +15,14 @@ const ContactInfoBox = () => {
           <input type="number"
             placeholder="4322321133"
             name="number" />
+        </div>
+
+        {/* Missing Field from DB: WhatsApp Number */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>WhatsApp Number</label>
+          <input type="number"
+            placeholder="WhatsApp number"
+            name="whatsapp_number" />
         </div>
 
         <div className="form-group col-lg-12 col-md-12">
@@ -48,7 +56,6 @@ const ContactInfoBox = () => {
           </select>
         </div>
 
-        {/* <!-- Input --> */}
         <div className="form-group col-lg-6 col-md-12">
           <label>Country</label>
           <select className="chosen-single form-select" required>
@@ -60,8 +67,18 @@ const ContactInfoBox = () => {
           </select>
         </div>
 
+        {/* Missing Field from DB: Preferred Language for Communication */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Preferred Communication Language</label>
+          <select className="chosen-single form-select" name="preferred_language">
+            <option>English</option>
+            <option>Arabic</option>
+            <option>Hindi</option>
+            <option>Urdu</option>
+            <option>Other</option>
+          </select>
+        </div>
 
-        {/* <!-- Input --> */}
         <div className="form-group col-lg-12 col-md-12">
           <button type="submit" className="theme-btn btn-style-one">
             Save
