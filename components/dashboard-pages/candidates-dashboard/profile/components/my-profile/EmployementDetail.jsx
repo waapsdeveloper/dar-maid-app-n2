@@ -550,22 +550,200 @@ const ApplicationManagement = () => {
 };
 
 const InterviewManagement = () => {
+  const [formData, setFormData] = useState({
+    interviewTime: "",
+    liveInWithFamily: "",
+    relocationInsideCountry: "",
+    maxHoursPerDay: "",
+    flexibleWeekends: "",
+    householdType: "",
+    communicationLanguage: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
+  };
+
+  const languages = [
+    "English",
+    "Arabic",
+    "French",
+    "Spanish",
+    "Hindi",
+    // Add more languages as needed
+  ];
+
   return (
-    <form className="default-form">
+    <form className="default-form" onSubmit={handleSubmit}>
       <div className="row">
-        {/* View & Respond to Interview Requests */}
+        {/* Preferred Interview Time */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>View & Respond to Interview Requests</label>
+          <label>Preferred Interview Time</label>
           <input
             type="text"
-            name="interviewRequests"
-            placeholder="Search interviews..."
+            name="interviewTime"
+            placeholder="E.g., 10 AM - 12 PM"
+            value={formData.interviewTime}
+            onChange={handleChange}
+            required
           />
+        </div>
+
+        {/* Willing to live-in with family */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Willing to live-in with family?</label>
+          <div className="d-flex gap-3">
+            <label>
+              <input
+                type="radio"
+                name="liveInWithFamily"
+                value="Yes"
+                checked={formData.liveInWithFamily === "Yes"}
+                onChange={handleChange}
+                required
+              />
+              Yes
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="liveInWithFamily"
+                value="No"
+                checked={formData.liveInWithFamily === "No"}
+                onChange={handleChange}
+                required
+              />
+              No
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="liveInWithFamily"
+                value="Conditional"
+                checked={formData.liveInWithFamily === "Conditional"}
+                onChange={handleChange}
+                required
+              />
+              Conditional
+            </label>
+          </div>
+        </div>
+
+        {/* Comfortable with relocation inside country */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Comfortable with relocation inside country?</label>
+          <div className="d-flex gap-3">
+            <label>
+              <input
+                type="radio"
+                name="relocationInsideCountry"
+                value="Yes"
+                checked={formData.relocationInsideCountry === "Yes"}
+                onChange={handleChange}
+                required
+              />
+              Yes
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="relocationInsideCountry"
+                value="No"
+                checked={formData.relocationInsideCountry === "No"}
+                onChange={handleChange}
+                required
+              />
+              No
+            </label>
+          </div>
+        </div>
+
+        {/* Maximum hours per day willing to work */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Maximum hours per day willing to work</label>
+          <input
+            type="number"
+            name="maxHoursPerDay"
+            placeholder="E.g., 8"
+            min="1"
+            value={formData.maxHoursPerDay}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        {/* Flexible with weekends */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Flexible with weekends?</label>
+          <div className="d-flex gap-3">
+            <label>
+              <input
+                type="radio"
+                name="flexibleWeekends"
+                value="Yes"
+                checked={formData.flexibleWeekends === "Yes"}
+                onChange={handleChange}
+                required
+              />
+              Yes
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="flexibleWeekends"
+                value="No"
+                checked={formData.flexibleWeekends === "No"}
+                onChange={handleChange}
+                required
+              />
+              No
+            </label>
+          </div>
+        </div>
+
+        {/* Preferred household type */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Preferred household type</label>
+          <select
+            name="householdType"
+            value={formData.householdType}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Preference</option>
+            <option value="Local">Local</option>
+            <option value="Expat">Expat</option>
+            <option value="No Preference">No Preference</option>
+          </select>
+        </div>
+
+        {/* Languages preferred for communication */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Languages preferred for communication</label>
+          <select
+            name="communicationLanguage"
+            value={formData.communicationLanguage}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Language</option>
+            {languages.map((language) => (
+              <option key={language} value={language}>
+                {language}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Submit Button */}
         <div className="form-group col-lg-12 col-md-12">
-          <button type="submit">Manage Interviews</button>
+          <button type="submit">Save Preferences</button>
         </div>
       </div>
     </form>
