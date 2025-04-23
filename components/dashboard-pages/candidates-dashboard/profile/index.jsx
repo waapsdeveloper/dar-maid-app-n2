@@ -21,7 +21,6 @@ const index = () => {
     <div className="page-wrapper dashboard">
       <span className="header-span"></span>
       {/* <!-- Header Span for hight --> */}
-s
       <LoginPopup />
       {/* End Login Popup Modal */}
 
