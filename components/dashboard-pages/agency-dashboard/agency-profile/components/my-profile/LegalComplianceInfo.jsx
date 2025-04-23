@@ -68,6 +68,8 @@ const LegalComplianceInfo = () => {
           <input
             type="date"
             name="licenseExpiryDate"
+            className="form-control"
+            placeholder="Select date"
             value={formData.licenseExpiryDate}
             onChange={handleChange}
             required
@@ -116,7 +118,30 @@ const LegalComplianceInfo = () => {
             className="form-control"
             onChange={handleChange}
             required
+            style={{
+              width: "100%",
+              boxSizing: "border-box",
+            }}
           />
+        </div>
+
+        {/* Submit Button */}
+        <div className="form-group col-lg-12 col-md-12">
+          <button
+            type="submit"
+            style={{
+              padding: "0.75rem 1.5rem",
+              border: "none",
+              borderRadius: "0.5rem",
+              backgroundColor: "#48bb78",
+              color: "white",
+              cursor: "pointer",
+              fontSize: "1rem",
+              fontWeight: "600",
+            }}
+          >
+            Save Details
+          </button>
         </div>
       </div>
     </form>
