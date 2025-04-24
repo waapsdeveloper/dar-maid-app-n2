@@ -44,11 +44,11 @@ const index = () => {
 
       {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
-        <div className="dashboard-outer">
+        <div className="dashboard-outer" style={{ padding: "0.5rem 1rem" }}> {/* Adjusted padding: 0.5rem top-bottom, 1rem left-right */}
           <BreadCrumb title="Agency Profile!" />
           {/* breadCrumb */}
 
-          <MenuToggler />
+          <MenuToggler style={{ marginBottom: "0" }} /> {/* Keeping marginBottom: "0" to reduce space */}
           {/* Collapsible sidebar button */}
 
           <div className="row">
@@ -56,29 +56,91 @@ const index = () => {
               {/* Tabs Navigation */}
               <div className="ls-widget">
                 <div className="tabs-box">
-                  <ul className="nav nav-tabs">
-                    <li className="nav-item">
+                  <ul
+                    className="nav nav-tabs"
+                    style={{
+                      display: "flex",
+                      whiteSpace: "normal", // Allow wrapping if needed
+                      flexWrap: "wrap", // Allow wrapping for better responsiveness
+                      minHeight: "80px", // Increased height as requested
+                    }}
+                  >
+                    <li
+                      className="nav-item"
+                      style={{
+                        height: "100%",
+                      }}
+                    >
                       <button
                         className={`nav-link ${activeTab === "general-info" ? "active" : ""}`}
                         onClick={() => handleTabClick("general-info")}
+                        style={{
+                          minWidth: "150px",
+                          maxWidth: "150px",
+                          height: "100%",
+                          padding: "0.5rem",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          textAlign: "center",
+                          fontSize: "1.2rem", // Increased font size as requested
+                          whiteSpace: "normal",
+                          wordWrap: "break-word",
+                        }}
                       >
-                        Agency Info
+                        Agency Profile Info
                       </button>
                     </li>
-                    <li className="nav-item">
+                    <li
+                      className="nav-item"
+                      style={{
+                        height: "100%",
+                      }}
+                    >
                       <button
                         className={`nav-link ${activeTab === "legal-compliance" ? "active" : ""}`}
                         onClick={() => handleTabClick("legal-compliance")}
+                        style={{
+                          minWidth: "150px",
+                          maxWidth: "150px",
+                          height: "100%",
+                          padding: "0.5rem",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          textAlign: "center",
+                          fontSize: "1.2rem",
+                          whiteSpace: "normal",
+                          wordWrap: "break-word",
+                        }}
                       >
                         Legal & Compliance
                       </button>
                     </li>
-                    <li className="nav-item">
+                    <li
+                      className="nav-item"
+                      style={{
+                        height: "100%",
+                      }}
+                    >
                       <button
                         className={`nav-link ${activeTab === "services" ? "active" : ""}`}
                         onClick={() => handleTabClick("services")}
+                        style={{
+                          minWidth: "150px",
+                          maxWidth: "150px",
+                          height: "100%",
+                          padding: "0.5rem",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          textAlign: "center",
+                          fontSize: "1.2rem",
+                          whiteSpace: "normal",
+                          wordWrap: "break-word",
+                        }}
                       >
-                        Services & Offerrings
+                        Services & Offerings
                       </button>
                     </li>
                   </ul>
@@ -86,17 +148,26 @@ const index = () => {
                   {/* Tab Content */}
                   <div className="tab-content" style={{ paddingTop: "2rem" }}>
                     {activeTab === "general-info" && (
-                      <div className="widget-content" style={{ minHeight: "400px", padding: "10px" }}>
+                      <div
+                        className="widget-content"
+                        style={{ minHeight: "400px", padding: "10px" }}
+                      >
                         <MyProfile />
                       </div>
                     )}
                     {activeTab === "legal-compliance" && (
-                      <div className="widget-content" style={{ minHeight: "400px", padding: "10px" }}>
+                      <div
+                        className="widget-content"
+                        style={{ minHeight: "400px", padding: "10px 2.5rem 10px 2.5rem" }}
+                      >
                         <LegalComplianceInfo />
                       </div>
                     )}
                     {activeTab === "services" && (
-                      <div className="widget-content" style={{ minHeight: "400px", padding: "10px" }}>
+                      <div
+                        className="widget-content"
+                        style={{ minHeight: "400px", padding: "10px 2.5rem 10px 2.5rem" }}
+                      >
                         <ServiceOfferingDetails />
                       </div>
                     )}
@@ -105,7 +176,7 @@ const index = () => {
               </div>
 
               {/* Commented out other components as per request */}
-              {/* 
+              {/*
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">

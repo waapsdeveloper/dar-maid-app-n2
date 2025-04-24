@@ -30,6 +30,16 @@ const FormInfoBox = () => {
     console.log("Form Data:", formData);
   };
 
+  // Gulf countries for the Country field
+  const gulfCountries = [
+    "Bahrain",
+    "Kuwait",
+    "Oman",
+    "Qatar",
+    "Saudi Arabia",
+    "United Arab Emirates",
+  ];
+
   return (
     <form className="default-form" onSubmit={handleSubmit}>
       <div className="row" style={{ gap: "0" }}>
@@ -113,14 +123,19 @@ const FormInfoBox = () => {
           <label>
             Country <span style={{ color: "red" }}>*</span>
           </label>
-          <input
-            type="text"
+          <select
             name="country"
-            placeholder="Bahrain"
             value={formData.country}
             onChange={handleChange}
             required
-          />
+          >
+            <option value="">Select Country</option>
+            {gulfCountries.map((country) => (
+              <option key={country} value={country}>
+                {country}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* Contract Info */}
@@ -196,7 +211,16 @@ const FormInfoBox = () => {
         </div>
 
         {/* Submit Button */}
-        <div className="form-group col-lg-12 col-md-12" style={{ marginBottom: "1rem" }}>
+        <div
+          className="form-group col-lg-12 col-md-12"
+          style={{
+            marginBottom: "1rem",
+            display: "flex",
+            justifyContent: "flex-end",
+            paddingLeft: "1rem",
+            paddingRight: "1rem",
+          }}
+        >
           <button
             type="submit"
             style={{

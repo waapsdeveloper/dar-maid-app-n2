@@ -145,7 +145,16 @@ const LegalComplianceInfo = () => {
         </div>
 
         {/* Submit Button */}
-        {/* <div className="form-group col-lg-12 col-md-12" style={{ marginBottom: "1rem" }}>
+        <div
+          className="form-group col-lg-12 col-md-12"
+          style={{
+            marginBottom: "1rem",
+            display: "flex",
+            justifyContent: "flex-end",
+            paddingLeft: "1rem",
+            paddingRight: "1rem",
+          }}
+        >
           <button
             type="submit"
             style={{
@@ -161,7 +170,7 @@ const LegalComplianceInfo = () => {
           >
             Save Details
           </button>
-        </div> */}
+        </div>
       </div>
     </form>
   );

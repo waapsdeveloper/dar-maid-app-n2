@@ -38,12 +38,14 @@ const ServiceOfferingDetails = () => {
     { value: "Airport Pickup", label: "Airport Pickup" },
   ];
 
+  // Updated countryOptions to include only Gulf countries
   const countryOptions = [
     { value: "Bahrain", label: "Bahrain" },
-    { value: "USA", label: "USA" },
-    { value: "Canada", label: "Canada" },
-    { value: "UK", label: "UK" },
-    { value: "Australia", label: "Australia" },
+    { value: "Kuwait", label: "Kuwait" },
+    { value: "Oman", label: "Oman" },
+    { value: "Qatar", label: "Qatar" },
+    { value: "Saudi Arabia", label: "Saudi Arabia" },
+    { value: "United Arab Emirates", label: "United Arab Emirates" },
   ];
 
   return (
@@ -116,7 +118,16 @@ const ServiceOfferingDetails = () => {
         </div>
 
         {/* Submit Button */}
-        {/* <div className="form-group col-lg-12 col-md-12" style={{ marginBottom: "1rem" }}>
+        <div
+          className="form-group col-lg-12 col-md-12"
+          style={{
+            marginBottom: "1rem",
+            display: "flex",
+            justifyContent: "flex-end",
+            paddingLeft: "1rem",
+            paddingRight: "1rem",
+          }}
+        >
           <button
             type="submit"
             style={{
@@ -132,7 +143,7 @@ const ServiceOfferingDetails = () => {
           >
             Save Details
           </button>
-        </div> */}
+        </div>
       </div>
     </form>
   );

@@ -3,8 +3,8 @@ const BreadCrumb = ({ title = "" }) => {
     <div
       className="upper-title-box"
       style={{
-        marginBottom: "0.2rem", // Remove margin
-        padding: "0.7rem", // Remove all padding
+        marginBottom: "0.2rem",
+        padding: "0.7rem", 
       }}
     >
       <h3 style={{ margin: 0 }}>{title}</h3>
