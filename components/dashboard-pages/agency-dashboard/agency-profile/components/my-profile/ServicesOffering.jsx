@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState } from "react";
 import Select from "react-select";
@@ -36,7 +36,6 @@ const ServiceOfferingDetails = () => {
     { value: "Visa Sponsorship", label: "Visa Sponsorship" },
     { value: "Housing", label: "Housing" },
     { value: "Airport Pickup", label: "Airport Pickup" },
-    // Add more services as needed
   ];
 
   const countryOptions = [
@@ -45,15 +44,16 @@ const ServiceOfferingDetails = () => {
     { value: "Canada", label: "Canada" },
     { value: "UK", label: "UK" },
     { value: "Australia", label: "Australia" },
-    // Add more countries as needed
   ];
 
   return (
     <form className="default-form" onSubmit={handleSubmit}>
-      <div className="row">
+      <div className="row" style={{ gap: "0" }}>
         {/* Services Provided */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Services Provided</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Services Provided <span style={{ color: "red" }}>*</span>
+          </label>
           <Select
             isMulti
             name="servicesProvided"
@@ -67,8 +67,10 @@ const ServiceOfferingDetails = () => {
         </div>
 
         {/* Countries of Operation */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Countries of Operation</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Countries of Operation <span style={{ color: "red" }}>*</span>
+          </label>
           <Select
             isMulti
             name="countriesOfOperation"
@@ -82,8 +84,10 @@ const ServiceOfferingDetails = () => {
         </div>
 
         {/* Languages Spoken by Staff */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Languages Spoken by Staff</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Languages Spoken by Staff <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             name="languagesSpoken"
@@ -95,8 +99,10 @@ const ServiceOfferingDetails = () => {
         </div>
 
         {/* Employee Nationalities Typically Represented */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Employee Nationalities Typically Represented</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Employee Nationalities Typically Represented <span style={{ color: "red" }}>*</span>
+          </label>
           <Select
             isMulti
             name="employeeNationalities"
@@ -108,6 +114,25 @@ const ServiceOfferingDetails = () => {
             required
           />
         </div>
+
+        {/* Submit Button */}
+        {/* <div className="form-group col-lg-12 col-md-12" style={{ marginBottom: "1rem" }}>
+          <button
+            type="submit"
+            style={{
+              padding: "0.75rem 1.5rem",
+              border: "none",
+              borderRadius: "0.5rem",
+              backgroundColor: "#1a73e8",
+              color: "white",
+              cursor: "pointer",
+              fontSize: "1rem",
+              fontWeight: "600",
+            }}
+          >
+            Save Details
+          </button>
+        </div> */}
       </div>
     </form>
   );

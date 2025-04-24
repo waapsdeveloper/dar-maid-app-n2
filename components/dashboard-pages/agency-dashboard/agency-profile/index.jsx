@@ -1,3 +1,6 @@
+'use client';
+
+import React, { useState } from "react";
 import MobileMenu from "../../../header/MobileMenu";
 import DashboardHeader from "../../../header/DashboardHeader";
 import LoginPopup from "../../../common/form/login/LoginPopup";
@@ -11,14 +14,21 @@ import DashboardAgencySidebar from "@/components/header/DashboardAgencySidebar";
 import EmployementDetail from "./components/my-profile/EmployementDetail";
 import InterviewAvailability from "./components/my-profile/InterviewAvailability";
 import Document from "./components/my-profile/Document";
-import {ApplicationManagement,InterviewManagement}  from "./components/my-profile/JobApplication";
+import { ApplicationManagement, InterviewManagement } from "./components/my-profile/JobApplication";
 import LegalComplianceInfo from "./components/my-profile/LegalComplianceInfo";
 import ServiceOfferingDetails from "./components/my-profile/ServicesOffering";
+
 const index = () => {
+  const [activeTab, setActiveTab] = useState("general-info");
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+  };
+
   return (
     <div className="page-wrapper dashboard">
       <span className="header-span"></span>
-      {/* <!-- Header Span for hight --> */}
+      {/* <!-- Header Span for height --> */}
 
       <LoginPopup />
       {/* End Login Popup Modal */}
@@ -43,127 +53,136 @@ const index = () => {
 
           <div className="row">
             <div className="col-lg-12">
+              {/* Tabs Navigation */}
               <div className="ls-widget">
                 <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>My Profile</h4>
-                  </div>
-                  <MyProfile />
-                </div>
-              </div>
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Legal & Compliance</h4>
-                  </div>
-                  {/* End .widget-title */}
+                  <ul className="nav nav-tabs">
+                    <li className="nav-item">
+                      <button
+                        className={`nav-link ${activeTab === "general-info" ? "active" : ""}`}
+                        onClick={() => handleTabClick("general-info")}
+                      >
+                        Agency Info
+                      </button>
+                    </li>
+                    <li className="nav-item">
+                      <button
+                        className={`nav-link ${activeTab === "legal-compliance" ? "active" : ""}`}
+                        onClick={() => handleTabClick("legal-compliance")}
+                      >
+                        Legal & Compliance
+                      </button>
+                    </li>
+                    <li className="nav-item">
+                      <button
+                        className={`nav-link ${activeTab === "services" ? "active" : ""}`}
+                        onClick={() => handleTabClick("services")}
+                      >
+                        Services & Offerrings
+                      </button>
+                    </li>
+                  </ul>
 
-                  <div className="widget-content">
-                    <LegalComplianceInfo />
+                  {/* Tab Content */}
+                  <div className="tab-content" style={{ paddingTop: "2rem" }}>
+                    {activeTab === "general-info" && (
+                      <div className="widget-content" style={{ minHeight: "400px", padding: "10px" }}>
+                        <MyProfile />
+                      </div>
+                    )}
+                    {activeTab === "legal-compliance" && (
+                      <div className="widget-content" style={{ minHeight: "400px", padding: "10px" }}>
+                        <LegalComplianceInfo />
+                      </div>
+                    )}
+                    {activeTab === "services" && (
+                      <div className="widget-content" style={{ minHeight: "400px", padding: "10px" }}>
+                        <ServiceOfferingDetails />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Services Offering Details</h4>
-                  </div>
-                  {/* End .widget-title */}
 
-                  <div className="widget-content">
-                    <ServiceOfferingDetails />
-                  </div>
-                </div>
-              </div>
+              {/* Commented out other components as per request */}
+              {/* 
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
                     <h4>Contact Information</h4>
                   </div>
-                  {/* End .widget-title */}
-
                   <div className="widget-content">
                     <ContactInfoBox />
                   </div>
                 </div>
               </div>
+
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
                     <h4>Employement Detail</h4>
                   </div>
-                  {/* End .widget-title */}
-
                   <div className="widget-content">
                     <EmployementDetail />
                   </div>
                 </div>
               </div>
+
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
                     <h4>Interview Availability</h4>
                   </div>
-                  {/* End .widget-title */}
-
                   <div className="widget-content">
                     <InterviewAvailability />
                   </div>
                 </div>
               </div>
+
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
                     <h4>Document</h4>
                   </div>
-                  {/* End .widget-title */}
-
                   <div className="widget-content">
                     <Document />
                   </div>
                 </div>
               </div>
+
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
                     <h4>Application Management</h4>
                   </div>
-                  {/* End .widget-title */}
-
                   <div className="widget-content">
                     <ApplicationManagement />
                   </div>
                 </div>
               </div>
+
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
                     <h4>Interview Management</h4>
                   </div>
-                  {/* End .widget-title */}
-
                   <div className="widget-content">
-                    <InterviewManagement  />
+                    <InterviewManagement />
                   </div>
                 </div>
               </div>
-
-              {/* <!-- Ls widget --> */}
 
               <div className="ls-widget">
                 <div className="tabs-box">
                   <div className="widget-title">
                     <h4>Social Network</h4>
                   </div>
-                  {/* End .widget-title */}
                   <div className="widget-content">
                     <SocialNetworkBox />
                   </div>
                 </div>
               </div>
-              {/* <!-- Ls widget --> */}
-
-              {/* <!-- Ls widget --> */}
+              */}
             </div>
           </div>
           {/* End .row */}

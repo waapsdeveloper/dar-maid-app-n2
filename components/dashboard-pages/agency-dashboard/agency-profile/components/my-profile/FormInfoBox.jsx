@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import React, { useState } from "react";
 import Select from "react-select";
@@ -32,10 +32,12 @@ const FormInfoBox = () => {
 
   return (
     <form className="default-form" onSubmit={handleSubmit}>
-      <div className="row">
+      <div className="row" style={{ gap: "0" }}>
         {/* Full Name/Agency Name */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Full Name / Agency Name</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Full Name / Agency Name <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             name="fullName"
@@ -47,8 +49,10 @@ const FormInfoBox = () => {
         </div>
 
         {/* Contact Person Name */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Contact Person Name</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Contact Person Name <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             name="contactPersonName"
@@ -60,8 +64,10 @@ const FormInfoBox = () => {
         </div>
 
         {/* Agency Registration Number */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Agency Registration Number</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Agency Registration Number <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             name="agencyRegistrationNumber"
@@ -73,8 +79,10 @@ const FormInfoBox = () => {
         </div>
 
         {/* Profile Picture/Logo Upload */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Profile Picture / Logo</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Profile Picture / Logo <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="file"
             name="profileImage"
@@ -86,8 +94,10 @@ const FormInfoBox = () => {
         </div>
 
         {/* Office Address */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Office Address</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Office Address <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             name="officeAddress"
@@ -99,8 +109,10 @@ const FormInfoBox = () => {
         </div>
 
         {/* Country */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Country</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Country <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             name="country"
@@ -112,8 +124,10 @@ const FormInfoBox = () => {
         </div>
 
         {/* Contract Info */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Contract Info</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Contract Info <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             name="contractInfo"
@@ -125,21 +139,37 @@ const FormInfoBox = () => {
         </div>
 
         {/* Phone Number */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Phone Number</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Phone Number <span style={{ color: "red" }}>*</span>
+          </label>
           <input
-            type="tel"
+            type="number"
             name="phoneNumber"
             placeholder="+973 1234 5678"
             value={formData.phoneNumber}
             onChange={handleChange}
             required
+            style={{
+              WebkitAppearance: "none",
+              MozAppearance: "textfield",
+            }}
+            className="form-control"
           />
+          <style jsx>{`
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+          `}</style>
         </div>
 
         {/* Email Address */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Email Address</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Email Address <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="email"
             name="emailAddress"
@@ -151,8 +181,10 @@ const FormInfoBox = () => {
         </div>
 
         {/* Agency Website */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Agency Website</label>
+        <div className="form-group col-lg-6 col-md-12" style={{ marginBottom: "1rem" }}>
+          <label>
+            Agency Website <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="url"
             name="agencyWebsite"
@@ -164,14 +196,14 @@ const FormInfoBox = () => {
         </div>
 
         {/* Submit Button */}
-        <div className="form-group col-lg-12 col-md-12">
+        <div className="form-group col-lg-12 col-md-12" style={{ marginBottom: "1rem" }}>
           <button
             type="submit"
             style={{
               padding: "0.75rem 1.5rem",
               border: "none",
               borderRadius: "0.5rem",
-              backgroundColor: "#48bb78",
+              backgroundColor: "#1a73e8",
               color: "white",
               cursor: "pointer",
               fontSize: "1rem",
