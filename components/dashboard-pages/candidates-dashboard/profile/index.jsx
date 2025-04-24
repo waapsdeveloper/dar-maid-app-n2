@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import MobileMenu from "../../../header/MobileMenu";
 import DashboardHeader from "../../../header/DashboardHeader";
@@ -11,12 +11,35 @@ import ContactInfoBox from "./components/ContactInfoBox";
 import CopyrightFooter from "../../CopyrightFooter";
 import MenuToggler from "../../MenuToggler";
 import DashboardCandidatesSidebar from "@/components/header/DashboardCandidatesSidebar";
-import { ApplicationManagement, InterviewManagement,EmploymentDetails ,InterviewAvailability} from "./components/my-profile/EmployementDetail";
+import { ApplicationManagement, InterviewManagement, EmploymentDetails, InterviewAvailability } from "./components/my-profile/EmployementDetail";
 import EmploymentInfoBox from "./components/EmploymentInfoBox";
 import WorkExperiencesBox from "./components/WorkExperiencesBox";
-import {Document,FileCard} from "./components/my-profile/Document";
+import { Document, FileCard } from "./components/my-profile/Document";
 
 const index = () => {
+  const [activeTab, setActiveTab] = useState("MyProfile");
+  const tabsRef = useRef(null);
+
+  const tabs = [
+    { name: "MyProfile", label: "Employee's Profile", component: <MyProfile /> },
+    { name: "ContactInfoBox", label: "Contact Information", component: <ContactInfoBox /> },
+    { name: "EmploymentInfoBox", label: "Employment Information", component: <EmploymentInfoBox /> },
+    { name: "WorkExperiencesBox", label: "Work Experiences", component: <WorkExperiencesBox /> },
+    { name: "EmploymentDetails", label: "Employment Details", component: <EmploymentDetails /> },
+    { name: "InterviewAvailability", label: "Interview Availability", component: <InterviewAvailability /> },
+    { name: "FileCard", label: "View All Documents", component: <FileCard /> },
+    { name: "Document", label: "Upload Document", component: <Document /> },
+    { name: "ApplicationManagement", label: "Application Management", component: <ApplicationManagement /> },
+    { name: "InterviewManagement", label: "Interview Management", component: <InterviewManagement /> },
+    { name: "SocialNetworkBox", label: "Employee's Social Networks", component: <SocialNetworkBox /> },
+  ];
+
+  const scrollTabs = (direction) => {
+    const container = tabsRef.current;
+    const scrollAmount = direction === "left" ? -300 : 300; // Adjusted scroll amount for better visibility
+    container.scrollBy({ left: scrollAmount, behavior: "smooth" });
+  };
+
   return (
     <div className="page-wrapper dashboard">
       <span className="header-span"></span>
@@ -35,145 +58,114 @@ const index = () => {
 
       {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
-        <div className="dashboard-outer">
+        <div className="dashboard-outer" style={{ padding: "0" }}>
           <BreadCrumb title="Profile!" />
           {/* breadCrumb */}
 
-          <MenuToggler />
+          <MenuToggler style={{ marginBottom: "0" }} />
           {/* Collapsible sidebar button */}
 
           <div className="row">
             <div className="col-lg-12">
+              {/* Tab Navigation */}
               <div className="ls-widget">
                 <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>My Profile</h4>
-                  </div>
-                  <MyProfile />
-                </div>
-              </div>
-              {/* <!-- Ls widget --> */}
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Contact Information</h4>
-                  </div>
-                  {/* End .widget-title */}
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      position: "relative",
+                      width: "100%", // Ensure the container takes full width
+                    }}
+                  >
+                    {/* Left Arrow */}
+                    <button
+                      onClick={() => scrollTabs("left")}
+                      style={{
+                        padding: "0.5rem",
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        fontSize: "1.2rem",
+                        flexShrink: 0, // Prevent arrow from shrinking
+                      }}
+                    >
+                      ←
+                    </button>
 
-                  <div className="widget-content">
-                    <ContactInfoBox />
-                  </div>
-                </div>
-              </div>
+                    {/* Tabs Container */}
+                    <div
+                      ref={tabsRef}
+                      style={{
+                        overflowX: "hidden", // Hide default scrollbar
+                        flex: 1, // Take remaining space
+                        scrollBehavior: "smooth",
+                        width: "100%", // Ensure full width
+                      }}
+                    >
+                      <ul
+                        className="nav nav-tabs"
+                        style={{
+                          display: "flex",
+                          whiteSpace: "nowrap", // Keep tabs in a single line
+                          flexWrap: "nowrap", // Prevent wrapping
+                          minHeight: "60px", // Set a consistent height for the tabs container
+                        }}
+                      >
+                        {tabs.map((tab) => (
+                          <li
+                            key={tab.name}
+                            className="nav-item"
+                            style={{
+                              height: "100%", // Ensure the li takes the full height of the ul
+                            }}
+                          >
+                            <button
+                              className={`nav-link ${activeTab === tab.name ? "active" : ""}`}
+                              onClick={() => setActiveTab(tab.name)}
+                              style={{
+                                minWidth: "150px", // Fixed width for all tabs
+                                maxWidth: "150px", // Fixed width for all tabs
+                                height: "100%", // Take the full height of the parent li
+                                padding: "0.5rem", // Adjusted padding
+                                display: "flex", // Make the button a flex container
+                                justifyContent: "center", // Center the text horizontally
+                                alignItems: "center", // Center the text vertically
+                                textAlign: "center",
+                                fontSize: "1.1rem", // Keeping the increased font size
+                                whiteSpace: "normal", // Allow text wrapping
+                                wordWrap: "break-word", // Ensure text wraps within the tab
+                              }}
+                            >
+                              {tab.label}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
 
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Employment Information</h4>
+                    {/* Right Arrow */}
+                    <button
+                      onClick={() => scrollTabs("right")}
+                      style={{
+                        padding: "0.5rem",
+                        background: "none",
+                        border: "none",
+                        cursor: "pointer",
+                        fontSize: "1.2rem",
+                        flexShrink: 0, // Prevent arrow from shrinking
+                      }}
+                    >
+                      →
+                    </button>
                   </div>
-                  <div className="widget-content">
-                    <EmploymentInfoBox />
-                  </div>
-                </div>
-              </div>
 
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Work Experiences</h4>
-                  </div>
-                  <div className="widget-content">
-                    <WorkExperiencesBox/>
-                  </div>
-                </div>
-              </div>
-
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Employement Detail</h4>
-                  </div>
-                  {/* End .widget-title */}
-
-                  <div className="widget-content">
-                    <EmploymentDetails />
-                  </div>
-                </div>
-              </div>
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Interview Availability</h4>
-                  </div>
-                  {/* End .widget-title */}
-
-                  <div className="widget-content">
-                    <InterviewAvailability />
-                  </div>
-                </div>
-              </div>
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Documents</h4>
-                  </div>
-                  {/* End .widget-title */}
-
-                  <div className="widget-content">
-                    <FileCard />
-                  </div>
-                </div>
-              </div>
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Upload Document</h4>
-                  </div>
-                  {/* End .widget-title */}
-
-                  <div className="widget-content">
-                    <Document />
-                  </div>
-                </div>
-              </div>
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Application Management</h4>
-                  </div>
-                  {/* End .widget-title */}
-
-                  <div className="widget-content">
-                    <ApplicationManagement />
+                  {/* Tab Content */}
+                  <div className="widget-content" style={{ paddingTop: "2rem", minHeight: "400px" }}>
+                    {tabs.find((tab) => tab.name === activeTab)?.component}
                   </div>
                 </div>
               </div>
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Interview Management</h4>
-                  </div>
-                  {/* End .widget-title */}
-
-                  <div className="widget-content">
-                    <InterviewManagement />
-                  </div>
-                </div>
-              </div>
-              <div className="ls-widget">
-                <div className="tabs-box">
-                  <div className="widget-title">
-                    <h4>Social Network</h4>
-                  </div>
-                  {/* End .widget-title */}
-                  <div className="widget-content">
-                    <SocialNetworkBox />
-                  </div>
-                </div>
-              </div>
-              {/* <!-- Ls widget --> */}
-
-              {/* <!-- Ls widget --> */}
             </div>
           </div>
           {/* End .row */}
@@ -185,7 +177,6 @@ const index = () => {
       <CopyrightFooter />
       {/* <!-- End Copyright --> */}
     </div>
-    // End page-wrapper
   );
 };
 

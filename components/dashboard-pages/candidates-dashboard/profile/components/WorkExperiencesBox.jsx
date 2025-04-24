@@ -17,18 +17,39 @@ const JobExperienceCard = () => {
     rating: 0,
     employerReview: "",
     petsExperience: "",
-    comfortableWithPets: false,
+    comfortableWithPets: null, // Changed to null to enforce required selection
   });
 
-  const countries = [
-    "Select Country",
-    "United Arab Emirates",
-    "Saudi Arabia",
-    "Qatar",
-    "Oman",
-    "Kuwait",
+  // Define button styles at the top level for consistency
+  const buttonStyle = {
+    padding: "0.75rem 1.5rem",
+    border: "none",
+    borderRadius: "0.5rem",
+    backgroundColor: "#1a73e8",
+    color: "white",
+    cursor: "pointer",
+    fontSize: "1rem",
+    fontWeight: "600",
+  };
+
+  const removeButtonStyle = {
+    padding: "0.75rem 1.5rem",
+    border: "none",
+    borderRadius: "0.5rem",
+    backgroundColor: "#e63946", // Red color for delete action
+    color: "white",
+    cursor: "pointer",
+    fontSize: "1rem",
+    fontWeight: "600",
+  };
+
+  const gulfCountries = [
     "Bahrain",
-    "Other"
+    "Kuwait",
+    "Oman",
+    "Qatar",
+    "Saudi Arabia",
+    "United Arab Emirates",
   ];
 
   const addExperience = () => {
@@ -86,7 +107,7 @@ const JobExperienceCard = () => {
   };
 
   return (
-    <div className="default-form">
+    <form className="default-form">
       {/* Existing Work Experience Section */}
       {experiences.map((exp) => (
         <div key={exp.id} className="form-group experience-card mb-4 p-4 border rounded">
@@ -94,7 +115,9 @@ const JobExperienceCard = () => {
             <div className="col-lg-6 col-md-12">
               {/* Job Title Input */}
               <div className="form-group">
-                <label>Job Title</label>
+                <label>
+                  Job Title <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -107,7 +130,9 @@ const JobExperienceCard = () => {
 
               {/* Company Name Input */}
               <div className="form-group">
-                <label>Company Name</label>
+                <label>
+                  Company Name <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="text"
                   className="form-control"
@@ -120,6 +145,9 @@ const JobExperienceCard = () => {
 
               {/* File Upload Button */}
               <div className="form-group">
+                <label>
+                  Upload Document <span style={{ color: "red" }}>*</span>
+                </label>
                 <label className={`file-upload-label ${exp.file ? 'has-file' : ''}`}>
                   {exp.file ? "Replace Document" : "Upload Document"}
                   <input
@@ -127,6 +155,7 @@ const JobExperienceCard = () => {
                     className="d-none"
                     accept=".pdf,.doc,.docx,image/*"
                     onChange={(e) => handleFileChange(exp.id, e.target.files[0])}
+                    required
                   />
                 </label>
               </div>
@@ -136,7 +165,9 @@ const JobExperienceCard = () => {
               <div className="row">
                 {/* Start Date Input */}
                 <div className="form-group col-md-6">
-                  <label>Start Date</label>
+                  <label>
+                    Start Date <span style={{ color: "red" }}>*</span>
+                  </label>
                   <input
                     type="date"
                     className="form-control"
@@ -148,7 +179,9 @@ const JobExperienceCard = () => {
 
                 {/* End Date Input */}
                 <div className="form-group col-md-6">
-                  <label>End Date</label>
+                  <label>
+                    End Date <span style={{ color: "red" }}>*</span>
+                  </label>
                   <input
                     type="date"
                     className="form-control"
@@ -185,7 +218,7 @@ const JobExperienceCard = () => {
           <div className="text-end">
             <button
               type="button"
-              className="btn btn-remove"
+              style={removeButtonStyle}
               onClick={() => deleteExperience(exp.id)}
             >
               Remove Experience
@@ -195,21 +228,13 @@ const JobExperienceCard = () => {
       ))}
 
       {/* Add Experience Button */}
-      <div className="form-group mt-4">
-      <button
+      <div
+        className="form-group mt-4"
+        style={{ display: "flex", justifyContent: "flex-end" }}
+      >
+        <button
           type="button"
-          style={{
-            padding: "1rem 2rem",
-            border: "none",
-            borderRadius: "0.5rem",
-            backgroundColor: "#48bb78",
-            color: "white",
-            cursor: "pointer",
-            fontSize: "1rem",
-            fontWeight: "600",
-            width: "100%",
-            maxWidth: "300px",
-          }}
+          style={buttonStyle}
           onClick={addExperience}
         >
           + Add Experience
@@ -225,57 +250,73 @@ const JobExperienceCard = () => {
           <div className="col-lg-6 col-md-12">
             {/* Previous Employer Name */}
             <div className="form-group">
-              <label>Previous Employer Name</label>
+              <label>
+                Previous Employer Name <span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="text"
                 className="form-control"
                 value={previousEmployer.employerName}
                 onChange={(e) => handleEmployerChange("employerName", e.target.value)}
+                required
               />
             </div>
 
             {/* Employment Location */}
             <div className="form-group">
-              <label>Employment Location</label>
+              <label>
+                Employment Location <span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="text"
                 className="form-control"
                 value={previousEmployer.employmentLocation}
                 onChange={(e) => handleEmployerChange("employmentLocation", e.target.value)}
+                required
               />
             </div>
 
             {/* Employer Phone */}
             <div className="form-group">
-              <label>Employer Phone</label>
+              <label>
+                Employer Phone <span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="number"
                 className="form-control"
                 value={previousEmployer.employerPhone}
                 onChange={(e) => handleEmployerChange("employerPhone", e.target.value)}
+                required
               />
             </div>
 
             {/* Employer Email */}
             <div className="form-group">
-              <label>Employer Email Address</label>
+              <label>
+                Employer Email Address <span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="email"
                 className="form-control"
                 value={previousEmployer.employerEmail}
                 onChange={(e) => handleEmployerChange("employerEmail", e.target.value)}
+                required
               />
             </div>
 
             {/* Country */}
             <div className="form-group">
-              <label>Country</label>
+              <label>
+                Country <span style={{ color: "red" }}>*</span>
+              </label>
               <select
                 className="chosen-single form-select"
                 value={previousEmployer.country}
                 onChange={(e) => handleEmployerChange("country", e.target.value)}
+                required
               >
-                {countries.map((country) => (
+                <option value="">Select Country</option>
+                {gulfCountries.map((country) => (
                   <option key={country} value={country}>
                     {country}
                   </option>
@@ -289,59 +330,74 @@ const JobExperienceCard = () => {
             <div className="row">
               {/* Start Date */}
               <div className="form-group col-md-6">
-                <label>Start Date</label>
+                <label>
+                  Start Date <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="date"
                   className="form-control"
                   value={previousEmployer.startDate}
                   onChange={(e) => handleEmployerChange("startDate", e.target.value)}
+                  required
                 />
               </div>
 
               {/* End Date */}
               <div className="form-group col-md-6">
-                <label>End Date</label>
+                <label>
+                  End Date <span style={{ color: "red" }}>*</span>
+                </label>
                 <input
                   type="date"
                   className="form-control"
                   value={previousEmployer.endDate}
                   onChange={(e) => handleEmployerChange("endDate", e.target.value)}
+                  required
                 />
               </div>
             </div>
 
             {/* Designation */}
             <div className="form-group">
-              <label>Designation / Position</label>
+              <label>
+                Designation / Position <span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="text"
                 className="form-control"
                 placeholder="Maid, Gardener, etc."
                 value={previousEmployer.designation}
                 onChange={(e) => handleEmployerChange("designation", e.target.value)}
+                required
               />
             </div>
 
             {/* Previous Salary */}
             <div className="form-group">
-              <label>Previous Salary</label>
+              <label>
+                Previous Salary <span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="number"
                 className="form-control"
                 value={previousEmployer.previousSalary}
                 onChange={(e) => handleEmployerChange("previousSalary", e.target.value)}
+                required
               />
             </div>
 
             {/* Benefits */}
             <div className="form-group">
-              <label>Benefits</label>
+              <label>
+                Benefits <span style={{ color: "red" }}>*</span>
+              </label>
               <input
                 type="text"
                 className="form-control"
                 placeholder="Visa, Accommodation, Fuel, etc."
                 value={previousEmployer.benefits}
                 onChange={(e) => handleEmployerChange("benefits", e.target.value)}
+                required
               />
             </div>
           </div>
@@ -349,60 +405,79 @@ const JobExperienceCard = () => {
 
         {/* Rating */}
         <div className="form-group" style={{ margin: "16px 0" }}>
-  <label style={{ display: "block", marginBottom: "8px" }}>Rating (1–5 stars)</label>
-  <div className="rating-stars" style={{ display: "flex", gap: "8px" }}>
-    {[1, 2, 3, 4, 5].map((star) => (
-      <button
-        key={star}
-        type="button"
-        onClick={() => handleEmployerChange("rating", star)}
-        style={{
-          background: "transparent",
-          border: "none",
-          cursor: "pointer",
-          fontSize: "24px",
-          color: star <= previousEmployer.rating ? "#facc15" : "#d1d5db", // yellow-400 or gray-300
-        }}
-      >
-        ★
-      </button>
-    ))}
-  </div>
-</div>
-
+          <label style={{ display: "block", marginBottom: "8px" }}>
+            Rating (1–5 stars) <span style={{ color: "red" }}>*</span>
+          </label>
+          <div className="rating-stars" style={{ display: "flex", gap: "8px" }}>
+            {[1, 2, 3, 4, 5].map((star) => (
+              <button
+                key={star}
+                type="button"
+                onClick={() => handleEmployerChange("rating", star)}
+                style={{
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "24px",
+                  color: star <= previousEmployer.rating ? "#facc15" : "#d1d5db", // yellow-400 or gray-300
+                }}
+              >
+                ★
+              </button>
+            ))}
+          </div>
+          {/* Hidden input to enforce required validation */}
+          {previousEmployer.rating === 0 && (
+            <input
+              type="hidden"
+              required
+              value=""
+              onChange={() => {}}
+            />
+          )}
+        </div>
 
         {/* Employer Review */}
         <div className="form-group">
-          <label>Employer Review</label>
+          <label>
+            Employer Review <span style={{ color: "red" }}>*</span>
+          </label>
           <textarea
             className="form-control"
             rows="4"
             value={previousEmployer.employerReview}
             onChange={(e) => handleEmployerChange("employerReview", e.target.value)}
+            required
           ></textarea>
         </div>
 
         {/* Pets Experience */}
         <div className="form-group">
-          <label>Pets Experience</label>
+          <label>
+            Pets Experience <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             className="form-control"
             value={previousEmployer.petsExperience}
             onChange={(e) => handleEmployerChange("petsExperience", e.target.value)}
+            required
           />
         </div>
 
         {/* Comfortable with Pets */}
         <div className="form-group">
-          <label>Comfortable with Pets</label>
-          <div className="radio-group">
+          <label>
+            Comfortable with Pets <span style={{ color: "red" }}>*</span>
+          </label>
+          <div className="radio-group" style={{ display: "flex", gap: "16px" }}>
             <label className="radio-label">
               <input
                 type="radio"
                 name="comfortableWithPets"
                 checked={previousEmployer.comfortableWithPets === true}
                 onChange={() => handleEmployerChange("comfortableWithPets", true)}
+                required
               />
               <span>Yes</span>
             </label>
@@ -418,7 +493,17 @@ const JobExperienceCard = () => {
           </div>
         </div>
       </div>
-    </div>
+
+      {/* Save Button */}
+      <div
+        className="form-group mt-4"
+        style={{ display: "flex", justifyContent: "flex-end" }}
+      >
+        <button type="submit" style={buttonStyle}>
+          Save
+        </button>
+      </div>
+    </form>
   );
 };
 

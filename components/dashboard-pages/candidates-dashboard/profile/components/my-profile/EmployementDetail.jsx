@@ -1,6 +1,18 @@
 "use client";
 import React, { useState } from "react";
 
+// Define buttonStyle at the top level so it can be used across all components
+const buttonStyle = {
+  padding: "0.75rem 1.5rem",
+  border: "none",
+  borderRadius: "0.5rem",
+  backgroundColor: "#1a73e8",
+  color: "white",
+  cursor: "pointer",
+  fontSize: "1rem",
+  fontWeight: "600",
+};
+
 const EmploymentDetails = () => {
   const [uploadedDocuments, setUploadedDocuments] = useState([]);
   const [formData, setFormData] = useState({
@@ -67,358 +79,190 @@ const EmploymentDetails = () => {
   };
 
   return (
-    <div style={{ width: "100%", margin: 0 }}>
-      <form onSubmit={handleSubmit}>
-        <div
-          style={{
-            border: "2px solid #e2e8f0",
-            borderRadius: "0.75rem",
-            padding: "1.5rem",
-            marginBottom: "1.5rem",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "1.5rem",
-              marginBottom: "1rem",
-            }}
+    <form className="default-form" onSubmit={handleSubmit}>
+      <div className="row">
+        {/* Work Experience */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>
+            Work Experience (Years) <span style={{ color: "red" }}>*</span>
+          </label>
+          <input
+            type="number"
+            placeholder="5"
+            min="0"
+            value={formData.experience}
+            onChange={(e) =>
+              setFormData({ ...formData, experience: e.target.value })
+            }
+            required
+          />
+        </div>
+
+        {/* Previous Employers */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Previous Employers (optional)</label>
+          <input
+            type="text"
+            placeholder="Company A, Company B"
+            value={formData.employers}
+            onChange={(e) =>
+              setFormData({ ...formData, employers: e.target.value })
+            }
+          />
+        </div>
+
+        {/* Skills */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>
+            Skills and Expertise <span style={{ color: "red" }}>*</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Enter skills"
+            value={formData.skills}
+            onChange={(e) =>
+              setFormData({ ...formData, skills: e.target.value })
+            }
+            required
+          />
+        </div>
+
+        {/* Working Hours */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>
+            Preferred Working Hours <span style={{ color: "red" }}>*</span>
+          </label>
+          <select
+            className="chosen-single form-select"
+            value={formData.workingHours}
+            onChange={(e) =>
+              setFormData({ ...formData, workingHours: e.target.value })
+            }
+            required
           >
-            {/* Work Experience */}
-            <div style={{ flex: "1 1 300px" }}>
-              <label
-                style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "#4a5568",
-                  fontWeight: "600",
-                }}
-              >
-                Work Experience (Years)
-              </label>
-              <input
-                type="number"
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "2px solid #cbd5e0",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                }}
-                placeholder="5"
-                min="0"
-                value={formData.experience}
-                onChange={(e) =>
-                  setFormData({ ...formData, experience: e.target.value })
-                }
-                required
-              />
-            </div>
+            <option>9 AM - 5 PM</option>
+            <option>Flexible Hours</option>
+            <option>Part-Time Morning</option>
+            <option>Part-Time Evening</option>
+          </select>
+        </div>
 
-            {/* Previous Employers */}
-            <div style={{ flex: "1 1 300px" }}>
-              <label
-                style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "#4a5568",
-                  fontWeight: "600",
-                }}
-              >
-                Previous Employers (optional)
-              </label>
-              <input
-                type="text"
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "2px solid #cbd5e0",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                }}
-                placeholder="Company A, Company B"
-                value={formData.employers}
-                onChange={(e) =>
-                  setFormData({ ...formData, employers: e.target.value })
-                }
-              />
-            </div>
+        {/* Expected Salary */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>
+            Expected Salary (BHD) <span style={{ color: "red" }}>*</span>
+          </label>
+          <input
+            type="number"
+            placeholder="500"
+            min="0"
+            value={formData.salary}
+            onChange={(e) =>
+              setFormData({ ...formData, salary: e.target.value })
+            }
+            required
+          />
+        </div>
 
-            {/* Skills */}
-            <div style={{ flex: "1 1 300px" }}>
-              <label
-                style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "#4a5568",
-                  fontWeight: "600",
-                }}
-              >
-                Skills and Expertise
-              </label>
-              <input
-                type="text"
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "2px solid #cbd5e0",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                }}
-                placeholder="Enter skills"
-                value={formData.skills}
-                onChange={(e) =>
-                  setFormData({ ...formData, skills: e.target.value })
-                }
-              />
-            </div>
+        {/* Notice Period */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>
+            Notice Period <span style={{ color: "red" }}>*</span>
+          </label>
+          <input
+            type="text"
+            placeholder="30 days"
+            value={formData.noticePeriod}
+            onChange={(e) =>
+              setFormData({ ...formData, noticePeriod: e.target.value })
+            }
+            required
+          />
+        </div>
 
-            {/* Working Hours */}
-            <div style={{ flex: "1 1 300px" }}>
-              <label
-                style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "#4a5568",
-                  fontWeight: "600",
-                }}
-              >
-                Preferred Working Hours
-              </label>
-              <select
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "2px solid #cbd5e0",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                  backgroundColor: "white",
-                }}
-                value={formData.workingHours}
-                onChange={(e) =>
-                  setFormData({ ...formData, workingHours: e.target.value })
-                }
-                required
-              >
-                <option>9 AM - 5 PM</option>
-                <option>Flexible Hours</option>
-                <option>Part-Time Morning</option>
-                <option>Part-Time Evening</option>
-              </select>
-            </div>
+        {/* Need Air Ticket */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>
+            Need Air Ticket <span style={{ color: "red" }}>*</span>
+          </label>
+          <select
+            className="chosen-single form-select"
+            value={formData.needAirTicket}
+            onChange={(e) =>
+              setFormData({ ...formData, needAirTicket: e.target.value })
+            }
+            required
+          >
+            <option value="">Select Option</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
 
-            {/* Expected Salary */}
-            <div style={{ flex: "1 1 300px" }}>
-              <label
-                style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "#4a5568",
-                  fontWeight: "600",
-                }}
-              >
-                Expected Salary (BHD)
-              </label>
-              <input
-                type="number"
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "2px solid #cbd5e0",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                }}
-                placeholder="500"
-                min="0"
-                value={formData.salary}
-                onChange={(e) =>
-                  setFormData({ ...formData, salary: e.target.value })
-                }
-                required
-              />
-            </div>
+        {/* Other Benefits Requirement */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>
+            Other Benefits Requirement <span style={{ color: "red" }}>*</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Health insurance, accommodation"
+            value={formData.otherBenefits}
+            onChange={(e) =>
+              setFormData({ ...formData, otherBenefits: e.target.value })
+            }
+            required
+          />
+        </div>
 
-            {/* Notice Period */}
-            <div style={{ flex: "1 1 300px" }}>
-              <label
-                style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "#4a5568",
-                  fontWeight: "600",
-                }}
-              >
-                Notice Period
-              </label>
-              <input
-                type="text"
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "2px solid #cbd5e0",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                }}
-                placeholder="30 days"
-                value={formData.noticePeriod}
-                onChange={(e) =>
-                  setFormData({ ...formData, noticePeriod: e.target.value })
-                }
-                required
-              />
-            </div>
+        {/* Type of Employment Preference */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>
+            Type of Employment Preference <span style={{ color: "red" }}>*</span>
+          </label>
+          <select
+            className="chosen-single form-select"
+            value={formData.employmentPreference}
+            onChange={(e) =>
+              setFormData({ ...formData, employmentPreference: e.target.value })
+            }
+            required
+          >
+            <option value="">Select Preference</option>
+            <option value="Live in">Live in</option>
+            <option value="Full-Time">Full-Time</option>
+            <option value="Live-out">Live-out</option>
+            <option value="Part-Time">Part-Time</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Temporary">Temporary</option>
+            <option value="Nanny for Newborns">Nanny for Newborns</option>
+          </select>
+        </div>
 
-            {/* Need Air Ticket */}
-            <div style={{ flex: "1 1 300px" }}>
-              <label
-                style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "#4a5568",
-                  fontWeight: "600",
-                }}
-              >
-                Need Air Ticket
-              </label>
-              <select
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "2px solid #cbd5e0",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                  backgroundColor: "white",
-                }}
-                value={formData.needAirTicket}
-                onChange={(e) =>
-                  setFormData({ ...formData, needAirTicket: e.target.value })
-                }
-                required
-              >
-                <option value="">Select Option</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
+        {/* Document Upload */}
+        <div className="form-group col-lg-6 col-md-12">
+          <label>Supporting Documents</label>
+          <input
+            type="file"
+            accept=".pdf,.doc,.docx,image/*"
+            onChange={handleFileChange}
+            multiple
+            style={{
+              width: "100%",
+              padding: "0.5rem",
+              border: "1px solid #ccc",
+              borderRadius: "4px",
+              fontSize: "1rem",
+              boxSizing: "border-box",
+            }}
+          />
+        </div>
 
-            {/* Other Benefits Requirement */}
-            <div style={{ flex: "1 1 300px" }}>
-              <label
-                style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "#4a5568",
-                  fontWeight: "600",
-                }}
-              >
-                Other Benefits Requirement
-              </label>
-              <input
-                type="text"
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "2px solid #cbd5e0",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                }}
-                placeholder="Health insurance, accommodation"
-                value={formData.otherBenefits}
-                onChange={(e) =>
-                  setFormData({ ...formData, otherBenefits: e.target.value })
-                }
-                required
-              />
-            </div>
-
-            {/* Type of Employment Preference */}
-            <div style={{ flex: "1 1 300px" }}>
-              <label
-                style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "#4a5568",
-                  fontWeight: "600",
-                }}
-              >
-                Type of Employment Preference
-              </label>
-              <select
-                style={{
-                  width: "100%",
-                  padding: "0.75rem",
-                  border: "2px solid #cbd5e0",
-                  borderRadius: "0.5rem",
-                  fontSize: "1rem",
-                  backgroundColor: "white",
-                }}
-                value={formData.employmentPreference}
-                onChange={(e) =>
-                  setFormData({ ...formData, employmentPreference: e.target.value })
-                }
-                required
-              >
-                <option value="">Select Preference</option>
-                <option value="Live in">Live in</option>
-                <option value="Full-Time">Full-Time</option>
-                <option value="Live-out">Live-out</option>
-                <option value="Part-Time">Part-Time</option>
-                <option value="Monthly">Monthly</option>
-                <option value="Temporary">Temporary</option>
-                <option value="Nanny for Newborns">Nanny for Newborns</option>
-              </select>
-            </div>
-
-            {/* Document Upload */}
-            <div style={{ flex: "1 1 300px" }}>
-              <label
-                style={{
-                  display: "block",
-                  marginBottom: "0.5rem",
-                  color: "#4a5568",
-                  fontWeight: "600",
-                }}
-              >
-                Supporting Documents
-              </label>
-              <div
-                style={{
-                  border: "2px dashed #cbd5e0",
-                  borderRadius: "0.5rem",
-                  padding: "1rem",
-                  textAlign: "center",
-                  backgroundColor: "#f7fafc",
-                  cursor: "pointer",
-                }}
-              >
-                <label
-                  style={{
-                    display: "block",
-                    color: "#a0aec0",
-                    fontSize: "1rem",
-                    cursor: "pointer",
-                  }}
-                >
-                  Click to upload documents
-                  <input
-                    type="file"
-                    style={{ display: "none" }}
-                    accept=".pdf,.doc,.docx,image/*"
-                    onChange={handleFileChange}
-                    multiple
-                  />
-                </label>
-              </div>
-            </div>
-          </div>
-
-          {/* Uploaded Documents Preview */}
-          {uploadedDocuments.map((doc, index) => (
+        {/* Uploaded Documents Preview */}
+        {uploadedDocuments.map((doc, index) => (
+          <div key={index} className="form-group col-lg-12 col-md-12">
             <div
-              key={index}
               style={{
-                marginTop: "1rem",
                 padding: "1rem",
                 border: "1px solid #e5e7eb",
                 borderRadius: "8px",
@@ -459,38 +303,22 @@ const EmploymentDetails = () => {
                 </svg>
               </button>
             </div>
-          ))}
-
-          {/* Submit Button */}
-          <div
-            style={{
-              marginTop: "1.5rem",
-              textAlign: "right",
-            }}
-          >
-            <button
-              type="submit"
-              style={{
-                padding: "0.75rem 1.5rem",
-                border: "none",
-                borderRadius: "0.5rem",
-                backgroundColor: "#48bb78",
-                color: "white",
-                cursor: "pointer",
-                fontSize: "1rem",
-                fontWeight: "600",
-              }}
-            >
-              Save Details
-            </button>
           </div>
+        ))}
+
+        {/* Submit Button */}
+        <div
+          className="form-group col-lg-12 col-md-12"
+          style={{ display: "flex", justifyContent: "flex-end" }}
+        >
+          <button type="submit" style={buttonStyle}>
+            Save Details
+          </button>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 };
-
-export default EmploymentDetails;
 
 const InterviewAvailability = () => {
   return (
@@ -498,17 +326,25 @@ const InterviewAvailability = () => {
       <div className="row">
         {/* Preferred Interview Time */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Preferred Interview Time</label>
+          <label>
+            Preferred Interview Time <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             name="interviewTime"
             placeholder="E.g., 10 AM - 12 PM"
+            required
           />
         </div>
 
         {/* Submit Button */}
-        <div className="form-group col-lg-12 col-md-12">
-          <button type="submit">Save Availability</button>
+        <div
+          className="form-group col-lg-12 col-md-12"
+          style={{ display: "flex", justifyContent: "flex-end" }}
+        >
+          <button type="submit" style={buttonStyle}>
+            Save Availability
+          </button>
         </div>
       </div>
     </form>
@@ -521,18 +357,24 @@ const ApplicationManagement = () => {
       <div className="row">
         {/* View Job Applications */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>View Job Applications</label>
+          <label>
+            View Job Applications <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             name="jobApplications"
             placeholder="Search applications..."
+            required
           />
         </div>
 
         {/* Track Application Status */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Track Application Status</label>
-          <select name="applicationStatus">
+          <label>
+            Track Application Status <span style={{ color: "red" }}>*</span>
+          </label>
+          <select name="applicationStatus" required>
+            <option value="">Select Status</option>
             <option>Pending</option>
             <option>Reviewed</option>
             <option>Accepted</option>
@@ -541,8 +383,13 @@ const ApplicationManagement = () => {
         </div>
 
         {/* Submit Button */}
-        <div className="form-group col-lg-12 col-md-12">
-          <button type="submit">Manage Applications</button>
+        <div
+          className="form-group col-lg-12 col-md-12"
+          style={{ display: "flex", justifyContent: "flex-end" }}
+        >
+          <button type="submit" style={buttonStyle}>
+            Manage Applications
+          </button>
         </div>
       </div>
     </form>
@@ -584,7 +431,9 @@ const InterviewManagement = () => {
       <div className="row">
         {/* Preferred Interview Time */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Preferred Interview Time</label>
+          <label>
+            Preferred Interview Time <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="text"
             name="interviewTime"
@@ -597,7 +446,9 @@ const InterviewManagement = () => {
 
         {/* Willing to live-in with family */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Willing to live-in with family?</label>
+          <label>
+            Willing to live-in with family? <span style={{ color: "red" }}>*</span>
+          </label>
           <div className="d-flex gap-3">
             <label>
               <input
@@ -637,7 +488,9 @@ const InterviewManagement = () => {
 
         {/* Comfortable with relocation inside country */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Comfortable with relocation inside country?</label>
+          <label>
+            Comfortable with relocation inside country? <span style={{ color: "red" }}>*</span>
+          </label>
           <div className="d-flex gap-3">
             <label>
               <input
@@ -666,7 +519,9 @@ const InterviewManagement = () => {
 
         {/* Maximum hours per day willing to work */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Maximum hours per day willing to work</label>
+          <label>
+            Maximum hours per day willing to work <span style={{ color: "red" }}>*</span>
+          </label>
           <input
             type="number"
             name="maxHoursPerDay"
@@ -680,7 +535,9 @@ const InterviewManagement = () => {
 
         {/* Flexible with weekends */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Flexible with weekends?</label>
+          <label>
+            Flexible with weekends? <span style={{ color: "red" }}>*</span>
+          </label>
           <div className="d-flex gap-3">
             <label>
               <input
@@ -709,7 +566,9 @@ const InterviewManagement = () => {
 
         {/* Preferred household type */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Preferred household type</label>
+          <label>
+            Preferred household type <span style={{ color: "red" }}>*</span>
+          </label>
           <select
             name="householdType"
             value={formData.householdType}
@@ -725,7 +584,9 @@ const InterviewManagement = () => {
 
         {/* Languages preferred for communication */}
         <div className="form-group col-lg-6 col-md-12">
-          <label>Languages preferred for communication</label>
+          <label>
+            Languages preferred for communication <span style={{ color: "red" }}>*</span>
+          </label>
           <select
             name="communicationLanguage"
             value={formData.communicationLanguage}
@@ -742,8 +603,13 @@ const InterviewManagement = () => {
         </div>
 
         {/* Submit Button */}
-        <div className="form-group col-lg-12 col-md-12">
-          <button type="submit">Save Preferences</button>
+        <div
+          className="form-group col-lg-12 col-md-12"
+          style={{ display: "flex", justifyContent: "flex-end" }}
+        >
+          <button type="submit" style={buttonStyle}>
+            Save Preferences
+          </button>
         </div>
       </div>
     </form>

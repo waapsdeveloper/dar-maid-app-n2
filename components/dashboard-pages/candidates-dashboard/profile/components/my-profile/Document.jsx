@@ -1,5 +1,29 @@
 import React, { useState } from "react";
 
+// Define buttonStyle at the top level for consistent styling
+const buttonStyle = {
+  padding: "0.75rem 1.5rem",
+  border: "none",
+  borderRadius: "0.5rem",
+  backgroundColor: "#1a73e8",
+  color: "white",
+  cursor: "pointer",
+  fontSize: "1rem",
+  fontWeight: "600",
+};
+
+// Define removeButtonStyle for the "Remove Document" button
+const removeButtonStyle = {
+  padding: "0.75rem 1.5rem",
+  border: "none",
+  borderRadius: "0.5rem",
+  backgroundColor: "#e63946", // Red color for delete action
+  color: "white",
+  cursor: "pointer",
+  fontSize: "1rem",
+  fontWeight: "600",
+};
+
 const Document = () => {
   const [documents, setDocuments] = useState([
     {
@@ -23,13 +47,13 @@ const Document = () => {
     "License",
   ];
 
-  const countries = [
+  const gulfCountries = [
     "Bahrain",
-    "USA",
-    "Canada",
-    "UK",
-    "Australia",
-    // Add more countries as needed
+    "Kuwait",
+    "Oman",
+    "Qatar",
+    "Saudi Arabia",
+    "United Arab Emirates",
   ];
 
   const handleAddDocument = () => {
@@ -74,363 +98,206 @@ const Document = () => {
     console.log("Submitted documents:", documents);
   };
 
+  const inputStyle = {
+    width: "100%",
+    padding: "0.75rem",
+    border: "1px solid #ccc",
+    borderRadius: "4px",
+    boxSizing: "border-box",
+  };
+
   return (
     <form className="default-form" onSubmit={handleSubmit}>
-      <div className="row">
-        {documents.map((doc) => (
-          <div key={doc.id} className="form-group col-lg-12 col-md-12 mb-4">
-            <div
-              className="document-upload-container border p-3 rounded-3 bg-light"
-              style={{
-                border: "2px solid #e2e8f0",
-                borderRadius: "0.75rem",
-                padding: "1.5rem",
-              }}
+      {documents.map((doc) => (
+        <div key={doc.id} className="row">
+          {/* Document Type */}
+          <div className="form-group col-lg-6 col-md-12">
+            <label>
+              Document Type <span style={{ color: "red" }}>*</span>
+            </label>
+            <select
+              className="chosen-single form-select"
+              value={doc.category}
+              onChange={(e) =>
+                handleFieldChange(doc.id, "category", e.target.value)
+              }
+              required
             >
-              <div className="d-flex flex-column gap-3">
-                {/* Document Type and File Upload */}
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "1.5rem",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <div style={{ flex: "1 1 300px" }}>
-                    <label
-                      className="form-label"
-                      style={{
-                        display: "block",
-                        marginBottom: "0.5rem",
-                        color: "#4a5568",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Document Type
-                    </label>
-                    <div className="position-relative">
-                      <select
-                        className="form-select form-select-lg py-3"
-                        style={{
-                          border: "2px solid #0d6efd",
-                          fontSize: "1.1rem",
-                          fontWeight: "500",
-                          width: "100%",
-                          padding: "0.75rem",
-                          borderRadius: "0.5rem",
-                        }}
-                        value={doc.category}
-                        onChange={(e) =>
-                          handleFieldChange(doc.id, "category", e.target.value)
-                        }
-                        required
-                      >
-                        <option value="">📄 Select Document Type</option>
-                        {documentCategories.map((category) => (
-                          <option key={category} value={category}>
-                            📁 {category}
-                          </option>
-                        ))}
-                      </select>
-                      <span className="position-absolute top-50 end-0 translate-middle-y me-3">
-                        ▼
-                      </span>
-                    </div>
-                  </div>
-                  <div style={{ flex: "1 1 300px" }}>
-                    <label
-                      className="form-label"
-                      style={{
-                        display: "block",
-                        marginBottom: "0.5rem",
-                        color: "#4a5568",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Document Copy (PDF or Image)
-                    </label>
-                    <label
-                      className="btn btn-lg d-block w-100 py-3"
-                      style={{
-                        border: "2px dashed #0d6efd",
-                        backgroundColor: "rgba(13, 110, 253, 0.1)",
-                        cursor: "pointer",
-                        fontSize: "1.1rem",
-                        textAlign: "center",
-                      }}
-                    >
-                      📤 Upload File
-                      <input
-                        type="file"
-                        className="d-none"
-                        accept=".pdf,image/*"
-                        onChange={(e) =>
-                          handleFileChange(doc.id, e.target.files[0])
-                        }
-                        required
-                      />
-                    </label>
-                    {doc.file && (
-                      <div className="mt-2 text-muted small">
-                        Selected: {doc.file.name}
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Expiry Date and Current Status */}
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "1.5rem",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <div style={{ flex: "1 1 300px" }}>
-                    <label
-                      style={{
-                        display: "block",
-                        marginBottom: "0.5rem",
-                        color: "#4a5568",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Expiry Date
-                    </label>
-                    <input
-                      type="date"
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem",
-                        border: "2px solid #cbd5e0",
-                        borderRadius: "0.5rem",
-                        fontSize: "1rem",
-                      }}
-                      value={doc.expiryDate}
-                      onChange={(e) =>
-                        handleFieldChange(doc.id, "expiryDate", e.target.value)
-                      }
-                      required
-                    />
-                  </div>
-                  <div style={{ flex: "1 1 300px" }}>
-                    <label
-                      style={{
-                        display: "block",
-                        marginBottom: "0.5rem",
-                        color: "#4a5568",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Current Status
-                    </label>
-                    <select
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem",
-                        border: "2px solid #cbd5e0",
-                        borderRadius: "0.5rem",
-                        fontSize: "1rem",
-                        backgroundColor: "white",
-                      }}
-                      value={doc.currentStatus}
-                      onChange={(e) =>
-                        handleFieldChange(doc.id, "currentStatus", e.target.value)
-                      }
-                      required
-                    >
-                      <option value="">Select Status</option>
-                      <option value="Valid">Valid</option>
-                      <option value="Expired">Expired</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* Issuing Country and Current Location */}
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "1.5rem",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <div style={{ flex: "1 1 300px" }}>
-                    <label
-                      style={{
-                        display: "block",
-                        marginBottom: "0.5rem",
-                        color: "#4a5568",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Issuing Country
-                    </label>
-                    <select
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem",
-                        border: "2px solid #cbd5e0",
-                        borderRadius: "0.5rem",
-                        fontSize: "1rem",
-                        backgroundColor: "white",
-                      }}
-                      value={doc.issuingCountry}
-                      onChange={(e) =>
-                        handleFieldChange(
-                          doc.id,
-                          "issuingCountry",
-                          e.target.value
-                        )
-                      }
-                      required
-                    >
-                      <option value="">Select Country</option>
-                      {countries.map((country) => (
-                        <option key={country} value={country}>
-                          {country}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                  <div style={{ flex: "1 1 300px" }}>
-                    <label
-                      style={{
-                        display: "block",
-                        marginBottom: "0.5rem",
-                        color: "#4a5568",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Current Location
-                    </label>
-                    <input
-                      type="text"
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem",
-                        border: "2px solid #cbd5e0",
-                        borderRadius: "0.5rem",
-                        fontSize: "1rem",
-                      }}
-                      placeholder="In Bahrain or specify country"
-                      value={doc.currentLocation}
-                      onChange={(e) =>
-                        handleFieldChange(
-                          doc.id,
-                          "currentLocation",
-                          e.target.value
-                        )
-                      }
-                      required
-                    />
-                  </div>
-                </div>
-
-                {/* Work Available Immediately and Number of Days */}
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "1.5rem",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  <div style={{ flex: "1 1 300px" }}>
-                    <label
-                      style={{
-                        display: "block",
-                        marginBottom: "0.5rem",
-                        color: "#4a5568",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Work Available Immediately
-                    </label>
-                    <select
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem",
-                        border: "2px solid #cbd5e0",
-                        borderRadius: "0.5rem",
-                        fontSize: "1rem",
-                        backgroundColor: "white",
-                      }}
-                      value={doc.workAvailableImmediately}
-                      onChange={(e) =>
-                        handleFieldChange(
-                          doc.id,
-                          "workAvailableImmediately",
-                          e.target.value
-                        )
-                      }
-                      required
-                    >
-                      <option value="">Select Option</option>
-                      <option value="Yes">Yes</option>
-                      <option value="No">No</option>
-                    </select>
-                  </div>
-                  <div style={{ flex: "1 1 300px" }}>
-                    <label
-                      style={{
-                        display: "block",
-                        marginBottom: "0.5rem",
-                        color: "#4a5568",
-                        fontWeight: "600",
-                      }}
-                    >
-                      Number of Days
-                    </label>
-                    <input
-                      type="text"
-                      style={{
-                        width: "100%",
-                        padding: "0.75rem",
-                        border: "2px solid #cbd5e0",
-                        borderRadius: "0.5rem",
-                        fontSize: "1rem",
-                      }}
-                      placeholder="E.g., 30 days"
-                      value={doc.numberOfDays}
-                      onChange={(e) =>
-                        handleFieldChange(doc.id, "numberOfDays", e.target.value)
-                      }
-                      required
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* Remove Button */}
-              {documents.length > 1 && (
-                <div className="mt-3">
-                  <button
-                    type="button"
-                    className="btn btn-danger btn-lg px-3 py-2"
-                    onClick={() => handleRemoveDocument(doc.id)}
-                  >
-                    ×
-                  </button>
-                </div>
-              )}
-            </div>
+              <option value="">Select Document Type</option>
+              {documentCategories.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
           </div>
-        ))}
 
-        {/* Action Buttons */}
-        <div className="form-group col-lg-12 col-md-12 mt-4 d-flex justify-content-between">
-          <button
-            type="button"
-            className="btn btn-secondary btn-lg px-4 py-2"
-            onClick={handleAddDocument}
-          >
-            ➕ Add Another Document
+          {/* Document Copy (PDF or Image) */}
+          <div className="form-group col-lg-6 col-md-12">
+            <label>
+              Document Copy (PDF or Image) <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              type="file"
+              accept=".pdf,image/*"
+              onChange={(e) => handleFileChange(doc.id, e.target.files[0])}
+              required
+              style={inputStyle}
+            />
+            {doc.file && (
+              <div className="mt-2 text-muted small">
+                Selected: {doc.file.name}
+              </div>
+            )}
+          </div>
+
+          {/* Expiry Date */}
+          <div className="form-group col-lg-6 col-md-12">
+            <label>
+              Expiry Date <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              type="date"
+              value={doc.expiryDate}
+              onChange={(e) =>
+                handleFieldChange(doc.id, "expiryDate", e.target.value)
+              }
+              required
+              style={inputStyle}
+            />
+          </div>
+
+          {/* Current Status */}
+          <div className="form-group col-lg-6 col-md-12">
+            <label>
+              Current Status <span style={{ color: "red" }}>*</span>
+            </label>
+            <select
+              className="chosen-single form-select"
+              value={doc.currentStatus}
+              onChange={(e) =>
+                handleFieldChange(doc.id, "currentStatus", e.target.value)
+              }
+              required
+            >
+              <option value="">Select Status</option>
+              <option value="Valid">Valid</option>
+              <option value="Expired">Expired</option>
+            </select>
+          </div>
+
+          {/* Issuing Country */}
+          <div className="form-group col-lg-6 col-md-12">
+            <label>
+              Issuing Country <span style={{ color: "red" }}>*</span>
+            </label>
+            <select
+              className="chosen-single form-select"
+              value={doc.issuingCountry}
+              onChange={(e) =>
+                handleFieldChange(doc.id, "issuingCountry", e.target.value)
+              }
+              required
+            >
+              <option value="">Select Country</option>
+              {gulfCountries.map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Current Location */}
+          <div className="form-group col-lg-6 col-md-12">
+            <label>
+              Current Location <span style={{ color: "red" }}>*</span>
+            </label>
+            <select
+              className="chosen-single form-select"
+              value={doc.currentLocation}
+              onChange={(e) =>
+                handleFieldChange(doc.id, "currentLocation", e.target.value)
+              }
+              required
+            >
+              <option value="">Select Country</option>
+              {gulfCountries.map((country) => (
+                <option key={country} value={country}>
+                  {country}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Work Available Immediately */}
+          <div className="form-group col-lg-6 col-md-12">
+            <label>
+              Work Available Immediately <span style={{ color: "red" }}>*</span>
+            </label>
+            <select
+              className="chosen-single form-select"
+              value={doc.workAvailableImmediately}
+              onChange={(e) =>
+                handleFieldChange(
+                  doc.id,
+                  "workAvailableImmediately",
+                  e.target.value
+                )
+              }
+              required
+            >
+              <option value="">Select Option</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
+
+          {/* Number of Days */}
+          <div className="form-group col-lg-6 col-md-12">
+            <label>
+              Number of Days <span style={{ color: "red" }}>*</span>
+            </label>
+            <input
+              type="text"
+              placeholder="E.g., 30 days"
+              value={doc.numberOfDays}
+              onChange={(e) =>
+                handleFieldChange(doc.id, "numberOfDays", e.target.value)
+              }
+              required
+            />
+          </div>
+
+          {/* Remove Button */}
+          {documents.length > 1 && (
+            <div
+              className="form-group col-lg-12 col-md-12"
+              style={{ display: "flex", justifyContent: "flex-end" }}
+            >
+              <button
+                type="button"
+                style={removeButtonStyle}
+                onClick={() => handleRemoveDocument(doc.id)}
+              >
+                Remove Document
+              </button>
+            </div>
+          )}
+        </div>
+      ))}
+
+      {/* Action Buttons */}
+      <div className="row">
+        <div
+          className="form-group col-lg-12 col-md-12"
+          style={{ display: "flex", justifyContent: "flex-end", gap: "1rem" }}
+        >
+          <button type="button" style={buttonStyle} onClick={handleAddDocument}>
+            Add Another Document
           </button>
-          <button
-            type="submit"
-            className="btn btn-primary btn-lg px-4 py-2"
-            style={{ minWidth: "200px" }}
-          >
-            💾 Save Documents
+          <button type="submit" style={buttonStyle}>
+            Save Documents
           </button>
         </div>
       </div>

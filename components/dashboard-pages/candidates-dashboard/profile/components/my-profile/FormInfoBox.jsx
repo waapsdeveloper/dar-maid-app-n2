@@ -2,6 +2,18 @@
 
 import Select from "react-select";
 
+// Define buttonStyle at the top level for consistent styling
+const buttonStyle = {
+  padding: "0.75rem 1.5rem",
+  border: "none",
+  borderRadius: "0.5rem",
+  backgroundColor: "#1a73e8",
+  color: "white",
+  cursor: "pointer",
+  fontSize: "1rem",
+  fontWeight: "600",
+};
+
 const FormInfoBox = () => {
     const catOptions = [
         { value: "Banking", label: "Banking" },
@@ -16,10 +28,20 @@ const FormInfoBox = () => {
 
     const nationalityOptions = [
         { value: "Bahraini", label: "Bahraini" },
-        { value: "Indian", label: "Indian" },
-        { value: "Pakistani", label: "Pakistani" },
-        { value: "Filipino", label: "Filipino" },
-        { value: "Other", label: "Other" },
+        { value: "Kuwaiti", label: "Kuwaiti" },
+        { value: "Omani", label: "Omani" },
+        { value: "Qatari", label: "Qatari" },
+        { value: "Saudi", label: "Saudi" },
+        { value: "Emirati", label: "Emirati" },
+    ];
+
+    const gulfCountries = [
+        { value: "Bahrain", label: "Bahrain" },
+        { value: "Kuwait", label: "Kuwait" },
+        { value: "Oman", label: "Oman" },
+        { value: "Qatar", label: "Qatar" },
+        { value: "Saudi Arabia", label: "Saudi Arabia" },
+        { value: "United Arab Emirates", label: "United Arab Emirates" },
     ];
 
     const religionOptions = [
@@ -45,9 +67,11 @@ const FormInfoBox = () => {
     return (
         <form className="default-form">
             <div className="row">
-                {/* Original Fields */}
+                {/* Full Name */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Full Name</label>
+                    <label>
+                        Full Name <span style={{ color: "red" }}>*</span>
+                    </label>
                     <input
                         type="text"
                         name="fullName"
@@ -56,6 +80,7 @@ const FormInfoBox = () => {
                     />
                 </div>
 
+                {/* Email */}
                 <div className="form-group col-lg-6 col-md-12">
                     <label>Email</label>
                     <input
@@ -66,6 +91,7 @@ const FormInfoBox = () => {
                     />
                 </div>
 
+                {/* Role */}
                 <div className="form-group col-lg-6 col-md-12">
                     <label>Role</label>
                     <input
@@ -76,19 +102,25 @@ const FormInfoBox = () => {
                     />
                 </div>
 
+                {/* Profile Picture */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Profile Picture</label>
+                    <label>
+                        Profile Picture <span style={{ color: "red" }}>*</span>
+                    </label>
                     <input
                         type="file"
                         name="profileImage"
                         accept="image/*"
                         className="form-control"
+                        required
                     />
                 </div>
 
-                {/* Existing Basic Info Fields */}
+                {/* Gender */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Gender</label>
+                    <label>
+                        Gender <span style={{ color: "red" }}>*</span>
+                    </label>
                     <select name="gender" className="form-control" required>
                         <option value="">Select Gender</option>
                         <option value="Male">Male</option>
@@ -97,156 +129,223 @@ const FormInfoBox = () => {
                     </select>
                 </div>
 
+                {/* Address */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Address</label>
+                    <label>
+                        Address <span style={{ color: "red" }}>*</span>
+                    </label>
                     <input
                         type="text"
                         name="address"
                         placeholder="Enter your address"
+                        required
                     />
                 </div>
 
+                {/* Age */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Age</label>
+                    <label>
+                        Age <span style={{ color: "red" }}>*</span>
+                    </label>
                     <input
                         type="number"
                         name="age"
                         placeholder="Enter age"
                         min="18"
+                        required
                     />
                 </div>
 
+                {/* Date of Birth */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Date of Birth</label>
+                    <label>
+                        Date of Birth <span style={{ color: "red" }}>*</span>
+                    </label>
                     <input
                         type="date"
                         name="dob"
                         className="form-control"
+                        required
                     />
                 </div>
 
+                {/* Nationality */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Nationality</label>
+                    <label>
+                        Nationality <span style={{ color: "red" }}>*</span>
+                    </label>
                     <Select
                         name="nationality"
                         options={nationalityOptions}
                         className="basic-multi-select"
                         classNamePrefix="select"
                         placeholder="Select Nationality"
+                        required
                     />
                 </div>
 
+                {/* Religion */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Religion</label>
+                    <label>
+                        Religion <span style={{ color: "red" }}>*</span>
+                    </label>
                     <Select
                         name="religion"
                         options={religionOptions}
                         className="basic-multi-select"
                         classNamePrefix="select"
                         placeholder="Select Religion"
+                        required
                     />
                 </div>
 
+                {/* Marital Status */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Marital Status</label>
+                    <label>
+                        Marital Status <span style={{ color: "red" }}>*</span>
+                    </label>
                     <Select
                         name="maritalStatus"
                         options={maritalStatusOptions}
                         className="basic-multi-select"
                         classNamePrefix="select"
                         placeholder="Select Marital Status"
+                        required
                     />
                 </div>
 
+                {/* Number of Children */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Number of Children</label>
+                    <label>
+                        Number of Children <span style={{ color: "red" }}>*</span>
+                    </label>
                     <input
                         type="number"
                         name="childrenCount"
                         placeholder="0"
                         min="0"
+                        required
                     />
                 </div>
 
-                {/* NEW: Added Missing Basic Info Fields */}
+                {/* Passport Copy */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Passport Copy</label>
+                    <label>
+                        Passport Copy <span style={{ color: "red" }}>*</span>
+                    </label>
                     <input
                         type="file"
                         name="passport_copy"
                         accept=".pdf,.jpg,.png"
                         className="form-control"
+                        required
                     />
                 </div>
 
+                {/* Visa Copy */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Visa Copy</label>
+                    <label>
+                        Visa Copy <span style={{ color: "red" }}>*</span>
+                    </label>
                     <input
                         type="file"
                         name="visa_copy"
                         accept=".pdf,.jpg,.png"
                         className="form-control"
+                        required
                     />
                 </div>
 
+                {/* CPR Copy */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>CPR Copy</label>
+                    <label>
+                        CPR Copy <span style={{ color: "red" }}>*</span>
+                    </label>
                     <input
                         type="file"
                         name="cpr_copy"
                         accept=".pdf,.jpg,.png"
                         className="form-control"
+                        required
                     />
                 </div>
 
+                {/* Current Location */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Current Location</label>
-                    <input
-                        type="text"
+                    <label>
+                        Current Location <span style={{ color: "red" }}>*</span>
+                    </label>
+                    <Select
                         name="current_location"
-                        placeholder="Current city/country"
+                        options={gulfCountries}
+                        className="basic-multi-select"
+                        classNamePrefix="select"
+                        placeholder="Select Country"
+                        required
                     />
                 </div>
 
+                {/* Currently in Bahrain? */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Currently in Bahrain?</label>
-                    <select name="in_bahrain" className="form-control">
+                    <label>
+                        Currently in Bahrain? <span style={{ color: "red" }}>*</span>
+                    </label>
+                    <select name="in_bahrain" className="form-control" required>
+                        <option value="">Select Option</option>
                         <option value="true">Yes</option>
                         <option value="false">No</option>
                     </select>
                 </div>
 
+                {/* If outside Bahrain, specify country */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>If outside Bahrain, specify country</label>
-                    <input
-                        type="text"
+                    <label>
+                        If outside Bahrain, specify country <span style={{ color: "red" }}>*</span>
+                    </label>
+                    <Select
                         name="outside_country"
-                        placeholder="Country name"
+                        options={gulfCountries}
+                        className="basic-multi-select"
+                        classNamePrefix="select"
+                        placeholder="Select Country"
+                        required
                     />
                 </div>
 
+                {/* Work Available */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Work Available</label>
+                    <label>
+                        Work Available <span style={{ color: "red" }}>*</span>
+                    </label>
                     <Select
                         name="work_available"
                         options={workAvailableOptions}
                         className="basic-multi-select"
                         classNamePrefix="select"
                         placeholder="Select availability"
+                        required
                     />
                 </div>
 
+                {/* Available after how many days? */}
                 <div className="form-group col-lg-6 col-md-12">
-                    <label>Available after how many days?</label>
+                    <label>
+                        Available after how many days? <span style={{ color: "red" }}>*</span>
+                    </label>
                     <input
                         type="text"
                         name="no_of_days_available"
                         placeholder="Number of days"
+                        required
                     />
                 </div>
 
-                <div className="form-group col-lg-12 col-md-12">
-                    <button type="submit" className="theme-btn btn-style-one">
+                {/* Submit Button */}
+                <div
+                    className="form-group col-lg-12 col-md-12"
+                    style={{ display: "flex", justifyContent: "flex-end" }}
+                >
+                    <button type="submit" style={buttonStyle}>
                         Save
                     </button>
                 </div>
