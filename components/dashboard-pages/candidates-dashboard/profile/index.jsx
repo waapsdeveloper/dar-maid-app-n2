@@ -88,7 +88,7 @@ const index = () => {
                                 minWidth: "120px", // Reduced from 150px
                                 maxWidth: "120px", // Reduced from 150px
                                 height: "100%",
-                                padding: "0.3rem", // Reduced padding from 0.5rem
+                                padding: "0.3rem,0.8rem,0.3rem,0.8rem", // Reduced padding from 0.5rem
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
