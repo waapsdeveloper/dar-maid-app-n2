@@ -15,7 +15,7 @@ const SocialNetworkBox = () => {
     <form className="default-form">
       <div className="row">
         {/* Facebook */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Facebook <span style={{ color: "red" }}>*</span>
           </label>
@@ -28,7 +28,7 @@ const SocialNetworkBox = () => {
         </div>
 
         {/* Twitter */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Twitter <span style={{ color: "red" }}>*</span>
           </label>
@@ -41,7 +41,7 @@ const SocialNetworkBox = () => {
         </div>
 
         {/* Linkedin */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Linkedin <span style={{ color: "red" }}>*</span>
           </label>
@@ -54,7 +54,7 @@ const SocialNetworkBox = () => {
         </div>
 
         {/* Google Plus */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Google Plus <span style={{ color: "red" }}>*</span>
           </label>

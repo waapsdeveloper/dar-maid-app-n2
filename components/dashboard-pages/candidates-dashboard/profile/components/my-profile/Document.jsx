@@ -24,20 +24,52 @@ const removeButtonStyle = {
   fontWeight: "600",
 };
 
+// Define tickBoxStyle for the tick container (same as EmploymentDetails)
+const tickBoxStyle = (isFileSelected) => ({
+  position: "absolute",
+  right: "20px",
+  top: "30%",
+  transform: "translateY(-50%)",
+  width: "24px",
+  height: "24px",
+  border: `1px solid ${isFileSelected ? "#28a745" : "#d0d0d0"}`,
+  borderRadius: "50%",
+  backgroundColor: isFileSelected ? "#28a745" : "transparent",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+});
+
+// Define actionButtonStyle for table action buttons (View, Edit, Delete)
+const actionButtonStyle = {
+  padding: "0.5rem 1rem",
+  border: "none",
+  borderRadius: "0.5rem",
+  color: "white",
+  cursor: "pointer",
+  fontSize: "0.9rem",
+  fontWeight: "500",
+  margin: "0 4px",
+};
+
 const Document = () => {
-  const [documents, setDocuments] = useState([
-    {
-      id: Date.now(),
-      category: "",
-      file: null,
-      expiryDate: "",
-      currentStatus: "",
-      issuingCountry: "",
-      currentLocation: "",
-      workAvailableImmediately: "",
-      numberOfDays: "",
-    },
-  ]);
+  const [savedDocuments, setSavedDocuments] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [viewModalOpen, setViewModalOpen] = useState(false);
+  const [viewFile, setViewFile] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentEntry, setCurrentEntry] = useState({
+    id: Date.now(),
+    category: "",
+    file: null,
+    expiryDate: "",
+    currentStatus: "",
+    issuingCountry: "",
+    currentLocation: "",
+    workAvailableImmediately: "",
+    numberOfDays: "",
+  });
 
   const documentCategories = [
     "Visa",
@@ -56,252 +88,448 @@ const Document = () => {
     "United Arab Emirates",
   ];
 
-  const handleAddDocument = () => {
-    setDocuments([
-      ...documents,
-      {
-        id: Date.now(),
-        category: "",
-        file: null,
-        expiryDate: "",
-        currentStatus: "",
-        issuingCountry: "",
-        currentLocation: "",
-        workAvailableImmediately: "",
-        numberOfDays: "",
-      },
-    ]);
+  const handleFieldChange = (field, value) => {
+    setCurrentEntry((prev) => ({ ...prev, [field]: value }));
   };
 
-  const handleRemoveDocument = (id) => {
-    if (documents.length > 1) {
-      setDocuments(documents.filter((doc) => doc.id !== id));
+  const handleFileChange = (file) => {
+    setCurrentEntry((prev) => ({ ...prev, file: file }));
+  };
+
+  const handleSaveEntry = () => {
+    if (isEditing) {
+      setSavedDocuments(
+        savedDocuments.map((doc) =>
+          doc.id === currentEntry.id ? currentEntry : doc
+        )
+      );
+    } else {
+      setSavedDocuments([...savedDocuments, currentEntry]);
+    }
+    setModalOpen(false);
+    resetForm();
+    setIsEditing(false);
+  };
+
+  const handleEditEntry = (doc) => {
+    setCurrentEntry(doc);
+    setIsEditing(true);
+    setModalOpen(true);
+  };
+
+  const handleDeleteEntry = (id) => {
+    setSavedDocuments(savedDocuments.filter((doc) => doc.id !== id));
+  };
+
+  const handleViewFile = (file) => {
+    if (file) {
+      setViewFile(file);
+      setViewModalOpen(true);
     }
   };
 
-  const handleFieldChange = (id, field, value) => {
-    const updatedDocs = documents.map((doc) =>
-      doc.id === id ? { ...doc, [field]: value } : doc
-    );
-    setDocuments(updatedDocs);
-  };
-
-  const handleFileChange = (id, file) => {
-    const updatedDocs = documents.map((doc) =>
-      doc.id === id ? { ...doc, file: file } : doc
-    );
-    setDocuments(updatedDocs);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Submitted documents:", documents);
+  const resetForm = () => {
+    setCurrentEntry({
+      id: Date.now(),
+      category: "",
+      file: null,
+      expiryDate: "",
+      currentStatus: "",
+      issuingCountry: "",
+      currentLocation: "",
+      workAvailableImmediately: "",
+      numberOfDays: "",
+    });
   };
 
   const inputStyle = {
     width: "100%",
     padding: "0.75rem",
-    border: "1px solid #ccc",
-    borderRadius: "4px",
+    borderRadius: "0.5rem",
+    backgroundColor: "#F0F5F7",
     boxSizing: "border-box",
   };
 
   return (
-    <form className="default-form" onSubmit={handleSubmit}>
-      {documents.map((doc) => (
-        <div key={doc.id} className="row">
-          {/* Document Type */}
-          <div className="form-group col-lg-6 col-md-12">
-            <label>
-              Document Type <span style={{ color: "red" }}>*</span>
-            </label>
-            <select
-              className="chosen-single form-select"
-              value={doc.category}
-              onChange={(e) =>
-                handleFieldChange(doc.id, "category", e.target.value)
-              }
-              required
-            >
-              <option value="">Select Document Type</option>
-              {documentCategories.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-            </select>
-          </div>
+    <div>
+      {/* Add Document Button */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginBottom: "1rem",
+        }}
+      >
+        <button
+          type="button"
+          style={buttonStyle}
+          onClick={() => setModalOpen(true)}
+        >
+          {savedDocuments.length === 0 ? "Add Document" : "Add Another Document"}
+        </button>
+      </div>
 
-          {/* Document Copy (PDF or Image) */}
-          <div className="form-group col-lg-6 col-md-12">
-            <label>
-              Document Copy (PDF or Image) <span style={{ color: "red" }}>*</span>
-            </label>
-            <input
-              type="file"
-              accept=".pdf,image/*"
-              onChange={(e) => handleFileChange(doc.id, e.target.files[0])}
-              required
-              style={inputStyle}
-            />
-            {doc.file && (
-              <div className="mt-2 text-muted small">
-                Selected: {doc.file.name}
+      {/* Modal for Adding/Editing Document */}
+      {modalOpen && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "white",
+              padding: "2rem",
+              borderRadius: "8px",
+              width: "90%",
+              maxWidth: "800px",
+              maxHeight: "80vh",
+              overflowY: "auto",
+            }}
+          >
+            <h3>{isEditing ? "Edit Document" : "Add Document"}</h3>
+            <form className="default-form">
+              <div className="row">
+                {/* Document Type */}
+                <div className="form-group col-lg-3 col-md-12">
+                  <label>
+                    Document Type <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <select
+                    className="chosen-single form-select"
+                    value={currentEntry.category}
+                    onChange={(e) =>
+                      handleFieldChange("category", e.target.value)
+                    }
+                    required
+                  >
+                    <option value="">Select Document Type</option>
+                    {documentCategories.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                {/* Expiry Date */}
+                <div className="form-group col-lg-3 col-md-12">
+                  <label>
+                    Expiry Date <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="date"
+                    value={currentEntry.expiryDate}
+                    onChange={(e) =>
+                      handleFieldChange("expiryDate", e.target.value)
+                    }
+                    required
+                    style={inputStyle}
+                  />
+                </div>
+                {/* Current Status */}
+                <div className="form-group col-lg-3 col-md-12">
+                  <label>
+                    Current Status <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <select
+                    className="chosen-single form-select"
+                    value={currentEntry.currentStatus}
+                    onChange={(e) =>
+                      handleFieldChange("currentStatus", e.target.value)
+                    }
+                    required
+                  >
+                    <option value="">Select Status</option>
+                    <option value="Valid">Valid</option>
+                    <option value="Expired">Expired</option>
+                  </select>
+                </div>
+                {/* Issuing Country */}
+                <div className="form-group col-lg-3 col-md-12">
+                  <label>
+                    Issuing Country <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <select
+                    className="chosen-single form-select"
+                    value={currentEntry.issuingCountry}
+                    onChange={(e) =>
+                      handleFieldChange("issuingCountry", e.target.value)
+                    }
+                    required
+                  >
+                    <option value="">Select Country</option>
+                    {gulfCountries.map((country) => (
+                      <option key={country} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                {/* Current Location */}
+                <div className="form-group col-lg-3 col-md-12">
+                  <label>
+                    Current Location <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <select
+                    className="chosen-single form-select"
+                    value={currentEntry.currentLocation}
+                    onChange={(e) =>
+                      handleFieldChange("currentLocation", e.target.value)
+                    }
+                    required
+                  >
+                    <option value="">Select Country</option>
+                    {gulfCountries.map((country) => (
+                      <option key={country} value={country}>
+                        {country}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                {/* Work Available Immediately */}
+                <div className="form-group col-lg-3 col-md-12">
+                  <label>
+                    Work Immediately <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <select
+                    className="chosen-single form-select"
+                    value={currentEntry.workAvailableImmediately}
+                    onChange={(e) =>
+                      handleFieldChange("workAvailableImmediately", e.target.value)
+                    }
+                    required
+                  >
+                    <option value="">Select Option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                  </select>
+                </div>
+                {/* Number of Days */}
+                <div className="form-group col-lg-3 col-md-12">
+                  <label>
+                    Number of Days <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="E.g., 30 days"
+                    value={currentEntry.numberOfDays}
+                    onChange={(e) =>
+                      handleFieldChange("numberOfDays", e.target.value)
+                    }
+                    required
+                  />
+                </div>
+                {/* Document Copy (PDF or Image) with Green Tick Circle */}
+                <div className="form-group col-lg-6 col-md-12" style={{ position: "relative", minHeight: "60px" }}>
+                  <label>
+                    Document Copy (PDF or Image){" "}
+                    <span style={{ color: "red" }}>*</span>
+                  </label>
+                  <div style={{ position: "relative" }}>
+                    <div>
+                      <input
+                        type="file"
+                        accept=".pdf,image/*"
+                        onChange={(e) => handleFileChange(e.target.files[0])}
+                        required={!isEditing && !currentEntry.file} // Required only if not editing or no file exists
+                        style={inputStyle}
+                      />
+                      {currentEntry.file && (
+                        <div className="mt-2 text-muted small">
+                          Selected: {currentEntry.file.name}
+                        </div>
+                      )}
+                    </div>
+                    <div style={tickBoxStyle(!!currentEntry.file)}>
+                      <span
+                        style={{
+                          color: !!currentEntry.file ? "#ffffff" : "gray",
+                          fontSize: "1rem",
+                        }}
+                      >
+                        ✔
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Modal Action Buttons */}
+                <div
+                  className="form-group col-lg-12 col-md-12"
+                  style={{ display: "flex", justifyContent: "flex-end", gap: "1rem" }}
+                >
+                  <button
+                    type="button"
+                    style={{ ...buttonStyle, backgroundColor: "#6b7280" }}
+                    onClick={() => {
+                      setModalOpen(false);
+                      resetForm();
+                      setIsEditing(false);
+                    }}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    style={buttonStyle}
+                    onClick={handleSaveEntry}
+                  >
+                    Save Details
+                  </button>
+                </div>
               </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* View File Modal */}
+      {viewModalOpen && viewFile && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: "white",
+              padding: "2rem",
+              borderRadius: "8px",
+              width: "90%",
+              maxWidth: "600px",
+              maxHeight: "80vh",
+              overflowY: "auto",
+              position: "relative",
+            }}
+          >
+            <button
+              onClick={() => setViewModalOpen(false)}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+              }}
+            >
+              <svg style={{ width: "24px", height: "24px" }} viewBox="0 0 24 24">
+                <path
+                  fill="currentColor"
+                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+                />
+              </svg>
+            </button>
+            <h3>View Document</h3>
+            {viewFile.type.includes("image") ? (
+              <img
+                src={URL.createObjectURL(viewFile)}
+                alt="Uploaded document"
+                style={{ maxWidth: "100%", maxHeight: "60vh", marginTop: "1rem" }}
+              />
+            ) : (
+              <embed
+                src={URL.createObjectURL(viewFile)}
+                type="application/pdf"
+                style={{ width: "100%", height: "60vh", marginTop: "1rem" }}
+              />
             )}
           </div>
-
-          {/* Expiry Date */}
-          <div className="form-group col-lg-6 col-md-12">
-            <label>
-              Expiry Date <span style={{ color: "red" }}>*</span>
-            </label>
-            <input
-              type="date"
-              value={doc.expiryDate}
-              onChange={(e) =>
-                handleFieldChange(doc.id, "expiryDate", e.target.value)
-              }
-              required
-              style={inputStyle}
-            />
-          </div>
-
-          {/* Current Status */}
-          <div className="form-group col-lg-6 col-md-12">
-            <label>
-              Current Status <span style={{ color: "red" }}>*</span>
-            </label>
-            <select
-              className="chosen-single form-select"
-              value={doc.currentStatus}
-              onChange={(e) =>
-                handleFieldChange(doc.id, "currentStatus", e.target.value)
-              }
-              required
-            >
-              <option value="">Select Status</option>
-              <option value="Valid">Valid</option>
-              <option value="Expired">Expired</option>
-            </select>
-          </div>
-
-          {/* Issuing Country */}
-          <div className="form-group col-lg-6 col-md-12">
-            <label>
-              Issuing Country <span style={{ color: "red" }}>*</span>
-            </label>
-            <select
-              className="chosen-single form-select"
-              value={doc.issuingCountry}
-              onChange={(e) =>
-                handleFieldChange(doc.id, "issuingCountry", e.target.value)
-              }
-              required
-            >
-              <option value="">Select Country</option>
-              {gulfCountries.map((country) => (
-                <option key={country} value={country}>
-                  {country}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Current Location */}
-          <div className="form-group col-lg-6 col-md-12">
-            <label>
-              Current Location <span style={{ color: "red" }}>*</span>
-            </label>
-            <select
-              className="chosen-single form-select"
-              value={doc.currentLocation}
-              onChange={(e) =>
-                handleFieldChange(doc.id, "currentLocation", e.target.value)
-              }
-              required
-            >
-              <option value="">Select Country</option>
-              {gulfCountries.map((country) => (
-                <option key={country} value={country}>
-                  {country}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {/* Work Available Immediately */}
-          <div className="form-group col-lg-6 col-md-12">
-            <label>
-              Work Available Immediately <span style={{ color: "red" }}>*</span>
-            </label>
-            <select
-              className="chosen-single form-select"
-              value={doc.workAvailableImmediately}
-              onChange={(e) =>
-                handleFieldChange(
-                  doc.id,
-                  "workAvailableImmediately",
-                  e.target.value
-                )
-              }
-              required
-            >
-              <option value="">Select Option</option>
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-          </div>
-
-          {/* Number of Days */}
-          <div className="form-group col-lg-6 col-md-12">
-            <label>
-              Number of Days <span style={{ color: "red" }}>*</span>
-            </label>
-            <input
-              type="text"
-              placeholder="E.g., 30 days"
-              value={doc.numberOfDays}
-              onChange={(e) =>
-                handleFieldChange(doc.id, "numberOfDays", e.target.value)
-              }
-              required
-            />
-          </div>
-
-          {/* Remove Button */}
-          {documents.length > 1 && (
-            <div
-              className="form-group col-lg-12 col-md-12"
-              style={{ display: "flex", justifyContent: "flex-end" }}
-            >
-              <button
-                type="button"
-                style={removeButtonStyle}
-                onClick={() => handleRemoveDocument(doc.id)}
-              >
-                Remove Document
-              </button>
-            </div>
-          )}
         </div>
-      ))}
+      )}
 
-      {/* Action Buttons */}
-      <div className="row">
-        <div
-          className="form-group col-lg-12 col-md-12"
-          style={{ display: "flex", justifyContent: "flex-end", gap: "1rem" }}
-        >
-          <button type="button" style={buttonStyle} onClick={handleAddDocument}>
-            Add Another Document
-          </button>
-          <button type="submit" style={buttonStyle}>
-            Save Documents
-          </button>
+      {/* Table to Display Saved Documents */}
+      {savedDocuments.length > 0 && (
+        <div style={{ marginTop: "2rem" }}>
+          <h3>Saved Documents</h3>
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              marginTop: "1rem",
+            }}
+          >
+            <thead>
+              <tr>
+                <th style={{ border: "1px solid #e5e7eb", padding: "8px" }}>Document Type</th>
+                <th style={{ border: "1px solid #e5e7eb", padding: "8px" }}>Expiry Date</th>
+                <th style={{ border: "1px solid #e5e7eb", padding: "8px" }}>Current Status</th>
+                <th style={{ border: "1px solid #e5e7eb", padding: "8px" }}>Issuing Country</th>
+                <th style={{ border: "1px solid #e5e7eb", padding: "8px" }}>Current Location</th>
+                <th style={{ border: "1px solid #e5e7eb", padding: "8px" }}>Work Available Immediately</th>
+                <th style={{ border: "1px solid #e5e7eb", padding: "8px" }}>Number of Days</th>
+                <th style={{ border: "1px solid #e5e7eb", padding: "8px" }}>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {savedDocuments.map((doc) => (
+                <tr key={doc.id}>
+                  <td style={{ border: "1px solid #e5e7eb", padding: "8px", textAlign: "center" }}>
+                    {doc.category}
+                  </td>
+                  <td style={{ border: "1px solid #e5e7eb", padding: "8px", textAlign: "center" }}>
+                    {doc.expiryDate}
+                  </td>
+                  <td style={{ border: "1px solid #e5e7eb", padding: "8px", textAlign: "center" }}>
+                    {doc.currentStatus}
+                  </td>
+                  <td style={{ border: "1px solid #e5e7eb", padding: "8px", textAlign: "center" }}>
+                    {doc.issuingCountry}
+                  </td>
+                  <td style={{ border: "1px solid #e5e7eb", padding: "8px", textAlign: "center" }}>
+                    {doc.currentLocation}
+                  </td>
+                  <td style={{ border: "1px solid #e5e7eb", padding: "8px", textAlign: "center" }}>
+                    {doc.workAvailableImmediately}
+                  </td>
+                  <td style={{ border: "1px solid #e5e7eb", padding: "8px", textAlign: "center" }}>
+                    {doc.numberOfDays}
+                  </td>
+                  <td style={{ border: "1px solid #e5e7eb", padding: "8px", textAlign: "center" }}>
+                    <button
+                      style={{ ...actionButtonStyle, backgroundColor: "#1a73e8" }}
+                      onClick={() => handleViewFile(doc.file)}
+                    >
+                      View
+                    </button>
+                    <button
+                      style={{ ...actionButtonStyle, backgroundColor: "#f59e0b" }}
+                      onClick={() => handleEditEntry(doc)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      style={{ ...actionButtonStyle, backgroundColor: "#e63946" }}
+                      onClick={() => handleDeleteEntry(doc.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-      </div>
-    </form>
+      )}
+    </div>
   );
 };
 

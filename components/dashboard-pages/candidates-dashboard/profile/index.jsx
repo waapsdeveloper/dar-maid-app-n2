@@ -25,11 +25,11 @@ const index = () => {
   const tabs = [
     { name: "MyProfile", label: "Employee's Profile", component: <FormInfoBox /> },
     { name: "ContactInfoBox", label: "Contact Information", component: <ContactInfoBox /> },
-    { name: "EmploymentInfoBox", label: "Employment Information", component: <EmploymentInfoBox /> },
+    // { name: "EmploymentInfoBox", label: "Employment Information", component: <EmploymentInfoBox /> },
     { name: "WorkExperiencesBox", label: "Work Experiences", component: <WorkExperiencesBox /> },
     { name: "EmploymentDetails", label: "Employment Details", component: <EmploymentDetails /> },
-    { name: "InterviewAvailability", label: "Interview Availability", component: <InterviewAvailability /> },
-    { name: "FileCard", label: "View All Documents", component: <FileCard /> },
+    // { name: "InterviewAvailability", label: "Interview Availability", component: <InterviewAvailability /> },
+    // { name: "FileCard", label: "View All Documents", component: <FileCard /> },
     { name: "Document", label: "Upload Document", component: <Document /> },
     { name: "ApplicationManagement", label: "Application Management", component: <ApplicationManagement /> },
     { name: "InterviewManagement", label: "Interview Management", component: <InterviewManagement /> },
@@ -47,7 +47,7 @@ const index = () => {
     if (container) {
       const { scrollLeft, scrollWidth, clientWidth } = container;
       setShowLeftArrow(scrollLeft > 0);
-      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1); // -1 for rounding errors
+      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1);
     }
   };
 
@@ -55,13 +55,13 @@ const index = () => {
     const container = tabsRef.current;
     if (container) {
       container.addEventListener("scroll", updateArrowVisibility);
-      updateArrowVisibility(); // Initial check
+      updateArrowVisibility();
       return () => container.removeEventListener("scroll", updateArrowVisibility);
     }
   }, []);
 
   useEffect(() => {
-    updateArrowVisibility(); // Update arrows when tab changes
+    updateArrowVisibility();
   }, [activeTab]);
 
   return (
@@ -73,7 +73,7 @@ const index = () => {
       <DashboardCandidatesSidebar />
 
       <section className="user-dashboard">
-        <div className="dashboard-outer" style={{ padding: "1.5rem" }}>
+        <div className="dashboard-outer" style={{ padding: "1rem" }}>
           <BreadCrumb title="Profile!" />
           <MenuToggler style={{ marginBottom: "0" }} />
 
@@ -145,6 +145,8 @@ const index = () => {
                                 fontSize: "1.1rem",
                                 whiteSpace: "normal",
                                 wordWrap: "break-word",
+                                backgroundColor: activeTab === tab.name ? "#1a73e8" : "transparent",
+                                color: activeTab === tab.name ? "white" : "black",
                               }}
                             >
                               {tab.label}

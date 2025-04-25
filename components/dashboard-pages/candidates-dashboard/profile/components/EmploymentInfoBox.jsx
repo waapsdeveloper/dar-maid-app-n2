@@ -1,15 +1,29 @@
+import React, { useState } from "react";
+
+// Define buttonStyle at the top level for consistent styling
+const buttonStyle = {
+  padding: "0.75rem 1.5rem",
+  border: "none",
+  borderRadius: "0.5rem",
+  backgroundColor: "#1a73e8",
+  color: "white",
+  cursor: "pointer",
+  fontSize: "1rem",
+  fontWeight: "600",
+};
+
+// Define inputStyle for date input (matching Document.jsx)
+const inputStyle = {
+  width: "100%",
+  padding: "0.75rem",
+  // border: "1px solid #ccc",
+  borderRadius: "0.5rem",
+  backgroundColor: "#F0F5F7",
+  boxSizing: "border-box",
+};
+
 const EmploymentInfoBox = () => {
-  // Define buttonStyle at the top level for consistent styling
-  const buttonStyle = {
-    padding: "0.75rem 1.5rem",
-    border: "none",
-    borderRadius: "0.5rem",
-    backgroundColor: "#1a73e8",
-    color: "white",
-    cursor: "pointer",
-    fontSize: "1rem",
-    fontWeight: "600",
-  };
+  const [visaExpiryDate, setVisaExpiryDate] = useState("");
 
   return (
     <form className="default-form">
@@ -145,15 +159,16 @@ const EmploymentInfoBox = () => {
         </div>
 
         {/* Visa Expiry Date */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Visa Expiry Date <span style={{ color: "red" }}>*</span>
           </label>
           <input
             type="date"
-            name="visa_expiry_date"
-            className="form-control"
+            value={visaExpiryDate}
+            onChange={(e) => setVisaExpiryDate(e.target.value)}
             required
+            style={inputStyle}
           />
         </div>
 

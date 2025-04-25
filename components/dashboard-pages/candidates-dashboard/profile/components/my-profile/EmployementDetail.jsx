@@ -13,8 +13,34 @@ const buttonStyle = {
   fontWeight: "600",
 };
 
+// Define inputStyle for file inputs (matching Document.jsx)
+const inputStyle = {
+  width: "100%",
+  padding: "0.75rem",
+  borderRadius: "0.5rem",
+  backgroundColor: "#F0F5F7",
+  boxSizing: "border-box",
+};
+
+// Define tickBoxStyle for the tick container
+const tickBoxStyle = (isFileSelected) => ({
+  position: "absolute",
+  right: "20px",
+  top: "30%",
+  transform: "translateY(-50%)",
+  width: "24px",
+  height: "24px",
+  border: `1px solid ${isFileSelected ? "#28a745" : "#d0d0d0"}`,
+  borderRadius: "50%",
+  backgroundColor: isFileSelected ? "#28a745" : "transparent",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+});
+
 const EmploymentDetails = () => {
-  const [uploadedDocuments, setUploadedDocuments] = useState([]);
+  const [supportingDocs, setSupportingDocs] = useState([]);
   const [formData, setFormData] = useState({
     experience: "",
     employers: "",
@@ -23,121 +49,92 @@ const EmploymentDetails = () => {
     salary: "",
     noticePeriod: "",
     needAirTicket: "",
-    otherBenefits: "",
     employmentPreference: "",
+    availability: "",
+    interviewTimings: "",
+    verificationStatus: "",
+    employeeType: "",
+    employeeCategory: "",
+    visaStatus: "",
+    visaExpiryDate: "",
+    willingToLiveIn: "",
+    maxWorkHours: "",
+    flexibleWeekends: "",
+    otherBenefits: "",
   });
 
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
-    setUploadedDocuments([...uploadedDocuments, ...files]);
-  };
-
-  const handleDeleteDocument = (index) => {
-    const updatedDocs = uploadedDocuments.filter((_, i) => i !== index);
-    setUploadedDocuments(updatedDocs);
-  };
-
-  const getFileIcon = (fileName) => {
-    const extension = fileName.split(".").pop().toLowerCase();
-    const iconStyle = { width: "24px", height: "24px", marginRight: "8px" };
-
-    switch (extension) {
-      case "pdf":
-        return (
-          <svg style={iconStyle} viewBox="0 0 24 24" fill="red">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9 18H7v-2h2v2zm0-4H7v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm-4-6V3.5L18.5 9H13z" />
-          </svg>
-        );
-      case "doc":
-      case "docx":
-        return (
-          <svg style={iconStyle} viewBox="0 0 24 24" fill="blue">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9 18H7v-2h2v2zm0-4H7v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm-4-6V3.5L18.5 9H13z" />
-          </svg>
-        );
-      case "png":
-      case "jpg":
-      case "jpeg":
-        return (
-          <svg style={iconStyle} viewBox="0 0 24 24" fill="green">
-            <path d="M8.5 13.5l2.5 3 3.5-4.5 4.5 6H5m16 1V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z" />
-          </svg>
-        );
-      default:
-        return (
-          <svg style={iconStyle} viewBox="0 0 24 24" fill="gray">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9 18H7v-2h2v2zm0-4H7v-2h2v2zm4 4h-2v-2h2v2zm0-4h-2v-2h2v2zm4 4h-2v-2h2v2zm-4-6V3.5L18.5 9H13z" />
-          </svg>
-        );
-    }
+    setSupportingDocs(files);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    console.log("Documents:", uploadedDocuments);
+    console.log("Documents:", supportingDocs);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   return (
     <form className="default-form" onSubmit={handleSubmit}>
       <div className="row">
         {/* Work Experience */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Work Experience (Years) <span style={{ color: "red" }}>*</span>
           </label>
           <input
             type="number"
+            name="experience"
             placeholder="5"
             min="0"
             value={formData.experience}
-            onChange={(e) =>
-              setFormData({ ...formData, experience: e.target.value })
-            }
+            onChange={handleChange}
             required
           />
         </div>
 
         {/* Previous Employers */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>Previous Employers (optional)</label>
           <input
             type="text"
+            name="employers"
             placeholder="Company A, Company B"
             value={formData.employers}
-            onChange={(e) =>
-              setFormData({ ...formData, employers: e.target.value })
-            }
+            onChange={handleChange}
           />
         </div>
 
         {/* Skills */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Skills and Expertise <span style={{ color: "red" }}>*</span>
           </label>
           <input
             type="text"
+            name="skills"
             placeholder="Enter skills"
             value={formData.skills}
-            onChange={(e) =>
-              setFormData({ ...formData, skills: e.target.value })
-            }
+            onChange={handleChange}
             required
           />
         </div>
 
-        {/* Working Hours */}
-        <div className="form-group col-lg-6 col-md-12">
+        {/* Preferred Working Hours */}
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Preferred Working Hours <span style={{ color: "red" }}>*</span>
           </label>
           <select
+            name="workingHours"
             className="chosen-single form-select"
             value={formData.workingHours}
-            onChange={(e) =>
-              setFormData({ ...formData, workingHours: e.target.value })
-            }
+            onChange={handleChange}
             required
           >
             <option>9 AM - 5 PM</option>
@@ -148,49 +145,47 @@ const EmploymentDetails = () => {
         </div>
 
         {/* Expected Salary */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Expected Salary (BHD) <span style={{ color: "red" }}>*</span>
           </label>
           <input
             type="number"
+            name="salary"
             placeholder="500"
             min="0"
+            step="0.01"
             value={formData.salary}
-            onChange={(e) =>
-              setFormData({ ...formData, salary: e.target.value })
-            }
+            onChange={handleChange}
             required
           />
         </div>
 
         {/* Notice Period */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Notice Period <span style={{ color: "red" }}>*</span>
           </label>
           <input
             type="text"
+            name="noticePeriod"
             placeholder="30 days"
             value={formData.noticePeriod}
-            onChange={(e) =>
-              setFormData({ ...formData, noticePeriod: e.target.value })
-            }
+            onChange={handleChange}
             required
           />
         </div>
 
         {/* Need Air Ticket */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Need Air Ticket <span style={{ color: "red" }}>*</span>
           </label>
           <select
+            name="needAirTicket"
             className="chosen-single form-select"
             value={formData.needAirTicket}
-            onChange={(e) =>
-              setFormData({ ...formData, needAirTicket: e.target.value })
-            }
+            onChange={handleChange}
             required
           >
             <option value="">Select Option</option>
@@ -199,33 +194,16 @@ const EmploymentDetails = () => {
           </select>
         </div>
 
-        {/* Other Benefits Requirement */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>
-            Other Benefits Requirement <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="text"
-            placeholder="Health insurance, accommodation"
-            value={formData.otherBenefits}
-            onChange={(e) =>
-              setFormData({ ...formData, otherBenefits: e.target.value })
-            }
-            required
-          />
-        </div>
-
         {/* Type of Employment Preference */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Type of Employment Preference <span style={{ color: "red" }}>*</span>
           </label>
           <select
+            name="employmentPreference"
             className="chosen-single form-select"
             value={formData.employmentPreference}
-            onChange={(e) =>
-              setFormData({ ...formData, employmentPreference: e.target.value })
-            }
+            onChange={handleChange}
             required
           >
             <option value="">Select Preference</option>
@@ -239,72 +217,229 @@ const EmploymentDetails = () => {
           </select>
         </div>
 
-        {/* Document Upload */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Supporting Documents</label>
+        {/* Availability */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Availability <span style={{ color: "red" }}>*</span>
+          </label>
+          <select
+            name="availability"
+            className="chosen-single form-select"
+            value={formData.availability}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Availability</option>
+            <option value="available">Available</option>
+            <option value="not_available">Not Available</option>
+          </select>
+        </div>
+
+        {/* Preferred Interview Timings */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Preferred Interview Timings <span style={{ color: "red" }}>*</span>
+          </label>
           <input
-            type="file"
-            accept=".pdf,.doc,.docx,image/*"
-            onChange={handleFileChange}
-            multiple
-            style={{
-              width: "100%",
-              padding: "0.5rem",
-              border: "1px solid #ccc",
-              borderRadius: "4px",
-              fontSize: "1rem",
-              boxSizing: "border-box",
-            }}
+            type="text"
+            name="interviewTimings"
+            placeholder="3 - 5 PM"
+            value={formData.interviewTimings}
+            onChange={handleChange}
+            required
           />
         </div>
 
-        {/* Uploaded Documents Preview */}
-        {uploadedDocuments.map((doc, index) => (
-          <div key={index} className="form-group col-lg-12 col-md-12">
-            <div
-              style={{
-                padding: "1rem",
-                border: "1px solid #e5e7eb",
-                borderRadius: "8px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center" }}>
-                {getFileIcon(doc.name)}
-                <div>
-                  <div style={{ fontWeight: "600", fontSize: "14px" }}>
-                    {doc.name}
-                  </div>
-                  <div style={{ fontSize: "12px", color: "#6b7280" }}>
-                    {doc.type.toUpperCase()} • {Math.round(doc.size / 1024)}KB
-                  </div>
+        {/* Document Verification Status */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Document Verification Status <span style={{ color: "red" }}>*</span>
+          </label>
+          <select
+            name="verificationStatus"
+            className="chosen-single form-select"
+            value={formData.verificationStatus}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Status</option>
+            <option value="pending">Pending</option>
+            <option value="verified">Verified</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </div>
+
+        {/* Employee Type */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Employee Type <span style={{ color: "red" }}>*</span>
+          </label>
+          <select
+            name="employeeType"
+            className="chosen-single form-select"
+            value={formData.employeeType}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Type</option>
+            <option value="Independent">Independent</option>
+            <option value="Agency Managed">Agency Managed</option>
+          </select>
+        </div>
+
+        {/* Employee Category */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Employee Category <span style={{ color: "red" }}>*</span>
+          </label>
+          <select
+            name="employeeCategory"
+            className="chosen-single form-select"
+            value={formData.employeeCategory}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Category</option>
+            <option value="Driver">Driver</option>
+            <option value="Cook">Cook</option>
+            <option value="Maid">Maid</option>
+            <option value="Nanny">Nanny</option>
+            <option value="Elderly Care">Elderly Care</option>
+          </select>
+        </div>
+
+        {/* Visa Status */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Visa Status <span style={{ color: "red" }}>*</span>
+          </label>
+          <select
+            name="visaStatus"
+            className="chosen-single form-select"
+            value={formData.visaStatus}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Status</option>
+            <option value="Own Visa">Own Visa</option>
+            <option value="Needs Sponsorship">Needs Sponsorship</option>
+          </select>
+        </div>
+
+        {/* Visa Expiry Date */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Visa Expiry Date <span style={{ color: "red" }}>*</span>
+          </label>
+          <input
+            type="date"
+            name="visaExpiryDate"
+            value={formData.visaExpiryDate}
+            onChange={handleChange}
+            required
+            style={inputStyle}
+          />
+        </div>
+
+        {/* Willing to Live-in */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Willing to Live-in? <span style={{ color: "red" }}>*</span>
+          </label>
+          <select
+            name="willingToLiveIn"
+            className="chosen-single form-select"
+            value={formData.willingToLiveIn}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Option</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+            <option value="Conditional">Conditional</option>
+          </select>
+        </div>
+
+        {/* Max Work Hours/Day */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Max Work Hours/Day <span style={{ color: "red" }}>*</span>
+          </label>
+          <input
+            type="number"
+            name="maxWorkHours"
+            placeholder="8"
+            min="1"
+            max="24"
+            value={formData.maxWorkHours}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        {/* Flexible with Weekends */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Flexible with Weekends? <span style={{ color: "red" }}>*</span>
+          </label>
+          <select
+            name="flexibleWeekends"
+            className="chosen-single form-select"
+            value={formData.flexibleWeekends}
+            onChange={handleChange}
+            required
+          >
+            <option value="">Select Option</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </div>
+
+        {/* Document Upload */}
+        <div className="form-group col-lg-6 col-md-12" style={{ position: "relative", minHeight: "60px" }}>
+          <label>Supporting Documents</label>
+          <div style={{ position: "relative" }}>
+            <div>
+              <input
+                type="file"
+                accept=".pdf,.doc,.docx,image/*"
+                onChange={handleFileChange}
+                multiple
+                style={inputStyle}
+              />
+              {supportingDocs.length > 0 && (
+                <div className="mt-2 text-muted small">
+                  Selected: {supportingDocs.map(doc => doc.name).join(", ")}
                 </div>
-              </div>
-              <button
-                type="button"
-                onClick={() => handleDeleteDocument(index)}
+              )}
+            </div>
+            <div style={tickBoxStyle(supportingDocs.length > 0)}>
+              <span
                 style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: "4px",
+                  color: supportingDocs.length > 0 ? "#ffffff" : "gray",
+                  fontSize: "1rem",
                 }}
               >
-                <svg
-                  style={{ width: "20px", height: "20px" }}
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                  />
-                </svg>
-              </button>
+                ✔
+              </span>
             </div>
           </div>
-        ))}
+        </div>
+
+        {/* Other Benefits Requirements */}
+        <div className="form-group col-lg-12 col-md-6">
+          <label>
+            Other Benefits Requirements <span style={{ color: "red" }}>*</span>
+          </label>
+          <textarea
+            name="otherBenefits"
+            className="form-control"
+            placeholder="List any other benefits you require"
+            value={formData.otherBenefits}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
         {/* Submit Button */}
         <div
@@ -430,7 +565,7 @@ const InterviewManagement = () => {
     <form className="default-form" onSubmit={handleSubmit}>
       <div className="row">
         {/* Preferred Interview Time */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Preferred Interview Time <span style={{ color: "red" }}>*</span>
           </label>
@@ -443,84 +578,10 @@ const InterviewManagement = () => {
             required
           />
         </div>
-
-        {/* Willing to live-in with family */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>
-            Willing to live-in with family? <span style={{ color: "red" }}>*</span>
-          </label>
-          <div className="d-flex gap-3">
-            <label>
-              <input
-                type="radio"
-                name="liveInWithFamily"
-                value="Yes"
-                checked={formData.liveInWithFamily === "Yes"}
-                onChange={handleChange}
-                required
-              />
-              Yes
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="liveInWithFamily"
-                value="No"
-                checked={formData.liveInWithFamily === "No"}
-                onChange={handleChange}
-                required
-              />
-              No
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="liveInWithFamily"
-                value="Conditional"
-                checked={formData.liveInWithFamily === "Conditional"}
-                onChange={handleChange}
-                required
-              />
-              Conditional
-            </label>
-          </div>
-        </div>
-
-        {/* Comfortable with relocation inside country */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>
-            Comfortable with relocation inside country? <span style={{ color: "red" }}>*</span>
-          </label>
-          <div className="d-flex gap-3">
-            <label>
-              <input
-                type="radio"
-                name="relocationInsideCountry"
-                value="Yes"
-                checked={formData.relocationInsideCountry === "Yes"}
-                onChange={handleChange}
-                required
-              />
-              Yes
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="relocationInsideCountry"
-                value="No"
-                checked={formData.relocationInsideCountry === "No"}
-                onChange={handleChange}
-                required
-              />
-              No
-            </label>
-          </div>
-        </div>
-
         {/* Maximum hours per day willing to work */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
-            Maximum hours per day willing to work <span style={{ color: "red" }}>*</span>
+            Maximum hours per day <span style={{ color: "red" }}>*</span>
           </label>
           <input
             type="number"
@@ -532,40 +593,8 @@ const InterviewManagement = () => {
             required
           />
         </div>
-
-        {/* Flexible with weekends */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>
-            Flexible with weekends? <span style={{ color: "red" }}>*</span>
-          </label>
-          <div className="d-flex gap-3">
-            <label>
-              <input
-                type="radio"
-                name="flexibleWeekends"
-                value="Yes"
-                checked={formData.flexibleWeekends === "Yes"}
-                onChange={handleChange}
-                required
-              />
-              Yes
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="flexibleWeekends"
-                value="No"
-                checked={formData.flexibleWeekends === "No"}
-                onChange={handleChange}
-                required
-              />
-              No
-            </label>
-          </div>
-        </div>
-
         {/* Preferred household type */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
             Preferred household type <span style={{ color: "red" }}>*</span>
           </label>
@@ -581,11 +610,10 @@ const InterviewManagement = () => {
             <option value="No Preference">No Preference</option>
           </select>
         </div>
-
         {/* Languages preferred for communication */}
-        <div className="form-group col-lg-6 col-md-12">
+        <div className="form-group col-lg-3 col-md-12">
           <label>
-            Languages preferred for communication <span style={{ color: "red" }}>*</span>
+            Languages preferred <span style={{ color: "red" }}>*</span>
           </label>
           <select
             name="communicationLanguage"
@@ -600,6 +628,114 @@ const InterviewManagement = () => {
               </option>
             ))}
           </select>
+        </div>
+        {/* Willing to live-in with family */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Willing to live-in with family? <span style={{ color: "red" }}>*</span>
+          </label>
+          <div className="d-flex gap-3">
+            <label style={{ display: "flex", alignItems: "center" }}>
+              <input
+                type="radio"
+                name="liveInWithFamily"
+                value="Yes"
+                checked={formData.liveInWithFamily === "Yes"}
+                onChange={handleChange}
+                required
+                style={{ transform: "scale(1.5)", marginRight: "8px" }}
+              />
+              <span style={{ fontSize: "1.1rem" }}>Yes</span>
+            </label>
+            <label style={{ display: "flex", alignItems: "center" }}>
+              <input
+                type="radio"
+                name="liveInWithFamily"
+                value="No"
+                checked={formData.liveInWithFamily === "No"}
+                onChange={handleChange}
+                required
+                style={{ transform: "scale(1.5)", marginRight: "8px" }}
+              />
+              <span style={{ fontSize: "1.1rem" }}>No</span>
+            </label>
+            <label style={{ display: "flex", alignItems: "center" }}>
+              <input
+                type="radio"
+                name="liveInWithFamily"
+                value="Conditional"
+                checked={formData.liveInWithFamily === "Conditional"}
+                onChange={handleChange}
+                required
+                style={{ transform: "scale(1.5)", marginRight: "8px" }}
+              />
+              <span style={{ fontSize: "1.1rem" }}>Conditional</span>
+            </label>
+          </div>
+        </div>
+        {/* Comfortable with relocation inside country */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Comfortable with relocation? <span style={{ color: "red" }}>*</span>
+          </label>
+          <div className="d-flex gap-3">
+            <label style={{ display: "flex", alignItems: "center" }}>
+              <input
+                type="radio"
+                name="relocationInsideCountry"
+                value="Yes"
+                checked={formData.relocationInsideCountry === "Yes"}
+                onChange={handleChange}
+                required
+                style={{ transform: "scale(1.5)", marginRight: "8px" }}
+              />
+              <span style={{ fontSize: "1.1rem" }}>Yes</span>
+            </label>
+            <label style={{ display: "flex", alignItems: "center" }}>
+              <input
+                type="radio"
+                name="relocationInsideCountry"
+                value="No"
+                checked={formData.relocationInsideCountry === "No"}
+                onChange={handleChange}
+                required
+                style={{ transform: "scale(1.5)", marginRight: "8px" }}
+              />
+              <span style={{ fontSize: "1.1rem" }}>No</span>
+            </label>
+          </div>
+        </div>
+        {/* Flexible with weekends */}
+        <div className="form-group col-lg-3 col-md-12">
+          <label>
+            Flexible with weekends? <span style={{ color: "red" }}>*</span>
+          </label>
+          <div className="d-flex gap-3">
+            <label style={{ display: "flex", alignItems: "center" }}>
+              <input
+                type="radio"
+                name="flexibleWeekends"
+                value="Yes"
+                checked={formData.flexibleWeekends === "Yes"}
+                onChange={handleChange}
+                required
+                style={{ transform: "scale(1.5)", marginRight: "8px" }}
+              />
+              <span style={{ fontSize: "1.1rem" }}>Yes</span>
+            </label>
+            <label style={{ display: "flex", alignItems: "center" }}>
+              <input
+                type="radio"
+                name="flexibleWeekends"
+                value="No"
+                checked={formData.flexibleWeekends === "No"}
+                onChange={handleChange}
+                required
+                style={{ transform: "scale(1.5)", marginRight: "8px" }}
+              />
+              <span style={{ fontSize: "1.1rem" }}>No</span>
+            </label>
+          </div>
         </div>
 
         {/* Submit Button */}
