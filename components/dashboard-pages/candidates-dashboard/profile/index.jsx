@@ -18,9 +18,6 @@ import { Document, FileCard } from "./components/my-profile/Document";
 
 const index = () => {
   const [activeTab, setActiveTab] = useState("MyProfile");
-  const tabsRef = useRef(null);
-  const [showLeftArrow, setShowLeftArrow] = useState(false);
-  const [showRightArrow, setShowRightArrow] = useState(true);
 
   const tabs = [
     { name: "MyProfile", label: "Employee's Profile", component: <FormInfoBox /> },
@@ -33,36 +30,8 @@ const index = () => {
     { name: "Document", label: "Upload Document", component: <Document /> },
     { name: "ApplicationManagement", label: "Application Management", component: <ApplicationManagement /> },
     { name: "InterviewManagement", label: "Interview Management", component: <InterviewManagement /> },
-    { name: "SocialNetworkBox", label: "Employee's Social Networks", component: <SocialNetworkBox /> },
+    { name: "SocialNetworkBox", label: "Social Networks", component: <SocialNetworkBox /> },
   ];
-
-  const scrollTabs = (direction) => {
-    const container = tabsRef.current;
-    const scrollAmount = direction === "left" ? -300 : 300;
-    container.scrollBy({ left: scrollAmount, behavior: "smooth" });
-  };
-
-  const updateArrowVisibility = () => {
-    const container = tabsRef.current;
-    if (container) {
-      const { scrollLeft, scrollWidth, clientWidth } = container;
-      setShowLeftArrow(scrollLeft > 0);
-      setShowRightArrow(scrollLeft < scrollWidth - clientWidth - 1);
-    }
-  };
-
-  useEffect(() => {
-    const container = tabsRef.current;
-    if (container) {
-      container.addEventListener("scroll", updateArrowVisibility);
-      updateArrowVisibility();
-      return () => container.removeEventListener("scroll", updateArrowVisibility);
-    }
-  }, []);
-
-  useEffect(() => {
-    updateArrowVisibility();
-  }, [activeTab]);
 
   return (
     <div className="page-wrapper dashboard">
@@ -89,27 +58,9 @@ const index = () => {
                       width: "100%",
                     }}
                   >
-                    <button
-                      onClick={() => scrollTabs("left")}
-                      style={{
-                        padding: "0.5rem",
-                        background: "none",
-                        border: "none",
-                        cursor: "pointer",
-                        fontSize: "1.2rem",
-                        flexShrink: 0,
-                        display: showLeftArrow ? "block" : "none",
-                      }}
-                    >
-                      ←
-                    </button>
-
                     <div
-                      ref={tabsRef}
                       style={{
-                        overflowX: "hidden",
                         flex: 1,
-                        scrollBehavior: "smooth",
                         width: "100%",
                       }}
                     >
@@ -118,7 +69,7 @@ const index = () => {
                         style={{
                           display: "flex",
                           whiteSpace: "nowrap",
-                          flexWrap: "nowrap",
+                          flexWrap: "wrap", // Changed to wrap so tabs can go to next line
                           minHeight: "60px",
                         }}
                       >
@@ -134,10 +85,10 @@ const index = () => {
                               className={`nav-link ${activeTab === tab.name ? "active" : ""}`}
                               onClick={() => setActiveTab(tab.name)}
                               style={{
-                                minWidth: "150px",
-                                maxWidth: "150px",
+                                minWidth: "120px", // Reduced from 150px
+                                maxWidth: "120px", // Reduced from 150px
                                 height: "100%",
-                                padding: "0.5rem",
+                                padding: "0.3rem", // Reduced padding from 0.5rem
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
@@ -155,21 +106,6 @@ const index = () => {
                         ))}
                       </ul>
                     </div>
-
-                    <button
-                      onClick={() => scrollTabs("right")}
-                      style={{
-                        padding: "0.5rem",
-                        background: "none",
-                        border: "none",
-                        cursor: "pointer",
-                        fontSize: "1.2rem",
-                        flexShrink: 0,
-                        display: showRightArrow ? "block" : "none",
-                      }}
-                    >
-                      →
-                    </button>
                   </div>
 
                   <div
