@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"; // Added useState for tabs functionality
+import { useState } from "react";
 import MobileMenu from "../../../header/MobileMenu";
 import DashboardHeader from "../../../header/DashboardHeader";
 import LoginPopup from "../../../common/form/login/LoginPopup";
@@ -20,10 +20,8 @@ import WorkScheduleOfferDetails from "./components/WorkScheduleDetails";
 import InterviewAccountPreferences from "./components/InterviewAccountPreferences";
 
 const index = () => {
-    // Added state for managing active tab
     const [activeTab, setActiveTab] = useState("MyProfile");
 
-    // Tabs array similar to the first index.jsx
     const tabs = [
         { name: "MyProfile", label: "My Profile", component: <MyProfile /> },
         { name: "ResidenceInfo", label: "Residence Info", component: <ResidenceInfo /> },
@@ -37,28 +35,20 @@ const index = () => {
     return (
         <div className="page-wrapper dashboard">
             <span className="header-span"></span>
-            {/* <!-- Header Span for hight --> */}
 
             <LoginPopup />
-            {/* End Login Popup Modal */}
 
             <DashboardHeader />
-            {/* End Header */}
 
             <MobileMenu />
-            {/* End MobileMenu */}
 
             <DashboardEmployerSidebar />
-            {/* <!-- End User Sidebar Menu --> */}
 
-            {/* <!-- Dashboard --> */}
             <section className="user-dashboard">
                 <div className="dashboard-outer" style={{ padding: "1rem" }}>
                     <BreadCrumb title="Profile!" />
-                    {/* breadCrumb */}
 
                     <MenuToggler />
-                    {/* Collapsible sidebar button */}
 
                     <div className="row">
                         <div className="col-lg-12">
@@ -100,7 +90,7 @@ const index = () => {
                                                             onClick={() => setActiveTab(tab.name)}
                                                             style={{
                                                                 height: "100%",
-                                                                padding: "20px,40px,14px,40px",
+                                                                padding: "20px 40px 14px 40px",
                                                                 display: "flex",
                                                                 justifyContent: "center",
                                                                 alignItems: "center",
@@ -121,9 +111,8 @@ const index = () => {
                                     </div>
 
                                     <div
-                                        className="widget-content"
                                         style={{
-                                            padding: activeTab === "MyProfile" ? "2.5rem" : "2.5rem", // Fixed the invalid padding value from first file
+                                            padding: "1rem",
                                             minHeight: "400px",
                                         }}
                                     >
@@ -133,16 +122,11 @@ const index = () => {
                             </div>
                         </div>
                     </div>
-                    {/* End .row */}
                 </div>
-                {/* End dashboard-outer */}
             </section>
-            {/* <!-- End Dashboard --> */}
 
             <CopyrightFooter />
-            {/* <!-- End Copyright --> */}
         </div>
-        // End page-wrapper
     );
 };
 
