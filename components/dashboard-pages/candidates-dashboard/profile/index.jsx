@@ -153,32 +153,6 @@ const index = () => {
                               margin: 0,
                             }}
                           >
-<<<<<<< Updated upstream
-                            <button
-                              className={`nav-link ${activeTab === tab.name ? "active" : ""}`}
-                              onClick={() => setActiveTab(tab.name)}
-                              style={{
-                                // minWidth: "120px", // Reduced from 150px
-                                // maxWidth: "120px", // Reduced from 150px
-                                height: "100%",
-                                padding: "20px,40px,14px,40px", // Reduced padding from 0.5rem
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                textAlign: "center",
-                                fontSize: "1.1rem",
-                                whiteSpace: "normal",
-                                wordWrap: "break-word",
-                                backgroundColor: activeTab === tab.name ? "#1a73e8" : "transparent",
-                                color: activeTab === tab.name ? "white" : "black",
-                              }}
-                            >
-                              {tab.label}
-                            </button>
-                          </li>
-                        ))}
-                      </ul>
-=======
                             {tabs.map((tab) => (
                               <li
                                 key={tab.name}
@@ -233,7 +207,6 @@ const index = () => {
                       >
                         <FaArrowRight size={14} />
                       </button>
->>>>>>> Stashed changes
                     </div>
                   </div>
 
