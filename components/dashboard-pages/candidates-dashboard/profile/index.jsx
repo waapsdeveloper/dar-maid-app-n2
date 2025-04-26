@@ -85,10 +85,10 @@ const index = () => {
                               className={`nav-link ${activeTab === tab.name ? "active" : ""}`}
                               onClick={() => setActiveTab(tab.name)}
                               style={{
-                                minWidth: "120px", // Reduced from 150px
-                                maxWidth: "120px", // Reduced from 150px
+                                // minWidth: "120px", // Reduced from 150px
+                                // maxWidth: "120px", // Reduced from 150px
                                 height: "100%",
-                                padding: "0.3rem,0.8rem,0.3rem,0.8rem", // Reduced padding from 0.5rem
+                                padding: "20px,40px,14px,40px", // Reduced padding from 0.5rem
                                 display: "flex",
                                 justifyContent: "center",
                                 alignItems: "center",
