@@ -2,20 +2,17 @@
 
 import { useState } from "react";
 
-const FormInfoBox = () => {
+const WorkScheduleOfferDetails = () => {
     // State to manage form data
     const [formData, setFormData] = useState({
-        gender: "",
-        dateOfBirth: "",
-        nationality: "",
-        religion: "",
-        householdType: "",
-        adults: "",
-        children: "",
-        childrenAgeRange: "",
-        elderlyDependents: "",
-        specialNeeds: "",
-        specialNeedsCare: "",
+        startDate: "",
+        workDaysPerWeek: "",
+        dailyHours: "",
+        dayOffPreference: "",
+        salaryRange: "",
+        otherBenefits: "",
+        visaSponsorship: "",
+        budgetFlexibility: "",
     });
 
     // Handle input changes
@@ -23,108 +20,76 @@ const FormInfoBox = () => {
         setFormData({ ...formData, [field]: value });
     };
 
-    // Dropdown and radio options
-    const genderOptions = ["Male", "Female", "Other"];
-    const nationalityOptions = [
-        "Bahrain",
-        "Kuwait",
-        "Oman",
-        "Qatar",
-        "Saudi Arabia",
-        "United Arab Emirates",
-    ];
-    const religionOptions = ["Islam", "Christianity", "Hinduism", "Sikh", "Other"];
-    const householdTypeOptions = ["Local", "Expat"];
-    const childrenAgeRangeOptions = ["Infant", "Toddler", "Teen"];
+    // Radio options
     const yesNoOptions = ["Yes", "No"];
 
     // Form field configurations
     const fields = [
-        // Personal & Household Info
-        {
-            type: "select",
-            name: "gender",
-            label: "Gender",
-            options: genderOptions,
-            colClass: "col-lg-3 col-md-12",
-            required: true,
-        },
         {
             type: "date",
-            name: "dateOfBirth",
-            label: "Date of Birth",
+            name: "startDate",
+            label: "Start Date",
             colClass: "col-lg-3 col-md-12",
             required: true,
             style: { backgroundColor: "#F0F5F7", height: "60px", border: "none" },
         },
         {
-            type: "select",
-            name: "nationality",
-            label: "Nationality",
-            options: nationalityOptions,
+            type: "number",
+            name: "workDaysPerWeek",
+            label: "Work Days per Week",
+            placeholder: "Enter number of days",
             colClass: "col-lg-3 col-md-12",
             required: true,
+            min: "1",
+            max: "7",
         },
         {
-            type: "select",
-            name: "religion",
-            label: "Religion",
-            options: religionOptions,
+            type: "number",
+            name: "dailyHours",
+            label: "Daily Hours",
+            placeholder: "Enter hours per day",
             colClass: "col-lg-3 col-md-12",
             required: true,
+            min: "1",
+            max: "24",
         },
         {
-            type: "select",
-            name: "householdType",
-            label: "Household Type",
-            options: householdTypeOptions,
+            type: "text",
+            name: "dayOffPreference",
+            label: "Day Off Preference",
+            placeholder: "e.g., Sunday",
             colClass: "col-lg-3 col-md-12",
             required: true,
         },
         {
             type: "number",
-            name: "adults",
-            label: "Household Size - Adults",
-            placeholder: "Number of Adults",
+            name: "salaryRange",
+            label: "Salary Range (BHD)",
+            placeholder: "Enter amount in BHD",
             colClass: "col-lg-3 col-md-12",
             required: true,
+            min: "0",
         },
         {
-            type: "number",
-            name: "children",
-            label: "Household Size - Children",
-            placeholder: "Number of Children",
-            colClass: "col-lg-3 col-md-12",
-            required: true,
-        },
-        {
-            type: "select",
-            name: "childrenAgeRange",
-            label: "Children’s Age Range",
-            options: childrenAgeRangeOptions,
+            type: "text",
+            name: "otherBenefits",
+            label: "Other Benefits Offered",
+            placeholder: "e.g., Accommodation, Transport",
             colClass: "col-lg-3 col-md-12",
             required: true,
         },
         {
             type: "radio",
-            name: "elderlyDependents",
-            label: "Do you have elderly dependents?",
+            name: "visaSponsorship",
+            label: "Visa Sponsorship Provided?",
             options: yesNoOptions,
             colClass: "col-lg-3 col-md-12",
             required: true,
         },
         {
             type: "radio",
-            name: "specialNeeds",
-            label: "Do you have people with special needs?",
-            options: yesNoOptions,
-            colClass: "col-lg-3 col-md-12",
-            required: true,
-        },
-        {
-            type: "radio",
-            name: "specialNeedsCare",
-            label: "Do they require care?",
+            name: "budgetFlexibility",
+            label: "Budget Flexibility?",
             options: yesNoOptions,
             colClass: "col-lg-3 col-md-12",
             required: true,
@@ -132,8 +97,8 @@ const FormInfoBox = () => {
     ];
 
     return (
-        <form className="default-form">
-            <div className="row" style={{ padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap" }}>
+        <form className="default-form" style={{ overflow: "hidden" }}>
+            <div className="row" style={{ padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap", margin: "0" }}>
                 {fields.map((field, index) => (
                     <div
                         key={index}
@@ -180,22 +145,6 @@ const FormInfoBox = () => {
                                 style={field.style}
                             />
                         )}
-                        {field.type === "select" && (
-                            <select
-                                className="chosen-single form-select"
-                                name={field.name}
-                                value={formData[field.name]}
-                                onChange={(e) => handleChange(field.name, e.target.value)}
-                                required={field.required}
-                            >
-                                <option value="">Select {field.label}</option>
-                                {field.options.map((option, idx) => (
-                                    <option key={idx} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </select>
-                        )}
                         {field.type === "number" && (
                             <input
                                 type="number"
@@ -205,7 +154,19 @@ const FormInfoBox = () => {
                                 onChange={(e) => handleChange(field.name, e.target.value)}
                                 required={field.required}
                                 className="form-control"
-                                min="0"
+                                min={field.min}
+                                max={field.max}
+                            />
+                        )}
+                        {field.type === "text" && (
+                            <input
+                                type="text"
+                                name={field.name}
+                                placeholder={field.placeholder}
+                                value={formData[field.name]}
+                                onChange={(e) => handleChange(field.name, e.target.value)}
+                                required={field.required}
+                                className="form-control"
                             />
                         )}
                     </div>
@@ -232,4 +193,4 @@ const FormInfoBox = () => {
     );
 };
 
-export default FormInfoBox;
+export default WorkScheduleOfferDetails;

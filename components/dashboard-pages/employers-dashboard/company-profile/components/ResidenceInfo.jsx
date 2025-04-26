@@ -2,20 +2,17 @@
 
 import { useState } from "react";
 
-const FormInfoBox = () => {
+const ResidenceInfo = () => {
     // State to manage form data
     const [formData, setFormData] = useState({
-        gender: "",
-        dateOfBirth: "",
-        nationality: "",
-        religion: "",
-        householdType: "",
-        adults: "",
-        children: "",
-        childrenAgeRange: "",
-        elderlyDependents: "",
-        specialNeeds: "",
-        specialNeedsCare: "",
+        residenceType: "",
+        buildingNo: "",
+        roadNo: "",
+        blockNo: "",
+        city: "",
+        country: "",
+        typeOfResidence: "",
+        accommodationProvided: "",
     });
 
     // Handle input changes
@@ -24,8 +21,8 @@ const FormInfoBox = () => {
     };
 
     // Dropdown and radio options
-    const genderOptions = ["Male", "Female", "Other"];
-    const nationalityOptions = [
+    // const residenceTypeOptions = ["House", "Flat", "Apartment", "Villa"];
+    const countryOptions = [
         "Bahrain",
         "Kuwait",
         "Oman",
@@ -33,98 +30,72 @@ const FormInfoBox = () => {
         "Saudi Arabia",
         "United Arab Emirates",
     ];
-    const religionOptions = ["Islam", "Christianity", "Hinduism", "Sikh", "Other"];
-    const householdTypeOptions = ["Local", "Expat"];
-    const childrenAgeRangeOptions = ["Infant", "Toddler", "Teen"];
+    const typeOfResidenceOptions = ["House", "Flat","Villa", "Apartment"];
     const yesNoOptions = ["Yes", "No"];
 
     // Form field configurations
     const fields = [
-        // Personal & Household Info
+        // {
+        //     type: "select",
+        //     name: "residenceType",
+        //     label: "House/Flat/Apartment/Villa",
+        //     options: residenceTypeOptions,
+        //     colClass: "col-lg-3 col-md-12",
+        //     required: true,
+        // },
         {
             type: "select",
-            name: "gender",
-            label: "Gender",
-            options: genderOptions,
+            name: "typeOfResidence",
+            label: "Type of Residence",
+            options: typeOfResidenceOptions,
             colClass: "col-lg-3 col-md-12",
             required: true,
         },
         {
-            type: "date",
-            name: "dateOfBirth",
-            label: "Date of Birth",
-            colClass: "col-lg-3 col-md-12",
-            required: true,
-            style: { backgroundColor: "#F0F5F7", height: "60px", border: "none" },
-        },
-        {
-            type: "select",
-            name: "nationality",
-            label: "Nationality",
-            options: nationalityOptions,
+            type: "text",
+            name: "buildingNo",
+            label: "Building No",
+            placeholder: "Enter building number",
             colClass: "col-lg-3 col-md-12",
             required: true,
         },
         {
-            type: "select",
-            name: "religion",
-            label: "Religion",
-            options: religionOptions,
+            type: "text",
+            name: "roadNo",
+            label: "Road No",
+            placeholder: "Enter road number",
             colClass: "col-lg-3 col-md-12",
             required: true,
         },
         {
-            type: "select",
-            name: "householdType",
-            label: "Household Type",
-            options: householdTypeOptions,
+            type: "text",
+            name: "blockNo",
+            label: "Block No",
+            placeholder: "Enter block number",
             colClass: "col-lg-3 col-md-12",
             required: true,
         },
         {
-            type: "number",
-            name: "adults",
-            label: "Household Size - Adults",
-            placeholder: "Number of Adults",
-            colClass: "col-lg-3 col-md-12",
-            required: true,
-        },
-        {
-            type: "number",
-            name: "children",
-            label: "Household Size - Children",
-            placeholder: "Number of Children",
+            type: "text",
+            name: "city",
+            label: "City / Area",
+            placeholder: "Enter city or area",
             colClass: "col-lg-3 col-md-12",
             required: true,
         },
         {
             type: "select",
-            name: "childrenAgeRange",
-            label: "Children’s Age Range",
-            options: childrenAgeRangeOptions,
+            name: "country",
+            label: "Country",
+            options: countryOptions,
             colClass: "col-lg-3 col-md-12",
             required: true,
         },
+        
         {
             type: "radio",
-            name: "elderlyDependents",
-            label: "Do you have elderly dependents?",
-            options: yesNoOptions,
-            colClass: "col-lg-3 col-md-12",
-            required: true,
-        },
-        {
-            type: "radio",
-            name: "specialNeeds",
-            label: "Do you have people with special needs?",
-            options: yesNoOptions,
-            colClass: "col-lg-3 col-md-12",
-            required: true,
-        },
-        {
-            type: "radio",
-            name: "specialNeedsCare",
-            label: "Do they require care?",
+            name: "accommodationProvided",
+            label: "Accommodation Provided?",
             options: yesNoOptions,
             colClass: "col-lg-3 col-md-12",
             required: true,
@@ -169,17 +140,6 @@ const FormInfoBox = () => {
                                 ))}
                             </div>
                         )}
-                        {field.type === "date" && (
-                            <input
-                                type="date"
-                                name={field.name}
-                                value={formData[field.name]}
-                                onChange={(e) => handleChange(field.name, e.target.value)}
-                                required={field.required}
-                                className="form-control"
-                                style={field.style}
-                            />
-                        )}
                         {field.type === "select" && (
                             <select
                                 className="chosen-single form-select"
@@ -196,16 +156,15 @@ const FormInfoBox = () => {
                                 ))}
                             </select>
                         )}
-                        {field.type === "number" && (
+                        {field.type === "text" && (
                             <input
-                                type="number"
+                                type="text"
                                 name={field.name}
                                 placeholder={field.placeholder}
                                 value={formData[field.name]}
                                 onChange={(e) => handleChange(field.name, e.target.value)}
                                 required={field.required}
                                 className="form-control"
-                                min="0"
                             />
                         )}
                     </div>
@@ -232,4 +191,4 @@ const FormInfoBox = () => {
     );
 };
 
-export default FormInfoBox;
+export default ResidenceInfo;

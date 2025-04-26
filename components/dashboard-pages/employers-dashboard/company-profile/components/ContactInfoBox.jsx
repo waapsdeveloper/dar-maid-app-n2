@@ -1,108 +1,132 @@
-import Map from "../../../Map";
+'use client'
+
+import { useState } from "react";
 
 const ContactInfoBox = () => {
-  return (
-    <form className="default-form">
-      <div className="row">
-        {/* Contact Details */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Phone Number</label>
-         <input type="number"
-         placeholder="+924322321133"
-         name="number" />
-        </div>
+    // State to manage form data
+    const [formData, setFormData] = useState({
+        phoneNumber: "",
+        email: "",
+        whatsappNumber: "",
+        alternateContact: "",
+    });
 
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Email Address</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="contact@example.com"
-            required
-          />
-        </div>
+    // Handle input changes
+    const handleChange = (field, value) => {
+        setFormData({ ...formData, [field]: value });
+    };
 
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Country</label>
-          <select className="chosen-single form-select" required>
-            <option>Australia</option>
-            <option>Pakistan</option>
-            <option>Chaina</option>
-            <option>Japan</option>
-            <option>India</option>
-          </select>
-        </div>
+    // Form field configurations
+    const fields = [
+        {
+            type: "number",
+            name: "phoneNumber",
+            label: "Phone Number",
+            placeholder: "+924322321133",
+            colClass: "col-lg-3 col-md-12",
+            required: true,
+        },
+        {
+            type: "email",
+            name: "email",
+            label: "Email Address",
+            placeholder: "contact@example.com",
+            colClass: "col-lg-3 col-md-12",
+            required: true,
+        },
+        {
+            type: "number",
+            name: "whatsappNumber",
+            label: "WhatsApp Number",
+            placeholder: "+924322321133",
+            colClass: "col-lg-3 col-md-12",
+            required: true,
+        },
+        {
+            type: "number",
+            name: "alternateContact",
+            label: "Alternate Contact",
+            placeholder: "+924322321133",
+            colClass: "col-lg-3 col-md-12",
+            required: true,
+        },
+    ];
 
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>City</label>
-          <select className="chosen-single form-select" required>
-            <option>Melbourne</option>
-            <option>Pakistan</option>
-            <option>Chaina</option>
-            <option>Japan</option>
-            <option>India</option>
-          </select>
-        </div>
-
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-12 col-md-12">
-          <label>Complete Address</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="329 Queensberry Street, North Melbourne VIC 3051, Australia."
-            required
-          />
-        </div>
-
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>Find On Map</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="329 Queensberry Street, North Melbourne VIC 3051, Australia."
-            required
-          />
-        </div>
-
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>Latitude</label>
-          <input type="text" name="name" placeholder="Melbourne" required />
-        </div>
-
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>Longitude</label>
-          <input type="text" name="name" placeholder="Melbourne" required />
-        </div>
-
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-12 col-md-12">
-          <button className="theme-btn btn-style-three">Search Location</button>
-        </div>
-
-        <div className="form-group col-lg-12 col-md-12">
-          <div className="map-outer">
-            <div style={{ height: "420px", width: "100%" }}>
-              <Map />
+    return (
+        <form className="default-form">
+            <div className="row" style={{ padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap" }}>
+                {fields.map((field, index) => (
+                    <div key={index} className={`form-group ${field.colClass}`}>
+                        <label
+                         style={{
+                          color: "#696969",
+                          fontWeight: "500",
+                          minHeight: "2rem",
+                          whiteSpace: "normal",
+                          wordWrap: "break-word",
+                      }}
+                        >{field.label} {field.required && <span style={{ color: "red" }}>*</span>}</label>
+                        {field.type === "number" && (
+                            <input
+                                type="number"
+                                name={field.name}
+                                placeholder={field.placeholder}
+                                value={formData[field.name]}
+                                onChange={(e) => handleChange(field.name, e.target.value)}
+                                required={field.required}
+                                className="form-control"
+                                style={{
+                                    WebkitAppearance: "none",
+                                    MozAppearance: "textfield",
+                                    appearance: "none",
+                                }}
+                                onWheel={(e) => e.target.blur()}
+                            />
+                        )}
+                        {field.type === "email" && (
+                            <input
+                                type="email"
+                                name={field.name}
+                                placeholder={field.placeholder}
+                                value={formData[field.name]}
+                                onChange={(e) => handleChange(field.name, e.target.value)}
+                                required={field.required}
+                                className="form-control"
+                            />
+                        )}
+                    </div>
+                ))}
+                <div style={{ display: "flex", justifyContent: "flex-end", width: "100%", marginTop: "1rem", paddingRight: "2.5rem" }}>
+                    <button
+                        type="submit"
+                        style={{
+                            padding: "0.75rem 1.5rem",
+                            border: "none",
+                            borderRadius: "0.5rem",
+                            backgroundColor: "#1a73e8",
+                            color: "white",
+                            cursor: "pointer",
+                            fontSize: "1rem",
+                            fontWeight: "600",
+                        }}
+                    >
+                        Save Details
+                    </button>
+                </div>
             </div>
-          </div>
-        </div>
-        {/* End MapBox */}
-
-        {/* <!-- Input --> */}
-        <div className="form-group col-lg-12 col-md-12">
-          <button type="submit" className="theme-btn btn-style-one">
-            Save
-          </button>
-        </div>
-      </div>
-    </form>
-  );
+            <style jsx global>{`
+                input[type="number"]::-webkit-inner-spin-button,
+                input[type="number"]::-webkit-outer-spin-button {
+                    -webkit-appearance: none !important;
+                    margin: 0 !important;
+                }
+                input[type="number"] {
+                    -moz-appearance: textfield !important;
+                    appearance: none !important;
+                }
+            `}</style>
+        </form>
+    );
 };
 
 export default ContactInfoBox;
