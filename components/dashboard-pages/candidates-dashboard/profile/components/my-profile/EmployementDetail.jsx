@@ -1,5 +1,7 @@
-"use client";
+'use client'
+
 import React, { useState } from "react";
+import Select from "react-select";
 
 // Define buttonStyle at the top level so it can be used across all components
 const buttonStyle = {
@@ -74,372 +76,331 @@ const EmploymentDetails = () => {
     console.log("Documents:", supportingDocs);
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const handleChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
   };
+
+  const handleSelectChange = (field) => (selectedOption) => {
+    setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
+  };
+
+  const workingHoursOptions = [
+    { value: "9 AM - 5 PM", label: "9 AM - 5 PM" },
+    { value: "Flexible Hours", label: "Flexible Hours" },
+    { value: "Part-Time Morning", label: "Part-Time Morning" },
+    { value: "Part-Time Evening", label: "Part-Time Evening" },
+  ];
+
+  const yesNoOptions = [
+    { value: "Yes", label: "Yes" },
+    { value: "No", label: "No" },
+  ];
+
+  const employmentPreferenceOptions = [
+    { value: "Live in", label: "Live in" },
+    { value: "Full-Time", label: "Full-Time" },
+    { value: "Live-out", label: "Live-out" },
+    { value: "Part-Time", label: "Part-Time" },
+    { value: "Monthly", label: "Monthly" },
+    { value: "Temporary", label: "Temporary" },
+    { value: "Nanny for Newborns", label: "Nanny for Newborns" },
+  ];
+
+  const availabilityOptions = [
+    { value: "available", label: "Available" },
+    { value: "not_available", label: "Not Available" },
+  ];
+
+  const verificationStatusOptions = [
+    { value: "pending", label: "Pending" },
+    { value: "verified", label: "Verified" },
+    { value: "rejected", label: "Rejected" },
+  ];
+
+  const employeeTypeOptions = [
+    { value: "Independent", label: "Independent" },
+    { value: "Agency Managed", label: "Agency Managed" },
+  ];
+
+  const employeeCategoryOptions = [
+    { value: "Driver", label: "Driver" },
+    { value: "Cook", label: "Cook" },
+    { value: "Maid", label: "Maid" },
+    { value: "Nanny", label: "Nanny" },
+    { value: "Elderly Care", label: "Elderly Care" },
+  ];
+
+  const visaStatusOptions = [
+    { value: "Own Visa", label: "Own Visa" },
+    { value: "Needs Sponsorship", label: "Needs Sponsorship" },
+  ];
+
+  const willingToLiveInOptions = [
+    { value: "Yes", label: "Yes" },
+    { value: "No", label: "No" },
+    { value: "Conditional", label: "Conditional" },
+  ];
+
+  const fields = [
+    {
+      type: "number",
+      name: "experience",
+      label: "Work Experience (Years)",
+      placeholder: "5",
+      colClass: "col-lg-3 col-md-12",
+      min: "0",
+      required: true,
+    },
+    {
+      type: "text",
+      name: "employers",
+      label: "Previous Employers (optional)",
+      placeholder: "Company A, Company B",
+      colClass: "col-lg-3 col-md-12",
+    },
+    {
+      type: "text",
+      name: "skills",
+      label: "Skills and Expertise",
+      placeholder: "Enter skills",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "workingHours",
+      label: "Preferred Working Hours",
+      options: workingHoursOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Hours",
+      required: true,
+    },
+    {
+      type: "number",
+      name: "salary",
+      label: "Expected Salary (BHD)",
+      placeholder: "500",
+      colClass: "col-lg-3 col-md-12",
+      min: "0",
+      step: "0.01",
+      required: true,
+    },
+    {
+      type: "text",
+      name: "noticePeriod",
+      label: "Notice Period",
+      placeholder: "30 days",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "needAirTicket",
+      label: "Need Air Ticket",
+      options: yesNoOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Option",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "employmentPreference",
+      label: "Type of Employment Preference",
+      options: employmentPreferenceOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Preference",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "availability",
+      label: "Availability",
+      options: availabilityOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Availability",
+      required: true,
+    },
+    {
+      type: "text",
+      name: "interviewTimings",
+      label: "Preferred Interview Timings",
+      placeholder: "3 - 5 PM",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "verificationStatus",
+      label: "Document Verification Status",
+      options: verificationStatusOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Status",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "employeeType",
+      label: "Employee Type",
+      options: employeeTypeOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Type",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "employeeCategory",
+      label: "Employee Category",
+      options: employeeCategoryOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Category",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "visaStatus",
+      label: "Visa Status",
+      options: visaStatusOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Status",
+      required: true,
+    },
+    {
+      type: "date",
+      name: "visaExpiryDate",
+      label: "Visa Expiry Date",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+      style: inputStyle,
+    },
+    {
+      type: "select",
+      name: "willingToLiveIn",
+      label: "Willing to Live-in?",
+      options: willingToLiveInOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Option",
+      required: true,
+    },
+    {
+      type: "number",
+      name: "maxWorkHours",
+      label: "Max Work Hours/Day",
+      placeholder: "8",
+      colClass: "col-lg-3 col-md-12",
+      min: "1",
+      max: "24",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "flexibleWeekends",
+      label: "Flexible with Weekends?",
+      options: yesNoOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Option",
+      required: true,
+    },
+    {
+      type: "file",
+      name: "supportingDocs",
+      label: "Supporting Documents",
+      colClass: "col-lg-6 col-md-12",
+      accept: ".pdf,.doc,.docx,image/*",
+      multiple: true,
+      style: inputStyle,
+    },
+    {
+      type: "textarea",
+      name: "otherBenefits",
+      label: "Other Benefits Requirements",
+      placeholder: "List any other benefits you require",
+      colClass: "col-lg-12 col-md-6",
+      required: true,
+    },
+  ];
 
   return (
     <form className="default-form" onSubmit={handleSubmit}>
       <div className="row">
-        {/* Work Experience */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Work Experience (Years) <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="number"
-            name="experience"
-            placeholder="5"
-            min="0"
-            value={formData.experience}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* Previous Employers */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>Previous Employers (optional)</label>
-          <input
-            type="text"
-            name="employers"
-            placeholder="Company A, Company B"
-            value={formData.employers}
-            onChange={handleChange}
-          />
-        </div>
-
-        {/* Skills */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Skills and Expertise <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="text"
-            name="skills"
-            placeholder="Enter skills"
-            value={formData.skills}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* Preferred Working Hours */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Preferred Working Hours <span style={{ color: "red" }}>*</span>
-          </label>
-          <select
-            name="workingHours"
-            className="chosen-single form-select"
-            value={formData.workingHours}
-            onChange={handleChange}
-            required
+        {fields.map((field, index) => (
+          <div
+            key={index}
+            className={`form-group ${field.colClass}`}
+            style={field.type === "file" ? { position: "relative", minHeight: "60px" } : {}}
           >
-            <option>9 AM - 5 PM</option>
-            <option>Flexible Hours</option>
-            <option>Part-Time Morning</option>
-            <option>Part-Time Evening</option>
-          </select>
-        </div>
-
-        {/* Expected Salary */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Expected Salary (BHD) <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="number"
-            name="salary"
-            placeholder="500"
-            min="0"
-            step="0.01"
-            value={formData.salary}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* Notice Period */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Notice Period <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="text"
-            name="noticePeriod"
-            placeholder="30 days"
-            value={formData.noticePeriod}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* Need Air Ticket */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Need Air Ticket <span style={{ color: "red" }}>*</span>
-          </label>
-          <select
-            name="needAirTicket"
-            className="chosen-single form-select"
-            value={formData.needAirTicket}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Option</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </div>
-
-        {/* Type of Employment Preference */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Type of Employment Preference <span style={{ color: "red" }}>*</span>
-          </label>
-          <select
-            name="employmentPreference"
-            className="chosen-single form-select"
-            value={formData.employmentPreference}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Preference</option>
-            <option value="Live in">Live in</option>
-            <option value="Full-Time">Full-Time</option>
-            <option value="Live-out">Live-out</option>
-            <option value="Part-Time">Part-Time</option>
-            <option value="Monthly">Monthly</option>
-            <option value="Temporary">Temporary</option>
-            <option value="Nanny for Newborns">Nanny for Newborns</option>
-          </select>
-        </div>
-
-        {/* Availability */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Availability <span style={{ color: "red" }}>*</span>
-          </label>
-          <select
-            name="availability"
-            className="chosen-single form-select"
-            value={formData.availability}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Availability</option>
-            <option value="available">Available</option>
-            <option value="not_available">Not Available</option>
-          </select>
-        </div>
-
-        {/* Preferred Interview Timings */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Preferred Interview Timings <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="text"
-            name="interviewTimings"
-            placeholder="3 - 5 PM"
-            value={formData.interviewTimings}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* Document Verification Status */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Document Verification Status <span style={{ color: "red" }}>*</span>
-          </label>
-          <select
-            name="verificationStatus"
-            className="chosen-single form-select"
-            value={formData.verificationStatus}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Status</option>
-            <option value="pending">Pending</option>
-            <option value="verified">Verified</option>
-            <option value="rejected">Rejected</option>
-          </select>
-        </div>
-
-        {/* Employee Type */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Employee Type <span style={{ color: "red" }}>*</span>
-          </label>
-          <select
-            name="employeeType"
-            className="chosen-single form-select"
-            value={formData.employeeType}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Type</option>
-            <option value="Independent">Independent</option>
-            <option value="Agency Managed">Agency Managed</option>
-          </select>
-        </div>
-
-        {/* Employee Category */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Employee Category <span style={{ color: "red" }}>*</span>
-          </label>
-          <select
-            name="employeeCategory"
-            className="chosen-single form-select"
-            value={formData.employeeCategory}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Category</option>
-            <option value="Driver">Driver</option>
-            <option value="Cook">Cook</option>
-            <option value="Maid">Maid</option>
-            <option value="Nanny">Nanny</option>
-            <option value="Elderly Care">Elderly Care</option>
-          </select>
-        </div>
-
-        {/* Visa Status */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Visa Status <span style={{ color: "red" }}>*</span>
-          </label>
-          <select
-            name="visaStatus"
-            className="chosen-single form-select"
-            value={formData.visaStatus}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Status</option>
-            <option value="Own Visa">Own Visa</option>
-            <option value="Needs Sponsorship">Needs Sponsorship</option>
-          </select>
-        </div>
-
-        {/* Visa Expiry Date */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Visa Expiry Date <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="date"
-            name="visaExpiryDate"
-            value={formData.visaExpiryDate}
-            onChange={handleChange}
-            required
-            style={inputStyle}
-          />
-        </div>
-
-        {/* Willing to Live-in */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Willing to Live-in? <span style={{ color: "red" }}>*</span>
-          </label>
-          <select
-            name="willingToLiveIn"
-            className="chosen-single form-select"
-            value={formData.willingToLiveIn}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Option</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-            <option value="Conditional">Conditional</option>
-          </select>
-        </div>
-
-        {/* Max Work Hours/Day */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Max Work Hours/Day <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="number"
-            name="maxWorkHours"
-            placeholder="8"
-            min="1"
-            max="24"
-            value={formData.maxWorkHours}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        {/* Flexible with Weekends */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Flexible with Weekends? <span style={{ color: "red" }}>*</span>
-          </label>
-          <select
-            name="flexibleWeekends"
-            className="chosen-single form-select"
-            value={formData.flexibleWeekends}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Option</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </div>
-
-        {/* Document Upload */}
-        <div className="form-group col-lg-6 col-md-12" style={{ position: "relative", minHeight: "60px" }}>
-          <label>Supporting Documents</label>
-          <div style={{ position: "relative" }}>
-            <div>
+            <label>
+              {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
+            </label>
+            {field.type === "text" || field.type === "number" ? (
               <input
-                type="file"
-                accept=".pdf,.doc,.docx,image/*"
-                onChange={handleFileChange}
-                multiple
-                style={inputStyle}
+                type={field.type}
+                name={field.name}
+                placeholder={field.placeholder}
+                value={formData[field.name]}
+                onChange={(e) => handleChange(field.name, e.target.value)}
+                min={field.min}
+                max={field.max}
+                step={field.step}
+                required={field.required}
               />
-              {supportingDocs.length > 0 && (
-                <div className="mt-2 text-muted small">
-                  Selected: {supportingDocs.map(doc => doc.name).join(", ")}
+            ) : field.type === "date" ? (
+              <input
+                type="date"
+                name={field.name}
+                value={formData[field.name]}
+                onChange={(e) => handleChange(field.name, e.target.value)}
+                required={field.required}
+                style={field.style}
+              />
+            ) : field.type === "select" ? (
+              <Select
+                name={field.name}
+                options={field.options}
+                className="basic-multi-select"
+                classNamePrefix="select"
+                placeholder={field.placeholder}
+                value={field.options.find(option => option.value === formData[field.name]) || null}
+                onChange={handleSelectChange(field.name)}
+                required={field.required}
+              />
+            ) : field.type === "file" ? (
+              <div style={{ position: "relative" }}>
+                <div>
+                  <input
+                    type="file"
+                    accept={field.accept}
+                    onChange={handleFileChange}
+                    multiple={field.multiple}
+                    style={field.style}
+                  />
+                  {supportingDocs.length > 0 && (
+                    <div className="mt-2 text-muted small">
+                      Selected: {supportingDocs.map(doc => doc.name).join(", ")}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-            <div style={tickBoxStyle(supportingDocs.length > 0)}>
-              <span
-                style={{
-                  color: supportingDocs.length > 0 ? "#ffffff" : "gray",
-                  fontSize: "1rem",
-                }}
-              >
-                ✔
-              </span>
-            </div>
+                <div style={tickBoxStyle(supportingDocs.length > 0)}>
+                  <span
+                    style={{
+                      color: supportingDocs.length > 0 ? "#ffffff" : "gray",
+                      fontSize: "1rem",
+                    }}
+                  >
+                    ✔
+                  </span>
+                </div>
+              </div>
+            ) : field.type === "textarea" ? (
+              <textarea
+                name={field.name}
+                placeholder={field.placeholder}
+                value={formData[field.name]}
+                onChange={(e) => handleChange(field.name, e.target.value)}
+                required={field.required}
+              />
+            ) : null}
           </div>
-        </div>
-
-        {/* Other Benefits Requirements */}
-        <div className="form-group col-lg-12 col-md-6">
-          <label>
-            Other Benefits Requirements <span style={{ color: "red" }}>*</span>
-          </label>
-          <textarea
-            name="otherBenefits"
-            className="form-control"
-            placeholder="List any other benefits you require"
-            value={formData.otherBenefits}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        ))}
 
         {/* Submit Button */}
         <div
@@ -456,21 +417,51 @@ const EmploymentDetails = () => {
 };
 
 const InterviewAvailability = () => {
+  const [formData, setFormData] = useState({
+    interviewTime: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
+  };
+
+  const handleChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+  };
+
+  const fields = [
+    {
+      type: "text",
+      name: "interviewTime",
+      label: "Preferred Interview Time",
+      placeholder: "E.g., 10 AM - 12 PM",
+      colClass: "col-lg-6 col-md-12",
+      required: true,
+    },
+  ];
+
   return (
-    <form className="default-form">
+    <form className="default-form" onSubmit={handleSubmit}>
       <div className="row">
-        {/* Preferred Interview Time */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>
-            Preferred Interview Time <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="text"
-            name="interviewTime"
-            placeholder="E.g., 10 AM - 12 PM"
-            required
-          />
-        </div>
+        {fields.map((field, index) => (
+          <div
+            key={index}
+            className={`form-group ${field.colClass}`}
+          >
+            <label>
+              {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
+            </label>
+            <input
+              type={field.type}
+              name={field.name}
+              placeholder={field.placeholder}
+              value={formData[field.name]}
+              onChange={(e) => handleChange(field.name, e.target.value)}
+              required={field.required}
+            />
+          </div>
+        ))}
 
         {/* Submit Button */}
         <div
@@ -487,35 +478,85 @@ const InterviewAvailability = () => {
 };
 
 const ApplicationManagement = () => {
-  return (
-    <form className="default-form">
-      <div className="row">
-        {/* View Job Applications */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>
-            View Job Applications <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="text"
-            name="jobApplications"
-            placeholder="Search applications..."
-            required
-          />
-        </div>
+  const [formData, setFormData] = useState({
+    jobApplications: "",
+    applicationStatus: "",
+  });
 
-        {/* Track Application Status */}
-        <div className="form-group col-lg-6 col-md-12">
-          <label>
-            Track Application Status <span style={{ color: "red" }}>*</span>
-          </label>
-          <select name="applicationStatus" required>
-            <option value="">Select Status</option>
-            <option>Pending</option>
-            <option>Reviewed</option>
-            <option>Accepted</option>
-            <option>Rejected</option>
-          </select>
-        </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
+  };
+
+  const handleChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+  };
+
+  const handleSelectChange = (field) => (selectedOption) => {
+    setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
+  };
+
+  const applicationStatusOptions = [
+    { value: "Pending", label: "Pending" },
+    { value: "Reviewed", label: "Reviewed" },
+    { value: "Accepted", label: "Accepted" },
+    { value: "Rejected", label: "Rejected" },
+  ];
+
+  const fields = [
+    {
+      type: "text",
+      name: "jobApplications",
+      label: "View Job Applications",
+      placeholder: "Search applications...",
+      colClass: "col-lg-6 col-md-12",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "applicationStatus",
+      label: "Track Application Status",
+      options: applicationStatusOptions,
+      colClass: "col-lg-6 col-md-12",
+      placeholder: "Select Status",
+      required: true,
+    },
+  ];
+
+  return (
+    <form className="default-form" onSubmit={handleSubmit}>
+      <div className="row">
+        {fields.map((field, index) => (
+          <div
+            key={index}
+            className={`form-group ${field.colClass}`}
+          >
+            <label>
+              {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
+            </label>
+            {field.type === "text" ? (
+              <input
+                type={field.type}
+                name={field.name}
+                placeholder={field.placeholder}
+                value={formData[field.name]}
+                onChange={(e) => handleChange(field.name, e.target.value)}
+                required={field.required}
+              />
+            ) : field.type === "select" ? (
+              <Select
+                name={field.name}
+                options={field.options}
+                className="basic-multi-select"
+                classNamePrefix="select"
+                placeholder={field.placeholder}
+                value={field.options.find(option => option.value === formData[field.name]) || null}
+                onChange={handleSelectChange(field.name)}
+                required={field.required}
+              />
+            ) : null}
+          </div>
+        ))}
 
         {/* Submit Button */}
         <div
@@ -542,201 +583,144 @@ const InterviewManagement = () => {
     communicationLanguage: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
   };
 
+  const handleChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+  };
+
+  const handleSelectChange = (field) => (selectedOption) => {
+    setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
+  };
+
   const languages = [
-    "English",
-    "Arabic",
-    "French",
-    "Spanish",
-    "Hindi",
-    // Add more languages as needed
+    { value: "English", label: "English" },
+    { value: "Arabic", label: "Arabic" },
+    { value: "French", label: "French" },
+    { value: "Spanish", label: "Spanish" },
+    { value: "Hindi", label: "Hindi" },
+  ];
+
+  const yesNoOptions = [
+    { value: "Yes", label: "Yes" },
+    { value: "No", label: "No" },
+  ];
+
+  const liveInOptions = [
+    { value: "Yes", label: "Yes" },
+    { value: "No", label: "No" },
+    { value: "Conditional", label: "Conditional" },
+  ];
+
+  const householdTypeOptions = [
+    { value: "Local", label: "Local" },
+    { value: "Expat", label: "Expat" },
+    { value: "No Preference", label: "No Preference" },
+  ];
+
+  const fields = [
+    {
+      type: "text",
+      name: "interviewTime",
+      label: "Preferred Interview Time",
+      placeholder: "E.g., 10 AM - 12 PM",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "number",
+      name: "maxHoursPerDay",
+      label: "Maximum hours per day",
+      placeholder: "E.g., 8",
+      colClass: "col-lg-3 col-md-12",
+      min: "1",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "householdType",
+      label: "Preferred household type",
+      options: householdTypeOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Preference",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "communicationLanguage",
+      label: "Languages preferred",
+      options: languages,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Language",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "liveInWithFamily",
+      label: "Willing to live-in with family?",
+      options: liveInOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Option",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "relocationInsideCountry",
+      label: "Comfortable with relocation?",
+      options: yesNoOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Option",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "flexibleWeekends",
+      label: "Flexible with weekends?",
+      options: yesNoOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Option",
+      required: true,
+    },
   ];
 
   return (
     <form className="default-form" onSubmit={handleSubmit}>
       <div className="row">
-        {/* Preferred Interview Time */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Preferred Interview Time <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="text"
-            name="interviewTime"
-            placeholder="E.g., 10 AM - 12 PM"
-            value={formData.interviewTime}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Maximum hours per day willing to work */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Maximum hours per day <span style={{ color: "red" }}>*</span>
-          </label>
-          <input
-            type="number"
-            name="maxHoursPerDay"
-            placeholder="E.g., 8"
-            min="1"
-            value={formData.maxHoursPerDay}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        {/* Preferred household type */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Preferred household type <span style={{ color: "red" }}>*</span>
-          </label>
-          <select
-            name="householdType"
-            value={formData.householdType}
-            onChange={handleChange}
-            required
+        {fields.map((field, index) => (
+          <div
+            key={index}
+            className={`form-group ${field.colClass}`}
           >
-            <option value="">Select Preference</option>
-            <option value="Local">Local</option>
-            <option value="Expat">Expat</option>
-            <option value="No Preference">No Preference</option>
-          </select>
-        </div>
-        {/* Languages preferred for communication */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Languages preferred <span style={{ color: "red" }}>*</span>
-          </label>
-          <select
-            name="communicationLanguage"
-            value={formData.communicationLanguage}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Select Language</option>
-            {languages.map((language) => (
-              <option key={language} value={language}>
-                {language}
-              </option>
-            ))}
-          </select>
-        </div>
-        {/* Willing to live-in with family */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Willing to live-in with family? <span style={{ color: "red" }}>*</span>
-          </label>
-          <div className="d-flex gap-3">
-            <label style={{ display: "flex", alignItems: "center" }}>
-              <input
-                type="radio"
-                name="liveInWithFamily"
-                value="Yes"
-                checked={formData.liveInWithFamily === "Yes"}
-                onChange={handleChange}
-                required
-                style={{ transform: "scale(1.5)", marginRight: "8px" }}
-              />
-              <span style={{ fontSize: "1.1rem" }}>Yes</span>
+            <label>
+              {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
             </label>
-            <label style={{ display: "flex", alignItems: "center" }}>
+            {field.type === "text" || field.type === "number" ? (
               <input
-                type="radio"
-                name="liveInWithFamily"
-                value="No"
-                checked={formData.liveInWithFamily === "No"}
-                onChange={handleChange}
-                required
-                style={{ transform: "scale(1.5)", marginRight: "8px" }}
+                type={field.type}
+                name={field.name}
+                placeholder={field.placeholder}
+                value={formData[field.name]}
+                onChange={(e) => handleChange(field.name, e.target.value)}
+                min={field.min}
+                required={field.required}
               />
-              <span style={{ fontSize: "1.1rem" }}>No</span>
-            </label>
-            <label style={{ display: "flex", alignItems: "center" }}>
-              <input
-                type="radio"
-                name="liveInWithFamily"
-                value="Conditional"
-                checked={formData.liveInWithFamily === "Conditional"}
-                onChange={handleChange}
-                required
-                style={{ transform: "scale(1.5)", marginRight: "8px" }}
+            ) : field.type === "select" ? (
+              <Select
+                name={field.name}
+                options={field.options}
+                className="basic-multi-select"
+                classNamePrefix="select"
+                placeholder={field.placeholder}
+                value={field.options.find(option => option.value === formData[field.name]) || null}
+                onChange={handleSelectChange(field.name)}
+                required={field.required}
               />
-              <span style={{ fontSize: "1.1rem" }}>Conditional</span>
-            </label>
+            ) : null}
           </div>
-        </div>
-        {/* Comfortable with relocation inside country */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Comfortable with relocation? <span style={{ color: "red" }}>*</span>
-          </label>
-          <div className="d-flex gap-3">
-            <label style={{ display: "flex", alignItems: "center" }}>
-              <input
-                type="radio"
-                name="relocationInsideCountry"
-                value="Yes"
-                checked={formData.relocationInsideCountry === "Yes"}
-                onChange={handleChange}
-                required
-                style={{ transform: "scale(1.5)", marginRight: "8px" }}
-              />
-              <span style={{ fontSize: "1.1rem" }}>Yes</span>
-            </label>
-            <label style={{ display: "flex", alignItems: "center" }}>
-              <input
-                type="radio"
-                name="relocationInsideCountry"
-                value="No"
-                checked={formData.relocationInsideCountry === "No"}
-                onChange={handleChange}
-                required
-                style={{ transform: "scale(1.5)", marginRight: "8px" }}
-              />
-              <span style={{ fontSize: "1.1rem" }}>No</span>
-            </label>
-          </div>
-        </div>
-        {/* Flexible with weekends */}
-        <div className="form-group col-lg-3 col-md-12">
-          <label>
-            Flexible with weekends? <span style={{ color: "red" }}>*</span>
-          </label>
-          <div className="d-flex gap-3">
-            <label style={{ display: "flex", alignItems: "center" }}>
-              <input
-                type="radio"
-                name="flexibleWeekends"
-                value="Yes"
-                checked={formData.flexibleWeekends === "Yes"}
-                onChange={handleChange}
-                required
-                style={{ transform: "scale(1.5)", marginRight: "8px" }}
-              />
-              <span style={{ fontSize: "1.1rem" }}>Yes</span>
-            </label>
-            <label style={{ display: "flex", alignItems: "center" }}>
-              <input
-                type="radio"
-                name="flexibleWeekends"
-                value="No"
-                checked={formData.flexibleWeekends === "No"}
-                onChange={handleChange}
-                required
-                style={{ transform: "scale(1.5)", marginRight: "8px" }}
-              />
-              <span style={{ fontSize: "1.1rem" }}>No</span>
-            </label>
-          </div>
-        </div>
+        ))}
 
         {/* Submit Button */}
         <div

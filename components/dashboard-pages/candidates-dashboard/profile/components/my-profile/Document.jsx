@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Select from "react-select";
 
 // Define buttonStyle at the top level for consistent styling
 const buttonStyle = {
@@ -71,21 +72,31 @@ const Document = () => {
     numberOfDays: "",
   });
 
-  const documentCategories = [
-    "Visa",
-    "Passport",
-    "CRP/National ID",
-    "Certificate",
-    "License",
+  const documentCategoriesOptions = [
+    { value: "Visa", label: "Visa" },
+    { value: "Passport", label: "Passport" },
+    { value: "CRP/National ID", label: "CRP/National ID" },
+    { value: "Certificate", label: "Certificate" },
+    { value: "License", label: "License" },
   ];
 
-  const gulfCountries = [
-    "Bahrain",
-    "Kuwait",
-    "Oman",
-    "Qatar",
-    "Saudi Arabia",
-    "United Arab Emirates",
+  const gulfCountriesOptions = [
+    { value: "Bahrain", label: "Bahrain" },
+    { value: "Kuwait", label: "Kuwait" },
+    { value: "Oman", label: "Oman" },
+    { value: "Qatar", label: "Qatar" },
+    { value: "Saudi Arabia", label: "Saudi Arabia" },
+    { value: "United Arab Emirates", label: "United Arab Emirates" },
+  ];
+
+  const currentStatusOptions = [
+    { value: "Valid", label: "Valid" },
+    { value: "Expired", label: "Expired" },
+  ];
+
+  const yesNoOptions = [
+    { value: "Yes", label: "Yes" },
+    { value: "No", label: "No" },
   ];
 
   const handleFieldChange = (field, value) => {
@@ -94,6 +105,13 @@ const Document = () => {
 
   const handleFileChange = (file) => {
     setCurrentEntry((prev) => ({ ...prev, file: file }));
+  };
+
+  const handleSelectChange = (field) => (selectedOption) => {
+    setCurrentEntry((prev) => ({
+      ...prev,
+      [field]: selectedOption ? selectedOption.value : "",
+    }));
   };
 
   const handleSaveEntry = () => {
@@ -150,6 +168,79 @@ const Document = () => {
     boxSizing: "border-box",
   };
 
+  const fields = [
+    {
+      type: "select",
+      name: "category",
+      label: "Document Type",
+      options: documentCategoriesOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Document Type",
+      required: true,
+    },
+    {
+      type: "date",
+      name: "expiryDate",
+      label: "Expiry Date",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+      style: inputStyle,
+    },
+    {
+      type: "select",
+      name: "currentStatus",
+      label: "Current Status",
+      options: currentStatusOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Status",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "issuingCountry",
+      label: "Issuing Country",
+      options: gulfCountriesOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Country",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "currentLocation",
+      label: "Current Location",
+      options: gulfCountriesOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Country",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "workAvailableImmediately",
+      label: "Work Immediately",
+      options: yesNoOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Option",
+      required: true,
+    },
+    {
+      type: "text",
+      name: "numberOfDays",
+      label: "Number of Days",
+      placeholder: "E.g., 30 days",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "file",
+      name: "file",
+      label: "Document Copy (PDF or Image)",
+      colClass: "col-lg-6 col-md-12",
+      accept: ".pdf,image/*",
+      required: true,
+      style: inputStyle,
+    },
+  ];
+
   return (
     <div>
       {/* Add Document Button */}
@@ -199,168 +290,72 @@ const Document = () => {
             <h3>{isEditing ? "Edit Document" : "Add Document"}</h3>
             <form className="default-form">
               <div className="row">
-                {/* Document Type */}
-                <div className="form-group col-lg-3 col-md-12">
-                  <label>
-                    Document Type <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <select
-                    className="chosen-single form-select"
-                    value={currentEntry.category}
-                    onChange={(e) =>
-                      handleFieldChange("category", e.target.value)
-                    }
-                    required
+                {fields.map((field, index) => (
+                  <div
+                    key={index}
+                    className={`form-group ${field.colClass}`}
+                    style={field.type === "file" ? { position: "relative", minHeight: "60px" } : {}}
                   >
-                    <option value="">Select Document Type</option>
-                    {documentCategories.map((category) => (
-                      <option key={category} value={category}>
-                        {category}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                {/* Expiry Date */}
-                <div className="form-group col-lg-3 col-md-12">
-                  <label>
-                    Expiry Date <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="date"
-                    value={currentEntry.expiryDate}
-                    onChange={(e) =>
-                      handleFieldChange("expiryDate", e.target.value)
-                    }
-                    required
-                    style={inputStyle}
-                  />
-                </div>
-                {/* Current Status */}
-                <div className="form-group col-lg-3 col-md-12">
-                  <label>
-                    Current Status <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <select
-                    className="chosen-single form-select"
-                    value={currentEntry.currentStatus}
-                    onChange={(e) =>
-                      handleFieldChange("currentStatus", e.target.value)
-                    }
-                    required
-                  >
-                    <option value="">Select Status</option>
-                    <option value="Valid">Valid</option>
-                    <option value="Expired">Expired</option>
-                  </select>
-                </div>
-                {/* Issuing Country */}
-                <div className="form-group col-lg-3 col-md-12">
-                  <label>
-                    Issuing Country <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <select
-                    className="chosen-single form-select"
-                    value={currentEntry.issuingCountry}
-                    onChange={(e) =>
-                      handleFieldChange("issuingCountry", e.target.value)
-                    }
-                    required
-                  >
-                    <option value="">Select Country</option>
-                    {gulfCountries.map((country) => (
-                      <option key={country} value={country}>
-                        {country}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                {/* Current Location */}
-                <div className="form-group col-lg-3 col-md-12">
-                  <label>
-                    Current Location <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <select
-                    className="chosen-single form-select"
-                    value={currentEntry.currentLocation}
-                    onChange={(e) =>
-                      handleFieldChange("currentLocation", e.target.value)
-                    }
-                    required
-                  >
-                    <option value="">Select Country</option>
-                    {gulfCountries.map((country) => (
-                      <option key={country} value={country}>
-                        {country}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                {/* Work Available Immediately */}
-                <div className="form-group col-lg-3 col-md-12">
-                  <label>
-                    Work Immediately <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <select
-                    className="chosen-single form-select"
-                    value={currentEntry.workAvailableImmediately}
-                    onChange={(e) =>
-                      handleFieldChange("workAvailableImmediately", e.target.value)
-                    }
-                    required
-                  >
-                    <option value="">Select Option</option>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                  </select>
-                </div>
-                {/* Number of Days */}
-                <div className="form-group col-lg-3 col-md-12">
-                  <label>
-                    Number of Days <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="E.g., 30 days"
-                    value={currentEntry.numberOfDays}
-                    onChange={(e) =>
-                      handleFieldChange("numberOfDays", e.target.value)
-                    }
-                    required
-                  />
-                </div>
-                {/* Document Copy (PDF or Image) with Green Tick Circle */}
-                <div className="form-group col-lg-6 col-md-12" style={{ position: "relative", minHeight: "60px" }}>
-                  <label>
-                    Document Copy (PDF or Image){" "}
-                    <span style={{ color: "red" }}>*</span>
-                  </label>
-                  <div style={{ position: "relative" }}>
-                    <div>
+                    <label>
+                      {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
+                    </label>
+                    {field.type === "text" ? (
                       <input
-                        type="file"
-                        accept=".pdf,image/*"
-                        onChange={(e) => handleFileChange(e.target.files[0])}
-                        required={!isEditing && !currentEntry.file} // Required only if not editing or no file exists
-                        style={inputStyle}
+                        type={field.type}
+                        placeholder={field.placeholder}
+                        value={currentEntry[field.name]}
+                        onChange={(e) => handleFieldChange(field.name, e.target.value)}
+                        required={field.required}
                       />
-                      {currentEntry.file && (
-                        <div className="mt-2 text-muted small">
-                          Selected: {currentEntry.file.name}
+                    ) : field.type === "date" ? (
+                      <input
+                        type="date"
+                        value={currentEntry[field.name]}
+                        onChange={(e) => handleFieldChange(field.name, e.target.value)}
+                        required={field.required}
+                        style={field.style}
+                      />
+                    ) : field.type === "select" ? (
+                      <Select
+                        name={field.name}
+                        options={field.options}
+                        className="basic-multi-select"
+                        classNamePrefix="select"
+                        placeholder={field.placeholder}
+                        value={field.options.find(option => option.value === currentEntry[field.name]) || null}
+                        onChange={handleSelectChange(field.name)}
+                        required={field.required}
+                      />
+                    ) : field.type === "file" ? (
+                      <div style={{ position: "relative" }}>
+                        <div>
+                          <input
+                            type="file"
+                            accept={field.accept}
+                            onChange={(e) => handleFileChange(e.target.files[0])}
+                            required={!isEditing && !currentEntry.file}
+                            style={field.style}
+                          />
+                          {currentEntry.file && (
+                            <div className="mt-2 text-muted small">
+                              Selected: {currentEntry.file.name}
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                    <div style={tickBoxStyle(!!currentEntry.file)}>
-                      <span
-                        style={{
-                          color: !!currentEntry.file ? "#ffffff" : "gray",
-                          fontSize: "1rem",
-                        }}
-                      >
-                        ✔
-                      </span>
-                    </div>
+                        <div style={tickBoxStyle(!!currentEntry.file)}>
+                          <span
+                            style={{
+                              color: !!currentEntry.file ? "#ffffff" : "gray",
+                              fontSize: "1rem",
+                            }}
+                          >
+                            ✔
+                          </span>
+                        </div>
+                      </div>
+                    ) : null}
                   </div>
-                </div>
+                ))}
 
                 {/* Modal Action Buttons */}
                 <div

@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import Select from "react-select";
 import { useState } from "react";
@@ -19,7 +19,6 @@ const buttonStyle = {
 const inputStyle = {
   width: "100%",
   padding: "0.75rem",
-//   border: "1px solid #ccc",
   borderRadius: "0.5rem",
   backgroundColor: "#F0F5F7",
   boxSizing: "border-box",
@@ -28,14 +27,14 @@ const inputStyle = {
 // Define tickBoxStyle for the tick container
 const tickBoxStyle = (isFileSelected) => ({
   position: "absolute",
-  right: "20px", 
-  top: "30%", 
+  right: "20px",
+  top: "30%",
   transform: "translateY(-50%)",
   width: "24px",
   height: "24px",
-  border: `1px solid ${isFileSelected ? "#28a745" : "#d0d0d0"}`, 
+  border: `1px solid ${isFileSelected ? "#28a745" : "#d0d0d0"}`,
   borderRadius: "50%",
-  backgroundColor: isFileSelected ? "#28a745" : "transparent", 
+  backgroundColor: isFileSelected ? "#28a745" : "transparent",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -43,14 +42,30 @@ const tickBoxStyle = (isFileSelected) => ({
 });
 
 const FormInfoBox = () => {
-    const [profileImage, setProfileImage] = useState(null);
-    const [passportCopy, setPassportCopy] = useState(null);
-    const [visaCopy, setVisaCopy] = useState(null);
-    const [cprCopy, setCprCopy] = useState(null);
-    const [dob, setDob] = useState("");
+    const [formData, setFormData] = useState({
+        fullName: "",
+        email: "",
+        role: "",
+        age: "",
+        childrenCount: "",
+        no_of_days_available: "",
+        profileImage: null,
+        passportCopy: null,
+        visaCopy: null,
+        cprCopy: null,
+        dob: "",
+    });
 
-    const handleFileChange = (setter) => (e) => {
-        setter(e.target.files[0]);
+    const handleChange = (field, value) => {
+        setFormData({ ...formData, [field]: value });
+    };
+
+    const handleSelectChange = (field) => (selectedOption) => {
+        setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
+    };
+
+    const handleFileChange = (field) => (e) => {
+        setFormData({ ...formData, [field]: e.target.files[0] });
     };
 
     const catOptions = [
@@ -102,358 +117,268 @@ const FormInfoBox = () => {
         { value: "After Days", label: "After Days" },
     ];
 
+    const genderOptions = [
+        { value: "Male", label: "Male" },
+        { value: "Female", label: "Female" },
+        { value: "Other", label: "Other" },
+    ];
+
+    const yesNoOptions = [
+        { value: "true", label: "Yes" },
+        { value: "false", label: "No" },
+    ];
+
+    const fields = [
+        {
+            type: "text",
+            name: "fullName",
+            label: "Full Name",
+            placeholder: "John Doe",
+            colClass: "col-lg-3 col-md-12",
+            required: true,
+        },
+        {
+            type: "text",
+            name: "email",
+            label: "Email",
+            placeholder: "employee@gmail.com",
+            colClass: "col-lg-3 col-md-12",
+            readOnly: true,
+        },
+        {
+            type: "text",
+            name: "role",
+            label: "Role",
+            placeholder: "Employee",
+            colClass: "col-lg-3 col-md-12",
+            readOnly: true,
+        },
+        {
+            type: "select",
+            name: "gender",
+            label: "Gender",
+            options: genderOptions,
+            colClass: "col-lg-3 col-md-12",
+            placeholder: "Select Gender",
+            required: true,
+        },
+        {
+            type: "text",
+            name: "address",
+            label: "Address",
+            placeholder: "Enter your address",
+            colClass: "col-lg-12 col-md-12",
+            required: true,
+        },
+        {
+            type: "number",
+            name: "age",
+            label: "Age",
+            placeholder: "Enter age",
+            colClass: "col-lg-3 col-md-12",
+            min: "18",
+            required: true,
+        },
+        {
+            type: "date",
+            name: "dob",
+            label: "Date of Birth",
+            colClass: "col-lg-3 col-md-12",
+            required: true,
+            style: inputStyle,
+        },
+        {
+            type: "select",
+            name: "nationality",
+            label: "Nationality",
+            options: nationalityOptions,
+            colClass: "col-lg-3 col-md-12",
+            placeholder: "Select Nationality",
+            required: true,
+        },
+        {
+            type: "select",
+            name: "religion",
+            label: "Religion",
+            options: religionOptions,
+            colClass: "col-lg-3 col-md-12",
+            placeholder: "Select Religion",
+            required: true,
+        },
+        {
+            type: "select",
+            name: "maritalStatus",
+            label: "Marital Status",
+            options: maritalStatusOptions,
+            colClass: "col-lg-3 col-md-12",
+            placeholder: "Select Marital Status",
+            required: true,
+        },
+        {
+            type: "number",
+            name: "childrenCount",
+            label: "Number of Children",
+            placeholder: "0",
+            colClass: "col-lg-3 col-md-12",
+            min: "0",
+            required: true,
+        },
+        {
+            type: "select",
+            name: "in_bahrain",
+            label: "Currently in Bahrain?",
+            options: yesNoOptions,
+            colClass: "col-lg-3 col-md-12",
+            placeholder: "Select Option",
+            required: true,
+        },
+        {
+            type: "select",
+            name: "outside_country",
+            label: "If outside Bahrain, specify country",
+            options: gulfCountries,
+            colClass: "col-lg-3 col-md-12",
+            placeholder: "Select Country",
+            required: true,
+        },
+        {
+            type: "select",
+            name: "work_available",
+            label: "Work Available",
+            options: workAvailableOptions,
+            colClass: "col-lg-3 col-md-12",
+            placeholder: "Select availability",
+            required: true,
+        },
+        {
+            type: "text",
+            name: "no_of_days_available",
+            label: "Available after how many days?",
+            placeholder: "Number of days",
+            colClass: "col-lg-3 col-md-12",
+            required: true,
+        },
+        {
+            type: "select",
+            name: "current_location",
+            label: "Current Location",
+            options: gulfCountries,
+            colClass: "col-lg-3 col-md-12",
+            placeholder: "Select Country",
+            required: true,
+        },
+        {
+            type: "file",
+            name: "profileImage",
+            label: "Profile Picture",
+            accept: "image/*",
+            colClass: "col-lg-6 col-md-12",
+            required: true,
+            style: inputStyle,
+        },
+        {
+            type: "file",
+            name: "passport_copy",
+            label: "Passport Copy",
+            accept: ".pdf,.jpg,.png",
+            colClass: "col-lg-6 col-md-12",
+            required: true,
+            style: inputStyle,
+        },
+        {
+            type: "file",
+            name: "visa_copy",
+            label: "Visa Copy",
+            accept: ".pdf,.jpg,.png",
+            colClass: "col-lg-6 col-md-12",
+            required: true,
+            style: inputStyle,
+        },
+        {
+            type: "file",
+            name: "cpr_copy",
+            label: "CPR Copy",
+            accept: ".pdf,.jpg,.png",
+            colClass: "col-lg-6 col-md-12",
+            required: true,
+            style: inputStyle,
+        },
+    ];
+
     return (
         <form className="default-form">
             <div className="row">
-                {/* Full Name */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        Full Name <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <input
-                        type="text"
-                        name="fullName"
-                        placeholder="John Doe"
-                        required
-                    />
-                </div>
-
-                {/* Email */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>Email</label>
-                    <input
-                        type="text"
-                        name="email"
-                        placeholder="employee@gmail.com"
-                        readOnly
-                    />
-                </div>
-
-                {/* Role */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>Role</label>
-                    <input
-                        type="text"
-                        name="role"
-                        placeholder="Employee"
-                        readOnly
-                    />
-                </div>
-                {/* Gender */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        Gender <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <select name="gender" className="form-control" required>
-                        <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-
-                {/* Address */}
-                <div className="form-group col-lg-12 col-md-12">
-                    <label>
-                        Address <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <input
-                        type="text"
-                        name="address"
-                        placeholder="Enter your address"
-                        required
-                    />
-                </div>
-
-                {/* Age */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        Age <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <input
-                        type="number"
-                        name="age"
-                        placeholder="Enter age"
-                        min="18"
-                        required
-                    />
-                </div>
-
-                {/* Date of Birth */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        Date of Birth <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <input
-                        type="date"
-                        value={dob}
-                        onChange={(e) => setDob(e.target.value)}
-                        required
-                        style={inputStyle}
-                    />
-                </div>
-
-                {/* Nationality */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        Nationality <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <Select
-                        name="nationality"
-                        options={nationalityOptions}
-                        className="basic-multi-select"
-                        classNamePrefix="select"
-                        placeholder="Select Nationality"
-                        required
-                    />
-                </div>
-
-                {/* Religion */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        Religion <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <Select
-                        name="religion"
-                        options={religionOptions}
-                        className="basic-multi-select"
-                        classNamePrefix="select"
-                        placeholder="Select Religion"
-                        required
-                    />
-                </div>
-
-                {/* Marital Status */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        Marital Status <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <Select
-                        name="maritalStatus"
-                        options={maritalStatusOptions}
-                        className="basic-multi-select"
-                        classNamePrefix="select"
-                        placeholder="Select Marital Status"
-                        required
-                    />
-                </div>
-
-                {/* Number of Children */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        Number of Children <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <input
-                        type="number"
-                        name="childrenCount"
-                        placeholder="0"
-                        min="0"
-                        required
-                    />
-                </div>
-                 {/* Currently in Bahrain? */}
-                 <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        Currently in Bahrain? <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <select name="in_bahrain" className="form-control" required>
-                        <option value="">Select Option</option>
-                        <option value="true">Yes</option>
-                        <option value="false">No</option>
-                    </select>
-                </div>
-
-                {/* If outside Bahrain, specify country */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        If outside Bahrain, specify country <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <Select
-                        name="outside_country"
-                        options={gulfCountries}
-                        className="basic-multi-select"
-                        classNamePrefix="select"
-                        placeholder="Select Country"
-                        required
-                    />
-                </div>
-
-                {/* Work Available */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        Work Available <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <Select
-                        name="work_available"
-                        options={workAvailableOptions}
-                        className="basic-multi-select"
-                        classNamePrefix="select"
-                        placeholder="Select availability"
-                        required
-                    />
-                </div>
-
-                {/* Available after how many days? */}
-                <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        Available after how many days? <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <input
-                        type="text"
-                        name="no_of_days_available"
-                        placeholder="Number of days"
-                        required
-                    />
-                </div>
-                 {/* Current Location */}
-                 <div className="form-group col-lg-3 col-md-12">
-                    <label>
-                        Current Location <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <Select
-                        name="current_location"
-                        options={gulfCountries}
-                        className="basic-multi-select"
-                        classNamePrefix="select"
-                        placeholder="Select Country"
-                        required
-                    />
-                </div>
-                 {/* Profile Picture */}
-                 <div className="form-group col-lg-6 col-md-12" style={{ position: "relative", minHeight: "60px" }}>
-                    <label>
-                        Profile Picture <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <div style={{ position: "relative" }}>
-                        <div>
+                {fields.map((field, index) => (
+                    <div
+                        key={index}
+                        className={`form-group ${field.colClass}`}
+                        style={field.type === "file" ? { position: "relative", minHeight: "60px" } : {}}
+                    >
+                        <label>
+                            {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
+                        </label>
+                        {field.type === "text" || field.type === "number" ? (
                             <input
-                                type="file"
-                                name="profileImage"
-                                accept="image/*"
-                                onChange={handleFileChange(setProfileImage)}
-                                required
-                                style={inputStyle}
+                                type={field.type}
+                                name={field.name}
+                                placeholder={field.placeholder}
+                                value={formData[field.name]}
+                                onChange={(e) => handleChange(field.name, e.target.value)}
+                                required={field.required}
+                                readOnly={field.readOnly}
+                                min={field.min}
                             />
-                            {profileImage && (
-                                <div className="mt-2 text-muted small">
-                                    Selected: {profileImage.name}
-                                </div>
-                            )}
-                        </div>
-                        <div style={tickBoxStyle(!!profileImage)}>
-                            <span
-                                style={{
-                                    color: profileImage ? "#ffffff" : "gray",
-                                    fontSize: "1rem",
-                                }}
-                            >
-                                ✔
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Passport Copy */}
-                <div className="form-group col-lg-6 col-md-12" style={{ position: "relative", minHeight: "60px" }}>
-                    <label>
-                        Passport Copy <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <div style={{ position: "relative" }}>
-                        <div>
+                        ) : field.type === "date" ? (
                             <input
-                                type="file"
-                                name="passport_copy"
-                                accept=".pdf,.jpg,.png"
-                                onChange={handleFileChange(setPassportCopy)}
-                                required
-                                style={inputStyle}
+                                type="date"
+                                name={field.name}
+                                value={formData[field.name]}
+                                onChange={(e) => handleChange(field.name, e.target.value)}
+                                required={field.required}
+                                style={field.style}
                             />
-                            {passportCopy && (
-                                <div className="mt-2 text-muted small">
-                                    Selected: {passportCopy.name}
-                                </div>
-                            )}
-                        </div>
-                        <div style={tickBoxStyle(!!passportCopy)}>
-                            <span
-                                style={{
-                                    color: passportCopy ? "#ffffff" : "gray",
-                                    fontSize: "1rem",
-                                }}
-                            >
-                                ✔
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Visa Copy */}
-                <div className="form-group col-lg-6 col-md-12" style={{ position: "relative", minHeight: "60px" }}>
-                    <label>
-                        Visa Copy <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <div style={{ position: "relative" }}>
-                        <div>
-                            <input
-                                type="file"
-                                name="visa_copy"
-                                accept=".pdf,.jpg,.png"
-                                onChange={handleFileChange(setVisaCopy)}
-                                required
-                                style={inputStyle}
+                        ) : field.type === "select" ? (
+                            <Select
+                                name={field.name}
+                                options={field.options}
+                                className="basic-multi-select"
+                                classNamePrefix="select"
+                                placeholder={field.placeholder}
+                                value={field.options.find(option => option.value === formData[field.name]) || null}
+                                onChange={handleSelectChange(field.name)}
+                                required={field.required}
                             />
-                            {visaCopy && (
-                                <div className="mt-2 text-muted small">
-                                    Selected: {visaCopy.name}
+                        ) : field.type === "file" ? (
+                            <div style={{ position: "relative" }}>
+                                <div>
+                                    <input
+                                        type="file"
+                                        name={field.name}
+                                        accept={field.accept}
+                                        onChange={handleFileChange(field.name)}
+                                        required={field.required}
+                                        style={field.style}
+                                    />
+                                    {formData[field.name] && (
+                                        <div className="mt-2 text-muted small">
+                                            Selected: {formData[field.name].name}
+                                        </div>
+                                    )}
                                 </div>
-                            )}
-                        </div>
-                        <div style={tickBoxStyle(!!visaCopy)}>
-                            <span
-                                style={{
-                                    color: visaCopy ? "#ffffff" : "gray",
-                                    fontSize: "1rem",
-                                }}
-                            >
-                                ✔
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* CPR Copy */}
-                <div className="form-group col-lg-6 col-md-12" style={{ position: "relative", minHeight: "60px" }}>
-                    <label>
-                        CPR Copy <span style={{ color: "red" }}>*</span>
-                    </label>
-                    <div style={{ position: "relative" }}>
-                        <div>
-                            <input
-                                type="file"
-                                name="cpr_copy"
-                                accept=".pdf,.jpg,.png"
-                                onChange={handleFileChange(setCprCopy)}
-                                required
-                                style={inputStyle}
-                            />
-                            {cprCopy && (
-                                <div className="mt-2 text-muted small">
-                                    Selected: {cprCopy.name}
+                                <div style={tickBoxStyle(!!formData[field.name])}>
+                                    <span
+                                        style={{
+                                            color: formData[field.name] ? "#ffffff" : "gray",
+                                            fontSize: "1rem",
+                                        }}
+                                    >
+                                        ✔
+                                    </span>
                                 </div>
-                            )}
-                        </div>
-                        <div style={tickBoxStyle(!!cprCopy)}>
-                            <span
-                                style={{
-                                    color: cprCopy ? "#ffffff" : "gray",
-                                    fontSize: "1rem",
-                                }}
-                            >
-                                ✔
-                            </span>
-                        </div>
+                            </div>
+                        ) : null}
                     </div>
-                </div>
+                ))}
 
                 {/* Submit Button */}
                 <div

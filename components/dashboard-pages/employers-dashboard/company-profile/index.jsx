@@ -33,7 +33,7 @@ const index = () => {
     ];
 
     return (
-        <div className="page-wrapper dashboard">
+        <div className="page-wrapper dashboard" >
             <span className="header-span"></span>
 
             <LoginPopup />
@@ -44,7 +44,10 @@ const index = () => {
 
             <DashboardEmployerSidebar />
 
-            <section className="user-dashboard">
+            <section
+                className="user-dashboard"
+               
+            >
                 <div className="dashboard-outer" style={{ padding: "1rem" }}>
                     <BreadCrumb title="Profile!" />
 
@@ -83,6 +86,7 @@ const index = () => {
                                                         className="nav-item"
                                                         style={{
                                                             height: "100%",
+                                                            marginRight: "0.2rem",
                                                         }}
                                                     >
                                                         <button
@@ -98,7 +102,7 @@ const index = () => {
                                                                 fontSize: "1.1rem",
                                                                 whiteSpace: "normal",
                                                                 wordWrap: "break-word",
-                                                                backgroundColor: activeTab === tab.name ? "#1a73e8" : "transparent",
+                                                                backgroundColor: activeTab === tab.name ? "#1a73e8" : "#F2F2F2",
                                                                 color: activeTab === tab.name ? "white" : "black",
                                                             }}
                                                         >

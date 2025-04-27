@@ -1,9 +1,8 @@
-"use client";
+'use client'
 
 import Link from "next/link";
 import employerMenuData from "../../data/employerMenuData";
 import { isActiveLink } from "../../utils/linkActiveChecker";
-
 import { useDispatch, useSelector } from "react-redux";
 import { menuToggle } from "../../features/toggle/toggleSlice";
 import { usePathname } from "next/navigation";
@@ -14,19 +13,24 @@ const DashboardEmployerSidebar = () => {
   const { menu } = useSelector((state) => state.toggle);
   const router = useRouter();
   const dispatch = useDispatch();
-  // menu togggle handler
+
   const menuToggleHandler = () => {
     dispatch(menuToggle());
   };
 
-  
-      const handleLogout = () => {
-          dispatch(logout()); // ✅ FIXED: Use the existing dispatch
-          router.push("/"); // Redirect to home page
-      };
-  
+  const handleLogout = () => {
+    dispatch(logout());
+    router.push("/");
+  };
+
   return (
-    <div className={`user-sidebar ${menu ? "sidebar_open" : ""}`}>
+    <div
+      className={`user-sidebar ${menu ? "sidebar_open" : ""}`}
+      style={{
+        width: "calc(100% - 2rem)", // Reduced overall width by 2rem
+        maxWidth: "250px", // Added max-width to ensure it doesn't get too wide
+      }}
+    >
       {/* Start sidebar close icon */}
       <div className="pro-header text-end pb-0 mb-0 show-1023">
         <div className="fix-icon" onClick={menuToggleHandler}>
@@ -35,8 +39,19 @@ const DashboardEmployerSidebar = () => {
       </div>
       {/* End sidebar close icon */}
 
-      <div className="sidebar-inner">
-        <ul className="navigation">
+      <div
+        className="sidebar-inner"
+        style={{
+          padding: "1rem", // As per your change
+        }}
+      >
+        <ul
+          className="navigation"
+          style={{
+            margin: "0",
+            padding: "0",
+          }}
+        >
           {employerMenuData.map((item) => (
             <li
               className={`${
