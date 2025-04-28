@@ -15,8 +15,7 @@ const index = () => {
   const [activeTab, setActiveTab] = useState("MyProfile");
 
   return (
-    <>
-    
+    <>    
       <DsPageOuter headerType={'candidate'} title="Profile!" subtitle="Ready to jump back in?" menuData={candidatesMenuData}>
       
         <ProfileTabs activeTab={activeTab} setActiveTab={setActiveTab} />
