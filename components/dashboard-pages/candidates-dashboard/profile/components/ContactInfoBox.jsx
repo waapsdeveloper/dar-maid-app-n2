@@ -2,6 +2,7 @@
 
 import Select from "react-select";
 import { useState } from "react";
+import CardForm from "@/templates/forms/card-form";
 
 // Define buttonStyle at the top level for consistent styling
 const buttonStyle = {
@@ -179,53 +180,18 @@ const ContactInfoBox = () => {
     },
   ];
 
-  return (
-    <form className="default-form">
-      <div className="row">
-        {fields.map((field, index) => (
-          <div
-            key={index}
-            className={`form-group ${field.colClass}`}
-          >
-            <label>
-              {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
-            </label>
-            {field.type === "text" || field.type === "number" ? (
-              <input
-                type={field.type}
-                name={field.name}
-                placeholder={field.placeholder}
-                value={formData[field.name]}
-                onChange={(e) => handleChange(field.name, e.target.value)}
-                required={field.required}
-                style={field.style}
-              />
-            ) : field.type === "select" ? (
-              <Select
-                name={field.name}
-                options={field.options}
-                className="basic-multi-select"
-                classNamePrefix="select"
-                placeholder={field.placeholder}
-                value={field.options.find(option => option.value === formData[field.name]) || null}
-                onChange={handleSelectChange(field.name)}
-                required={field.required}
-              />
-            ) : null}
-          </div>
-        ))}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted with data:", formData);
+    // Add your form submission logic here, such as API calls
+  };
 
-        {/* Submit Button */}
-        <div
-          className="form-group col-lg-12 col-md-12"
-          style={{ display: "flex", justifyContent: "flex-end" }}
-        >
-          <button type="submit" style={buttonStyle}>
-            Save
-          </button>
-        </div>
-      </div>
-    </form>
+  return (
+    <CardForm
+      fields={fields}
+      formData={formData}
+      onSubmit={handleSubmit}
+    />
   );
 };
 

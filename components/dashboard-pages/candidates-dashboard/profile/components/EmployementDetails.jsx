@@ -1,5 +1,6 @@
 'use client'
 
+import CardForm from "@/templates/forms/card-form";
 import React, { useState } from "react";
 import Select from "react-select";
 
@@ -64,25 +65,6 @@ const EmploymentDetails = () => {
     flexibleWeekends: "",
     otherBenefits: "",
   });
-
-  const handleFileChange = (e) => {
-    const files = Array.from(e.target.files);
-    setSupportingDocs(files);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data:", formData);
-    console.log("Documents:", supportingDocs);
-  };
-
-  const handleChange = (field, value) => {
-    setFormData({ ...formData, [field]: value });
-  };
-
-  const handleSelectChange = (field) => (selectedOption) => {
-    setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
-  };
 
   const workingHoursOptions = [
     { value: "9 AM - 5 PM", label: "9 AM - 5 PM" },
@@ -319,100 +301,18 @@ const EmploymentDetails = () => {
     },
   ];
 
-  return (
-    <form className="default-form" onSubmit={handleSubmit}>
-      <div className="row">
-        {fields.map((field, index) => (
-          <div
-            key={index}
-            className={`form-group ${field.colClass}`}
-            style={field.type === "file" ? { position: "relative", minHeight: "60px" } : {}}
-          >
-            <label>
-              {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
-            </label>
-            {field.type === "text" || field.type === "number" ? (
-              <input
-                type={field.type}
-                name={field.name}
-                placeholder={field.placeholder}
-                value={formData[field.name]}
-                onChange={(e) => handleChange(field.name, e.target.value)}
-                min={field.min}
-                max={field.max}
-                step={field.step}
-                required={field.required}
-              />
-            ) : field.type === "date" ? (
-              <input
-                type="date"
-                name={field.name}
-                value={formData[field.name]}
-                onChange={(e) => handleChange(field.name, e.target.value)}
-                required={field.required}
-                style={field.style}
-              />
-            ) : field.type === "select" ? (
-              <Select
-                name={field.name}
-                options={field.options}
-                className="basic-multi-select"
-                classNamePrefix="select"
-                placeholder={field.placeholder}
-                value={field.options.find(option => option.value === formData[field.name]) || null}
-                onChange={handleSelectChange(field.name)}
-                required={field.required}
-              />
-            ) : field.type === "file" ? (
-              <div style={{ position: "relative" }}>
-                <div>
-                  <input
-                    type="file"
-                    accept={field.accept}
-                    onChange={handleFileChange}
-                    multiple={field.multiple}
-                    style={field.style}
-                  />
-                  {supportingDocs.length > 0 && (
-                    <div className="mt-2 text-muted small">
-                      Selected: {supportingDocs.map(doc => doc.name).join(", ")}
-                    </div>
-                  )}
-                </div>
-                <div style={tickBoxStyle(supportingDocs.length > 0)}>
-                  <span
-                    style={{
-                      color: supportingDocs.length > 0 ? "#ffffff" : "gray",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    ✔
-                  </span>
-                </div>
-              </div>
-            ) : field.type === "textarea" ? (
-              <textarea
-                name={field.name}
-                placeholder={field.placeholder}
-                value={formData[field.name]}
-                onChange={(e) => handleChange(field.name, e.target.value)}
-                required={field.required}
-              />
-            ) : null}
-          </div>
-        ))}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted with data:", formData);
+    // Add your form submission logic here, such as API calls
+  };
 
-        {/* Submit Button */}
-        <div
-          className="form-group col-lg-12 col-md-12"
-          style={{ display: "flex", justifyContent: "flex-end" }}
-        >
-          <button type="submit" style={buttonStyle}>
-            Save Details
-          </button>
-        </div>
-      </div>
-    </form>
+  return (
+    <CardForm
+      fields={fields}
+      formData={formData}
+      onSubmit={handleSubmit}
+    />
   );
 };
 
