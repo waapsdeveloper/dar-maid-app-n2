@@ -1,15 +1,15 @@
 import dynamic from "next/dynamic";
-import Profile from "@/components/dashboard-pages/candidates-dashboard/profile";
+import ProfilePage from "./ProfilePage";
 
 export const metadata = {
-  title: "Company Profile || Domesta  - Listing Board",
+  title: "Change Password || Domesta  - Listing Board",
   description: "Domesta  - Listing Board",
 };
 
 const index = () => {
   return (
     <>
-      <Profile />
+      <ProfilePage />
     </>
   );
 };

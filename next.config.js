@@ -4,6 +4,27 @@ const nextConfig = {
   async rewrites() {
     return [
       // Employees / Candidates
+
+      {
+        source: "/panels/employee/profile",
+        destination: "/admin-panels/employee/profile",
+      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       {
         source: "/candidates",
         destination: "/candidates-list-v2",
