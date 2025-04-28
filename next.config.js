@@ -21,6 +21,10 @@ const nextConfig = {
         destination: "/candidates-dashboard/profile",
       },
       {
+        source: "/candidate/profile/work-experience",
+        destination: "/candidates-dashboard/profile/add-work-experience",
+      },
+      {
         source: "/candidate/employers",
         destination: "/candidates-dashboard/employers",
       },
