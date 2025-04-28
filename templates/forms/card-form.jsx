@@ -1,22 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Select from "react-select";
+import InputField from "@/templates/inputs/input-field";
+import SelectField from "@/templates/inputs/select-field";
+import ImageField from "@/templates/inputs/image-field";
 
-const CardForm = ({ fields, formData, onSubmit }) => {
-  const tickBoxStyle = (isSelected) => ({
-    position: "absolute",
-    top: "50%",
-    right: "10px",
-    transform: "translateY(-50%)",
-    backgroundColor: isSelected ? "#28a745" : "#e9ecef",
-    borderRadius: "50%",
-    width: "20px",
-    height: "20px",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  });
-
+const CardForm = ({ fields, formData, handleChange, handleSelectChange, handleFileChange, onSubmit }) => {
   const buttonStyle = {
     backgroundColor: "#007bff",
     color: "#fff",
@@ -24,6 +12,39 @@ const CardForm = ({ fields, formData, onSubmit }) => {
     padding: "0.5rem 1rem",
     borderRadius: "4px",
     cursor: "pointer",
+  };
+
+  const renderField = (field) => {
+    switch (field.type) {
+      case "text":
+      case "number":
+      case "date":
+        return (
+          <InputField
+            field={field}
+            value={formData[field.name]}
+            handleChange={handleChange}
+          />
+        );
+      case "select":
+        return (
+          <SelectField
+            field={field}
+            value={formData[field.name]}
+            handleSelectChange={handleSelectChange}
+          />
+        );
+      case "file":
+        return (
+          <ImageField
+            field={field}
+            value={formData[field.name]}
+            handleFileChange={handleFileChange}
+          />
+        );
+      default:
+        return null;
+    }
   };
 
   return (
@@ -38,66 +59,7 @@ const CardForm = ({ fields, formData, onSubmit }) => {
             <label>
               {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
             </label>
-            {field.type === "text" || field.type === "number" ? (
-              <input
-                type={field.type}
-                name={field.name}
-                placeholder={field.placeholder}
-                value={formData[field.name]}
-                onChange={(e) => handleChange(field.name, e.target.value)}
-                required={field.required}
-                readOnly={field.readOnly}
-                min={field.min}
-              />
-            ) : field.type === "date" ? (
-              <input
-                type="date"
-                name={field.name}
-                value={formData[field.name]}
-                onChange={(e) => handleChange(field.name, e.target.value)}
-                required={field.required}
-                style={field.style}
-              />
-            ) : field.type === "select" ? (
-              <Select
-                name={field.name}
-                options={field.options}
-                className="basic-multi-select"
-                classNamePrefix="select"
-                placeholder={field.placeholder}
-                value={field.options.find((option) => option.value === formData[field.name]) || null}
-                onChange={handleSelectChange(field.name)}
-                required={field.required}
-              />
-            ) : field.type === "file" ? (
-              <div style={{ position: "relative" }}>
-                <div>
-                  <input
-                    type="file"
-                    name={field.name}
-                    accept={field.accept}
-                    onChange={handleFileChange(field.name)}
-                    required={field.required}
-                    style={field.style}
-                  />
-                  {formData[field.name] && (
-                    <div className="mt-2 text-muted small">
-                      Selected: {formData[field.name].name}
-                    </div>
-                  )}
-                </div>
-                <div style={tickBoxStyle(!!formData[field.name])}>
-                  <span
-                    style={{
-                      color: formData[field.name] ? "#ffffff" : "gray",
-                      fontSize: "1rem",
-                    }}
-                  >
-                    ✔
-                  </span>
-                </div>
-              </div>
-            ) : null}
+            {renderField(field)}
           </div>
         ))}
 
