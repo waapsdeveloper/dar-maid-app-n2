@@ -9,7 +9,7 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
     { name: "ContactInfoBox", label: "Contact Information" },
     { name: "WorkExperiencesBox", label: "Work Experiences" },
     { name: "EmploymentDetails", label: "Employment Details" },
-    { name: "Document", label: "Upload Document" },
+    { name: "UploadDocument", label: "Upload Document" },
     { name: "ApplicationManagement", label: "Application Management" },
     { name: "InterviewManagement", label: "Interview Management" },
     { name: "SocialNetworkBox", label: "Social Networks" },

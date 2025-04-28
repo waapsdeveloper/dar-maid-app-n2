@@ -2,7 +2,7 @@ import React from "react";
 import MyProfile from "./components/MyProfile";
 import ContactInfoBox from "./components/ContactInfoBox";
 import WorkExperiencesBox from "./components/WorkExperiencesBox";
-import Document from "./components/Document";
+import UploadDocument from "./components/UploadDocument";
 import InterviewManagement from "./components/InterviewManagement";
 import SocialNetworkBox from "./components/SocialNetworkBox";
 import EmploymentDetails from "./components/EmployementDetails";
@@ -14,7 +14,7 @@ const ProfileCards = ({ activeTab }) => {
     ContactInfoBox: <ContactInfoBox />,
     WorkExperiencesBox: <WorkExperiencesBox />,
     EmploymentDetails: <EmploymentDetails />,
-    Document: <Document />,
+    UploadDocument: <UploadDocument />,
     ApplicationManagement: <ApplicationManagement />,
     InterviewManagement: <InterviewManagement />,
     SocialNetworkBox: <SocialNetworkBox />,

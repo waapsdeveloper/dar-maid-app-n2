@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import FancyTable from "@/templates/tables/fancy-table";
+import CardForm from "@/templates/forms/card-form";
 
 const JobExperienceCard = () => {
   const [jobExperiences, setJobExperiences] = useState([]);
@@ -57,8 +58,10 @@ const JobExperienceCard = () => {
       ]);
     }
     setIsModalOpen(false);
-    setIsEditing(false);
-    setEditId(null);
+    resetForm();
+  };
+
+  const resetForm = () => {
     setNewExperience({
       employerName: "",
       employmentLocation: "",
@@ -75,56 +78,146 @@ const JobExperienceCard = () => {
       petsExperience: "",
       comfortableWithPets: null,
     });
+    setIsEditing(false);
+    setEditId(null);
+  };
+
+  const editExperience = (exp) => {
+    setNewExperience(exp);
+    setIsEditing(true);
+    setEditId(exp.id);
+    setIsModalOpen(true);
   };
 
   const deleteExperience = (id) => {
     setJobExperiences(jobExperiences.filter((exp) => exp.id !== id));
   };
 
-  const editExperience = (exp) => {
-    setNewExperience({
-      employerName: exp.employerName,
-      employmentLocation: exp.employmentLocation,
-      employerPhone: exp.employerPhone,
-      employerEmail: exp.employerEmail,
-      country: exp.country,
-      startDate: exp.startDate,
-      endDate: exp.endDate,
-      designation: exp.designation,
-      previousSalary: exp.previousSalary,
-      benefits: exp.benefits,
-      rating: exp.rating,
-      employerReview: exp.employerReview,
-      petsExperience: exp.petsExperience,
-      comfortableWithPets: exp.comfortableWithPets,
-    });
-    setIsEditing(true);
-    setEditId(exp.id);
-    setIsModalOpen(true);
-  };
-
-  const fields = [
-    { key: "employerName", label: "Employer Name" },
-    { key: "employmentLocation", label: "Employment Location" },
-    { key: "startDate", label: "Start Date" },
-    { key: "endDate", label: "End Date" },
-    { key: "designation", label: "Designation" },    
+  const gulfCountriesOptions = [
+    { value: "Bahrain", label: "Bahrain" },
+    { value: "Kuwait", label: "Kuwait" },
+    { value: "Oman", label: "Oman" },
+    { value: "Qatar", label: "Qatar" },
+    { value: "Saudi Arabia", label: "Saudi Arabia" },
+    { value: "United Arab Emirates", label: "United Arab Emirates" },
   ];
 
-  const rightOptionsHtml = `
-    <button
-      type="button"
-      style="padding: 0.75rem 1.5rem; border: none; border-radius: 0.5rem; background-color: #1a73e8; color: white; cursor: pointer; font-size: 1rem; font-weight: 600;"
-      onclick="window.dispatchEvent(new CustomEvent('openAddExperienceModal'))"
-    >
-      + Add Experience
-    </button>
-  `;
+  const yesNoOptions = [
+    { value: true, label: "Yes" },
+    { value: false, label: "No" },
+  ];
 
-  // Listen for the custom event to open the modal
-  if (typeof window !== "undefined") {
-    window.addEventListener("openAddExperienceModal", () => setIsModalOpen(true));
-  }
+  const fields = [
+    {
+      type: "text",
+      name: "employerName",
+      label: "Employer Name",
+      placeholder: "Enter employer name",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "text",
+      name: "employmentLocation",
+      label: "Employment Location",
+      placeholder: "Enter employment location",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "number",
+      name: "employerPhone",
+      label: "Employer Phone",
+      placeholder: "Enter employer phone number",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "email",
+      name: "employerEmail",
+      label: "Employer Email Address",
+      placeholder: "Enter employer email address",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "country",
+      label: "Country",
+      options: gulfCountriesOptions,
+      placeholder: "Select Country",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "text",
+      name: "designation",
+      label: "Designation / Position",
+      placeholder: "Maid, Gardener, etc.",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "number",
+      name: "previousSalary",
+      label: "Previous Salary",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "text",
+      name: "benefits",
+      label: "Benefits",
+      placeholder: "Visa, Accommodation, Fuel, etc.",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "date",
+      name: "startDate",
+      label: "Start Date",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "date",
+      name: "endDate",
+      label: "End Date",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "text",
+      name: "petsExperience",
+      label: "Pets Experience",
+      colClass: "col-lg-3 col-md-12",
+      required: true,
+    },
+    {
+      type: "select",
+      name: "comfortableWithPets",
+      label: "Comfortable with Pets",
+      options: yesNoOptions,
+      colClass: "col-lg-3 col-md-12",
+      placeholder: "Select Option",
+      required: true,
+    },
+    {
+      type: "textarea",
+      name: "employerReview",
+      label: "Employer Review",
+      colClass: "col-lg-12 col-md-12",
+      required: true,
+      rows: 4,
+    },
+    {
+      type: "rating",
+      name: "rating",
+      label: "Rating (1–5 stars)",
+      colClass: "col-lg-12 col-md-12",
+      required: true,
+    },
+  ];
 
   return (
     <div>
@@ -158,25 +251,71 @@ const JobExperienceCard = () => {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <h4>{isEditing ? "Edit Experience" : "Add Experience"}</h4>
-            {/* Add form fields here */}
-            <button
-              type="button"
-              style={buttonStyle}
-              onClick={saveExperience}
-            >
-              Save Details
-            </button>
+            <h4>{isEditing ? "Edit Experience" : "Add Experience"}</h4>            
+            {fields.map((field, index) => (
+              <div key={index} className={`form-group ${field.colClass}`}>
+                <label>
+                  {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
+                </label>
+                {field.type === "text" || field.type === "number" || field.type === "email" ? (
+                  <input
+                    type={field.type}
+                    name={field.name}
+                    placeholder={field.placeholder}
+                    value={newExperience[field.name]}
+                    onChange={(e) => handleNewExperienceChange(field.name, e.target.value)}
+                    required={field.required}
+                  />
+                ) : field.type === "select" ? (
+                  <select
+                    name={field.name}
+                    value={newExperience[field.name]}
+                    onChange={(e) => handleNewExperienceChange(field.name, e.target.value)}
+                    required={field.required}
+                  >
+                    <option value="">Select Option</option>
+                    {field.options.map((option) => (
+                      <option key={option.value} value={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                ) : field.type === "textarea" ? (
+                  <textarea
+                    name={field.name}
+                    rows={4}
+                    value={newExperience[field.name]}
+                    onChange={(e) => handleNewExperienceChange(field.name, e.target.value)}
+                    required={field.required}
+                  />
+                ) : null}
+              </div>
+            ))}
+            <div className="form-group col-lg-12 col-md-12">
+              <button
+                type="button"
+                style={buttonStyle}
+                onClick={saveExperience}
+              >
+                {isEditing ? "Update Experience" : "Add Experience"}
+              </button>
+              <button
+                type="button"
+                style={{ ...buttonStyle, backgroundColor: "#dc3545", marginLeft: "1rem" }}
+                onClick={() => setIsModalOpen(false)}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
         </div>
       )}
 
-      {/* FancyTable is always displayed */}
       <FancyTable
         fields={fields}
         data={jobExperiences}
         title="Work Experiences"
-        filterOptions={[]}        
+        filterOptions={[]}
       />
       <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "1rem" }}>
         <button
