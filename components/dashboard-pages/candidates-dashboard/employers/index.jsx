@@ -1,8 +1,8 @@
-import MobileMenu from "../../../header/MobileMenu";
-import DashboardHeader from "../../../header/DashboardHeader";
-import LoginPopup from "../../../common/form/login/LoginPopup";
+
+import DashboardHeader from "../../../../globals/header/DashboardHeader";
+import LoginPopup from "../../../../globals/login/LoginPopup";
 import BreadCrumb from "../../BreadCrumb";
-import CopyrightFooter from "../../CopyrightFooter";
+import CopyrightFooter from "../../../../globals/footer/CopyrightFooter";
 import WidgetContentBox from "./components/WidgetContentBox";
 import WidgetTopFilterBox from "./components/WidgetTopFilterBox";
 import MenuToggler from "../../MenuToggler";
@@ -20,8 +20,7 @@ const index = () => {
       <DashboardHeader />
       {/* End Header */}
 
-      <MobileMenu />
-      {/* End MobileMenu */}
+      
 
       <DashboardCandidatesSidebar />
       {/* <!-- End User Sidebar Menu --> */}

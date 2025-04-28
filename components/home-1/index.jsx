@@ -3,12 +3,11 @@ import About from "../about/About";
 import AppSection from "../app-section/AppSection";
 import Blog from "../blog/Blog";
 import CallToAction from "../call-to-action/CallToAction";
-import LoginPopup from "../common/form/login/LoginPopup";
 import Partner from "../common/partner/Partner";
 import FooterDefault from "../footer/common-footer";
 import Funfact from "../fun-fact-counter/Funfact";
 import DefaulHeader2 from "../header/DefaulHeader2";
-import MobileMenu from "../header/MobileMenu";
+import MobileMenu from "../../globals/header/MobileMenu";
 import Hero1 from "../hero/hero-1";
 import JobCategorie1 from "../job-categories/JobCategorie1";
 import JobFeatured1 from "../job-featured/JobFeatured1";
@@ -16,6 +15,7 @@ import Testimonial from "../testimonial/Testimonial";
 import About2 from "../about/About2";
 import TopCompany from "../top-company/TopCompany";
 import Candidates from "../candidates/Candidates";
+import LoginPopup from "@/globals/login/LoginPopup";
 
 
 const index = () => {
