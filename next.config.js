@@ -18,6 +18,19 @@ const nextConfig = {
       },
 
       {
+        source: "/panels/employer/dashboard",
+        destination: "/admin-panels/employer/dashboard",
+      },
+
+
+
+
+
+
+
+
+
+      {
         source: "/candidates",
         destination: "/candidates-list-v2",
       },

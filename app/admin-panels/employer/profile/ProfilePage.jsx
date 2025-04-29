@@ -1,15 +1,18 @@
 'use client'
 
-import { useState } from "react"; // Added useState for tabs functionality
-import MobileMenu from "../../../header/MobileMenu";
-import DashboardHeader from "../../../header/DashboardHeader";
-import LoginPopup from "../../../common/form/login/LoginPopup";
+import { useState } from "react"; 
+import MobileMenu from "@/globals/header/MobileMenu";
+// Added useState for tabs functionality
+import DashboardHeader from "@/globals/header/DashboardHeader";
+
+import LoginPopup from "@/globals/login/LoginPopup";
+import Breadcrumb from "@/components/common/Breadcrumb";
 import DashboardEmployerSidebar from "../../../header/DashboardEmployerSidebar";
-import BreadCrumb from "../../BreadCrumb";
-import MyProfile from "./components/my-profile";
+import DashboardEmployerSidebar from "@/components/header/DashboardEmployerSidebar";
+import ProfilePage from "../profile/page";
 import SocialNetworkBox from "../../../../app/admin-panels/employer/profile/components/SocialNetworkBox";
 import ContactInfoBox from "../../../../app/admin-panels/employer/profile/components/ContactInfoBox";
-import CopyrightFooter from "../../CopyrightFooter";
+import CopyrightFooter from "@/globals/footer/CopyrightFooter";
 import MenuToggler from "../../MenuToggler";
 import JobPreference from "../../../../app/admin-panels/employer/profile/components/JobPreference";
 import InterviewManagement from "../../../../app/admin-panels/employer/profile/components/InterviewManagement";
