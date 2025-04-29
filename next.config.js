@@ -4,7 +4,10 @@ const nextConfig = {
   async rewrites() {
     return [
       // Employees / Candidates
-
+      {
+        source: "/panels/employee/dashboard",
+        destination: "/admin-panels/employee/dashboard",
+      },
       {
         source: "/panels/employee/profile",
         destination: "/admin-panels/employee/profile",
@@ -33,10 +36,7 @@ const nextConfig = {
         source: "/candidates-details/:slug",
         destination: "/candidates-single-v1/:slug",
       },
-      {
-        source: "/candidate/dashboard",
-        destination: "/candidates-dashboard/dashboard",
-      },
+      
       {
         source: "/candidate/profile",
         destination: "/candidates-dashboard/profile",
