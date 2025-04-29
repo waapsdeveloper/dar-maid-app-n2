@@ -1,6 +1,17 @@
 'use client'
 
+import Select from "react-select";
 import { useState } from "react";
+import CardForm from "@/templates/forms/card-form";
+
+// Define inputStyle for inputs
+const inputStyle = {
+  width: "100%",
+  padding: "0.75rem",
+  borderRadius: "0.5rem",
+  backgroundColor: "#F0F5F7",
+  boxSizing: "border-box",
+};
 
 const InterviewAccountPreferences = () => {
     // State to manage form data
@@ -26,6 +37,16 @@ const InterviewAccountPreferences = () => {
         setFormData({ ...formData, [field]: value });
     };
 
+    // Handle select changes for react-select
+    const handleSelectChange = (field) => (selectedOption) => {
+        setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
+    };
+
+    // Handle file changes (required by CardForm, even if unused)
+    const handleFileChange = (field, file) => {
+        setFormData({ ...formData, [field]: file });
+    };
+
     // Handle Confirm and Cancel for Interviews
     const handleConfirm = (id) => {
         setInterviews(interviews.map(interview =>
@@ -46,214 +67,174 @@ const InterviewAccountPreferences = () => {
         setHirings(hirings.filter(hiring => hiring.id !== id));
     };
 
-    // Radio options
-    const yesNoOptions = ["Yes", "No"];
+    // Dropdown options for react-select
+    const yesNoOptions = [
+        { value: "Yes", label: "Yes" },
+        { value: "No", label: "No" },
+    ];
 
     // Form field configurations
     const fields = [
         {
-            type: "interviews",
+            type: "custom",
             name: "interviews",
             label: "Interviews",
-            data: interviews,
             colClass: "col-lg-12 col-md-12",
+            render: () => (
+                <div>
+                    <table style={{ width: "100%", borderCollapse: "collapse", border: "1px solid #ddd" }}>
+                        <thead>
+                            <tr style={{ backgroundColor: "#f5f5f5", height: "35px" }}>
+                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Title</th>
+                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Date</th>
+                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Label</th>
+                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Status</th>
+                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {interviews.map((interview, idx) => (
+                                <tr key={idx} style={{ height: "40px" }}>
+                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem" }}>{interview.title}</td>
+                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem" }}>{interview.date}</td>
+                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem" }}>{interview.label}</td>
+                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem", color: interview.status === "Confirmed" ? "green" : "orange" }}>
+                                        {interview.status}
+                                    </td>
+                                    <td style={{ padding: "5px", border: "1px solid #ddd", display: "flex", gap: "5px" }}>
+                                        {interview.status === "Pending" && (
+                                            <button
+                                                onClick={() => handleConfirm(interview.id)}
+                                                style={{
+                                                    padding: "0.3rem 0.8rem",
+                                                    border: "none",
+                                                    borderRadius: "0.3rem",
+                                                    backgroundColor: "#2563eb",
+                                                    color: "white",
+                                                    cursor: "pointer",
+                                                    fontSize: "0.8rem",
+                                                }}
+                                            >
+                                                Confirm
+                                            </button>
+                                        )}
+                                        <button
+                                            onClick={() => handleCancel(interview.id)}
+                                            style={{
+                                                padding: "0.3rem 0.8rem",
+                                                border: "none",
+                                                borderRadius: "0.3rem",
+                                                backgroundColor: "#2563eb",
+                                                color: "white",
+                                                cursor: "pointer",
+                                                fontSize: "0.8rem",
+                                            }}
+                                        >
+                                            Cancel
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ),
         },
         {
-            type: "hirings",
+            type: "custom",
             name: "hirings",
             label: "Hirings",
-            data: hirings,
             colClass: "col-lg-12 col-md-12",
+            render: () => (
+                <div>
+                    <table style={{ width: "100%", borderCollapse: "collapse", border: "1px solid #ddd" }}>
+                        <thead>
+                            <tr style={{ backgroundColor: "#f5f5f5", height: "35px" }}>
+                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Name</th>
+                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Position</th>
+                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Hire Date</th>
+                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {hirings.map((hiring, idx) => (
+                                <tr key={idx} style={{ height: "40px" }}>
+                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem" }}>{hiring.name}</td>
+                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem" }}>{hiring.position}</td>
+                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem" }}>{hiring.hireDate}</td>
+                                    <td style={{ padding: "5px", border: "1px solid #ddd", display: "flex", gap: "5px" }}>
+                                        <button
+                                            onClick={() => handleContact(hiring.id)}
+                                            style={{
+                                                padding: "0.3rem 0.8rem",
+                                                border: "none",
+                                                borderRadius: "0.3rem",
+                                                backgroundColor: "#2563eb",
+                                                color: "white",
+                                                cursor: "pointer",
+                                                fontSize: "0.8rem",
+                                            }}
+                                        >
+                                            Contact
+                                        </button>
+                                        <button
+                                            onClick={() => handleRemove(hiring.id)}
+                                            style={{
+                                                padding: "0.3rem 0.8rem",
+                                                border: "none",
+                                                borderRadius: "0.3rem",
+                                                backgroundColor: "#2563eb",
+                                                color: "white",
+                                                cursor: "pointer",
+                                                fontSize: "0.8rem",
+                                            }}
+                                        >
+                                            Remove
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            ),
         },
         {
-            type: "radio",
+            type: "select",
             name: "salaryRangeFlexible",
             label: "Is your salary range flexible?",
             options: yesNoOptions,
             colClass: "col-lg-3 col-md-12",
+            placeholder: "Select Option",
             required: true,
         },
         {
-            type: "radio",
+            type: "select",
             name: "incentiveBasedHiring",
-            label: "Would you consider incentive-based hiring?",
+            label: "Consider incentive hiring?",
             options: yesNoOptions,
             colClass: "col-lg-3 col-md-12",
+            placeholder: "Select Option",
             required: true,
         },
     ];
 
+    // Handle form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Form submitted with data:", formData);
+        // Add your form submission logic here, such as API calls
+    };
+
     return (
-        <form className="default-form" style={{ overflow: "hidden" }}>
-            <div className="row" style={{ padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap", margin: "0" }}>
-                {fields.map((field, index) => (
-                    <div
-                        key={index}
-                        className={`form-group ${field.colClass}`}
-                        style={{ display: "flex", flexDirection: "column", marginBottom: "1.5rem" }}
-                    >
-                        <label
-                            style={{
-                                color: "#696969",
-                                fontWeight: "500",
-                                minHeight: "2rem",
-                                whiteSpace: "normal",
-                                wordWrap: "break-word",
-                            }}
-                        >
-                            {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
-                        </label>
-                        {field.type === "radio" && (
-                            <div style={{ display: "flex", gap: "20px" }}>
-                                {field.options.map((option, idx) => (
-                                    <label key={idx} style={{ display: "flex", alignItems: "center" }}>
-                                        <input
-                                            type="radio"
-                                            name={field.name}
-                                            value={option.toLowerCase()}
-                                            checked={formData[field.name] === option.toLowerCase()}
-                                            onChange={(e) => handleChange(field.name, e.target.value)}
-                                            required={field.required}
-                                            style={{ transform: "scale(1.5)", marginRight: "8px" }}
-                                        />
-                                        <span style={{ fontSize: "1.1rem" }}>{option}</span>
-                                    </label>
-                                ))}
-                            </div>
-                        )}
-                        {field.type === "interviews" && (
-                            <div>
-                                <table style={{ width: "100%", borderCollapse: "collapse", border: "1px solid #ddd" }}>
-                                    <thead>
-                                        <tr style={{ backgroundColor: "#f5f5f5" }}>
-                                            <th style={{ padding: "10px", border: "1px solid #ddd", textAlign: "left" }}>Title</th>
-                                            <th style={{ padding: "10px", border: "1px solid #ddd", textAlign: "left" }}>Date</th>
-                                            <th style={{ padding: "10px", border: "1px solid #ddd", textAlign: "left" }}>Label</th>
-                                            <th style={{ padding: "10px", border: "1px solid #ddd", textAlign: "left" }}>Status</th>
-                                            <th style={{ padding: "10px", border: "1px solid #ddd", textAlign: "left" }}>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {field.data.map((interview, idx) => (
-                                            <tr key={idx}>
-                                                <td style={{ padding: "10px", border: "1px solid #ddd" }}>{interview.title}</td>
-                                                <td style={{ padding: "10px", border: "1px solid #ddd" }}>{interview.date}</td>
-                                                <td style={{ padding: "10px", border: "1px solid #ddd" }}>{interview.label}</td>
-                                                <td style={{ padding: "10px", border: "1px solid #ddd", color: interview.status === "Confirmed" ? "green" : "orange" }}>
-                                                    {interview.status}
-                                                </td>
-                                                <td style={{ padding: "10px", border: "1px solid #ddd", display: "flex", gap: "5px" }}>
-                                                    {interview.status === "Pending" && (
-                                                        <button
-                                                            onClick={() => handleConfirm(interview.id)}
-                                                            style={{
-                                                                padding: "0.5rem 1rem",
-                                                                border: "none",
-                                                                borderRadius: "0.5rem",
-                                                                backgroundColor: "#28a745",
-                                                                color: "white",
-                                                                cursor: "pointer",
-                                                                fontSize: "0.9rem",
-                                                            }}
-                                                        >
-                                                            Confirm
-                                                        </button>
-                                                    )}
-                                                    <button
-                                                        onClick={() => handleCancel(interview.id)}
-                                                        style={{
-                                                            padding: "0.5rem 1rem",
-                                                            border: "none",
-                                                            borderRadius: "0.5rem",
-                                                            backgroundColor: "#dc3545",
-                                                            color: "white",
-                                                            cursor: "pointer",
-                                                            fontSize: "0.9rem",
-                                                        }}
-                                                    >
-                                                        Cancel
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        )}
-                        {field.type === "hirings" && (
-                            <div>
-                                <table style={{ width: "100%", borderCollapse: "collapse", border: "1px solid #ddd" }}>
-                                    <thead>
-                                        <tr style={{ backgroundColor: "#f5f5f5" }}>
-                                            <th style={{ padding: "10px", border: "1px solid #ddd", textAlign: "left" }}>Name</th>
-                                            <th style={{ padding: "10px", border: "1px solid #ddd", textAlign: "left" }}>Position</th>
-                                            <th style={{ padding: "10px", border: "1px solid #ddd", textAlign: "left" }}>Hire Date</th>
-                                            <th style={{ padding: "10px", border: "1px solid #ddd", textAlign: "left" }}>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {field.data.map((hiring, idx) => (
-                                            <tr key={idx}>
-                                                <td style={{ padding: "10px", border: "1px solid #ddd" }}>{hiring.name}</td>
-                                                <td style={{ padding: "10px", border: "1px solid #ddd" }}>{hiring.position}</td>
-                                                <td style={{ padding: "10px", border: "1px solid #ddd" }}>{hiring.hireDate}</td>
-                                                <td style={{ padding: "10px", border: "1px solid #ddd", display: "flex", gap: "5px" }}>
-                                                    <button
-                                                        onClick={() => handleContact(hiring.id)}
-                                                        style={{
-                                                            padding: "0.5rem 1rem",
-                                                            border: "none",
-                                                            borderRadius: "0.5rem",
-                                                            backgroundColor: "#1a73e8",
-                                                            color: "white",
-                                                            cursor: "pointer",
-                                                            fontSize: "0.9rem",
-                                                        }}
-                                                    >
-                                                        Contact
-                                                    </button>
-                                                    <button
-                                                        onClick={() => handleRemove(hiring.id)}
-                                                        style={{
-                                                            padding: "0.5rem 1rem",
-                                                            border: "none",
-                                                            borderRadius: "0.5rem",
-                                                            backgroundColor: "#dc3545",
-                                                            color: "white",
-                                                            cursor: "pointer",
-                                                            fontSize: "0.9rem",
-                                                        }}
-                                                    >
-                                                        Remove
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        )}
-                    </div>
-                ))}
-                <div style={{ display: "flex", justifyContent: "flex-end", width: "100%", marginTop: "1rem", paddingRight: "2.5rem" }}>
-                    <button
-                        type="submit"
-                        style={{
-                            padding: "0.75rem 1.5rem",
-                            border: "none",
-                            borderRadius: "0.5rem",
-                            backgroundColor: "#1a73e8",
-                            color: "white",
-                            cursor: "pointer",
-                            fontSize: "1rem",
-                            fontWeight: "600",
-                        }}
-                    >
-                        Save Details
-                    </button>
-                </div>
-            </div>
-        </form>
+        <CardForm
+            fields={fields}
+            formData={formData}
+            onSubmit={handleSubmit}
+            handleChange={handleChange}
+            handleSelectChange={handleSelectChange}
+            handleFileChange={handleFileChange}
+        />
     );
 };
 

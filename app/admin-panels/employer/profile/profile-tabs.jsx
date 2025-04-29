@@ -5,11 +5,11 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
   const scrollRef = useRef(null);
 
   const tabs = [
-    { name: "MyProfile", label: "Employee's Profile" },
+    { name: "MyProfile", label: "Employer's Profile" },
     { name: "ResidenceInfo", label: "Residence Info" },
     { name: "ContactInfoBox", label: "Contact Information" },
-    { name: "Communication&CulturalFit", label: "Communication & Cultural Fit" },
-    { name: "JobPreferences", label: "Job Preference" },
+    { name: "CommunicationCulturalFit", label: "Communication & Cultural Fit" },
+    { name: "JobPreference", label: "Job Preference" },
     { name: "WorkScheduleOfferDetails", label: "Work Schedule Offer Details" },
     { name: "InterviewAccountPreferences", label: "Interview Account Preferences" },
   ];

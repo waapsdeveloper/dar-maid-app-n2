@@ -14,6 +14,11 @@ const CardForm = ({ fields, formData, handleChange, handleSelectChange, handleFi
     cursor: "pointer",
   };
 
+  const labelStyle = {
+    color: "#69697C", 
+    fontWeight: "450",
+  };
+
   const renderField = (field) => {
     switch (field.type) {
       case "text":
@@ -42,6 +47,8 @@ const CardForm = ({ fields, formData, handleChange, handleSelectChange, handleFi
             handleFileChange={handleFileChange}
           />
         );
+      case "custom":
+        return field.render ? field.render() : null;
       default:
         return null;
     }
@@ -56,7 +63,7 @@ const CardForm = ({ fields, formData, handleChange, handleSelectChange, handleFi
             className={`form-group ${field.colClass}`}
             style={field.type === "file" ? { position: "relative", minHeight: "60px" } : {}}
           >
-            <label>
+            <label style={labelStyle}>
               {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
             </label>
             {renderField(field)}
@@ -90,6 +97,7 @@ CardForm.propTypes = {
       options: PropTypes.array,
       accept: PropTypes.string,
       style: PropTypes.object,
+      render: PropTypes.func,
     })
   ).isRequired,
   formData: PropTypes.object.isRequired,

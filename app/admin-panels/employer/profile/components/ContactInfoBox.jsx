@@ -1,6 +1,46 @@
 'use client'
 
+import Select from "react-select";
 import { useState } from "react";
+import CardForm from "@/templates/forms/card-form";
+
+// Define buttonStyle at the top level for consistent styling
+const buttonStyle = {
+  padding: "0.75rem 1.5rem",
+  border: "none",
+  borderRadius: "0.5rem",
+  backgroundColor: "#1a73e8",
+  color: "white",
+  cursor: "pointer",
+  fontSize: "1rem",
+  fontWeight: "600",
+};
+
+// Define inputStyle for inputs
+const inputStyle = {
+  width: "100%",
+  padding: "0.75rem",
+  borderRadius: "0.5rem",
+  backgroundColor: "#F0F5F7",
+  boxSizing: "border-box",
+};
+
+// Define tickBoxStyle for the tick container
+const tickBoxStyle = (isSelected) => ({
+  position: "absolute",
+  right: "20px",
+  top: "30%",
+  transform: "translateY(-50%)",
+  width: "24px",
+  height: "24px",
+  border: `1px solid ${isSelected ? "#28a745" : "#d0d0d0"}`,
+  borderRadius: "50%",
+  backgroundColor: isSelected ? "#28a745" : "transparent",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+});
 
 const ContactInfoBox = () => {
     // State to manage form data
@@ -16,6 +56,11 @@ const ContactInfoBox = () => {
         setFormData({ ...formData, [field]: value });
     };
 
+    // Handle select changes for react-select (unused here but included for consistency)
+    const handleSelectChange = (field) => (selectedOption) => {
+        setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
+    };
+
     // Form field configurations
     const fields = [
         {
@@ -25,14 +70,15 @@ const ContactInfoBox = () => {
             placeholder: "+924322321133",
             colClass: "col-lg-3 col-md-12",
             required: true,
+            style: inputStyle,
         },
         {
-            type: "email",
+            type: "text",
             name: "email",
-            label: "Email Address",
-            placeholder: "contact@example.com",
+            label: "Email",
+            placeholder: "employer@gmail.com",
             colClass: "col-lg-3 col-md-12",
-            required: true,
+            readOnly: true,
         },
         {
             type: "number",
@@ -41,6 +87,7 @@ const ContactInfoBox = () => {
             placeholder: "+924322321133",
             colClass: "col-lg-3 col-md-12",
             required: true,
+            style: inputStyle,
         },
         {
             type: "number",
@@ -49,83 +96,25 @@ const ContactInfoBox = () => {
             placeholder: "+924322321133",
             colClass: "col-lg-3 col-md-12",
             required: true,
+            style: inputStyle,
         },
     ];
 
+    // Handle form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Form submitted with data:", formData);
+        // Add your form submission logic here, such as API calls
+    };
+
     return (
-        <form className="default-form">
-            <div className="row" style={{ padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap" }}>
-                {fields.map((field, index) => (
-                    <div key={index} className={`form-group ${field.colClass}`}>
-                        <label
-                         style={{
-                          color: "#696969",
-                          fontWeight: "500",
-                          minHeight: "2rem",
-                          whiteSpace: "normal",
-                          wordWrap: "break-word",
-                      }}
-                        >{field.label} {field.required && <span style={{ color: "red" }}>*</span>}</label>
-                        {field.type === "number" && (
-                            <input
-                                type="number"
-                                name={field.name}
-                                placeholder={field.placeholder}
-                                value={formData[field.name]}
-                                onChange={(e) => handleChange(field.name, e.target.value)}
-                                required={field.required}
-                                className="form-control"
-                                style={{
-                                    WebkitAppearance: "none",
-                                    MozAppearance: "textfield",
-                                    appearance: "none",
-                                }}
-                                onWheel={(e) => e.target.blur()}
-                            />
-                        )}
-                        {field.type === "email" && (
-                            <input
-                                type="email"
-                                name={field.name}
-                                placeholder={field.placeholder}
-                                value={formData[field.name]}
-                                onChange={(e) => handleChange(field.name, e.target.value)}
-                                required={field.required}
-                                className="form-control"
-                            />
-                        )}
-                    </div>
-                ))}
-                <div style={{ display: "flex", justifyContent: "flex-end", width: "100%", marginTop: "1rem", paddingRight: "2.5rem" }}>
-                    <button
-                        type="submit"
-                        style={{
-                            padding: "0.75rem 1.5rem",
-                            border: "none",
-                            borderRadius: "0.5rem",
-                            backgroundColor: "#1a73e8",
-                            color: "white",
-                            cursor: "pointer",
-                            fontSize: "1rem",
-                            fontWeight: "600",
-                        }}
-                    >
-                        Save Details
-                    </button>
-                </div>
-            </div>
-            <style jsx global>{`
-                input[type="number"]::-webkit-inner-spin-button,
-                input[type="number"]::-webkit-outer-spin-button {
-                    -webkit-appearance: none !important;
-                    margin: 0 !important;
-                }
-                input[type="number"] {
-                    -moz-appearance: textfield !important;
-                    appearance: none !important;
-                }
-            `}</style>
-        </form>
+        <CardForm
+            fields={fields}
+            formData={formData}
+            onSubmit={handleSubmit}
+            handleChange={handleChange}
+            handleSelectChange={handleSelectChange}
+        />
     );
 };
 

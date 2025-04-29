@@ -1,6 +1,46 @@
 'use client'
 
+import Select from "react-select";
 import { useState } from "react";
+import CardForm from "@/templates/forms/card-form";
+
+// Define buttonStyle at the top level for consistent styling
+const buttonStyle = {
+  padding: "0.75rem 1.5rem",
+  border: "none",
+  borderRadius: "0.5rem",
+  backgroundColor: "#1a73e8",
+  color: "white",
+  cursor: "pointer",
+  fontSize: "1rem",
+  fontWeight: "600",
+};
+
+// Define inputStyle for inputs
+const inputStyle = {
+  width: "100%",
+  padding: "0.75rem",
+  borderRadius: "0.5rem",
+  backgroundColor: "#F0F5F7",
+  boxSizing: "border-box",
+};
+
+// Define tickBoxStyle for the tick container
+const tickBoxStyle = (isSelected) => ({
+  position: "absolute",
+  right: "20px",
+  top: "30%",
+  transform: "translateY(-50%)",
+  width: "24px",
+  height: "24px",
+  border: `1px solid ${isSelected ? "#28a745" : "#d0d0d0"}`,
+  borderRadius: "50%",
+  backgroundColor: isSelected ? "#28a745" : "transparent",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
+});
 
 const WorkScheduleOfferDetails = () => {
     // State to manage form data
@@ -20,8 +60,21 @@ const WorkScheduleOfferDetails = () => {
         setFormData({ ...formData, [field]: value });
     };
 
-    // Radio options
-    const yesNoOptions = ["Yes", "No"];
+    // Handle select changes for react-select
+    const handleSelectChange = (field) => (selectedOption) => {
+        setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
+    };
+
+    // Handle file changes (required by CardForm, even if unused)
+    const handleFileChange = (field, file) => {
+        setFormData({ ...formData, [field]: file });
+    };
+
+    // Dropdown options formatted for react-select
+    const yesNoOptions = [
+        { value: "Yes", label: "Yes" },
+        { value: "No", label: "No" },
+    ];
 
     // Form field configurations
     const fields = [
@@ -31,7 +84,7 @@ const WorkScheduleOfferDetails = () => {
             label: "Start Date",
             colClass: "col-lg-3 col-md-12",
             required: true,
-            style: { backgroundColor: "#F0F5F7", height: "60px", border: "none" },
+            style: { ...inputStyle, height: "60px" },
         },
         {
             type: "number",
@@ -42,6 +95,7 @@ const WorkScheduleOfferDetails = () => {
             required: true,
             min: "1",
             max: "7",
+            style: inputStyle,
         },
         {
             type: "number",
@@ -52,6 +106,7 @@ const WorkScheduleOfferDetails = () => {
             required: true,
             min: "1",
             max: "24",
+            style: inputStyle,
         },
         {
             type: "text",
@@ -60,6 +115,7 @@ const WorkScheduleOfferDetails = () => {
             placeholder: "e.g., Sunday",
             colClass: "col-lg-3 col-md-12",
             required: true,
+            style: inputStyle,
         },
         {
             type: "number",
@@ -69,6 +125,7 @@ const WorkScheduleOfferDetails = () => {
             colClass: "col-lg-3 col-md-12",
             required: true,
             min: "0",
+            style: inputStyle,
         },
         {
             type: "text",
@@ -77,119 +134,44 @@ const WorkScheduleOfferDetails = () => {
             placeholder: "e.g., Accommodation, Transport",
             colClass: "col-lg-3 col-md-12",
             required: true,
+            style: inputStyle,
         },
         {
-            type: "radio",
+            type: "select",
             name: "visaSponsorship",
             label: "Visa Sponsorship Provided?",
             options: yesNoOptions,
             colClass: "col-lg-3 col-md-12",
+            placeholder: "Select Option",
             required: true,
         },
         {
-            type: "radio",
+            type: "select",
             name: "budgetFlexibility",
             label: "Budget Flexibility?",
             options: yesNoOptions,
             colClass: "col-lg-3 col-md-12",
+            placeholder: "Select Option",
             required: true,
         },
     ];
 
+    // Handle form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Form submitted with data:", formData);
+        // Add your form submission logic here, such as API calls
+    };
+
     return (
-        <form className="default-form" style={{ overflow: "hidden" }}>
-            <div className="row" style={{ padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap", margin: "0" }}>
-                {fields.map((field, index) => (
-                    <div
-                        key={index}
-                        className={`form-group ${field.colClass}`}
-                        style={{ display: "flex", flexDirection: "column", marginBottom: "1.5rem" }}
-                    >
-                        <label
-                            style={{
-                                color: "#696969",
-                                fontWeight: "500",
-                                minHeight: "2rem",
-                                whiteSpace: "normal",
-                                wordWrap: "break-word",
-                            }}
-                        >
-                            {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
-                        </label>
-                        {field.type === "radio" && (
-                            <div style={{ display: "flex", gap: "20px" }}>
-                                {field.options.map((option, idx) => (
-                                    <label key={idx} style={{ display: "flex", alignItems: "center" }}>
-                                        <input
-                                            type="radio"
-                                            name={field.name}
-                                            value={option.toLowerCase()}
-                                            checked={formData[field.name] === option.toLowerCase()}
-                                            onChange={(e) => handleChange(field.name, e.target.value)}
-                                            required={field.required}
-                                            style={{ transform: "scale(1.5)", marginRight: "8px" }}
-                                        />
-                                        <span style={{ fontSize: "1.1rem" }}>{option}</span>
-                                    </label>
-                                ))}
-                            </div>
-                        )}
-                        {field.type === "date" && (
-                            <input
-                                type="date"
-                                name={field.name}
-                                value={formData[field.name]}
-                                onChange={(e) => handleChange(field.name, e.target.value)}
-                                required={field.required}
-                                className="form-control"
-                                style={field.style}
-                            />
-                        )}
-                        {field.type === "number" && (
-                            <input
-                                type="number"
-                                name={field.name}
-                                placeholder={field.placeholder}
-                                value={formData[field.name]}
-                                onChange={(e) => handleChange(field.name, e.target.value)}
-                                required={field.required}
-                                className="form-control"
-                                min={field.min}
-                                max={field.max}
-                            />
-                        )}
-                        {field.type === "text" && (
-                            <input
-                                type="text"
-                                name={field.name}
-                                placeholder={field.placeholder}
-                                value={formData[field.name]}
-                                onChange={(e) => handleChange(field.name, e.target.value)}
-                                required={field.required}
-                                className="form-control"
-                            />
-                        )}
-                    </div>
-                ))}
-                <div style={{ display: "flex", justifyContent: "flex-end", width: "100%", marginTop: "1rem", paddingRight: "2.5rem" }}>
-                    <button
-                        type="submit"
-                        style={{
-                            padding: "0.75rem 1.5rem",
-                            border: "none",
-                            borderRadius: "0.5rem",
-                            backgroundColor: "#1a73e8",
-                            color: "white",
-                            cursor: "pointer",
-                            fontSize: "1rem",
-                            fontWeight: "600",
-                        }}
-                    >
-                        Save Details
-                    </button>
-                </div>
-            </div>
-        </form>
+        <CardForm
+            fields={fields}
+            formData={formData}
+            onSubmit={handleSubmit}
+            handleChange={handleChange}
+            handleSelectChange={handleSelectChange}
+            handleFileChange={handleFileChange}
+        />
     );
 };
 
