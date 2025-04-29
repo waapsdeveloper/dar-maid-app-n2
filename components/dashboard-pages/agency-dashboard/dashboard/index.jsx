@@ -1,16 +1,16 @@
-import MobileMenu from "../../../header/MobileMenu";
-import LoginPopup from "../../../common/form/login/LoginPopup";
+import MobileMenu from "@/globals/header/MobileMenu";
+import LoginPopup from "@/globals/login/LoginPopup";
+import JobApplied from "./components/JobApplied";
+import CopyrightFooter from "@/globals/footer/CopyrightFooter";
 import DashboardAgencySidebar from "../../../header/DashboardAgencySidebar";
-import BreadCrumb from "../../BreadCrumb";
+import BreadCrumb from "@/components/common/Breadcrumb";
+
 import TopCardBlock from "./components/TopCardBlock";
 import ProfileChart from "./components/ProfileChart";
 import Notification from "./components/Notification";
-import CopyrightFooter from "../../CopyrightFooter";
-import JobApplied from "./components/JobApplied";
 import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
 import MenuToggler from "../../MenuToggler";
 import Applicants from "./components/Applicants";
-
 
 const Index = () => {
   return (

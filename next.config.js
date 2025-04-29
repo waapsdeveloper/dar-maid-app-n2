@@ -13,20 +13,16 @@ const nextConfig = {
         destination: "/admin-panels/employee/profile",
       },
 
+      // Agency
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+      {
+        source: "/panels/agency/dashboard",
+        destination: "/admin-panels/agency/dashboard",
+      },
+      {
+        source: "/panels/agency/profile",
+        destination: "/admin-panels/agency/profile",
+      },
 
       {
         source: "/candidates",
@@ -36,7 +32,7 @@ const nextConfig = {
         source: "/candidates-details/:slug",
         destination: "/candidates-single-v1/:slug",
       },
-      
+
       {
         source: "/candidate/profile",
         destination: "/candidates-dashboard/profile",
@@ -283,11 +279,13 @@ const nextConfig = {
       },
       {
         source: "/superadmin/edit-report-statistics",
-        destination: "/superadmin-dashboard/crud/website/edit-report-statistics",
+        destination:
+          "/superadmin-dashboard/crud/website/edit-report-statistics",
       },
       {
         source: "/superadmin/view-report-statistics",
-        destination: "/superadmin-dashboard/crud/website/view-report-statistics",
+        destination:
+          "/superadmin-dashboard/crud/website/view-report-statistics",
       },
       {
         source: "/superadmin/add-cities",
