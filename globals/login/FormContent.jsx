@@ -48,7 +48,7 @@ const FormContent = () => {
 
     switch (userData.role) {
       case "employer":
-        router.push("/employer/dashboard");
+        router.push("/panels/employer/dashboard");
         break;
       case "employee":
         router.push("/panels/employee/dashboard");

@@ -3,14 +3,14 @@ module.exports = [
     id: 1,
     name: "Dashboard",
     icon: "la-home",
-    routePath: "/employer/dashboard",
+    routePath: "/panels/employer/dashboard",
     active: "active",
   },
   {
     id: 2,
     name: "Profile",  // Changed from "Company Profile"
     icon: "la-user-circle",
-    routePath: "/employer/profile",
+    routePath: "/panels/employer/profile",
     active: "",
   },
   // {

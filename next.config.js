@@ -87,10 +87,10 @@ const nextConfig = {
         source: "/employers-details/:slug",
         destination: "/employers-single-v2/:slug",
       },
-      {
-        source: "/employer/dashboard",
-        destination: "/employers-dashboard/dashboard",
-      },
+      // {
+      //   source: "/employer/dashboard",
+      //   destination: "/employers-dashboard/dashboard",
+      // },
       {
         source: "/new-request",
         destination: "/employers-dashboard/interview/new-interview-request",
