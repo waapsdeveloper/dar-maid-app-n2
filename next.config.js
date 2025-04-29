@@ -65,10 +65,10 @@ const nextConfig = {
         source: "/candidate/profile/work-experience",
         destination: "/candidates-dashboard/profile/add-work-experience",
       },
-      {
-        source: "/candidate/employers",
-        destination: "/candidates-dashboard/employers",
-      },
+      // {
+      //   source: "/candidate/employers",
+      //   destination: "/candidates-dashboard/employers",
+      // },
       {
         source: "/candidate/agencies",
         destination: "/candidates-dashboard/agencies",
