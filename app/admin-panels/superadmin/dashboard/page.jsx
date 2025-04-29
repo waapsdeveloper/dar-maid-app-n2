@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import DashboadHome from "@/components/dashboard-pages/superadmin-dashboard/dashboard";
+import DashboadHome from "./DashboardPage";
 
 export const metadata = {
   title: "SuperAdmin Dashboard || Domesta  - Listing Board",
