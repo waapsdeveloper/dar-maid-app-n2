@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import ProfilePage from "./DashboardPage";
+import DashboardPage from "./DashboardPage";
 
 export const metadata = {
   title: "Change Password || Domesta  - Listing Board",

@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from "react";
-import Select from "react-select"; // Added react-select import
 
 const ResidenceInfo = () => {
     // State to manage form data
@@ -21,44 +20,29 @@ const ResidenceInfo = () => {
         setFormData({ ...formData, [field]: value });
     };
 
-    // Handle react-select changes
-    const handleSelectChange = (field) => (selectedOption) => {
-        setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
-    };
-
-    // Dropdown and radio options (converted to react-select format)
-    const residenceTypeOptions = [
-        { value: "House", label: "House" },
-        { value: "Flat", label: "Flat" },
-        { value: "Apartment", label: "Apartment" },
-        { value: "Villa", label: "Villa" },
-    ];
+    // Dropdown and radio options
+    // const residenceTypeOptions = ["House", "Flat", "Apartment", "Villa"];
     const countryOptions = [
-        { value: "Bahrain", label: "Bahrain" },
-        { value: "Kuwait", label: "Kuwait" },
-        { value: "Oman", label: "Oman" },
-        { value: "Qatar", label: "Qatar" },
-        { value: "Saudi Arabia", label: "Saudi Arabia" },
-        { value: "United Arab Emirates", label: "United Arab Emirates" },
+        "Bahrain",
+        "Kuwait",
+        "Oman",
+        "Qatar",
+        "Saudi Arabia",
+        "United Arab Emirates",
     ];
-    const typeOfResidenceOptions = [
-        { value: "House", label: "House" },
-        { value: "Flat", label: "Flat" },
-        { value: "Villa", label: "Villa" },
-        { value: "Apartment", label: "Apartment" },
-    ];
+    const typeOfResidenceOptions = ["House", "Flat","Villa", "Apartment"];
     const yesNoOptions = ["Yes", "No"];
 
     // Form field configurations
     const fields = [
-        {
-            type: "select",
-            name: "residenceType",
-            label: "House/Flat/Apartment/Villa",
-            options: residenceTypeOptions,
-            colClass: "col-lg-3 col-md-12",
-            required: true,
-        },
+        // {
+        //     type: "select",
+        //     name: "residenceType",
+        //     label: "House/Flat/Apartment/Villa",
+        //     options: residenceTypeOptions,
+        //     colClass: "col-lg-3 col-md-12",
+        //     required: true,
+        // },
         {
             type: "select",
             name: "typeOfResidence",
@@ -107,6 +91,7 @@ const ResidenceInfo = () => {
             colClass: "col-lg-3 col-md-12",
             required: true,
         },
+        
         {
             type: "radio",
             name: "accommodationProvided",
@@ -118,8 +103,8 @@ const ResidenceInfo = () => {
     ];
 
     return (
-        <form className="default-form" style={{ overflow: "hidden" }}>
-            <div className="row" style={{ margin: "0",padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap" }}>
+        <form className="default-form">
+            <div className="row" style={{ padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap" }}>
                 {fields.map((field, index) => (
                     <div
                         key={index}
@@ -156,16 +141,20 @@ const ResidenceInfo = () => {
                             </div>
                         )}
                         {field.type === "select" && (
-                            <Select
+                            <select
+                                className="chosen-single form-select"
                                 name={field.name}
-                                options={field.options}
-                                className="basic-multi-select"
-                                classNamePrefix="select"
-                                placeholder={`Select ${field.label}`}
-                                value={field.options.find(option => option.value === formData[field.name]) || null}
-                                onChange={handleSelectChange(field.name)}
+                                value={formData[field.name]}
+                                onChange={(e) => handleChange(field.name, e.target.value)}
                                 required={field.required}
-                            />
+                            >
+                                <option value="">Select {field.label}</option>
+                                {field.options.map((option, idx) => (
+                                    <option key={idx} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
                         )}
                         {field.type === "text" && (
                             <input

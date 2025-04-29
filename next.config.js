@@ -18,6 +18,22 @@ const nextConfig = {
         source: "/panels/employee/profile",
         destination: "/admin-panels/employee/profile",
       },
+      {
+        source: "/panels/employer/profile",
+        destination: "/admin-panels/employer/profile",
+      },
+
+      {
+        source: "/panels/employer/dashboard",
+        destination: "/admin-panels/employer/dashboard",
+      },
+
+
+
+
+
+
+
 
       // Agency
 
@@ -38,6 +54,8 @@ const nextConfig = {
         source: "/candidates-details/:slug",
         destination: "/candidates-single-v1/:slug",
       },
+      
+      
 
       {
         source: "/candidate/profile",

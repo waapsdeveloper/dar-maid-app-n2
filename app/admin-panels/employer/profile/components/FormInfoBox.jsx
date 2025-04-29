@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from "react";
-import Select from "react-select";
 
 const FormInfoBox = () => {
+    // State to manage form data
     const [formData, setFormData] = useState({
         gender: "",
         dateOfBirth: "",
@@ -18,46 +18,29 @@ const FormInfoBox = () => {
         specialNeedsCare: "",
     });
 
+    // Handle input changes
     const handleChange = (field, value) => {
         setFormData({ ...formData, [field]: value });
     };
 
-    const handleSelectChange = (field) => (selectedOption) => {
-        setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
-    };
-
-    const genderOptions = [
-        { value: "Male", label: "Male" },
-        { value: "Female", label: "Female" },
-        { value: "Other", label: "Other" },
-    ];
+    // Dropdown and radio options
+    const genderOptions = ["Male", "Female", "Other"];
     const nationalityOptions = [
-        { value: "Bahrain", label: "Bahrain" },
-        { value: "Kuwait", label: "Kuwait" },
-        { value: "Oman", label: "Oman" },
-        { value: "Qatar", label: "Qatar" },
-        { value: "Saudi Arabia", label: "Saudi Arabia" },
-        { value: "United Arab Emirates", label: "United Arab Emirates" },
+        "Bahrain",
+        "Kuwait",
+        "Oman",
+        "Qatar",
+        "Saudi Arabia",
+        "United Arab Emirates",
     ];
-    const religionOptions = [
-        { value: "Islam", label: "Islam" },
-        { value: "Christianity", label: "Christianity" },
-        { value: "Hinduism", label: "Hinduism" },
-        { value: "Sikh", label: "Sikh" },
-        { value: "Other", label: "Other" },
-    ];
-    const householdTypeOptions = [
-        { value: "Local", label: "Local" },
-        { value: "Expat", label: "Expat" },
-    ];
-    const childrenAgeRangeOptions = [
-        { value: "Infant", label: "Infant" },
-        { value: "Toddler", label: "Toddler" },
-        { value: "Teen", label: "Teen" },
-    ];
+    const religionOptions = ["Islam", "Christianity", "Hinduism", "Sikh", "Other"];
+    const householdTypeOptions = ["Local", "Expat"];
+    const childrenAgeRangeOptions = ["Infant", "Toddler", "Teen"];
     const yesNoOptions = ["Yes", "No"];
 
+    // Form field configurations
     const fields = [
+        // Personal & Household Info
         {
             type: "select",
             name: "gender",
@@ -149,8 +132,8 @@ const FormInfoBox = () => {
     ];
 
     return (
-        <form className="default-form" style={{ overflow: "hidden" }}>
-            <div className="row" style={{ padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap", margin: "0" }}>
+        <form className="default-form">
+            <div className="row" style={{ padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap" }}>
                 {fields.map((field, index) => (
                     <div
                         key={index}
@@ -198,16 +181,20 @@ const FormInfoBox = () => {
                             />
                         )}
                         {field.type === "select" && (
-                            <Select
+                            <select
+                                className="chosen-single form-select"
                                 name={field.name}
-                                options={field.options}
-                                className="basic-multi-select"
-                                classNamePrefix="select"
-                                placeholder={`Select ${field.label}`}
-                                value={field.options.find(option => option.value === formData[field.name]) || null}
-                                onChange={handleSelectChange(field.name)}
+                                value={formData[field.name]}
+                                onChange={(e) => handleChange(field.name, e.target.value)}
                                 required={field.required}
-                            />
+                            >
+                                <option value="">Select {field.label}</option>
+                                {field.options.map((option, idx) => (
+                                    <option key={idx} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
                         )}
                         {field.type === "number" && (
                             <input

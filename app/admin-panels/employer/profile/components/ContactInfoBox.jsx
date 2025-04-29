@@ -53,8 +53,8 @@ const ContactInfoBox = () => {
     ];
 
     return (
-        <form className="default-form" style={{ overflow: "hidden" }}>
-            <div className="row" style={{ margin: "0",padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap" }}>
+        <form className="default-form">
+            <div className="row" style={{ padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap" }}>
                 {fields.map((field, index) => (
                     <div key={index} className={`form-group ${field.colClass}`}>
                         <label
