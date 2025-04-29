@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react";
+import CardForm from "@/templates/forms/card-form";
 
 const FormInfoBox = () => {
     // State to manage form data
@@ -130,105 +131,18 @@ const FormInfoBox = () => {
             required: true,
         },
     ];
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Form submitted with data:", formData);
+        // Add your form submission logic here, such as API calls
+    };
 
     return (
-        <form className="default-form">
-            <div className="row" style={{ padding: "1rem", display: "flex", alignItems: "flex-start", flexWrap: "wrap" }}>
-                {fields.map((field, index) => (
-                    <div
-                        key={index}
-                        className={`form-group ${field.colClass}`}
-                        style={{ display: "flex", flexDirection: "column", marginBottom: "1.5rem" }}
-                    >
-                        <label
-                            style={{
-                                color: "#696969",
-                                fontWeight: "500",
-                                minHeight: "2rem",
-                                whiteSpace: "normal",
-                                wordWrap: "break-word",
-                            }}
-                        >
-                            {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
-                        </label>
-                        {field.type === "radio" && (
-                            <div style={{ display: "flex", gap: "20px" }}>
-                                {field.options.map((option, idx) => (
-                                    <label key={idx} style={{ display: "flex", alignItems: "center" }}>
-                                        <input
-                                            type="radio"
-                                            name={field.name}
-                                            value={option.toLowerCase()}
-                                            checked={formData[field.name] === option.toLowerCase()}
-                                            onChange={(e) => handleChange(field.name, e.target.value)}
-                                            required={field.required}
-                                            style={{ transform: "scale(1.5)", marginRight: "8px" }}
-                                        />
-                                        <span style={{ fontSize: "1.1rem" }}>{option}</span>
-                                    </label>
-                                ))}
-                            </div>
-                        )}
-                        {field.type === "date" && (
-                            <input
-                                type="date"
-                                name={field.name}
-                                value={formData[field.name]}
-                                onChange={(e) => handleChange(field.name, e.target.value)}
-                                required={field.required}
-                                className="form-control"
-                                style={field.style}
-                            />
-                        )}
-                        {field.type === "select" && (
-                            <select
-                                className="chosen-single form-select"
-                                name={field.name}
-                                value={formData[field.name]}
-                                onChange={(e) => handleChange(field.name, e.target.value)}
-                                required={field.required}
-                            >
-                                <option value="">Select {field.label}</option>
-                                {field.options.map((option, idx) => (
-                                    <option key={idx} value={option}>
-                                        {option}
-                                    </option>
-                                ))}
-                            </select>
-                        )}
-                        {field.type === "number" && (
-                            <input
-                                type="number"
-                                name={field.name}
-                                placeholder={field.placeholder}
-                                value={formData[field.name]}
-                                onChange={(e) => handleChange(field.name, e.target.value)}
-                                required={field.required}
-                                className="form-control"
-                                min="0"
-                            />
-                        )}
-                    </div>
-                ))}
-                <div style={{ display: "flex", justifyContent: "flex-end", width: "100%", marginTop: "1rem", paddingRight: "2.5rem" }}>
-                    <button
-                        type="submit"
-                        style={{
-                            padding: "0.75rem 1.5rem",
-                            border: "none",
-                            borderRadius: "0.5rem",
-                            backgroundColor: "#1a73e8",
-                            color: "white",
-                            cursor: "pointer",
-                            fontSize: "1rem",
-                            fontWeight: "600",
-                        }}
-                    >
-                        Save Details
-                    </button>
-                </div>
-            </div>
-        </form>
+          <CardForm
+                    fields={fields}
+                    formData={formData}
+                    onSubmit={handleSubmit}
+                />
     );
 };
 
