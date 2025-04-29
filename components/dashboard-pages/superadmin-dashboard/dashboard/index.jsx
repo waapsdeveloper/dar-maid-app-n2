@@ -1,13 +1,13 @@
-import MobileMenu from "../../../header/MobileMenu";
-import DashboardHeader from "../../../header/DashboardHeader";
-import LoginPopup from "../../../common/form/login/LoginPopup";
+import MobileMenu from "@/globals/header/MobileMenu";
+import DashboardHeader from "@/globals/header/DashboardHeader";
+import LoginPopup from "@/globals/login/LoginPopup";
+import BreadCrumb from "@/components/common/Breadcrumb";
 import DashboardSuperAdminSidebar from "../../../header/DashboardSuperAdminSidebar";
-import BreadCrumb from "../../BreadCrumb";
 import TopCardBlock from "./components/TopCardBlock";
 import ProfileChart from "./components/ProfileChart";
 import Notification from "./components/Notification";
 import Applicants from "./components/Applicants";
-import CopyrightFooter from "../../CopyrightFooter";
+import CopyrightFooter from "@/globals/footer/CopyrightFooter";
 import MenuToggler from "../../MenuToggler";
 
 const Index = () => {
@@ -96,4 +96,4 @@ const Index = () => {
 
 export default Index;
 
-<div>Hello </div>
+<div>Hello </div>;

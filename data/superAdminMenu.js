@@ -3,7 +3,7 @@ module.exports = [
     id: 1,
     name: "Dashboard",
     icon: "la-home", // Or "la-tachometer" for speedometer style
-    routePath: "/superadmin/dashboard",
+    routePath: "/panels/super-admin/dashboard",
     active: "active",
   },
   {

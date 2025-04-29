@@ -53,7 +53,7 @@ const DefaulHeader2 = () => {
           router.push("/panels/agency/dashboard");
           break;
         case "superadmin":
-          router.push("/superadmin/dashboard");
+          router.push("/panels/super-admin/dashboard");
           break;
         default:
           router.push("/login");

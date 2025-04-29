@@ -3,6 +3,12 @@ const nextConfig = {
   reactStrictMode: true,
   async rewrites() {
     return [
+      //Super admin
+      {
+        source: "/panels/super-admin/dashboard",
+        destination: "/admin-panels/super-admin/dashboard",
+      },
+
       // Employees / Candidates
       {
         source: "/panels/employee/dashboard",
