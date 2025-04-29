@@ -8,14 +8,14 @@ import DsPageTitle from '../misc/ds-page-titles';
 import MenuToggler from '@/components/dashboard-pages/MenuToggler';
 import CopyrightFooter from '@/globals/footer/CopyrightFooter';
 
-const DsPageOuter = ({ headerType, title, subtitle, menuData, children }) => {
+const DsPageOuter = ({ headerType, title, subtitle, children }) => {
   return (
     <div className="page-wrapper dashboard">
       <span className="header-span"></span>
       <LoginPopup />
       <DashboardHeader headerType={headerType} />
       <MobileMenu />
-      <DashboardSidebar menuData={menuData} />
+      <DashboardSidebar headerType={headerType} />
 
       <section className="user-dashboard">
         <div className="dashboard-outer" style={{ padding: '1rem' }}>

@@ -8,8 +8,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
 import { menuToggle } from "@/features/toggle/toggleSlice";
 import { logout } from "@/features/auth/authSlice";
+import candidateMenuData from "@/data/candidatesMenuData";
+import employerMenuData from "@/data/employerMenuData";
 
-const DashboardSidebar = ({ menuData }) => {
+const DashboardSidebar = ({ headerType }) => {
+
+  // Sidebar menu data
+  const menuData = headerType === "candidate" ? candidateMenuData : employerMenuData;
+
+
   const { menu } = useSelector((state) => state.toggle);
   const percentage = 30;
 
@@ -61,30 +68,7 @@ const DashboardSidebar = ({ menuData }) => {
               )}
             </li>
           ))}
-        </ul>
-        {/* End navigation */}
-
-        <div className="skills-percentage">
-          <h4>Skills Percentage</h4>
-          <p>
-            Put value for <strong>Cover Image</strong> field to increase your
-            skill up to <strong>85%</strong>
-          </p>
-          <div style={{ width: 200, height: 200, margin: "auto" }}>
-            <CircularProgressbar
-              background
-              backgroundPadding={6}
-              styles={buildStyles({
-                backgroundColor: "#7367F0",
-                textColor: "#fff",
-                pathColor: "#fff",
-                trailColor: "transparent",
-              })}
-              value={percentage}
-              text={`${percentage}%`}
-            />
-          </div>
-        </div>
+        </ul>        
       </div>
     </div>
   );

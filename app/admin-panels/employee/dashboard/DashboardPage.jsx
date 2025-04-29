@@ -7,7 +7,7 @@ import DsPageOuter from "@/templates/layouts/ds-page-outer";
 const DashboardPage = () => {
   return (
 
-    <DsPageOuter headerType={'candidate'} title="Dashboard33!" subtitle="Ready to jump back in?" menuData={[]}>
+    <DsPageOuter headerType={'candidate'} title="Welcome John!" subtitle="Ready to jump back in?">
       <div className="row">
         <TopCardBlock />
       </div>
