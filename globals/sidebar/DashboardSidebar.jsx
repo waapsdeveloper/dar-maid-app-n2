@@ -68,7 +68,12 @@ const DashboardSidebar = ({ headerType }) => {
   const isActiveLink = (routePath, currentPath) => routePath === currentPath;
 
   return (
-    <div className={`user-sidebar ${menu ? "sidebar_open" : ""}`}>
+    <div
+      className={`user-sidebar ${menu ? "sidebar_open" : ""}`}
+      style={{ width: "17%", 
+
+      }} // Adjust width and padding here
+    >
       {/* Start sidebar close icon */}
       <div className="pro-header text-end pb-0 mb-0 show-1023">
         <div className="fix-icon" onClick={menuToggleHandler}>
