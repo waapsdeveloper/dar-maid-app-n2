@@ -11,7 +11,8 @@ import candidateMenuData from "@/data/candidatesMenuData";
 import employerMenuData from "@/data/employerMenuData";
 import { useEffect, useState } from "react";
 import { ProfileTypes } from "@/data/globalKeys";
-
+import agencyMenuData from "@/data/agencyMenuData";
+import superAdminMenu from "@/data/superAdminMenu";
 const DashboardSidebar = ({ headerType }) => {
   // Sidebar menu data
   const [profileType, setProfileType] = useState(null);
@@ -37,7 +38,7 @@ const DashboardSidebar = ({ headerType }) => {
       menuData = adminMenuData;
       break;
     case ProfileTypes.SUPERADMIN:
-      menuData = superAdminMenuData;
+      menuData = superAdminMenu;
       break;
     default:
       console.warn("Unknown profile type:", profileType);
