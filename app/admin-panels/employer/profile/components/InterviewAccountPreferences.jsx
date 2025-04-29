@@ -3,6 +3,7 @@
 import Select from "react-select";
 import { useState } from "react";
 import CardForm from "@/templates/forms/card-form";
+import FancyTable from "@/templates/tables/fancy-table";
 
 // Define inputStyle for inputs
 const inputStyle = {
@@ -73,132 +74,97 @@ const InterviewAccountPreferences = () => {
         { value: "No", label: "No" },
     ];
 
+    // Field configurations for interviews table
+    const interviewFields = [
+        { key: "title", label: "Title" },
+        { key: "date", label: "Date" },
+        { key: "label", label: "Label" },
+        { key: "status", label: "Status" },
+        {
+            key: "actions",
+            label: "Actions",
+            render: (row) => (
+                <div style={{ display: "flex", gap: "5px" }}>
+                    {row?.status && row?.status === "Pending" && (
+                        <button
+                            onClick={() => handleConfirm(row.id)}
+                            style={{
+                                padding: "0.3rem 0.8rem",
+                                border: "none",
+                                borderRadius: "0.3rem",
+                                backgroundColor: "#2563eb",
+                                color: "white",
+                                cursor: "pointer",
+                                fontSize: "0.8rem",
+                            }}
+                        >
+                            Confirm
+                        </button>
+                    )}
+ |              <button
+                        onClick={() => handleCancel(row.id)}
+                        style={{
+                            padding: "0.3rem 0.8rem",
+                            border: "none",
+                            borderRadius: "0.3rem",
+                            backgroundColor: "#2563eb",
+                            color: "white",
+                            cursor: "pointer",
+                            fontSize: "0.8rem",
+                        }}
+                    >
+                        Cancel
+                    </button>
+                </div>
+            ),
+        },
+    ];
+
+    // Field configurations for hirings table
+    const hiringFields = [
+        { key: "name", label: "Name" },
+        { key: "position", label: "Position" },
+        { key: "hireDate", label: "Hire Date" },
+        {
+            key: "actions",
+            label: "Actions",
+            render: (row) => (
+                <div style={{ display: "flex", gap: "5px" }}>
+                    <button
+                        onClick={() => handleContact(row?.id)}
+                        style={{
+                            padding: "0.3rem 0.8rem",
+                            border: "none",
+                            borderRadius: "0.3rem",
+                            backgroundColor: "#2563eb",
+                            color: "white",
+                            cursor: "pointer",
+                            fontSize: "0.8rem",
+                        }}
+                    >
+                        Contact
+                    </button>
+                    <button
+                        onClick={() => handleRemove(row?.id)}
+                        style={{
+                            padding: "0.3rem 0.8rem",
+                            border: "none",
+                            borderRadius: "0.3rem",
+                            backgroundColor: "#2563eb",
+                            color: "white",
+                            cursor: "pointer",
+                            fontSize: "0.8rem",
+                        }}
+                    >
+                        Remove
+                    </button>
+                </div>
+            ),
+        },
+    ];
+
     // Form field configurations
     const fields = [
-        {
-            type: "custom",
-            name: "interviews",
-            label: "Interviews",
-            colClass: "col-lg-12 col-md-12",
-            render: () => (
-                <div>
-                    <table style={{ width: "100%", borderCollapse: "collapse", border: "1px solid #ddd" }}>
-                        <thead>
-                            <tr style={{ backgroundColor: "#f5f5f5", height: "35px" }}>
-                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Title</th>
-                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Date</th>
-                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Label</th>
-                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Status</th>
-                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {interviews.map((interview, idx) => (
-                                <tr key={idx} style={{ height: "40px" }}>
-                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem" }}>{interview.title}</td>
-                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem" }}>{interview.date}</td>
-                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem" }}>{interview.label}</td>
-                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem", color: interview.status === "Confirmed" ? "green" : "orange" }}>
-                                        {interview.status}
-                                    </td>
-                                    <td style={{ padding: "5px", border: "1px solid #ddd", display: "flex", gap: "5px" }}>
-                                        {interview.status === "Pending" && (
-                                            <button
-                                                onClick={() => handleConfirm(interview.id)}
-                                                style={{
-                                                    padding: "0.3rem 0.8rem",
-                                                    border: "none",
-                                                    borderRadius: "0.3rem",
-                                                    backgroundColor: "#2563eb",
-                                                    color: "white",
-                                                    cursor: "pointer",
-                                                    fontSize: "0.8rem",
-                                                }}
-                                            >
-                                                Confirm
-                                            </button>
-                                        )}
-                                        <button
-                                            onClick={() => handleCancel(interview.id)}
-                                            style={{
-                                                padding: "0.3rem 0.8rem",
-                                                border: "none",
-                                                borderRadius: "0.3rem",
-                                                backgroundColor: "#2563eb",
-                                                color: "white",
-                                                cursor: "pointer",
-                                                fontSize: "0.8rem",
-                                            }}
-                                        >
-                                            Cancel
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            ),
-        },
-        {
-            type: "custom",
-            name: "hirings",
-            label: "Hirings",
-            colClass: "col-lg-12 col-md-12",
-            render: () => (
-                <div>
-                    <table style={{ width: "100%", borderCollapse: "collapse", border: "1px solid #ddd" }}>
-                        <thead>
-                            <tr style={{ backgroundColor: "#f5f5f5", height: "35px" }}>
-                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Name</th>
-                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Position</th>
-                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Hire Date</th>
-                                <th style={{ padding: "5px", border: "1px solid #ddd", textAlign: "left", fontSize: "0.9rem" }}>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {hirings.map((hiring, idx) => (
-                                <tr key={idx} style={{ height: "40px" }}>
-                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem" }}>{hiring.name}</td>
-                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem" }}>{hiring.position}</td>
-                                    <td style={{ padding: "5px", border: "1px solid #ddd", fontSize: "0.9rem" }}>{hiring.hireDate}</td>
-                                    <td style={{ padding: "5px", border: "1px solid #ddd", display: "flex", gap: "5px" }}>
-                                        <button
-                                            onClick={() => handleContact(hiring.id)}
-                                            style={{
-                                                padding: "0.3rem 0.8rem",
-                                                border: "none",
-                                                borderRadius: "0.3rem",
-                                                backgroundColor: "#2563eb",
-                                                color: "white",
-                                                cursor: "pointer",
-                                                fontSize: "0.8rem",
-                                            }}
-                                        >
-                                            Contact
-                                        </button>
-                                        <button
-                                            onClick={() => handleRemove(hiring.id)}
-                                            style={{
-                                                padding: "0.3rem 0.8rem",
-                                                border: "none",
-                                                borderRadius: "0.3rem",
-                                                backgroundColor: "#2563eb",
-                                                color: "white",
-                                                cursor: "pointer",
-                                                fontSize: "0.8rem",
-                                            }}
-                                        >
-                                            Remove
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            ),
-        },
         {
             type: "select",
             name: "salaryRangeFlexible",
@@ -227,14 +193,28 @@ const InterviewAccountPreferences = () => {
     };
 
     return (
-        <CardForm
-            fields={fields}
-            formData={formData}
-            onSubmit={handleSubmit}
-            handleChange={handleChange}
-            handleSelectChange={handleSelectChange}
-            handleFileChange={handleFileChange}
-        />
+        <div>
+            <FancyTable
+                fields={interviewFields}
+                data={interviews}
+                title="Interviews"
+                filterOptions={[]}
+            />
+            <FancyTable
+                fields={hiringFields}
+                data={hirings}
+                title="Hirings"
+                filterOptions={[]}
+            />
+            <CardForm
+                fields={fields}
+                formData={formData}
+                onSubmit={handleSubmit}
+                handleChange={handleChange}
+                handleSelectChange={handleSelectChange}
+                handleFileChange={handleFileChange}
+            />
+        </div>
     );
 };
 
