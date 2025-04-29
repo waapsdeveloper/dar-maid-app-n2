@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -47,7 +47,7 @@ const DefaulHeader2 = () => {
           router.push("/employer/dashboard");
           break;
         case "employee":
-          router.push("/candidate/dashboard");
+          router.push("/panels/employee/dashboard");
           break;
         case "agency":
           router.push("/agency/dashboard");
@@ -62,13 +62,22 @@ const DefaulHeader2 = () => {
   };
 
   return (
-    <header className={`main-header ${navbar ? "fixed-header animated slideInDown" : ""}`}>
+    <header
+      className={`main-header ${
+        navbar ? "fixed-header animated slideInDown" : ""
+      }`}
+    >
       <div className="main-box">
         <div className="nav-outer">
           <div className="logo-box">
             <div className="logo">
               <Link href="/">
-                <Image width={154} height={50} src="/images/logo.png" alt="brand" />
+                <Image
+                  width={154}
+                  height={50}
+                  src="/images/logo.png"
+                  alt="brand"
+                />
               </Link>
             </div>
           </div>
@@ -99,11 +108,16 @@ const DefaulHeader2 = () => {
                 {dropdownOpen &&
                   employerMenuData.map((item) => (
                     <li
-                      className={`${isActiveLink(item.routePath, pathname) ? "active" : ""} mb-1`}
+                      className={`${
+                        isActiveLink(item.routePath, pathname) ? "active" : ""
+                      } mb-1`}
                       key={item.id}
                     >
                       {item.name === "Logout" ? (
-                        <button onClick={handleLogout} className="dropdown-item">
+                        <button
+                          onClick={handleLogout}
+                          className="dropdown-item"
+                        >
                           <i className={`la ${item.icon}`}></i> {item.name}
                         </button>
                       ) : (

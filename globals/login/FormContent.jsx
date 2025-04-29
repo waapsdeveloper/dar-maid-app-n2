@@ -44,14 +44,14 @@ const FormContent = () => {
       if (modalInstance) {
         modalInstance.hide();
       }
-    }    
+    }
 
     switch (userData.role) {
       case "employer":
         router.push("/employer/dashboard");
         break;
       case "employee":
-        router.push("/candidate/dashboard");
+        router.push("/panels/employee/dashboard");
         break;
       case "agency":
         router.push("/agency/dashboard");
