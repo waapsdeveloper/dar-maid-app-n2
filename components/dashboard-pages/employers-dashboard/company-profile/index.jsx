@@ -7,17 +7,17 @@ import LoginPopup from "../../../common/form/login/LoginPopup";
 import DashboardEmployerSidebar from "../../../header/DashboardEmployerSidebar";
 import BreadCrumb from "../../BreadCrumb";
 import MyProfile from "./components/my-profile";
-import SocialNetworkBox from "./components/SocialNetworkBox";
-import ContactInfoBox from "./components/ContactInfoBox";
+import SocialNetworkBox from "../../../../app/admin-panels/employer/profile/components/SocialNetworkBox";
+import ContactInfoBox from "../../../../app/admin-panels/employer/profile/components/ContactInfoBox";
 import CopyrightFooter from "../../CopyrightFooter";
 import MenuToggler from "../../MenuToggler";
-import JobPreference from "./components/JobPreference";
-import InterviewManagement from "./components/InterviewManagement";
-import DocumentVerification from "./components/DocumentVerification";
-import ResidenceInfo from "./components/ResidenceInfo";
-import CommunicationCulturalFit from "./components/CommunicationCulruralFit";
-import WorkScheduleOfferDetails from "./components/WorkScheduleDetails";
-import InterviewAccountPreferences from "./components/InterviewAccountPreferences";
+import JobPreference from "../../../../app/admin-panels/employer/profile/components/JobPreference";
+import InterviewManagement from "../../../../app/admin-panels/employer/profile/components/InterviewManagement";
+import DocumentVerification from "../../../../app/admin-panels/employer/profile/components/DocumentVerification";
+import ResidenceInfo from "../../../../app/admin-panels/employer/profile/components/ResidenceInfo";
+import CommunicationCulturalFit from "../../../../app/admin-panels/employer/profile/components/CommunicationCulruralFit";
+import WorkScheduleOfferDetails from "../../../../app/admin-panels/employer/profile/components/WorkScheduleDetails";
+import InterviewAccountPreferences from "../../../../app/admin-panels/employer/profile/components/InterviewAccountPreferences";
 
 const index = () => {
     // Added state for managing active tab

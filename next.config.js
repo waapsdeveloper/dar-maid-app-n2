@@ -12,21 +12,10 @@ const nextConfig = {
         source: "/panels/employee/profile",
         destination: "/admin-panels/employee/profile",
       },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      {
+        source: "/panels/employer/profile",
+        destination: "/admin-panels/employer/profile",
+      },
 
       {
         source: "/candidates",
@@ -37,10 +26,7 @@ const nextConfig = {
         destination: "/candidates-single-v1/:slug",
       },
       
-      {
-        source: "/candidate/profile",
-        destination: "/candidates-dashboard/profile",
-      },
+      
       {
         source: "/candidate/profile/work-experience",
         destination: "/candidates-dashboard/profile/add-work-experience",

@@ -1,5 +1,5 @@
-import FormInfoBox from "./FormInfoBox";
-import LogoCoverUploader from "./LogoCoverUploader";
+import FormInfoBox from "../../../../../../app/admin-panels/employer/profile/components/FormInfoBox";
+import LogoCoverUploader from "../../../../../../app/admin-panels/employer/profile/components/LogoCoverUploader";
 
 const index = () => {
     return (
