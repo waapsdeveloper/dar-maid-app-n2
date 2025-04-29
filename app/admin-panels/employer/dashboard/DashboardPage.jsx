@@ -9,7 +9,7 @@ const DashboardPage = () => {
   return (
     <DsPageOuter
       headerType={ProfileTypes.EMPLOYER}
-      title="Welcome John!"
+      title="Welcome Peter!"
       subtitle="Ready to jump back in?"
     >
       <div className="row">
