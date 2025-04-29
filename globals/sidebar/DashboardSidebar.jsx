@@ -3,18 +3,39 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import "react-circular-progressbar/dist/styles.css";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import { useDispatch, useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
 import { menuToggle } from "@/features/toggle/toggleSlice";
 import { logout } from "@/features/auth/authSlice";
 import candidateMenuData from "@/data/candidatesMenuData";
 import employerMenuData from "@/data/employerMenuData";
+import { useEffect, useState } from "react";
 
 const DashboardSidebar = ({ headerType }) => {
 
   // Sidebar menu data
-  const menuData = headerType === "candidate" ? candidateMenuData : employerMenuData;
+  const [profileType, setProfileType] = useState(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      // const profile = await fetchProfileType();
+      setProfileType(headerType);
+    };
+    fetchProfile();
+  }, []);
+
+  const menuData =
+    profileType === ProfileTypes.EMPLOYEE
+      ? candidateMenuData
+      : profileType === ProfileTypes.EMPLOYER
+      ? employerMenuData
+      : profileType === ProfileTypes.AGENCY
+      ? agencyMenuData
+      : profileType === ProfileTypes.ADMIN
+      ? adminMenuData
+      : profileType === ProfileTypes.SUPERADMIN
+      ? superAdminMenuData
+      : [];
 
 
   const { menu } = useSelector((state) => state.toggle);

@@ -5,6 +5,7 @@ import DsPageOuter from "@/templates/layouts/ds-page-outer";
 import candidatesMenuData from "@/data/candidatesMenuData";
 import ProfileCards from "./profile-cards";
 import ProfileTabs from "./profile-tabs";
+import { ProfileTypes } from "@/data/globalKeys";
 
 export const metadata = {
   title: "Packages || Domesta  - Listing Board",
@@ -17,7 +18,7 @@ const ProfilePage = () => {
   return (
     <>
     
-      <DsPageOuter headerType={'candidate'} title="Profile!" subtitle="Ready to jump back in?" menuData={candidatesMenuData}>
+      <DsPageOuter headerType={ProfileTypes.EMPLOYEE} title="Profile!" subtitle="Ready to jump back in?" menuData={candidatesMenuData}>
       
         <ProfileTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         <ProfileCards activeTab={activeTab} />
