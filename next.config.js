@@ -3,6 +3,12 @@ const nextConfig = {
   reactStrictMode: true,
   async rewrites() {
     return [
+      //Super admin
+      {
+        source: "/panels/super-admin/dashboard",
+        destination: "/admin-panels/super-admin/dashboard",
+      },
+
       // Employees / Candidates
       {
         source: "/panels/employee/dashboard",
@@ -29,6 +35,16 @@ const nextConfig = {
 
 
 
+      // Agency
+
+      {
+        source: "/panels/agency/dashboard",
+        destination: "/admin-panels/agency/dashboard",
+      },
+      {
+        source: "/panels/agency/profile",
+        destination: "/admin-panels/agency/profile",
+      },
 
       {
         source: "/candidates",
@@ -40,6 +56,11 @@ const nextConfig = {
       },
       
       
+
+      {
+        source: "/candidate/profile",
+        destination: "/candidates-dashboard/profile",
+      },
       {
         source: "/candidate/profile/work-experience",
         destination: "/candidates-dashboard/profile/add-work-experience",
@@ -282,11 +303,13 @@ const nextConfig = {
       },
       {
         source: "/superadmin/edit-report-statistics",
-        destination: "/superadmin-dashboard/crud/website/edit-report-statistics",
+        destination:
+          "/superadmin-dashboard/crud/website/edit-report-statistics",
       },
       {
         source: "/superadmin/view-report-statistics",
-        destination: "/superadmin-dashboard/crud/website/view-report-statistics",
+        destination:
+          "/superadmin-dashboard/crud/website/view-report-statistics",
       },
       {
         source: "/superadmin/add-cities",

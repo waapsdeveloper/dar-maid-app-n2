@@ -1,20 +1,23 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
-import MobileMenu from "../../../header/MobileMenu";
-import DashboardHeader from "../../../header/DashboardHeader";
-import LoginPopup from "../../../common/form/login/LoginPopup";
-import BreadCrumb from "../../BreadCrumb";
+import MobileMenu from "@/globals/header/MobileMenu";
+import DashboardHeader from "@/globals/header/DashboardHeader";
+import LoginPopup from "@/globals/login/LoginPopup";
+import Breadcrumb from "@/components/common/Breadcrumb";
 import MyProfile from "./components/my-profile";
+import CopyrightFooter from "@/globals/footer/CopyrightFooter";
 import SocialNetworkBox from "./components/SocialNetworkBox";
 import ContactInfoBox from "./components/ContactInfoBox";
-import CopyrightFooter from "../../CopyrightFooter";
 import MenuToggler from "../../MenuToggler";
 import DashboardAgencySidebar from "@/components/header/DashboardAgencySidebar";
 import EmployementDetail from "./components/my-profile/EmployementDetail";
 import InterviewAvailability from "./components/my-profile/InterviewAvailability";
 import Document from "./components/my-profile/Document";
-import { ApplicationManagement, InterviewManagement } from "./components/my-profile/JobApplication";
+import {
+  ApplicationManagement,
+  InterviewManagement,
+} from "./components/my-profile/JobApplication";
 import LegalComplianceInfo from "./components/my-profile/LegalComplianceInfo";
 import ServiceOfferingDetails from "./components/my-profile/ServicesOffering";
 
@@ -44,13 +47,14 @@ const index = () => {
 
       {/* <!-- Dashboard --> */}
       <section className="user-dashboard">
-        <div className="dashboard-outer" style={{ padding: "0.5rem 1rem" }}> {/* Adjusted padding: 0.5rem top-bottom, 1rem left-right */}
-          <BreadCrumb title="Agency Profile!" />
+        <div className="dashboard-outer" style={{ padding: "0.5rem 1rem" }}>
+          {" "}
+          {/* Adjusted padding: 0.5rem top-bottom, 1rem left-right */}
+          <Breadcrumb title="Agency Profile!" />
           {/* breadCrumb */}
-
-          <MenuToggler style={{ marginBottom: "0" }} /> {/* Keeping marginBottom: "0" to reduce space */}
+          <MenuToggler style={{ marginBottom: "0" }} />{" "}
+          {/* Keeping marginBottom: "0" to reduce space */}
           {/* Collapsible sidebar button */}
-
           <div className="row">
             <div className="col-lg-12">
               {/* Tabs Navigation */}
@@ -72,7 +76,9 @@ const index = () => {
                       }}
                     >
                       <button
-                        className={`nav-link ${activeTab === "general-info" ? "active" : ""}`}
+                        className={`nav-link ${
+                          activeTab === "general-info" ? "active" : ""
+                        }`}
                         onClick={() => handleTabClick("general-info")}
                         style={{
                           minWidth: "150px",
@@ -98,7 +104,9 @@ const index = () => {
                       }}
                     >
                       <button
-                        className={`nav-link ${activeTab === "legal-compliance" ? "active" : ""}`}
+                        className={`nav-link ${
+                          activeTab === "legal-compliance" ? "active" : ""
+                        }`}
                         onClick={() => handleTabClick("legal-compliance")}
                         style={{
                           minWidth: "150px",
@@ -124,7 +132,9 @@ const index = () => {
                       }}
                     >
                       <button
-                        className={`nav-link ${activeTab === "services" ? "active" : ""}`}
+                        className={`nav-link ${
+                          activeTab === "services" ? "active" : ""
+                        }`}
                         onClick={() => handleTabClick("services")}
                         style={{
                           minWidth: "150px",
@@ -158,7 +168,10 @@ const index = () => {
                     {activeTab === "legal-compliance" && (
                       <div
                         className="widget-content"
-                        style={{ minHeight: "400px", padding: "10px 2.5rem 10px 2.5rem" }}
+                        style={{
+                          minHeight: "400px",
+                          padding: "10px 2.5rem 10px 2.5rem",
+                        }}
                       >
                         <LegalComplianceInfo />
                       </div>
@@ -166,7 +179,10 @@ const index = () => {
                     {activeTab === "services" && (
                       <div
                         className="widget-content"
-                        style={{ minHeight: "400px", padding: "10px 2.5rem 10px 2.5rem" }}
+                        style={{
+                          minHeight: "400px",
+                          padding: "10px 2.5rem 10px 2.5rem",
+                        }}
                       >
                         <ServiceOfferingDetails />
                       </div>
