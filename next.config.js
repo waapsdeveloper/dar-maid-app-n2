@@ -5,8 +5,8 @@ const nextConfig = {
     return [
       //Super admin
       {
-        source: "/panels/super-admin/dashboard",
-        destination: "/admin-panels/super-admin/dashboard",
+        source: "/panels/superadmin/dashboard",
+        destination: "/admin-panels/superadmin/dashboard",
       },
 
       // Employees / Candidates
