@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -10,33 +10,41 @@ import { logout } from "@/features/auth/authSlice";
 import candidateMenuData from "@/data/candidatesMenuData";
 import employerMenuData from "@/data/employerMenuData";
 import { useEffect, useState } from "react";
+import { ProfileTypes } from "@/data/globalKeys";
 
 const DashboardSidebar = ({ headerType }) => {
-
   // Sidebar menu data
   const [profileType, setProfileType] = useState(null);
-
   useEffect(() => {
-    const fetchProfile = async () => {
-      // const profile = await fetchProfileType();
+    if (headerType) {
       setProfileType(headerType);
-    };
-    fetchProfile();
-  }, []);
+    }
+  }, [headerType]);
 
-  const menuData =
-    profileType === ProfileTypes.EMPLOYEE
-      ? candidateMenuData
-      : profileType === ProfileTypes.EMPLOYER
-      ? employerMenuData
-      : profileType === ProfileTypes.AGENCY
-      ? agencyMenuData
-      : profileType === ProfileTypes.ADMIN
-      ? adminMenuData
-      : profileType === ProfileTypes.SUPERADMIN
-      ? superAdminMenuData
-      : [];
+  console.log("profileType", profileType);
+  let menuData = [];
+  switch (profileType) {
+    case ProfileTypes.CANDIDATE:
+      menuData = candidateMenuData;
+      break;
+    case ProfileTypes.EMPLOYER:
+      menuData = employerMenuData;
+      break;
+    case ProfileTypes.AGENCY:
+      menuData = agencyMenuData;
+      break;
+    case ProfileTypes.ADMIN:
+      menuData = adminMenuData;
+      break;
+    case ProfileTypes.SUPERADMIN:
+      menuData = superAdminMenuData;
+      break;
+    default:
+      console.warn("Unknown profile type:", profileType);
+      menuData = [];
+  }
 
+  console.log("menuData", menuData);
 
   const { menu } = useSelector((state) => state.toggle);
   const percentage = 30;
@@ -89,7 +97,7 @@ const DashboardSidebar = ({ headerType }) => {
               )}
             </li>
           ))}
-        </ul>        
+        </ul>
       </div>
     </div>
   );
