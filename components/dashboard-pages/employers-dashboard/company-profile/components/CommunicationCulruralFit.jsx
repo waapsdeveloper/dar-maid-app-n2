@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from "react";
-import Select from "react-select";
 
 const CommunicationCulturalFit = () => {
     // State to manage form data
@@ -17,25 +16,9 @@ const CommunicationCulturalFit = () => {
         setFormData({ ...formData, [field]: value });
     };
 
-    // Handle react-select changes
-    const handleSelectChange = (field) => (selectedOption) => {
-        setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
-    };
-
     // Dropdown options
-    const languageOptions = [
-        { value: "English", label: "English" },
-        { value: "Arabic", label: "Arabic" },
-        { value: "Other", label: "Other" },
-    ];
-    const dietaryOptions = [
-        { value: "Halal", label: "Halal" },
-        { value: "Vegetarian", label: "Vegetarian" },
-        { value: "No Pork", label: "No Pork" },
-        { value: "Vegan", label: "Vegan" },
-        { value: "Gluten-Free", label: "Gluten-Free" },
-        { value: "Other", label: "Other" },
-    ];
+    const languageOptions = ["English", "Arabic", "Other"];
+    const dietaryOptions = ["Halal", "Vegetarian", "No Pork", "Vegan", "Gluten-Free", "Other"];
 
     // Form field configurations
     const fields = [
@@ -94,16 +77,20 @@ const CommunicationCulturalFit = () => {
                             {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
                         </label>
                         {field.type === "select" && (
-                            <Select
+                            <select
+                                className="chosen-single form-select"
                                 name={field.name}
-                                options={field.options}
-                                className="basic-multi-select"
-                                classNamePrefix="select"
-                                placeholder={`Select ${field.label}`}
-                                value={field.options.find(option => option.value === formData[field.name]) || null}
-                                onChange={handleSelectChange(field.name)}
+                                value={formData[field.name]}
+                                onChange={(e) => handleChange(field.name, e.target.value)}
                                 required={field.required}
-                            />
+                            >
+                                <option value="">Select {field.label}</option>
+                                {field.options.map((option, idx) => (
+                                    <option key={idx} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
                         )}
                         {field.type === "text" && (
                             <input

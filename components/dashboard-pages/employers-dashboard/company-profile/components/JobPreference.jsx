@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from "react";
-import Select from "react-select";
 
 const JobPreference = () => {
     // State to manage form data
@@ -31,14 +30,9 @@ const JobPreference = () => {
         setFormData({ ...formData, [field]: value });
     };
 
-    // Handle react-select changes for single-select dropdowns
-    const handleSelectChange = (field) => (selectedOption) => {
-        setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
-    };
-
     // Handle specific tasks changes (multi-select)
     const handleTaskChange = (task, selectedOptions) => {
-        const values = selectedOptions ? selectedOptions.map(option => option.value) : [];
+        const values = Array.from(selectedOptions).map(option => option.value);
         setFormData({
             ...formData,
             specificTasks: {
@@ -90,46 +84,27 @@ const JobPreference = () => {
 
     // Dropdown and radio options
     const jobTypeOptions = [
-        { value: "Full-Time", label: "Full-Time" },
-        { value: "Part-Time", label: "Part-Time" },
-        { value: "Live-in", label: "Live-in" },
-        { value: "Live-out", label: "Live-out" },
-        { value: "Temporary", label: "Temporary" },
-        { value: "Monthly", label: "Monthly" },
-        { value: "Newborn Nanny", label: "Newborn Nanny" },
+        "Full-Time",
+        "Part-Time",
+        "Live-in",
+        "Live-out",
+        "Temporary",
+        "Monthly",
+        "Newborn Nanny",
     ];
-    const specificTaskOptions = [
-        { value: "Must Have", label: "Must Have" },
-        { value: "Nice to Have", label: "Nice to Have" },
-        { value: "Not Required", label: "Not Required" },
-    ];
-    const genderOptions = [
-        { value: "Male", label: "Male" },
-        { value: "Female", label: "Female" },
-        { value: "No Preference", label: "No Preference" },
-    ];
+    const specificTaskOptions = ["Must Have", "Nice to Have", "Not Required"];
+    const genderOptions = ["Male", "Female", "No Preference"];
     const nationalityOptions = [
-        { value: "Bahrain", label: "Bahrain" },
-        { value: "Kuwait", label: "Kuwait" },
-        { value: "Oman", label: "Oman" },
-        { value: "Qatar", label: "Qatar" },
-        { value: "Saudi Arabia", label: "Saudi Arabia" },
-        { value: "United Arab Emirates", label: "United Arab Emirates" },
+        "Bahrain",
+        "Kuwait",
+        "Oman",
+        "Qatar",
+        "Saudi Arabia",
+        "United Arab Emirates",
     ];
-    const experienceLevelOptions = [
-        { value: "Beginner", label: "Beginner" },
-        { value: "Intermediate", label: "Intermediate" },
-        { value: "Expert", label: "Expert" },
-    ];
-    const yesNoOptions = [
-        { value: "Yes", label: "Yes" },
-        { value: "No", label: "No" },
-    ];
-    const travelOptions = [
-        { value: "Yes", label: "Yes" },
-        { value: "Occasionally", label: "Occasionally" },
-        { value: "No", label: "No" },
-    ];
+    const experienceLevelOptions = ["Beginner", "Intermediate", "Expert"];
+    const yesNoOptions = ["Yes", "No"];
+    const travelOptions = ["Yes", "Occasionally", "No"];
 
     // Form field configurations
     const fields = [
@@ -229,28 +204,32 @@ const JobPreference = () => {
                                         <input
                                             type="radio"
                                             name={field.name}
-                                            value={option.value}
-                                            checked={formData[field.name] === option.value}
+                                            value={option.toLowerCase()}
+                                            checked={formData[field.name] === option.toLowerCase()}
                                             onChange={(e) => handleChange(field.name, e.target.value)}
                                             required={field.required}
                                             style={{ transform: "scale(1.5)", marginRight: "8px" }}
                                         />
-                                        <span style={{ fontSize: "1.1rem" }}>{option.label}</span>
+                                        <span style={{ fontSize: "1.1rem" }}>{option}</span>
                                     </label>
                                 ))}
                             </div>
                         )}
                         {field.type === "select" && (
-                            <Select
+                            <select
+                                className="chosen-single form-select"
                                 name={field.name}
-                                options={field.options}
-                                className="basic-multi-select"
-                                classNamePrefix="select"
-                                placeholder={`Select ${field.label}`}
-                                value={field.options.find(option => option.value === formData[field.name]) || null}
-                                onChange={handleSelectChange(field.name)}
+                                value={formData[field.name]}
+                                onChange={(e) => handleChange(field.name, e.target.value)}
                                 required={field.required}
-                            />
+                            >
+                                <option value="">Select {field.label}</option>
+                                {field.options.map((option, idx) => (
+                                    <option key={idx} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                            </select>
                         )}
                         {field.type === "specificTasks" && (
                             <div className="row">
@@ -271,17 +250,19 @@ const JobPreference = () => {
                                         >
                                             {task.label} {task.required && <span style={{ color: "red" }}>*</span>}
                                         </label>
-                                        <Select
-                                            isMulti
-                                            name={task.name}
-                                            options={field.options}
-                                            className="basic-multi-select"
-                                            classNamePrefix="select"
-                                            placeholder={`Select ${task.label}`}
-                                            value={field.options.filter(option => formData.specificTasks[task.name].includes(option.value))}
-                                            onChange={(selectedOptions) => handleTaskChange(task.name, selectedOptions)}
-                                            required={task.required}
-                                        />
+                                        <select
+                                            className="chosen-single form-select"
+                                            multiple
+                                            value={formData.specificTasks[task.name]}
+                                            onChange={(e) => handleTaskChange(task.name, e.target.selectedOptions)}
+                                            required={field.required}
+                                        >
+                                            {field.options.map((option, optIdx) => (
+                                                <option key={optIdx} value={option}>
+                                                    {option}
+                                                </option>
+                                            ))}
+                                        </select>
                                         {task.name === "cooking" &&
                                             (formData.specificTasks.cooking.includes("Must Have") ||
                                                 formData.specificTasks.cooking.includes("Nice to Have")) && (
