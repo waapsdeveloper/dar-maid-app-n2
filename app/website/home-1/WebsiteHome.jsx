@@ -1,24 +1,16 @@
 import Link from "next/link";
-import About from "../../../components/about/About";
-import AppSection from "../../../components/app-section/AppSection";
-import Blog from "../../../components/blog/Blog";
-import CallToAction from "../../../components/call-to-action/CallToAction";
-import Partner from "../../../components/common/partner/Partner";
 import FooterDefault from "../../../components/footer/common-footer";
-import Funfact from "../../../components/fun-fact-counter/Funfact";
 import DefaulHeader2 from "../../../components/header/DefaulHeader2";
 import MobileMenu from "../../../globals/header/MobileMenu";
 import Hero1 from "../../../components/hero/hero-1";
-import JobCategorie1 from "../job-categories/JobCategorie1";
+// import JobCategorie1 from "../job-categories/JobCategorie1";
 import JobFeatured1 from "../job-featured/JobFeatured1";
-import Testimonial from "../../../components/testimonial/Testimonial";
 import About2 from "../../../components/about/About2";
 import TopCompany from "../../../components/top-company/TopCompany";
 import Candidates from "../../../components/candidates/Candidates";
 import LoginPopup from "@/globals/login/LoginPopup";
 
-
-const index = () => {
+const WebsiteHome = () => {
   return (
     <>
       <LoginPopup />
@@ -32,7 +24,7 @@ const index = () => {
 
       <Hero1 />
       {/* End Hero Section */}
-
+      {/* 
       <section className="job-categories ui-job-categories">
         <div className="auto-container">
           <div className="sec-title text-center">
@@ -45,13 +37,11 @@ const index = () => {
             data-aos="fade-up"
             data-aos-anchor-placement="top-bottom"
           >
-            {/* <!-- Category Block --> */}
             <JobCategorie1 />
           </div>
         </div>
       </section>
-      {/* End Job Categorie Section */}
-
+    */}
       {/* <section className="job-section">
         <div className="auto-container">
           <div className="sec-title text-center">
@@ -76,26 +66,23 @@ const index = () => {
         </div>
       </section> */}
 
-       <section className="top-companies">
-       <div className="auto-container">
+      <section className="top-companies">
+        <div className="auto-container">
           <div className="sec-title text-center">
             <h2>Top Rated Employers</h2>
             <div className="text">
               Know your worth and find the job that qualify your life
             </div>
-        
           </div>
-                <div className="carousel-outer" data-aos="fade-up">
-                  <div className="companies-carousel">
-                    <TopCompany />
-                  </div>
-                </div>
-              </div>
-            </section>
+          <div className="carousel-outer" data-aos="fade-up">
+            <div className="companies-carousel">
+              <TopCompany />
+            </div>
+          </div>
+        </div>
+      </section>
 
-
-
-            <section className="job-section">
+      <section className="job-section">
         <div className="auto-container">
           <div className="sec-title text-center">
             <h2>Top Rated Agency</h2>
@@ -128,7 +115,6 @@ const index = () => {
         </div>
       </section> */}
 
-
       <section className="candidates-section">
         <div className="auto-container">
           <div className="sec-title text-center">
@@ -147,7 +133,6 @@ const index = () => {
       </section>
       {/* <!-- End Clients Section--> */}
 
-   
       <section className="about-section-two">
         <div className="auto-container">
           <div className="row">
@@ -156,9 +141,8 @@ const index = () => {
         </div>
       </section>
       <FooterDefault />
-
     </>
   );
 };
 
-export default index;
+export default WebsiteHome;
