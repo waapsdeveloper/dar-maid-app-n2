@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import shopItems from "@/data/shopItems";
 import Breadcrumb from "@/components/shop/Breadcrumb";
-import LoginPopup from "@/components/common/form/login/LoginPopup";
 
 import MobileMenu from "@/components/header/MobileMenu";
 import FooterDefault from "@/components/footer/common-footer";
@@ -16,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { addCart, addQty } from "@/features/shop/shopSlice";
 import ShopHeader from "@/components/header/ShopHeader";
 import Image from "next/image";
+import LoginPopup from "@/globals/login/LoginPopup";
 
 const ShopSingleDyanmic = ({ id }) => {
   const [product, setProducts] = useState({});

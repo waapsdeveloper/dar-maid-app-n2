@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import employersInfo from "@/data/topCompany";
-import LoginPopup from "@/components/common/form/login/LoginPopup";
+import LoginPopup from "@/globals/login/LoginPopup";
 import FooterDefault from "@/components/footer/common-footer";
 import DefaulHeader from "@/components/header/DefaulHeader";
 import MobileMenu from "@/components/header/MobileMenu";

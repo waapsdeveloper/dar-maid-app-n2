@@ -1,5 +1,5 @@
 import MobileMenu from "../../../../globals/header/MobileMenu";
-import LoginPopup from "../../../../globals/login/LoginPopup";
+import LoginPopup from "@/globals/login/LoginPopup";
 import DashboardCandidatesSidebar from "../../../header/DashboardCandidatesSidebar";
 import BreadCrumb from "../../BreadCrumb";
 import CopyrightFooter from "../../../../globals/footer/CopyrightFooter";

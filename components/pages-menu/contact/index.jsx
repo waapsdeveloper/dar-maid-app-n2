@@ -1,4 +1,4 @@
-import LoginPopup from "../../common/form/login/LoginPopup";
+import LoginPopup from "@/globals/login/LoginPopup";
 import FooterDefault from "../../footer/common-footer";
 import DefaulHeader from "../../header/DefaulHeader";
 import MobileMenu from "../../header/MobileMenu";

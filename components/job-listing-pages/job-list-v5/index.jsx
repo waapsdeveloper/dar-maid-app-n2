@@ -1,5 +1,5 @@
 import FooterDefault from "../../../components/footer/common-footer";
-import LoginPopup from "../../common/form/login/LoginPopup";
+import LoginPopup from "@/globals/login/LoginPopup";
 import DefaulHeader2 from "../../header/DefaulHeader2";
 import MobileMenu from "../../header/MobileMenu";
 import FilterJobBox from "./FilterJobBox";

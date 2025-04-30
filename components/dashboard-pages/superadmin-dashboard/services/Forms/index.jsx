@@ -1,4 +1,4 @@
-import LoginPopup from "@/components/common/form/login/LoginPopup";
+import LoginPopup from "@/globals/login/LoginPopup";
 import Pagination from "./components/pagination";
 import DashboardHeader from "@/components/header/DashboardHeader";
 import MobileMenu from "@/components/header/MobileMenu";
