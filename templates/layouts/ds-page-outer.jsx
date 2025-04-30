@@ -5,8 +5,8 @@ import DashboardHeader from '@/globals/header/DashboardHeader';
 import MobileMenu from '@/globals/header/MobileMenu';
 import DashboardSidebar from '@/globals/sidebar/DashboardSidebar';
 import DsPageTitle from '../misc/ds-page-titles';
-import MenuToggler from '@/components/dashboard-pages/MenuToggler';
 import CopyrightFooter from '@/globals/footer/CopyrightFooter';
+import MenuToggler from '@/globals/header/MenuToggler';
 
 const DsPageOuter = ({ headerType, title, subtitle, children }) => {
   return (
