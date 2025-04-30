@@ -1,5 +1,5 @@
 import Wrapper from "@/layout/Wrapper";
-import Home from "@/components/home-1";
+import Home from "@/app/website/home-1";
 
 export const metadata = {
   title: "Domesta ",
