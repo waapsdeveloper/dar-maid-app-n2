@@ -1,5 +1,5 @@
 import Link from "next/link";
-import jobFeatured from "../../data/job-featured";
+import jobFeatured from "@/data/job-featured";
 import Image from "next/image";
 
 const JobFeatured = () => {

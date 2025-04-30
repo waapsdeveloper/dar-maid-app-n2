@@ -3,7 +3,7 @@
 import Slider from "react-slick";
 import Link from "next/link";
 import Image from "next/image";
-import topCompany from "../../data/topCompany";
+import topCompany from "@/data/top-company"
 
 const TopCompany = () => {
   const settings = {

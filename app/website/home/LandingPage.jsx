@@ -3,7 +3,6 @@ import FooterDefault from "../../../components/footer/common-footer";
 import DefaulHeader2 from "../../../components/header/DefaulHeader2";
 import MobileMenu from "../../../globals/header/MobileMenu";
 import Hero1 from "../../../components/hero/hero-1";
-// import JobCategorie1 from "../job-categories/JobCategorie1";
 import JobFeatured1 from "../job-featured/JobFeatured1";
 import About2 from "../../../components/about/About2";
 import TopCompany from "../../../components/top-company/TopCompany";
