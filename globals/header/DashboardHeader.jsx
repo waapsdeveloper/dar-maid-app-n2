@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import employerMenuData from "../../data/employerMenuData";
-import HeaderNavContent from "../../components/header/HeaderNavContent";
+import HeaderNavContent from "./HeaderNavContent";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
