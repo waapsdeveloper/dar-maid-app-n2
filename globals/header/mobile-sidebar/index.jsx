@@ -2,7 +2,7 @@
 
 import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
 
-import mobileMenuData from "../../../data/mobileMenuData";
+import mobileMenuData from "../../../app/website/home/data/mobileMenuData";
 import SidebarFooter from "./SidebarFooter";
 import SidebarHeader from "./SidebarHeader";
 import {

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import DsPageOuter from "@/templates/layouts/ds-page-outer";
-import candidatesMenuData from "@/data/candidatesMenuData";
+import candidatesMenuData from "@/app/website/home/data/candidatesMenuData";
 import ProfileCards from "./profile-cards";
 import ProfileTabs from "./profile-tabs";
 

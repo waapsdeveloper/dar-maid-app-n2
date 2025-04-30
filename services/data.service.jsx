@@ -1,4 +1,4 @@
-import users from "@/data/users";
+import users from "@/app/website/home/data/users";
 
 class DataService {
   

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import DsPageOuter from "@/templates/layouts/ds-page-outer";
-import candidatesMenuData from "@/data/candidatesMenuData";
+import candidatesMenuData from "@/app/website/home/data/candidatesMenuData";
 import CardForm from "@/templates/forms/card-form";
 
 const index = () => {  

@@ -9,7 +9,7 @@ import {
   homeItems,
   pageItems,
   shopItems,
-} from "../../data/mainMenuData";
+} from "../../app/website/home/data/mainMenuData";
 import {
   isActiveParent,
   isActiveLink,

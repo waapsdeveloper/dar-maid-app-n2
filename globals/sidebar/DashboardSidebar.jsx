@@ -7,12 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
 import { menuToggle } from "@/features/toggle/toggleSlice";
 import { logout } from "@/features/auth/authSlice";
-import candidateMenuData from "@/data/candidatesMenuData";
-import employerMenuData from "@/data/employerMenuData";
+import candidateMenuData from "@/app/website/home/data/candidatesMenuData";
+import employerMenuData from "@/app/website/home/data/employerMenuData";
 import { useEffect, useState } from "react";
-import { ProfileTypes } from "@/data/globalKeys";
-import agencyMenuData from "@/data/agencyMenuData";
-import superAdminMenu from "@/data/superAdminMenu";
+import { ProfileTypes } from "@/app/website/home/data/globalKeys";
+import agencyMenuData from "@/app/website/home/data/agencyMenuData";
+import superAdminMenu from "@/app/website/home/data/superAdminMenu";
 const DashboardSidebar = ({ headerType }) => {
   // Sidebar menu data
   const [profileType, setProfileType] = useState(null);
