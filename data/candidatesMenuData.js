@@ -97,7 +97,7 @@ module.exports = [
     id: 2,
     name: "Profile", // Changed from "Company Profile"
     icon: "la-user-circle",
-    routePath: "/candidate/profile",
+    routePath: "/panels/employee/profile",
     active: "",
   },
   {

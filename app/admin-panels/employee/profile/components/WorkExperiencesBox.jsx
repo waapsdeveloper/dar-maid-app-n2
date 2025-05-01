@@ -99,7 +99,7 @@ const JobExperienceCard = () => {
 
 
   const navigateToAddExperience = () => {
-    router.push("/candidate/profile/work-experience");
+    router.push("/panels/employee/profile/work-experience");
   };
 
   return (
