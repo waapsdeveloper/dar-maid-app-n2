@@ -6,13 +6,7 @@ module.exports = [
     routePath: "/panels/superadmin/dashboard",
     active: "active",
   },
-  {
-    id: 15,
-    name: "Roles",
-    icon: "la-home", // Or "la-tachometer" for speedometer style
-    routePath: "/superadmin/roles",
-    active: "active",
-  },
+
   {
     id: 8,
     name: "Employee",
@@ -22,7 +16,7 @@ module.exports = [
   },
   {
     id: 9,
-    name: "Agency",
+    name: "Agent",
     icon: "la-building",
     routePath: "/superadmin/agencies",
     active: "",
@@ -36,7 +30,7 @@ module.exports = [
   },
   {
     id: 14,
-    name: "Interview Requests",
+    name: "Interview",
     icon: "la-briefcase",
     routePath: "/superadmin/interview-requests",
     active: "",
@@ -44,60 +38,20 @@ module.exports = [
 
   {
     id: 3,
-    name: "Queries",
+    name: "Hiring",
     icon: "la-question-circle",
     routePath: "/superadmin/query",
     active: "",
   },
-  {
-    id: 4,
-    name: "Website",
-    icon: "la-globe",
-    routePath: "/superadmin/websites",
-    active: "",
-  },
-  {
-    id: 5,
-    name: "Audit Log",
-    icon: "la-clipboard-list",
-    routePath: "/superadmin/auditlog",
-    active: "",
-  },
+
   {
     id: 6,
-    name: "Report and Statistics",
+    name: "Report",
     icon: "la-chart-bar",
     routePath: "/superadmin/report",
     active: "",
   },
-  {
-    id: 7,
-    name: "Service",
-    icon: "la-concierge-bell",
-    routePath: "/superadmin/services",
-    active: "",
-  },
-  {
-    id: 12,
-    name: "Countries",
-    icon: "la-flag",
-    routePath: "/superadmin/countries",
-    active: "",
-  },
-  {
-    id: 13,
-    name: "States",
-    icon: "la-map-marker",
-    routePath: "/superadmin/states",
-    active: "",
-  },
-  {
-    id: 16,
-    name: "Cities",
-    icon: "la-city",
-    routePath: "/superadmin/cities",
-    active: "",
-  },
+
   {
     id: 2,
     name: "Profile",
