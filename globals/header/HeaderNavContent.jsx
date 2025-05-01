@@ -1,15 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import {
-  blogItems,
-  candidateItems,
-  employerItems,
-  findJobItems,
-  homeItems,
+import {  
   pageItems,
-  shopItems,
-} from "../../app/website/home/data/mainMenuData";
+} from "../../data/mainMenuData";
 import {
   isActiveParent,
   isActiveLink,
