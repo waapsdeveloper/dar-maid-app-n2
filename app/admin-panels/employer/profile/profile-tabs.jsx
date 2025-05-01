@@ -25,7 +25,7 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
   };
 
 return (
-    <div>
+    
         <div className="d-flex align-items-center justify-content-between mb-4">
             <div className="d-none d-md-flex align-items-center gap-2 flex-wrap">
                 {tabs.map((tab) => (
@@ -52,7 +52,7 @@ return (
                 </select>
             </div>
         </div>
-    </div>
+   
 );
 };
 

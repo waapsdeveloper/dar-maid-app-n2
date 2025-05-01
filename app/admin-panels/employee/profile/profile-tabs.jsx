@@ -1,8 +1,9 @@
-import React, { useRef } from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import React, { useRef, useState, useEffect } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const ProfileTabs = ({ activeTab, setActiveTab }) => {
   const scrollRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const tabs = [
     { name: "MyProfile", label: "Employee's Profile" },
@@ -15,46 +16,161 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
     { name: "SocialNetworkBox", label: "Social Networks" },
   ];
 
-  const scroll = (direction) => {
+  const scrollLeft = () => {
     if (scrollRef.current) {
-      const scrollAmount = 150;
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
+      const newPosition = Math.max(scrollPosition - 150, 0);
+      setScrollPosition(newPosition);
+      scrollRef.current.scrollTo({
+        left: newPosition,
         behavior: "smooth",
       });
     }
   };
 
-return (
-    <div>
-        <div className="d-flex align-items-center justify-content-between mb-4">
-            <div className="d-none d-md-flex align-items-center gap-2 flex-wrap">
-                {tabs.map((tab) => (
-                    <button
-                        key={tab.name}
-                        onClick={() => setActiveTab(tab.name)}
-                        className={`theme-btn ${activeTab === tab.name ? "btn-style-one" : "btn-style-three"}`}
-                    >
-                        {tab.label}
-                    </button>
-                ))}
-            </div>
-            <div className="d-md-none w-100">
-                <select
-                    className="form-select"
-                    value={activeTab}
-                    onChange={(e) => setActiveTab(e.target.value)}
-                >
-                    {tabs.map((tab) => (
-                        <option key={tab.name} value={tab.name}>
-                            {tab.label}
-                        </option>
-                    ))}
-                </select>
-            </div>
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      const maxScroll = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+      const newPosition = Math.min(scrollPosition + 150, maxScroll);
+      setScrollPosition(newPosition);
+      scrollRef.current.scrollTo({
+        left: newPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      setScrollPosition(scrollRef.current.scrollLeft);
+    }
+  };
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+      setScrollPosition(0);
+    }
+    return () => {
+      if (container) {
+        container.removeEventListener("scroll", handleScroll);
+      }
+    };
+  }, []);
+
+  return (
+    <div className="mb-4">
+      <div className="d-flex align-items-center justify-content-between position-relative">
+        <div
+          className="d-none d-md-flex align-items-center position-relative w-100"
+          style={{ overflow: "visible" }}
+        >
+          <button
+            onClick={scrollLeft}
+            style={{
+              background: "#1a73e8",
+              color: "white",
+              border: "none",
+              borderRadius: "50%",
+              width: "40px",
+              height: "40px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: scrollPosition === 0 ? "not-allowed" : "pointer",
+              opacity: scrollPosition === 0 ? 0.5 : 1,
+              zIndex: 1000,
+              position: "absolute",
+              left: "0",
+              top: "50%",
+              transform: "translateY(-50%)",
+              flexShrink: 0,
+            }}
+            disabled={scrollPosition === 0}
+          >
+            <FaChevronLeft size={20} />
+          </button>
+
+          <div
+            ref={scrollRef}
+            className="d-flex align-items-center gap-2 flex-nowrap"
+            style={{
+              overflowX: "auto",
+              scrollBehavior: "smooth",
+              whiteSpace: "nowrap",
+              width: "calc(100% - 90px)",
+              margin: "0 45px",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+              WebkitOverflowScrolling: "touch",
+            }}
+          >
+            {tabs.map((tab) => (
+              <button
+                key={tab.name}
+                onClick={() => setActiveTab(tab.name)}
+                className={`theme-btn ${activeTab === tab.name ? "btn-style-one" : "btn-style-three"}`}
+                style={{ flexShrink: 0 }}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          <button
+            onClick={scrollRight}
+            style={{
+              background: "#1a73e8",
+              color: "white",
+              border: "none",
+              borderRadius: "50%",
+              width: "40px",
+              height: "40px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor:
+                scrollPosition >=
+                (scrollRef.current?.scrollWidth - scrollRef.current?.clientWidth || 0)
+                  ? "not-allowed"
+                  : "pointer",
+              opacity:
+                scrollPosition >=
+                (scrollRef.current?.scrollWidth - scrollRef.current?.clientWidth || 0)
+                  ? 0.5
+                  : 1,
+              zIndex: 1000,
+              position: "absolute",
+              right: "0",
+              top: "50%",
+              transform: "translateY(-50%)",
+              flexShrink: 0,
+            }}
+            disabled={
+              scrollPosition >=
+              (scrollRef.current?.scrollWidth - scrollRef.current?.clientWidth || 0)
+            }
+          >
+            <FaChevronRight size={20} />
+          </button>
         </div>
+
+        <div className="d-md-none w-100">
+          <select
+            className="form-select"
+            value={activeTab}
+            onChange={(e) => setActiveTab(e.target.value)}
+          >
+            {tabs.map((tab) => (
+              <option key={tab.name} value={tab.name}>
+                {tab.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
     </div>
-);
+  );
 };
 
 export default ProfileTabs;
