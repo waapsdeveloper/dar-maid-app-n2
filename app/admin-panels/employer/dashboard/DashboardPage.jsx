@@ -3,14 +3,18 @@ import Notification from "./components/Notification";
 import Applicants from "./components/Applicants";
 import { ProfileTypes } from "@/data/globalKeys";
 import DsPageOuter from "@/templates/layouts/ds-page-outer";
+import TopCardBlock from "./components/TopCardBlock";
 
 const DashboardPage = () => {
   return (
     <DsPageOuter
       headerType={ProfileTypes.EMPLOYER}
       title="Welcome Peter!"
-      subtitle="Ready to jump back in?"
-    >
+      subtitle="Ready to jump back in?">
+         <div className="row">
+        <TopCardBlock />
+      </div>
+
       <div className="row">
         <div className="col-xl-7 col-lg-12">
           {/* <!-- Graph widget --> */}
@@ -19,8 +23,6 @@ const DashboardPage = () => {
           </div>
           {/* End profile chart */}
         </div>
-        {/* End .col */}
-
         <div className="col-xl-5 col-lg-12">
           {/* <!-- Notification Widget --> */}
           <div className="notification-widget ls-widget">
@@ -32,8 +34,6 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-        {/* End .col */}
-
         <div className="col-lg-12">
           {/* <!-- applicants Widget --> */}
           <div className="applicants-widget ls-widget">
@@ -49,11 +49,9 @@ const DashboardPage = () => {
             </div>
           </div>
         </div>
-        {/* End .col */}
       </div>
-    </DsPageOuter>
 
-    // End page-wrapper
+    </DsPageOuter>
   );
 };
 
