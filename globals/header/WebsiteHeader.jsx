@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "@/features/auth/authSlice";
 import { useRouter } from "next/navigation";
-import employerMenuData from "../../app/website/home/data/employerMenuData";
+import employerMenuData from "@/data/employerMenuData";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 
