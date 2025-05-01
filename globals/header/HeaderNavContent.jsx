@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import {  
+  homeItems,
+  
   pageItems,
 } from "../../data/mainMenuData";
 import {
