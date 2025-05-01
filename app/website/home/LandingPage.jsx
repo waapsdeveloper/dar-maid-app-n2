@@ -9,16 +9,11 @@ import WsPageOuter from "@/templates/layouts/ws-page-outer";
 const LandingPage = () => {
   return (
     <WsPageOuter>
-
       <Hero />
-      {/* End Hero Section */}
-     
-    
-
       <section className="top-companies">
         <div className="auto-container">
           <div className="sec-title text-center">
-            <h2>Top Rated Employers</h2>
+            <h2>Featured Employers</h2>
             <div className="text">
               Know your worth and find the job that qualify your life
             </div>
@@ -30,11 +25,10 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-
       <section className="job-section">
         <div className="auto-container">
           <div className="sec-title text-center">
-            <h2>Top Rated Agency</h2>
+            <h2>Featured Agency</h2>
             <div className="text">
               Know your worth and find the Agency that qualify your life
             </div>
@@ -53,14 +47,11 @@ const LandingPage = () => {
             </Link>
           </div>
         </div>
-      </section>
-      {/* End Job Featured Section */}
-
-
+      </section> 
       <section className="candidates-section">
         <div className="auto-container">
           <div className="sec-title text-center">
-            <h2>Recent Registered Employee</h2>
+            <h2>Featured Employee</h2>
             <div className="text">
               Lorem ipsum dolor sit amet elit, sed do eiusmod tempor
             </div>
@@ -73,8 +64,6 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      {/* <!-- End Clients Section--> */}
-
       <section className="about-section-two">
         <div className="auto-container">
           <div className="row">
