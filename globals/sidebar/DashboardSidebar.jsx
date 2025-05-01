@@ -70,7 +70,9 @@ const DashboardSidebar = ({ headerType }) => {
   return (
     <div
       className={`user-sidebar ${menu ? "sidebar_open" : ""}`}
-      style={{ width: "17%" }} // Adjust width and padding here
+      style={{
+        width: "240px",
+      }}
     >
       {/* Start sidebar close icon */}
       <div className="pro-header text-end pb-0 mb-0 show-1023">
@@ -80,7 +82,7 @@ const DashboardSidebar = ({ headerType }) => {
       </div>
       {/* End sidebar close icon */}
 
-      <div className="sidebar-inner">
+      <div className="sidebar-inner" style={{ padding: "60px 25px" }}>
         <ul className="navigation">
           {menuData.map((item) => (
             <li
