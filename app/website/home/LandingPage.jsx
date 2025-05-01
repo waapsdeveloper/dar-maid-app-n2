@@ -1,69 +1,19 @@
 import Link from "next/link";
-import FooterDefault from "../../../components/footer/common-footer";
-import DefaulHeader2 from "../../../components/header/DefaulHeader2";
-import MobileMenu from "../../../globals/header/MobileMenu";
-import Hero1 from "../../../components/hero/hero-1";
-import JobFeatured1 from "../job-featured/JobFeatured1";
-import About2 from "../../../components/about/About2";
-import TopCompany from "../../../components/top-company/TopCompany";
-import Candidates from "../../../components/candidates/Candidates";
-import LoginPopup from "@/globals/login/LoginPopup";
+import Hero from "./herosection/Hero";
+import JobFeatured from "./jobfeatured/JobFeatured";
+import About from "./about/About";
+import TopCompany from "./topcompany/TopCompany";
+import Candidates from "./candidates/Candidates";
+import WsPageOuter from "@/templates/layouts/ws-page-outer";
 
 const LandingPage = () => {
   return (
-    <>
-      <LoginPopup />
-      {/* End Login Popup Modal */}
+    <WsPageOuter>
 
-      <DefaulHeader2 />
-      {/* End Header with upload cv btn */}
-
-      <MobileMenu />
-      {/* End MobileMenu */}
-
-      <Hero1 />
+      <Hero />
       {/* End Hero Section */}
-      {/* 
-      <section className="job-categories ui-job-categories">
-        <div className="auto-container">
-          <div className="sec-title text-center">
-            <h2>Popular Employees Categories</h2>
-            <div className="text">2025 Listings - 293 added today.</div>
-          </div>
-
-          <div
-            className="row "
-            data-aos="fade-up"
-            data-aos-anchor-placement="top-bottom"
-          >
-            <JobCategorie1 />
-          </div>
-        </div>
-      </section>
-    */}
-      {/* <section className="job-section">
-        <div className="auto-container">
-          <div className="sec-title text-center">
-            <h2>Featured Jobs</h2>
-            <div className="text">
-              Know your worth and find the job that qualify your life
-            </div>
-          </div>
-
-          <div className="row " data-aos="fade-up">
-            <JobFeatured1 />
-          </div>
-
-          <div className="btn-box">
-            <Link
-              href="/job-list-v1"
-              className="theme-btn btn-style-one bg-blue"
-            >
-              <span className="btn-title">Load More Listing</span>
-            </Link>
-          </div>
-        </div>
-      </section> */}
+     
+    
 
       <section className="top-companies">
         <div className="auto-container">
@@ -91,7 +41,7 @@ const LandingPage = () => {
           </div>
 
           <div className="row " data-aos="fade-up">
-            <JobFeatured1 />
+            <JobFeatured />
           </div>
 
           <div className="btn-box">
@@ -106,13 +56,6 @@ const LandingPage = () => {
       </section>
       {/* End Job Featured Section */}
 
-      {/* <section className="clients-section">
-        <div className="sponsors-outer" data-aos="fade">          
-          <ul className="sponsors-carousel">
-            <Partner />
-          </ul>
-        </div>
-      </section> */}
 
       <section className="candidates-section">
         <div className="auto-container">
@@ -135,12 +78,11 @@ const LandingPage = () => {
       <section className="about-section-two">
         <div className="auto-container">
           <div className="row">
-            <About2 />
+            <About />
           </div>
         </div>
       </section>
-      <FooterDefault />
-    </>
+    </WsPageOuter>
   );
 };
 
