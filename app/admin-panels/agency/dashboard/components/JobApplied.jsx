@@ -1,5 +1,5 @@
 import Link from "next/link";
-import recentJobApplied from "../../../../website/home/data/job-featured";
+import recentJobApplied from "@/data/job-featured";
 import Image from "next/image";
 
 const JobApplied = () => {

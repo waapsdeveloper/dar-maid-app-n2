@@ -2,9 +2,9 @@
 
 import React, { useState } from "react";
 import DsPageOuter from "@/templates/layouts/ds-page-outer";
-import candidatesMenuData from "@/app/website/home/data/candidatesMenuData";
 import ProfileCards from "./profile-cards";
 import ProfileTabs from "./profile-tabs";
+import candidatesMenuData from "@/data/candidatesMenuData";
 
 export const metadata = {
   title: "Packages || Domesta  - Listing Board",
@@ -16,7 +16,12 @@ const ProfilePage = () => {
 
   return (
     <>
-      <DsPageOuter headerType={'candidate'} title="Profile!" subtitle="Ready to jump back in?" menuData={candidatesMenuData}>
+      <DsPageOuter
+        headerType={"candidate"}
+        title="Profile!"
+        subtitle="Ready to jump back in?"
+        menuData={candidatesMenuData}
+      >
         <ProfileTabs activeTab={activeTab} setActiveTab={setActiveTab} />
         <ProfileCards activeTab={activeTab} />
       </DsPageOuter>

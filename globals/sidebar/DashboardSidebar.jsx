@@ -7,12 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { usePathname } from "next/navigation";
 import { menuToggle } from "@/features/toggle/toggleSlice";
 import { logout } from "@/features/auth/authSlice";
-import candidateMenuData from "@/app/website/home/data/candidatesMenuData";
-import employerMenuData from "@/app/website/home/data/employerMenuData";
+import candidatesMenuData from "@/data/candidatesMenuData";
+import employerMenuData from "@/data/employerMenuData";
 import { useEffect, useState } from "react";
-import { ProfileTypes } from "@/app/website/home/data/globalKeys";
-import agencyMenuData from "@/app/website/home/data/agencyMenuData";
-import superAdminMenu from "@/app/website/home/data/superAdminMenu";
+import { ProfileTypes } from "@/data/globalKeys";
+import agencyMenuData from "@/data/agencyMenuData";
+import superAdminMenu from "@/data/superAdminMenu";
 const DashboardSidebar = ({ headerType }) => {
   // Sidebar menu data
   const [profileType, setProfileType] = useState(null);
@@ -26,7 +26,7 @@ const DashboardSidebar = ({ headerType }) => {
   let menuData = [];
   switch (profileType) {
     case ProfileTypes.CANDIDATE:
-      menuData = candidateMenuData;
+      menuData = candidatesMenuData;
       break;
     case ProfileTypes.EMPLOYER:
       menuData = employerMenuData;
@@ -70,9 +70,7 @@ const DashboardSidebar = ({ headerType }) => {
   return (
     <div
       className={`user-sidebar ${menu ? "sidebar_open" : ""}`}
-      style={{ width: "17%", 
-
-      }} // Adjust width and padding here
+      style={{ width: "17%" }} // Adjust width and padding here
     >
       {/* Start sidebar close icon */}
       <div className="pro-header text-end pb-0 mb-0 show-1023">

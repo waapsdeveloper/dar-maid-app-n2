@@ -1,5 +1,5 @@
 import Link from "next/link";
-import candidatesData from "../../../../website/home/data/candidates";
+import candidatesData from "@/data/candidates";
 import Image from "next/image";
 
 const Applicants = () => {
@@ -33,7 +33,7 @@ const Applicants = () => {
                   {candidate.location}
                 </li>
                 <li>
-                  <span className="icon flaticon-money"></span> BHD 
+                  <span className="icon flaticon-money"></span> BHD
                   {candidate.hourlyRate} / hour
                 </li>
               </ul>

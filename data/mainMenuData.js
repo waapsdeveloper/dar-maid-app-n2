@@ -26,5 +26,5 @@ export const pageItems = [
   {
     name: "Contact Us",
     routePath: "/contact",
-  }
+  },
 ];
