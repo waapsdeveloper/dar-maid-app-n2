@@ -4,7 +4,14 @@ import InputField from "@/templates/inputs/input-field";
 import SelectField from "@/templates/inputs/select-field";
 import ImageField from "@/templates/inputs/image-field";
 
-const CardForm = ({ fields, formData, handleChange, handleSelectChange, handleFileChange, onSubmit }) => {
+const CardForm = ({
+  fields,
+  formData,
+  handleChange = () => {},
+  handleSelectChange = () => () => {},
+  handleFileChange = () => () => {},
+  onSubmit = (e) => e.preventDefault(),
+}) => {
   const buttonStyle = {
     backgroundColor: "#007bff",
     color: "#fff",
@@ -15,7 +22,7 @@ const CardForm = ({ fields, formData, handleChange, handleSelectChange, handleFi
   };
 
   const labelStyle = {
-    color: "#69697C", 
+    color: "#69697C",
     fontWeight: "450",
   };
 
@@ -24,19 +31,35 @@ const CardForm = ({ fields, formData, handleChange, handleSelectChange, handleFi
       case "text":
       case "number":
       case "date":
+      case "email":
+      case "tel":
         return (
           <InputField
             field={field}
-            value={formData[field.name]}
+            value={formData[field.name] || ""}
             handleChange={handleChange}
+          />
+        );
+      case "textarea":
+        return (
+          <textarea
+            name={field.name}
+            placeholder={field.placeholder}
+            value={formData[field.name] || ""}
+            onChange={(e) => handleChange(field.name, e.target.value)}
+            required={field.required}
+            readOnly={field.readOnly}
+            style={field.style}
           />
         );
       case "select":
         return (
           <SelectField
-            field={field}
+            field={{ ...field, isMulti: field.isMulti || false }}
             value={formData[field.name]}
-            handleSelectChange={handleSelectChange}
+            handleSelectChange={(name) => (option) => {
+              handleSelectChange(name)(option);
+            }}
           />
         );
       case "file":
@@ -44,7 +67,9 @@ const CardForm = ({ fields, formData, handleChange, handleSelectChange, handleFi
           <ImageField
             field={field}
             value={formData[field.name]}
-            handleFileChange={handleFileChange}
+            handleFileChange={(name, event) => {
+              handleFileChange(name)(event);
+            }}
           />
         );
       case "custom":
@@ -98,13 +123,14 @@ CardForm.propTypes = {
       accept: PropTypes.string,
       style: PropTypes.object,
       render: PropTypes.func,
+      isMulti: PropTypes.bool,
     })
   ).isRequired,
   formData: PropTypes.object.isRequired,
-  handleChange: PropTypes.func.isRequired,
-  handleSelectChange: PropTypes.func.isRequired,
-  handleFileChange: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func,
+  handleSelectChange: PropTypes.func,
+  handleFileChange: PropTypes.func,
+  onSubmit: PropTypes.func,
 };
 
 export default CardForm;

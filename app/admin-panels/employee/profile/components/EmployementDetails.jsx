@@ -23,6 +23,7 @@ const inputStyle = {
   borderRadius: "0.5rem",
   backgroundColor: "#F0F5F7",
   boxSizing: "border-box",
+  height:"60px",
 };
 
 // Define tickBoxStyle for the tick container
@@ -65,6 +66,19 @@ const EmploymentDetails = () => {
     flexibleWeekends: "",
     otherBenefits: "",
   });
+
+  const handleChange = (field, value) => {
+    setFormData({ ...formData, [field]: value });
+  };
+
+  const handleSelectChange = (field) => (selectedOption) => {
+    setFormData({ ...formData, [field]: selectedOption ? selectedOption.value : "" });
+  };
+
+  const handleFileChange = (field) => (e) => {
+    setFormData({ ...formData, [field]: e.target.files });
+    setSupportingDocs(e.target.files);
+  };
 
   const workingHoursOptions = [
     { value: "9 AM - 5 PM", label: "9 AM - 5 PM" },
@@ -311,10 +325,12 @@ const EmploymentDetails = () => {
     <CardForm
       fields={fields}
       formData={formData}
+      handleChange={handleChange}
+      handleSelectChange={handleSelectChange}
+      handleFileChange={handleFileChange}
       onSubmit={handleSubmit}
     />
   );
 };
-
 
 export default EmploymentDetails;

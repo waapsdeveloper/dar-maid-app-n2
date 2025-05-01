@@ -1,14 +1,25 @@
+'use client';
+
+import { useState } from "react";
+import CardForm from "@/templates/forms/card-form";
+import Select from "react-select";
+
+const buttonStyle = {
+  padding: "0.75rem 1.5rem",
+  border: "none",
+  borderRadius: "0.5rem",
+  backgroundColor: "#1a73e8",
+  color: "white",
+  cursor: "pointer",
+  fontSize: "1rem",
+  fontWeight: "600",
+};
 
 const ApplicationManagement = () => {
   const [formData, setFormData] = useState({
     jobApplications: "",
     applicationStatus: "",
   });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Data:", formData);
-  };
 
   const handleChange = (field, value) => {
     setFormData({ ...formData, [field]: value });
@@ -45,52 +56,19 @@ const ApplicationManagement = () => {
     },
   ];
 
-  return (
-    <form className="default-form" onSubmit={handleSubmit}>
-      <div className="row">
-        {fields.map((field, index) => (
-          <div
-            key={index}
-            className={`form-group ${field.colClass}`}
-          >
-            <label>
-              {field.label} {field.required && <span style={{ color: "red" }}>*</span>}
-            </label>
-            {field.type === "text" ? (
-              <input
-                type={field.type}
-                name={field.name}
-                placeholder={field.placeholder}
-                value={formData[field.name]}
-                onChange={(e) => handleChange(field.name, e.target.value)}
-                required={field.required}
-              />
-            ) : field.type === "select" ? (
-              <Select
-                name={field.name}
-                options={field.options}
-                className="basic-multi-select"
-                classNamePrefix="select"
-                placeholder={field.placeholder}
-                value={field.options.find(option => option.value === formData[field.name]) || null}
-                onChange={handleSelectChange(field.name)}
-                required={field.required}
-              />
-            ) : null}
-          </div>
-        ))}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
+  };
 
-        {/* Submit Button */}
-        <div
-          className="form-group col-lg-12 col-md-12"
-          style={{ display: "flex", justifyContent: "flex-end" }}
-        >
-          <button type="submit" style={buttonStyle}>
-            Manage Applications
-          </button>
-        </div>
-      </div>
-    </form>
+  return (
+    <CardForm
+      fields={fields}
+      formData={formData}
+      handleChange={handleChange}
+      handleSelectChange={handleSelectChange}
+      onSubmit={handleSubmit}
+    />
   );
 };
 

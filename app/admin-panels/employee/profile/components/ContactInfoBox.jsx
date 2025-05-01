@@ -77,7 +77,7 @@ const ContactInfoBox = () => {
       required: true,
     },
     {
-      type: "number",
+      type: "text",
       name: "phoneNumber",
       label: "Phone Number",
       placeholder: "12345678",
@@ -89,7 +89,7 @@ const ContactInfoBox = () => {
       },
     },
     {
-      type: "number",
+      type: "text",
       name: "whatsapp_number",
       label: "WhatsApp Number",
       placeholder: "WhatsApp number",
@@ -126,7 +126,7 @@ const ContactInfoBox = () => {
       required: true,
     },
     {
-      type: "number",
+      type: "text",
       name: "buildingNo",
       label: "Building No",
       placeholder: "E.g., 123",
@@ -138,7 +138,7 @@ const ContactInfoBox = () => {
       },
     },
     {
-      type: "number",
+      type: "text",
       name: "roadNo",
       label: "Road No",
       placeholder: "E.g., 456",
@@ -150,7 +150,7 @@ const ContactInfoBox = () => {
       },
     },
     {
-      type: "number",
+      type: "text",
       name: "blockNo",
       label: "Block No",
       placeholder: "E.g., 789",
@@ -190,6 +190,8 @@ const ContactInfoBox = () => {
     <CardForm
       fields={fields}
       formData={formData}
+      handleChange={handleChange}
+      handleSelectChange={handleSelectChange}
       onSubmit={handleSubmit}
     />
   );

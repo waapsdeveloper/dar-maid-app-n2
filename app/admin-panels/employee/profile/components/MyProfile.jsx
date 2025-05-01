@@ -23,6 +23,7 @@ const inputStyle = {
   borderRadius: "0.5rem",
   backgroundColor: "#F0F5F7",
   boxSizing: "border-box",
+  height:"60px"
 };
 
 // Define tickBoxStyle for the tick container
@@ -30,7 +31,7 @@ const tickBoxStyle = (isFileSelected) => ({
   position: "absolute",
   right: "20px",
   top: "30%",
-  transform: "translateY(-50%)",
+  transform: "translateY(-30%)",
   width: "24px",
   height: "24px",
   border: `1px solid ${isFileSelected ? "#28a745" : "#d0d0d0"}`,
@@ -216,7 +217,7 @@ const MyProfile = () => {
             required: true,
         },
         {
-            type: "number",
+            type: "text",
             name: "childrenCount",
             label: "Number of Children",
             placeholder: "0",
@@ -316,6 +317,9 @@ const MyProfile = () => {
         <CardForm
             fields={fields}
             formData={formData}
+            handleChange={handleChange}
+            handleSelectChange={handleSelectChange}
+            handleFileChange={handleFileChange}
             onSubmit={handleSubmit}
         />
     );

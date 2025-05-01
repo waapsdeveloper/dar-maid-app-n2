@@ -18,7 +18,7 @@ const ProfilePage = () => {
   return (
     <>
       <DsPageOuter
-        headerType={ProfileTypes.EMPLOYEE}
+        headerType={ProfileTypes.CANDIDATE}
         title="Profile!"
         subtitle="Ready to jump back in?"
         menuData={candidatesMenuData}
