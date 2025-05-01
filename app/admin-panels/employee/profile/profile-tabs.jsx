@@ -4,6 +4,7 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 const ProfileTabs = ({ activeTab, setActiveTab }) => {
   const scrollRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [maxScroll, setMaxScroll] = useState(0);
 
   const tabs = [
     { name: "MyProfile", label: "Employee's Profile" },
@@ -42,20 +43,31 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
   const handleScroll = () => {
     if (scrollRef.current) {
       setScrollPosition(scrollRef.current.scrollLeft);
+      setMaxScroll(scrollRef.current.scrollWidth - scrollRef.current.clientWidth);
     }
   };
 
   useEffect(() => {
     const container = scrollRef.current;
     if (container) {
+      // Initialize scroll position and max scroll on mount
+      setScrollPosition(container.scrollLeft);
+      setMaxScroll(container.scrollWidth - container.clientWidth);
+
+      // Add scroll event listener
       container.addEventListener("scroll", handleScroll);
-      setScrollPosition(0);
-    }
-    return () => {
-      if (container) {
+
+      // Force a recalculation after a short delay to ensure DOM is fully rendered
+      const timer = setTimeout(() => {
+        setScrollPosition(container.scrollLeft);
+        setMaxScroll(container.scrollWidth - container.clientWidth);
+      }, 100);
+
+      return () => {
         container.removeEventListener("scroll", handleScroll);
-      }
-    };
+        clearTimeout(timer);
+      };
+    }
   }, []);
 
   return (
@@ -129,16 +141,8 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              cursor:
-                scrollPosition >=
-                (scrollRef.current?.scrollWidth - scrollRef.current?.clientWidth || 0)
-                  ? "not-allowed"
-                  : "pointer",
-              opacity:
-                scrollPosition >=
-                (scrollRef.current?.scrollWidth - scrollRef.current?.clientWidth || 0)
-                  ? 0.5
-                  : 1,
+              cursor: scrollPosition >= maxScroll ? "not-allowed" : "pointer",
+              opacity: scrollPosition >= maxScroll ? 0.5 : 1,
               zIndex: 1000,
               position: "absolute",
               right: "0",
@@ -146,10 +150,7 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
               transform: "translateY(-50%)",
               flexShrink: 0,
             }}
-            disabled={
-              scrollPosition >=
-              (scrollRef.current?.scrollWidth - scrollRef.current?.clientWidth || 0)
-            }
+            disabled={scrollPosition >= maxScroll}
           >
             <FaChevronRight size={20} />
           </button>

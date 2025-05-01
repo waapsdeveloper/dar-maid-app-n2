@@ -6,52 +6,6 @@ module.exports = [
     routePath: "/panels/superadmin/dashboard",
     active: "active",
   },
-
-  {
-    id: 8,
-    name: "Employee",
-    icon: "la-users",
-    routePath: "/superadmin/employees",
-    active: "",
-  },
-  {
-    id: 9,
-    name: "Agent",
-    icon: "la-building",
-    routePath: "/superadmin/agencies",
-    active: "",
-  },
-  {
-    id: 10,
-    name: "Employer",
-    icon: "la-briefcase",
-    routePath: "/superadmin/employers",
-    active: "",
-  },
-  {
-    id: 14,
-    name: "Interview",
-    icon: "la-briefcase",
-    routePath: "/superadmin/interview-requests",
-    active: "",
-  },
-
-  {
-    id: 3,
-    name: "Hiring",
-    icon: "la-question-circle",
-    routePath: "/superadmin/query",
-    active: "",
-  },
-
-  {
-    id: 6,
-    name: "Report",
-    icon: "la-chart-bar",
-    routePath: "/superadmin/report",
-    active: "",
-  },
-
   {
     id: 2,
     name: "Profile",
@@ -60,10 +14,57 @@ module.exports = [
     active: "",
   },
   {
-    id: 11,
-    name: "Logout",
-    icon: "la-sign-out",
-    routePath: "/",
+    id: 3,
+    name: "Employees",
+    icon: "la-users",
+    routePath: "/superadmin/employees",
     active: "",
   },
+  {
+    id: 4,
+    name: "Employers",
+    icon: "la-briefcase",
+    routePath: "/superadmin/employers",
+    active: "",
+  },
+  {
+    id: 5,
+    name: "Agents",
+    icon: "la-building",
+    routePath: "/superadmin/agencies",
+    active: "",
+  },
+  
+  {
+    id: 6,
+    name: "Interviews",
+    icon: "la-briefcase",
+    routePath: "/superadmin/interview-requests",
+    active: "",
+  },
+
+  {
+    id: 7,
+    name: "Hirings",
+    icon: "la-users", // Suitable icon for Hirings
+    routePath: "/employer/hirings",
+    active: "",
+  },
+
+  {
+    id: 8,
+    name: "Report",
+    icon: "la-chart-bar",
+    routePath: "/superadmin/report",
+    active: "",
+  },
+
+ 
+  // {
+  //   id: 11,
+  //   name: "Logout",
+  //   icon: "la-sign-out",
+  //   routePath: "/",
+  //   active: "",
+  // },
 ];

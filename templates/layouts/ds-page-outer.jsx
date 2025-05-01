@@ -15,7 +15,7 @@ const DsPageOuter = ({ headerType, title, subtitle, children }) => {
       style={{
         position: "relative",
         backgroundColor: "#f5f7fc",
-        paddingLeft: "270px", // Changed from 365px to 320px
+        paddingLeft: "250px",
         minHeight: "100vh",
       }}
     >

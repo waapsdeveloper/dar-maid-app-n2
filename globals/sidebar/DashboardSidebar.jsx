@@ -82,7 +82,7 @@ const DashboardSidebar = ({ headerType }) => {
       </div>
       {/* End sidebar close icon */}
 
-      <div className="sidebar-inner" style={{ padding: "60px 25px" }}>
+      <div className="sidebar-inner" style={{ padding: "20px" }}>
         <ul className="navigation">
           {menuData.map((item) => (
             <li
