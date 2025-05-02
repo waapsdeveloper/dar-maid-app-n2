@@ -31,7 +31,7 @@ module.exports = [
     id: 5,
     name: "Agents",
     icon: "la-building",
-    routePath: "/superadmin/agencies",
+    routePath: "/panels/superadmin/agents",
     active: "",
   },
   

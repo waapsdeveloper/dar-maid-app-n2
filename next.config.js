@@ -24,6 +24,10 @@ const nextConfig = {
         source: "/panels/superadmin/employer",
         destination: "/admin-panels/superadmin/employer",
       },
+      {
+        source: "/panels/superadmin/agents",
+        destination: "/admin-panels/superadmin/agents",
+      },
 
       // Employees / Candidates
       {
@@ -49,10 +53,10 @@ const nextConfig = {
         source: "/panels/employer/dashboard",
         destination: "/admin-panels/employer/dashboard",
       },
-      {
-        source: "/panels/employer/employees",
-        destination: "/admin-panels/employer/employees",
-      },
+      // {
+      //   source: "/panels/employer/employees",
+      //   destination: "/admin-panels/employer/employees",
+      // },
       {
         source: "/panels/employer/hirings",
         destination: "/admin-panels/employer/hirings",
@@ -72,16 +76,16 @@ const nextConfig = {
         destination: "/admin-panels/agency/profile",
       },
       {
-        source: "/panels/panels/employer/employees",
-        destination: "/panels/employer/employees",
+        source: "/panels/agency/employees",
+        destination: "/admin-panels/agency/employees",
       },
       {
-        source: "/panels/panels/superadmin/interview",
-        destination: "/panels/superadmin/interview",
+        source: "/panels/agency/hirings",
+        destination: "/admin-panels/agency/hirings",
       },
       {
-        source: "/panels/admin-panels/agency/interview",
-        destination: "/admin-panels/agency/interview",
+        source: "/panels/agency/interviews",
+        destination: "/admin-panels/agency/interviews",
       },
 
 
@@ -187,7 +191,7 @@ const nextConfig = {
         destination: "/agency-dashboard/agency-profile",
       },
       {
-        source: "/panels/employer/employees",
+        source: "/admin-panels/agency/employees",
         destination: "/agency-dashboard/candidates",
       },
       {
@@ -218,7 +222,7 @@ const nextConfig = {
         destination: "/superadmin-dashboard/employers",
       },
       {
-        source: "/panels/superadmin/interview",
+        source: "/admin-panels/agency/hirings",
         destination: "/superadmin-dashboard/interview-requests",
       },
       {

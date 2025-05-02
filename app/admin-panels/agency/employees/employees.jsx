@@ -6,16 +6,16 @@ import { ProfileTypes } from "@/data/globalKeys";
 import FancyTable from "@/templates/tables/fancy-table";
 
 export const metadata = {
-  title: "Employer Hirings || Domesta - Listing Board",
+  title: "Agency Profile || Domesta - Listing Board",
   description: "Domesta - Listing Board",
 };
 
-const Hirings = () => {
-  // Dummy data for hirings
-  const [hirings, setHirings] = useState([
-    { id: 1, name: "Alice Smith", position: "Nanny", hireDate: "2024-12-15", status: "Active" },
-    { id: 2, name: "Bob Johnson", position: "Driver", hireDate: "2024-10-10", status: "Active" },
-    { id: 3, name: "Emma Wilson", position: "Housekeeper", hireDate: "2024-08-05", status: "Inactive" },
+const EmployeesList = () => {
+  // Dummy data for employees
+  const [employees, setEmployees] = useState([
+    { id: 1, name: "John Doe", position: "Nanny", hireDate: "2024-11-01", status: "Active" },
+    { id: 2, name: "Jane Smith", position: "Driver", hireDate: "2024-09-15", status: "Active" },
+    { id: 3, name: "Mike Brown", position: "Housekeeper", hireDate: "2024-07-20", status: "Inactive" },
   ]);
 
   // Handle Contact and Remove actions
@@ -24,11 +24,11 @@ const Hirings = () => {
   };
 
   const handleRemove = (id) => {
-    setHirings(hirings.filter(hiring => hiring.id !== id));
+    setEmployees(employees.filter(employee => employee.id !== id));
   };
 
-  // Field configurations for hirings table
-  const hiringFields = [
+  // Field configurations for employees table
+  const employeeFields = [
     { key: "name", label: "Name" },
     { key: "position", label: "Position" },
     { key: "hireDate", label: "Hire Date" },
@@ -74,14 +74,14 @@ const Hirings = () => {
   return (
     <>
       <DsPageOuter
-        headerType={ProfileTypes.EMPLOYER}
-        title="Hirings"
-        subtitle="Track Your Hiring Success!"
+        headerType={ProfileTypes.AGENCY}
+        title="Employees List!"
+        subtitle="Keep Your Crew Connected"
       >
         <FancyTable
-          fields={hiringFields}
-          data={hirings}
-          title="Hirings"
+          fields={employeeFields}
+          data={employees}
+          title="Employees"
           filterOptions={[]}
         />
       </DsPageOuter>
@@ -89,4 +89,4 @@ const Hirings = () => {
   );
 };
 
-export default Hirings;
+export default EmployeesList;

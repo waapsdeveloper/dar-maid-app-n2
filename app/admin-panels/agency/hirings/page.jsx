@@ -1,15 +1,16 @@
 import dynamic from "next/dynamic";
-import DashboardPage from "./DashboardPage";
+import Hirings from "./hirings";
+
 
 export const metadata = {
-  title: "Employer Dashboard || Domesta  - Listing Board",
+  title: "Hirings List || Domesta  - Listing Board",
   description: "Domesta  - Listing Board",
 };
 
 const index = () => {
   return (
     <>
-      <DashboardPage />
+      <Hirings />
     </>
   );
 };

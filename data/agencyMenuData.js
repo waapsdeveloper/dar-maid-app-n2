@@ -10,28 +10,28 @@ module.exports = [
     id: 2,
     name: "Profile", // Changed from "Company Profile"
     icon: "la-user-circle",
-    routePath: "/admin-panels/agency/profile",
+    routePath: "/panels/agency/profile",
     active: "",
   },
   {
     id: 3,
     name: "Employees", // Changed from "Post a New Job"
     icon: "la-user-friends",
-    routePath: "/panels/employer/employees",
+    routePath: "/panels/agency/employees",
     active: "",
   },
   {
     id: 4,
     name: "Interview", // Changed from "All Applicants"
     icon: "la-comments",
-    routePath: "/admin-panels/agency/interview",
+    routePath: "/panels/agency/interviews",
     active: "",
   },
   {
     id: 5,
     name: "Hirings",
     icon: "la-users", // Suitable icon for Hirings
-    routePath: "/panels/superadmin/interview",
+    routePath: "/panels/agency/hirings",
     active: "",
   },
   // {

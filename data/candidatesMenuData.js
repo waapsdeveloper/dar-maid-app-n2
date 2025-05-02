@@ -17,14 +17,14 @@ module.exports = [
     id: 3,
     name: "Interviews", // Changed from "All Applicants"
     icon: "la-comments",
-    routePath: "/admin-panels/employee/interview",
+    routePath: "/panels/employee/interview",
     active: "",
   },
   // {
   //   id: 4,
   //   name: "Hirings",
   //   icon: "la-users", // Suitable icon for Hirings
-  //   routePath: "/panels/superadmin/interview",
+  //   routePath: "/admin-panels/agency/hirings",
   //   active: "",
   // },
   // {

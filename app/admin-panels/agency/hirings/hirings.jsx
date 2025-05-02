@@ -6,7 +6,7 @@ import { ProfileTypes } from "@/data/globalKeys";
 import FancyTable from "@/templates/tables/fancy-table";
 
 export const metadata = {
-  title: "Employer Hirings || Domesta - Listing Board",
+  title: "Agency Hirings || Domesta - Listing Board",
   description: "Domesta - Listing Board",
 };
 
@@ -74,7 +74,7 @@ const Hirings = () => {
   return (
     <>
       <DsPageOuter
-        headerType={ProfileTypes.EMPLOYER}
+        headerType={ProfileTypes.AGENCY}
         title="Hirings"
         subtitle="Track Your Hiring Success!"
       >

@@ -38,7 +38,7 @@ module.exports = [
     id: 4,
     name: "Hirings",
     icon: "la-users", // Suitable icon for Hirings
-    routePath: "/panels/superadmin/interview",
+    routePath: "/panels/employer/hirings",
     active: "",
   },
   

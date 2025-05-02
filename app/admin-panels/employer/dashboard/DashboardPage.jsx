@@ -1,6 +1,3 @@
-import ProfileChart from "./components/ProfileChart";
-import Notification from "./components/Notification";
-import Applicants from "./components/Applicants";
 import { ProfileTypes } from "@/data/globalKeys";
 import DsPageOuter from "@/templates/layouts/ds-page-outer";
 import TopCardBlock from "./components/TopCardBlock";

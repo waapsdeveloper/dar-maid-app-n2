@@ -6,32 +6,32 @@ import { ProfileTypes } from "@/data/globalKeys";
 import FancyTable from "@/templates/tables/fancy-table";
 
 export const metadata = {
-  title: "Employer Hirings || Domesta - Listing Board",
+  title: "Agency Agents || Domesta - Listing Board",
   description: "Domesta - Listing Board",
 };
 
-const Hirings = () => {
-  // Dummy data for hirings
-  const [hirings, setHirings] = useState([
-    { id: 1, name: "Alice Smith", position: "Nanny", hireDate: "2024-12-15", status: "Active" },
-    { id: 2, name: "Bob Johnson", position: "Driver", hireDate: "2024-10-10", status: "Active" },
-    { id: 3, name: "Emma Wilson", position: "Housekeeper", hireDate: "2024-08-05", status: "Inactive" },
+const Agents = () => {
+  // Dummy data for agents
+  const [agents, setAgents] = useState([
+    { id: 1, name: "Lisa Carter", role: "Recruitment Agent", joinDate: "2024-06-10", status: "Active" },
+    { id: 2, name: "Tom Wilson", role: "Visa Consultant", joinDate: "2024-08-22", status: "Active" },
+    { id: 3, name: "Sarah Lee", role: "Hiring Manager", joinDate: "2024-03-15", status: "Inactive" },
   ]);
 
   // Handle Contact and Remove actions
   const handleContact = (id) => {
-    console.log(`Contact employee with ID: ${id}`);
+    console.log(`Contact agent with ID: ${id}`);
   };
 
   const handleRemove = (id) => {
-    setHirings(hirings.filter(hiring => hiring.id !== id));
+    setAgents(agents.filter(agent => agent.id !== id));
   };
 
-  // Field configurations for hirings table
-  const hiringFields = [
+  // Field configurations for agents table
+  const agentFields = [
     { key: "name", label: "Name" },
-    { key: "position", label: "Position" },
-    { key: "hireDate", label: "Hire Date" },
+    { key: "role", label: "Role" },
+    { key: "joinDate", label: "Join Date" },
     { key: "status", label: "Status" },
     {
       key: "actions",
@@ -74,14 +74,14 @@ const Hirings = () => {
   return (
     <>
       <DsPageOuter
-        headerType={ProfileTypes.EMPLOYER}
-        title="Hirings"
-        subtitle="Track Your Hiring Success!"
+        headerType={ProfileTypes.SUPERADMIN}
+        title="Agents"
+        subtitle="Manage Your Agency's Agents!"
       >
         <FancyTable
-          fields={hiringFields}
-          data={hirings}
-          title="Hirings"
+          fields={agentFields}
+          data={agents}
+          title="Agents"
           filterOptions={[]}
         />
       </DsPageOuter>
@@ -89,4 +89,4 @@ const Hirings = () => {
   );
 };
 
-export default Hirings;
+export default Agents;
