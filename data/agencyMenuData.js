@@ -34,12 +34,12 @@ module.exports = [
     routePath: "/employer/hirings",
     active: "",
   },
-  {
-    id: 6,
-    name: "Logout",
-    icon: "la-sign-out",
-    routePath: "/",
-    active: "",
-  },
+  // {
+  //   id: 6,
+  //   name: "Logout",
+  //   icon: "la-sign-out",
+  //   routePath: "/",
+  //   active: "",
+  // },
   // ... rest of your original entries
 ];

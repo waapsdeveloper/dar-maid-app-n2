@@ -60,11 +60,11 @@ module.exports = [
   },
 
  
-  {
-    id: 9,
-    name: "Logout",
-    icon: "la-sign-out",
-    routePath: "/",
-    active: "",
-  },
+  // {
+  //   id: 9,
+  //   name: "Logout",
+  //   icon: "la-sign-out",
+  //   routePath: "/",
+  //   active: "",
+  // },
 ];

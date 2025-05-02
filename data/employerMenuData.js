@@ -34,9 +34,16 @@ module.exports = [
     routePath: "/employer/interviews",
     active: "",
   },
-  
   {
     id: 4,
+    name: "Hirings",
+    icon: "la-users", // Suitable icon for Hirings
+    routePath: "/employer/hirings",
+    active: "",
+  },
+  
+  {
+    id: 5,
     name: "Logout",
     icon: "la-sign-out",
     routePath: "/",
