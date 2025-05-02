@@ -74,7 +74,7 @@ const Hirings = () => {
   return (
     <>
       <DsPageOuter
-        headerType={ProfileTypes.AGENCY}
+        headerType={ProfileTypes.EMPLOYER}
         title="Hirings"
         subtitle="Track Your Hiring Success!"
       >

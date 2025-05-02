@@ -6,6 +6,8 @@ import ProfileCards from "./profile-cards";
 import ProfileTabs from "./profile-tabs";
 import candidatesMenuData from "@/data/candidatesMenuData";
 
+import { ProfileTypes } from "@/data/globalKeys";
+
 export const metadata = {
   title: "Employer Profile || Domesta  - Listing Board",
   description: "Domesta  - Listing Board",
@@ -17,7 +19,9 @@ const ProfilePage = () => {
   return (
     <>
       <DsPageOuter
-        headerType={"candidate"}
+        headerType={ProfileTypes.EMPLOYER}
+      
+        
         title="Profile!"
         subtitle="Ready to jump back in?"
         menuData={candidatesMenuData}

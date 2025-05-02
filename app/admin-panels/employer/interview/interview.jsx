@@ -78,7 +78,7 @@ const Interview = () => {
   return (
     <>
       <DsPageOuter
-        headerType={ProfileTypes.AGENCY}
+        headerType={ProfileTypes.EMPLOYER}
         title="Interviews"
         subtitle="Stay on Top of Your Interviews!"
       >

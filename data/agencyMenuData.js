@@ -17,7 +17,7 @@ module.exports = [
     id: 3,
     name: "Employees", // Changed from "Post a New Job"
     icon: "la-user-friends",
-    routePath: "/admin-panels/agency/employees",
+    routePath: "/panels/employer/employees",
     active: "",
   },
   {

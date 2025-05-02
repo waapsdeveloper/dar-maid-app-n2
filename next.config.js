@@ -50,6 +50,10 @@ const nextConfig = {
         destination: "/admin-panels/employer/dashboard",
       },
       {
+        source: "/panels/employer/employees",
+        destination: "/admin-panels/employer/employees",
+      },
+      {
         source: "/panels/employer/hirings",
         destination: "/admin-panels/employer/hirings",
       },
@@ -68,8 +72,8 @@ const nextConfig = {
         destination: "/admin-panels/agency/profile",
       },
       {
-        source: "/panels/admin-panels/agency/employees",
-        destination: "/admin-panels/agency/employees",
+        source: "/panels/panels/employer/employees",
+        destination: "/panels/employer/employees",
       },
       {
         source: "/panels/panels/superadmin/interview",
@@ -151,7 +155,7 @@ const nextConfig = {
         destination: "/employers-dashboard/agencies",
       },
       {
-        source: "/employer/interviews",
+        source: "/panels/employer/interview",
         destination: "/employers-dashboard/interview",
       },
       {
@@ -183,7 +187,7 @@ const nextConfig = {
         destination: "/agency-dashboard/agency-profile",
       },
       {
-        source: "/admin-panels/agency/employees",
+        source: "/panels/employer/employees",
         destination: "/agency-dashboard/candidates",
       },
       {
