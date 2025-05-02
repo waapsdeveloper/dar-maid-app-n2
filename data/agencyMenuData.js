@@ -17,21 +17,21 @@ module.exports = [
     id: 3,
     name: "Employees", // Changed from "Post a New Job"
     icon: "la-user-friends",
-    routePath: "/agency/employees",
+    routePath: "/admin-panels/agency/employees",
     active: "",
   },
   {
     id: 4,
     name: "Interview", // Changed from "All Applicants"
     icon: "la-comments",
-    routePath: "/agency/candidate/interview",
+    routePath: "/admin-panels/agency/interview",
     active: "",
   },
   {
     id: 5,
     name: "Hirings",
     icon: "la-users", // Suitable icon for Hirings
-    routePath: "/employer/hirings",
+    routePath: "/admin-panels/agency/hirings",
     active: "",
   },
   // {

@@ -17,8 +17,6 @@ const DashboardPage = () => {
         <TopCardBlock />
       </div>
     </DsPageOuter>
-
-   
   );
 };
 

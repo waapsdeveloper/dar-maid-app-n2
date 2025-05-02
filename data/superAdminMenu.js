@@ -47,7 +47,7 @@ module.exports = [
     id: 7,
     name: "Hirings",
     icon: "la-users", // Suitable icon for Hirings
-    routePath: "/employer/hirings",
+    routePath: "/admin-panels/agency/hirings",
     active: "",
   },
 
