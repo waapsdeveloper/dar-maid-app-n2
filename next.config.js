@@ -18,6 +18,11 @@ const nextConfig = {
         source: "/panels/employee/profile",
         destination: "/admin-panels/employee/profile",
       },
+      {
+        source: "/panels/employee/interview",
+        destination: "/admin-panels/employee/interview",
+      },
+
       //employers
       {
         source: "/panels/employer/profile",
@@ -28,6 +33,7 @@ const nextConfig = {
         source: "/panels/employer/dashboard",
         destination: "/admin-panels/employer/dashboard",
       },
+      
       //agency
       {
         source: "/panels/agency/dashboard",
@@ -87,7 +93,7 @@ const nextConfig = {
         destination: "/candidates-dashboard/agencies",
       },
       {
-        source: "/candidate/interviews",
+        source: "/admin-panels/employee/interview",
         destination: "/candidates-dashboard/interview",
       },
 

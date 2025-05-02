@@ -17,7 +17,7 @@ module.exports = [
     id: 3,
     name: "Interviews", // Changed from "All Applicants"
     icon: "la-comments",
-    routePath: "/candidate/interviews",
+    routePath: "/admin-panels/employee/interview",
     active: "",
   },
   // {

@@ -20,7 +20,7 @@ const ProfilePage = () => {
       <DsPageOuter
         headerType={ProfileTypes.AGENCY}
         title="Profile!"
-        subtitle="Ready to jump back in?"
+        subtitle="Showcase Your Agency's Identity"
         menuData={candidatesMenuData}
       >
         <ProfileTabs activeTab={activeTab} setActiveTab={setActiveTab} />
