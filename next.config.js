@@ -33,7 +33,15 @@ const nextConfig = {
         source: "/panels/employer/dashboard",
         destination: "/admin-panels/employer/dashboard",
       },
-      
+      {
+        source: "/panels/employer/hirings",
+        destination: "/admin-panels/employer/hirings",
+      },
+      {
+        source: "/panels/employer/interview",
+        destination: "/admin-panels/employer/interview",
+      },
+
       //agency
       {
         source: "/panels/agency/dashboard",
