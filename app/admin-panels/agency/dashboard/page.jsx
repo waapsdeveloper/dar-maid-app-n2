@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import DashboadHome from "./DashboardPage";
 
 export const metadata = {
-  title: "Candidates Dashboard || Domesta  - Listing Board",
+  title: "Agency Dashboard || Domesta  - Listing Board",
   description: "Domesta  - Listing Board",
 };
 

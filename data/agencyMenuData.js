@@ -10,7 +10,7 @@ module.exports = [
     id: 2,
     name: "Profile", // Changed from "Company Profile"
     icon: "la-user-circle",
-    routePath: "/agency/profile",
+    routePath: "/admin-panels/agency/profile",
     active: "",
   },
   {

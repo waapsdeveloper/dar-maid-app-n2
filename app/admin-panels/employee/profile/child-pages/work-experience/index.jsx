@@ -12,7 +12,7 @@ const index = () => {
   return (
     <DsPageOuter
       headerType={"candidate"}
-      title="Add WOrk Experience!"
+      title="Add Work Experience!"
       subtitle="Ready to jump back in?"
       menuData={candidatesMenuData}
     >

@@ -2,12 +2,13 @@
 
 import React, { useState } from "react";
 import DsPageOuter from "@/templates/layouts/ds-page-outer";
+import candidatesMenuData from "@/data/candidatesMenuData";
+import { ProfileTypes } from "@/data/globalKeys";
 import ProfileCards from "./profile-cards";
 import ProfileTabs from "./profile-tabs";
-import candidatesMenuData from "@/data/candidatesMenuData";
 
 export const metadata = {
-  title: "Employer Profile || Domesta  - Listing Board",
+  title: "Agency Profile || Domesta  - Listing Board",
   description: "Domesta  - Listing Board",
 };
 
@@ -17,7 +18,7 @@ const ProfilePage = () => {
   return (
     <>
       <DsPageOuter
-        headerType={"candidate"}
+        headerType={ProfileTypes.AGENCY}
         title="Profile!"
         subtitle="Ready to jump back in?"
         menuData={candidatesMenuData}

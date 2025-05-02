@@ -4,17 +4,6 @@ import Select from "react-select";
 import { useState } from "react";
 import CardForm from "@/templates/forms/card-form";
 
-// Define buttonStyle at the top level for consistent styling
-const buttonStyle = {
-  padding: "0.75rem 1.5rem",
-  border: "none",
-  borderRadius: "0.5rem",
-  backgroundColor: "#1a73e8",
-  color: "white",
-  cursor: "pointer",
-  fontSize: "1rem",
-  fontWeight: "600",
-};
 
 // Define inputStyle for file inputs (matching Document.jsx)
 const inputStyle = {
@@ -25,23 +14,6 @@ const inputStyle = {
   boxSizing: "border-box",
   height:"60px"
 };
-
-// Define tickBoxStyle for the tick container
-const tickBoxStyle = (isFileSelected) => ({
-  position: "absolute",
-  right: "20px",
-  top: "30%",
-  transform: "translateY(-30%)",
-  width: "24px",
-  height: "24px",
-  border: `1px solid ${isFileSelected ? "#28a745" : "#d0d0d0"}`,
-  borderRadius: "50%",
-  backgroundColor: isFileSelected ? "#28a745" : "transparent",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  boxShadow: "0 1px 3px rgba(0, 0, 0, 0.1)",
-});
 
 const MyProfile = () => {
     const [formData, setFormData] = useState({

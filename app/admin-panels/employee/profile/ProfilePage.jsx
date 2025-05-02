@@ -8,7 +8,7 @@ import ProfileCards from "./profile-cards";
 import ProfileTabs from "./profile-tabs";
 
 export const metadata = {
-  title: "Packages || Domesta  - Listing Board",
+  title: "Employee Profile || Domesta  - Listing Board",
   description: "Domesta  - Listing Board",
 };
 

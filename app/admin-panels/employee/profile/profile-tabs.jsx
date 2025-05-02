@@ -7,7 +7,7 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
   const [maxScroll, setMaxScroll] = useState(0);
 
   const tabs = [
-    { name: "MyProfile", label: "Employee's Profile" },
+    { name: "MyProfile", label: "Employee Profile" },
     { name: "ContactInfoBox", label: "Contact Information" },
     { name: "WorkExperiencesBox", label: "Work Experiences" },
     { name: "EmploymentDetails", label: "Employment Details" },

@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 const ImageField = ({ field, value, handleFileChange }) => {
   const tickBoxStyle = (isSelected) => ({
     position: "absolute",
-    top: "50%",
+    top: "10px",
     right: "10px",
-    transform: "translateY(-50%)",
+    transform: "translateY(50%)",
     backgroundColor: isSelected ? "#28a745" : "#e9ecef",
     borderRadius: "50%",
     width: "20px",
