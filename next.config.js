@@ -8,6 +8,22 @@ const nextConfig = {
         source: "/panels/superadmin/dashboard",
         destination: "/admin-panels/superadmin/dashboard",
       },
+      {
+        source: "/panels/superadmin/employees",
+        destination: "/admin-panels/superadmin/employees",
+      },
+      {
+        source: "/panels/superadmin/hirings",
+        destination: "/admin-panels/superadmin/hirings",
+      },
+      {
+        source: "/panels/superadmin/interview",
+        destination: "/admin-panels/superadmin/interview",
+      },
+      {
+        source: "/panels/superadmin/employer",
+        destination: "/admin-panels/superadmin/employer",
+      },
 
       // Employees / Candidates
       {
@@ -56,8 +72,8 @@ const nextConfig = {
         destination: "/admin-panels/agency/employees",
       },
       {
-        source: "/panels/admin-panels/agency/hirings",
-        destination: "/admin-panels/agency/hirings",
+        source: "/panels/panels/superadmin/interview",
+        destination: "/panels/superadmin/interview",
       },
       {
         source: "/panels/admin-panels/agency/interview",
@@ -186,7 +202,7 @@ const nextConfig = {
         destination: "/superadmin-dashboard/dashboard",
       },
       {
-        source: "/superadmin/employees",
+        source: "/panels/superadmin/employees",
         destination: "/superadmin-dashboard/all-applicants",
       },
       {
@@ -194,11 +210,11 @@ const nextConfig = {
         destination: "/superadmin-dashboard/agencies",
       },
       {
-        source: "/superadmin/employers",
+        source: "/panels/superadmin/employer",
         destination: "/superadmin-dashboard/employers",
       },
       {
-        source: "/superadmin/interview-requests",
+        source: "/panels/superadmin/interview",
         destination: "/superadmin-dashboard/interview-requests",
       },
       {

@@ -17,14 +17,14 @@ module.exports = [
     id: 3,
     name: "Employees",
     icon: "la-users",
-    routePath: "/superadmin/employees",
+    routePath: "/panels/superadmin/employees",
     active: "",
   },
   {
     id: 4,
     name: "Employers",
     icon: "la-briefcase",
-    routePath: "/superadmin/employers",
+    routePath: "/panels/superadmin/employer",
     active: "",
   },
   {
@@ -39,7 +39,7 @@ module.exports = [
     id: 6,
     name: "Interviews",
     icon: "la-briefcase",
-    routePath: "/superadmin/interview-requests",
+    routePath: "/panels/superadmin/interview",
     active: "",
   },
 
@@ -47,7 +47,7 @@ module.exports = [
     id: 7,
     name: "Hirings",
     icon: "la-users", // Suitable icon for Hirings
-    routePath: "/admin-panels/agency/hirings",
+    routePath: "/panels/superadmin/hirings",
     active: "",
   },
 

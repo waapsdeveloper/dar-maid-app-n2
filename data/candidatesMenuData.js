@@ -24,7 +24,7 @@ module.exports = [
   //   id: 4,
   //   name: "Hirings",
   //   icon: "la-users", // Suitable icon for Hirings
-  //   routePath: "/admin-panels/agency/hirings",
+  //   routePath: "/panels/superadmin/interview",
   //   active: "",
   // },
   // {
