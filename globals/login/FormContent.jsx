@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -77,6 +77,14 @@ const FormContent = ({ onSubmit }) => {
             className="theme-btn btn-style-one"
             type="submit"
             name="log-in"
+            onClick={(e) => {
+              e.preventDefault();
+              onSubmit({
+                username,
+                password,
+                rememberMe,
+              });
+            }}
           >
             Log In
           </button>

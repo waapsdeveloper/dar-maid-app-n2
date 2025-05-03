@@ -54,19 +54,23 @@ class UserService {
       return null;
     }
 
-    // Create user
-    let d = await dataService.returnUser(data.username, data.password);
-    console.log("loginUser response:", d);
+    try {
+      // Call loginUser from networkService instead of dataService
+      let d = await networkService.loginUser(data);
+      console.log("loginUser response:", d);
 
-    if (d && d.token) {
-      // Set user to storage
-      localStorage.setItem("user", JSON.stringify(d));
+      if (d && d.token) {
+        // Set user to storage
+        localStorage.setItem("user", JSON.stringify(d));
 
-      // Set token to storage
-      localStorage.setItem("token", d.token);
+        // Set token to storage
+        localStorage.setItem("token", d.token);
 
-      return d;
-    } else {
+        return d;
+      }
+      return null;
+    } catch (error) {
+      console.error("Login error:", error);
       return null;
     }
   }
