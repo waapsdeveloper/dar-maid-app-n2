@@ -95,31 +95,7 @@ const Register = () => {
 
       <Tabs selectedIndex={selectedTab} onSelect={handleTabChange}>
         <div className="form-group register-dual">
-          <TabList
-            className="btn-box"
-            style={{
-              display: "flex",
-              flexWrap: "nowrap",
-              width: "100%",
-              gap: "5px",
-            }}
-          >
-            <Tab style={{ flex: "0 0 33.33%", maxWidth: "33.33%" }}>
-              <button className="theme-btn btn-style-four" style={{ width: "100%" }}>
-                <i className="la la-user"></i> Candidate
-              </button>
-            </Tab>
-            <Tab style={{ flex: "0 0 33.33%", maxWidth: "33.33%" }}>
-              <button className="theme-btn btn-style-four" style={{ width: "100%" }}>
-                <i className="la la-user"></i> Agency
-              </button>
-            </Tab>
-            <Tab style={{ flex: "0 0 33.33%", maxWidth: "33.33%" }}>
-              <button className="theme-btn btn-style-four" style={{ width: "100%" }}>
-                <i className="la la-briefcase"></i> Employer
-              </button>
-            </Tab>
-          </TabList>
+         
         </div>
 
         {/* Forms for each tab */}
