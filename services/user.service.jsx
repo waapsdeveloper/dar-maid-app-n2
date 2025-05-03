@@ -1,81 +1,75 @@
 import { dataService } from "./data.service";
 import { networkService } from "./network.service";
 
-
 class UserService {
+  constructor() {}
 
-    constructor() {}
+  // Check if user is logged in
+  async isLoggedIn() {
+    // Check if token exists in local storage
+    let token = localStorage.getItem("token");
+    if (token) {
+      // Check if user exists in local storage
+      let user = JSON.parse(localStorage.getItem("user"));
+      if (!user) return false;
 
-    // check if user is logged in
-    async isLoggedIn() {
-        // check if user is in local storage
-        let token = localStorage.getItem('token');
-        if(token){
+      // Check if token is valid
+      const res = await networkService.getUser("/user");
+      console.log("isLoggedIn response:", res);
 
-            // check if token is valid
-            let user = JSON.parse(localStorage.getItem('user'));
-            if(!user) return false;
-            // check if token is valid
-            const res = await networkService.getUser('/user');
-            console.log(res);
+      return true;
+    } else {
+      return false;
+    }
+  }
 
-            // let d = dataService.checkToken(token, user.username);
-
-
-
-
-            return true
-        } else {
-            return false
-        }
+  // Register user
+  async registerUser(data) {
+    if (!data || !data.name || !data.email || !data.password) {
+      console.error("Invalid registration data:", data);
+      return null;
     }
 
-    // register user
-    async registerUser(data) {
-        // create user        
-        let d = await networkService.registerUser(data);
-        console.log(d);
+    // Create user
+    let d = await networkService.registerUser(data);
+    console.log("registerUser response:", d);
 
-        if(d && d.token && d.user){
-            // set user to storage 
+    if (d && d.token && d.user) {
+      // Set user to storage
+      localStorage.setItem("user", JSON.stringify(d.user));
 
-            localStorage.setItem('user', JSON.stringify(d.user));
+      // Set token to storage
+      localStorage.setItem("token", d.token);
 
-            // set token to storage
-            localStorage.setItem('token', d.token);
+      return d.user;
+    } else {
+      return null;
+    }
+  }
 
-            return d.user
-        } else {
-            return null
-        }
-
-
+  // Login user
+  async loginUser(data) {
+    if (!data || !data.username || !data.password) {
+      console.error("Invalid login data:", data);
+      return null;
     }
 
+    // Create user
+    let d = await dataService.returnUser(data.username, data.password);
+    console.log("loginUser response:", d);
 
-    async loginUser(data) {
-        // create user        
-        let d = await dataService.returnUser(data.username, data.password);
-        console.log(d);
+    if (d && d.token) {
+      // Set user to storage
+      localStorage.setItem("user", JSON.stringify(d));
 
-        if(d){
-            // set user to storage 
-            localStorage.setItem('user', JSON.stringify(d));
+      // Set token to storage
+      localStorage.setItem("token", d.token);
 
-            // set token to storage
-            localStorage.setItem('token', d.token);
-
-            return d
-        } else {
-            return null
-        }
-
-
+      return d;
+    } else {
+      return null;
     }
-
-
-
-
+  }
 }
 
 // Export a single instance (Singleton pattern)

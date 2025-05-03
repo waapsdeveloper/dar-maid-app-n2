@@ -76,9 +76,9 @@ const Register = () => {
     if (selectedTab === 0) {
       redirectRoute ="/panels/employee/profile";
     } else if (selectedTab === 1) {
-      redirectRoute = "agency/profile";
+      redirectRoute = "/panels/agency/profile";
     } else if (selectedTab === 2) {
-      redirectRoute ="/employer/profile";
+      redirectRoute ="/panels/employer/profile";
     }
 
     // alert(`Redirecting to: ${redirectRoute}`);

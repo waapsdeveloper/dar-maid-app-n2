@@ -1,78 +1,30 @@
-"use client";
+'use client'
 
 import { useState } from "react";
 import Link from "next/link";
-import { userService } from "@/services/user.service";
-import { useDispatch } from "react-redux";
-import { login } from "@/features/auth/authSlice";
-import { useEffect, useRef } from "react";
-import { useRouter } from "next/navigation";
-import { utilityService } from "@/services/utility.service";
 
-const FormContent = () => {
-  const dispatch = useDispatch();
-  const modalRef = useRef(null);
-  const router = useRouter();
-
-  // State to hold form values
+const FormContent = ({ onSubmit }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
   // Handle form submission
-  const handleSubmit = async (e,formData) => {
+  const handleSubmit = (e) => {
     e.preventDefault(); // Prevent page reload on form submit
-    console.log("Received data in parent:", formData);
-    const res = await userService.loginUser(formData);
-    if(!res){
-          utilityService.showToast("error", "Error", "Something went wrong, please try again later")
-          return
-        }
 
-    let obj = {
+    const formData = {
       username,
       password,
       rememberMe,
     };
 
-    const userData = await userService.loginUser(obj);
-    console.log(userData);
-    if (!userData) {
-      alert("Invalid credentials");
-      return false;
-    }
-
-    // Dispatch login action
-
-    dispatch(login(userData));
-    if (modalRef.current) {
-      const modalInstance = bootstrap.Modal.getInstance(modalRef.current);
-      if (modalInstance) {
-        modalInstance.hide();
-      }
-    }
-
-    switch (userData.role) {
-      case "employer":
-        router.push("/panels/employer/dashboard");
-        break;
-      case "employee":
-        router.push("/panels/employee/dashboard");
-        break;
-      case "agency":
-        router.push("/panels/agency/dashboard");
-        break;
-      case "superadmin":
-        router.push("/panels/superadmin/dashboard");
-        break;
-      default:
-        router.push("/login"); // Default fallback
-    }
+    console.log("FormContent submitting:", formData); // Debug log
+    onSubmit(formData);
   };
 
   return (
     <div className="form-inner">
-      <h3>Login to Domesta </h3>
+      <h3>Login to Domesta</h3>
 
       {/* Login Form */}
       <form onSubmit={handleSubmit}>
@@ -125,7 +77,6 @@ const FormContent = () => {
             className="theme-btn btn-style-one"
             type="submit"
             name="log-in"
-            data-bs-dismiss="modal"
           >
             Log In
           </button>
@@ -134,7 +85,7 @@ const FormContent = () => {
 
       <div className="bottom-box">
         <div className="text">
-          Don&apos;t have an account?{" "}
+          Don't have an account?{" "}
           <Link
             href="#"
             className="call-modal signup"

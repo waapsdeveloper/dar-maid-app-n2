@@ -31,18 +31,20 @@ const HeaderNavContent = () => {
 
 
           {/* Direct Page Links - Former "Others" dropdown items */}
-          {pageItems.map((item, i) => (
-            <li
-              className={`${
-                isActiveLink(item.routePath, usePathname()) ? "current" : ""
-              }`}
-              key={i}
-            >
-              <Link href={item.routePath}>
-                <span>{item.name}</span>
-              </Link>
-            </li>
-          ))}
+          {pageItems.map((item) => {
+            return (
+              <li
+                className={`${
+                  isActiveLink(item.routePath, usePathname()) ? "current" : ""
+                }`}
+                key={item.id || `${item.name}-${item.routePath}`}
+              >
+                <Link href={item.routePath}>
+                  <span>{item.name}</span>
+                </Link>
+              </li>
+            );
+          })}
 
           
         </ul>

@@ -7,15 +7,15 @@ import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "@/features/auth/authSlice";
 import { useRouter } from "next/navigation";
-import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
+import headerdropdownmenu from "@/data/headerdropdownmenu";
 
 const WebsiteHeader = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [navbar, setNavbar] = useState(false);
   const { user, isAuthenticated } = useSelector((state) => state.auth);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(true);
   const pathname = usePathname();
   const dropdownRef = useRef(null); // Ref for dropdown menu
 
@@ -81,24 +81,6 @@ const WebsiteHeader = () => {
     }
   };
 
-  // Static menu data for all users
-  const menuData = [
-    {
-      id: 1,
-      name: "Dashboard",
-      icon: "la-home",
-      routePath: user?.role
-        ? `/panels/${user.role}/dashboard`
-        : "/panels/employer/dashboard",
-    },
-    {
-      id: 2,
-      name: "Logout",
-      icon: "la-sign-out",
-      routePath: "#",
-    },
-  ];
-
   return (
     <header
       className={`main-header ${
@@ -143,31 +125,29 @@ const WebsiteHeader = () => {
 
               <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
                 {dropdownOpen &&
-                  menuData.map((item) => (
-                    <li
-                      className={`${
-                        isActiveLink(item.routePath, pathname) ? "active" : ""
-                      } mb-1`}
-                      key={item.id}
-                    >
-                      {item.name === "Logout" ? (
-                        <button
-                          onClick={handleLogout}
-                          className="dropdown-item"
-                        >
-                          <i className={`la ${item.icon}`}></i> {item.name}
-                        </button>
-                      ) : (
-                        <Link
-                          href={item.routePath}
-                          onClick={(e) => handleClick(item, e)}
-                          className="dropdown-item"
-                        >
-                          <i className={`la ${item.icon}`}></i> {item.name}
-                        </Link>
-                      )}
-                    </li>
-                  ))}
+                  headerdropdownmenu.map((item, index) => {
+                    console.log("Rendering item with key:", item.id || index); // Debugging log
+                    return (
+                      <li key={item.id || index}>
+                        {item.name === "Logout" ? (
+                          <button
+                            onClick={handleLogout}
+                            className="dropdown-item"
+                          >
+                            <i className={`la ${item.icon}`}></i> {item.name}
+                          </button>
+                        ) : (
+                          <Link
+                            href={item.routePath}
+                            onClick={(e) => handleClick(item, e)}
+                            className="dropdown-item"
+                          >
+                            <i className={`la ${item.icon}`}></i> {item.name}
+                          </Link>
+                        )}
+                      </li>
+                    );
+                  })}
               </ul>
             </div>
           ) : (
