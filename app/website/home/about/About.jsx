@@ -31,7 +31,7 @@ const About = () => {
           <Image
             width={600}
             height={600}
-            src="/images/resource/image-2.jpg"
+            src="/images/resource/image-3.png"
             alt="about"
           />
         </figure>
