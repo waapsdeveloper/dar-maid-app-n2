@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
 
 const FormContent = ({ onSubmit }) => {
-  const [username, setUsername] = useState("");
+  const [email, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -13,7 +13,7 @@ const FormContent = ({ onSubmit }) => {
     e.preventDefault(); // Prevent page reload on form submit
 
     const formData = {
-      username,
+      email,
       password,
       rememberMe,
     };
@@ -29,13 +29,13 @@ const FormContent = ({ onSubmit }) => {
       {/* Login Form */}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Username</label>
+          <label>Email</label>
           <input
             type="text"
             name="username"
-            placeholder="Username"
+            placeholder="email"
             required
-            value={username} // Controlled input
+            value={email} // Controlled input
             onChange={(e) => setUsername(e.target.value)} // Update state on input change
           />
         </div>
@@ -77,6 +77,14 @@ const FormContent = ({ onSubmit }) => {
             className="theme-btn btn-style-one"
             type="submit"
             name="log-in"
+            onClick={(e) => {
+              e.preventDefault();
+              onSubmit({
+                email,
+                password,
+                rememberMe,
+              });
+            }}
           >
             Log In
           </button>
