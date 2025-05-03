@@ -95,7 +95,7 @@ const Register = () => {
 
       <Tabs selectedIndex={selectedTab} onSelect={handleTabChange}>
         <div className="form-group register-dual">
-          <TabList
+        <TabList
             className="btn-box"
             style={{
               display: "flex",
