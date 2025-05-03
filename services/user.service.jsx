@@ -49,7 +49,7 @@ class UserService {
 
   // Login user
   async loginUser(data) {
-    if (!data || !data.username || !data.password) {
+    if (!data || !data.email || !data.password) {
       console.error("Invalid login data:", data);
       return null;
     }

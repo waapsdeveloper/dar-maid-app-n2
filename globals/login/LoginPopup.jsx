@@ -50,7 +50,7 @@ const handleRegisterSubmit = async (formData) => {
 // Handle login form submission
 const handleFormSubmit = async (formData) => {
   console.log("Received login data in LoginPopup:", formData);
-  if (!formData || !formData.username || !formData.password) {
+  if (!formData || !formData.email || !formData.password) {
     console.error("Invalid login data:", formData);
     await utilityService.showAlert(
       "Error",
