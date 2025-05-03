@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import Register from "../register/Register";
 import FormContent from "./FormContent";
@@ -8,117 +8,113 @@ import { useDispatch } from "react-redux";
 import { login } from "@/features/auth/authSlice";
 import { useRouter } from "next/navigation";
 
-// Handle registration form submission
-const handleRegisterSubmit = async (formData) => {
-  console.log("Received registration data:", formData);
-  try {
-    const res = await userService.loginUser(formData);
-    console.log("Registration API Response:", res);
-
-    if (!res || !res.success) {
-      await utilityService.showAlert(
-        "Error",
-        res?.message || "Something went wrong, please try again later",
-        "error"
-      );
-      return;
-    }
-
-    await utilityService.showAlert(
-      "Success",
-      "Registration successful!",
-      "success"
-    );
-    // Close modal
-    const modal = document.getElementById("registerModal");
-    if (modal) {
-      const modalInstance = bootstrap.Modal.getInstance(modal);
-      if (modalInstance) {
-        modalInstance.hide();
-      }
-    }
-  } catch (error) {
-    console.error("Registration Error:", error);
-    await utilityService.showAlert(
-      "Error",
-      error.message || "Something went wrong, please try again later",
-      "error"
-    );
-  }
-};
-
-// Handle login form submission
-const handleFormSubmit = async (formData) => {
-  console.log("Received login data in LoginPopup:", formData);
-  if (!formData || !formData.email || !formData.password) {
-    console.error("Invalid login data:", formData);
-    await utilityService.showAlert(
-      "Error",
-      "Please provide username and password",
-      "error"
-    );
-    return;
-  }
-
-  try {
-    const userData = await userService.loginUser(formData);
-    console.log("Login API Response:", userData);
-
-    if (!userData || !userData.success) {
-      await utilityService.showAlert(
-        "Error",
-        userData?.message || "Invalid credentials",
-        "error"
-      );
-      return;
-    }
-
-    const dispatch = useDispatch();
-    const router = useRouter();
-
-    // Dispatch login action
-    dispatch(login(userData));
-
-    // Close modal
-    const modal = document.getElementById("loginPopupModal");
-    if (modal) {
-      const modalInstance = bootstrap.Modal.getInstance(modal);
-      if (modalInstance) {
-        modalInstance.hide();
-      }
-    }
-
-    // Show success alert
-    await utilityService.showAlert("Success", "Login successful!", "success");
-
-    // Navigate based on role
-    switch (userData.role) {
-      case "employer":
-        router.push("/panels/employer/dashboard");
-        break;
-      case "employee":
-        router.push("/panels/employee/dashboard");
-        break;
-      case "agency":
-        router.push("/panels/agency/dashboard");
-        break;
-      case "superadmin":
-        router.push("/panels/superadmin/dashboard");
-        break;
-      default:
-        router.push("/login");
-    }
-  } catch (error) {
-    console.error("Login Error:", error);
-    await utilityService.showAlert(
-      "Error",
-      error.message || "Something went wrong, please try again later",
-      "error"
-    );
-  }
-};
-
 const LoginPopup = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  // Handle registration form submission
+  const handleRegisterSubmit = async (formData) => {
+    console.log("Received registration data:", formData);
+    try {
+      const res = await userService.loginUser(formData);
+      console.log("Registration API Response:", res);
+
+      if (!res || !res.success) {
+        await utilityService.showAlert(
+          "Error",
+          res?.message || "Something went wrong, please try again later",
+          "error"
+        );
+        return;
+      }
+
+      await utilityService.showAlert(
+        "Success",
+        "Registration successful!",
+        "success"
+      );
+      // Close modal
+      const modal = document.getElementById("registerModal");
+      if (modal) {
+        const modalInstance = bootstrap.Modal.getInstance(modal);
+        if (modalInstance) {
+          modalInstance.hide();
+        }
+      }
+    } catch (error) {
+      console.error("Registration Error:", error);
+      await utilityService.showAlert(
+        "Error",
+        error.message || "Something went wrong, please try again later",
+        "error"
+      );
+    }
+  };
+
+  // Handle login form submission
+  const handleFormSubmit = async (formData) => {
+    console.log("Received login data in LoginPopup:", formData);
+    if (!formData || !formData.email || !formData.password) {
+      console.error("Invalid login data:", formData);
+      await utilityService.showAlert(
+        "Error",
+        "Please provide username and password",
+        "error"
+      );
+      return;
+    }
+
+    try {
+      const userData = await userService.loginUser(formData);
+      console.log("Login API Response:", userData);
+
+      if (!userData || !userData.user) {
+        return;
+      }
+
+      // Dispatch login action
+      dispatch(login(userData));
+
+      // Close modal
+      const modal = document.getElementById("loginPopupModal");
+      if (modal) {
+        const modalInstance = bootstrap.Modal.getInstance(modal);
+        if (modalInstance) {
+          modalInstance.hide();
+        }
+      }
+
+      // Show success alert
+      await utilityService.showAlert("Success", "Login successful!", "success");
+
+      // Navigate based on role
+      switch (userData.role) {
+        case "employer":
+          router.push("/panels/employer/dashboard");
+          break;
+        case "employee":
+          router.push("/panels/employee/dashboard");
+          break;
+        case "agency":
+          router.push("/panels/agency/dashboard");
+          break;
+        case "superadmin":
+          router.push("/panels/superadmin/dashboard");
+          break;
+        default:
+          router.push("/login");
+          console.log("role:", userData.role);
+      }
+    } catch (error) {
+      console.error("Login Error:", error);
+      await utilityService.showAlert(
+        "Error",
+        error.message || "Something went wrong, please try again later",
+        "error"
+      );
+    }
+  };
+
   return (
     <>
       <div className="modal fade" id="loginPopupModal">

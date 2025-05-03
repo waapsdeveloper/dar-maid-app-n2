@@ -1,7 +1,10 @@
+'use client'
+
 import { useState } from "react";
 
 const FormContent = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
+    role: "",
     name: "",
     email: "",
     password: "",
@@ -19,6 +22,12 @@ const FormContent = ({ onSubmit }) => {
 
     // Custom logic
     console.log("Form Data Submitted:", formData);
+
+    // Validation: Check if role is selected
+    if (!formData.role) {
+      alert("Please select a role.");
+      return;
+    }
 
     // Validation: Check if email contains '@'
     if (!formData.email.includes("@")) {
@@ -38,6 +47,24 @@ const FormContent = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label>Role</label>
+        <select
+          name="role"
+          required
+          value={formData.role}
+          onChange={handleChange}
+          className="form-control"
+        >
+          <option value="">Select Role</option>
+          <option value="employer">Employer</option>
+          <option value="employee">Employee</option>
+          <option value="agency">Agency</option>
+          <option value="superadmin">Superadmin</option>
+        </select>
+      </div>
+      {/* role */}
+
       <div className="form-group">
         <label>Name</label>
         <input
