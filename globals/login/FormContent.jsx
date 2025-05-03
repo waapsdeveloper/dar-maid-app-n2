@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import LoginWithSocial from "./LoginWithSocial";
 import { userService } from "@/services/user.service";
 import { useDispatch } from "react-redux";
 import { login } from "@/features/auth/authSlice";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { utilityService } from "@/services/utility.service";
 
 const FormContent = () => {
   const dispatch = useDispatch();
@@ -20,8 +20,14 @@ const FormContent = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   // Handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e,formData) => {
     e.preventDefault(); // Prevent page reload on form submit
+    console.log("Received data in parent:", formData);
+    const res = await userService.loginUser(formData);
+    if(!res){
+          utilityService.showToast("error", "Error", "Something went wrong, please try again later")
+          return
+        }
 
     let obj = {
       username,
