@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Register from "../register/Register";
 import FormContent from "./FormContent";
@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 const handleRegisterSubmit = async (formData) => {
   console.log("Received registration data:", formData);
   try {
-    const res = await userService.registerUser(formData);
+    const res = await userService.loginUser(formData);
     console.log("Registration API Response:", res);
 
     if (!res || !res.success) {
@@ -24,7 +24,11 @@ const handleRegisterSubmit = async (formData) => {
       return;
     }
 
-    await utilityService.showAlert("Success", "Registration successful!", "success");
+    await utilityService.showAlert(
+      "Success",
+      "Registration successful!",
+      "success"
+    );
     // Close modal
     const modal = document.getElementById("registerModal");
     if (modal) {
@@ -48,7 +52,11 @@ const handleFormSubmit = async (formData) => {
   console.log("Received login data in LoginPopup:", formData);
   if (!formData || !formData.username || !formData.password) {
     console.error("Invalid login data:", formData);
-    await utilityService.showAlert("Error", "Please provide username and password", "error");
+    await utilityService.showAlert(
+      "Error",
+      "Please provide username and password",
+      "error"
+    );
     return;
   }
 
