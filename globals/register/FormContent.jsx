@@ -5,7 +5,7 @@ import { userService } from "@/services/user.service";
 
 const FormContent = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
-    role: "",
+    role_id: "",
     name: "",
     email: "",
     password: "",
@@ -43,10 +43,6 @@ const FormContent = ({ onSubmit }) => {
     console.log("Form Data Submitted:", formData);
 
     // Validation: Check if role is selected
-    if (!formData.role_id) {
-      alert("Please select a role.");
-      return;
-    }
 
     // Validation: Check if email contains '@'
     if (!formData.email.includes("@")) {
@@ -69,15 +65,15 @@ const FormContent = ({ onSubmit }) => {
       <div className="form-group">
         <label>Role</label>
         <select
-          name="role"
+          name="role_id"
           required
-          value={formData.role_id}
+          value={formData.id}
           onChange={handleChange}
           className="form-control"
         >
           <option value="">Select Role</option>
           {roles.map((role) => (
-            <option key={role} value={role}>
+            <option key={role.id} value={role.id}>
               {role.name}
             </option>
           ))}
