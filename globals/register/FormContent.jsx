@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState, useEffect } from "react";
 import { userService } from "@/services/user.service";
@@ -32,7 +32,7 @@ const FormContent = ({ onSubmit }) => {
   // Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log("E value:",e);
+    console.log("E value:", e);
   };
 
   // Custom form submission handler
@@ -78,7 +78,7 @@ const FormContent = ({ onSubmit }) => {
           <option value="">Select Role</option>
           {roles.map((role) => (
             <option key={role} value={role}>
-              {role.charAt(0).toUpperCase() + role.slice(1)}
+              {role.name}
             </option>
           ))}
         </select>
