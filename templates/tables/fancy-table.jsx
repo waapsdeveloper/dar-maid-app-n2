@@ -1,9 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import Image from "next/image";
 
 const FancyTable = ({ fields, data, title, filterOptions, rightOptionsHtml }) => {
+  // Generic filter options for status (can be extended for other fields)
+  const genericFilterOptions = [
+    { value: "all", label: "All" },
+    { value: "Active", label: "Active" },
+    { value: "Inactive", label: "Inactive" },
+    { value: "Pending", label: "Pending" }, // For interviews
+    { value: "Confirmed", label: "Confirmed" }, // For interviews
+    { value: "Upcoming", label: "Upcoming" }, // For interviews
+    { value: "Past", label: "Past" }, // For interviews
+  ];
+
+  // Use provided filterOptions if available, otherwise use generic ones
+  const activeFilterOptions = filterOptions.length > 0 ? filterOptions : genericFilterOptions;
+
+  // State to manage selected filter
+  const [selectedFilter, setSelectedFilter] = useState(activeFilterOptions[0].value);
+
+  // Handle filter change
+  const handleFilterChange = (e) => {
+    setSelectedFilter(e.target.value);
+  };
+
+  // Filter data based on selected filter
+  const filteredData = selectedFilter === "all"
+    ? data
+    : data.filter(row => 
+        row.status === selectedFilter || 
+        row.label === selectedFilter || 
+        row.status === selectedFilter
+      );
+
   return (
     <div className="ls-widget">
       <div className="tabs-box">
@@ -13,8 +44,12 @@ const FancyTable = ({ fields, data, title, filterOptions, rightOptionsHtml }) =>
 
           <div className="chosen-outer">
             {/* Filter Dropdown */}
-            <select className="chosen-single form-select">
-              {filterOptions.map((option, index) => (
+            <select
+              className="chosen-single form-select"
+              value={selectedFilter}
+              onChange={handleFilterChange}
+            >
+              {activeFilterOptions.map((option, index) => (
                 <option key={index} value={option.value}>
                   {option.label}
                 </option>
@@ -40,12 +75,12 @@ const FancyTable = ({ fields, data, title, filterOptions, rightOptionsHtml }) =>
               </thead>
 
               <tbody>
-                {data.length > 0 ? (
-                  data.map((row, rowIndex) => (
+                {filteredData.length > 0 ? (
+                  filteredData.map((row, rowIndex) => (
                     <tr key={rowIndex}>
                       {fields.map((field, colIndex) => (
                         <td key={colIndex} className={field.className}>
-                          {field.render ? field.render(row[field.key], row) : row[field.key]}
+                          {field.render ? field.render(row, row) : row[field.key]}
                         </td>
                       ))}
                       {/* Add Action column */}

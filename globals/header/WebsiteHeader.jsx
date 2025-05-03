@@ -1,25 +1,25 @@
-"use client";
+'use client'
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import HeaderNavContent from "./HeaderNavContent";
 import Image from "next/image";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "@/features/auth/authSlice";
 import { useRouter } from "next/navigation";
-import employerMenuData from "@/data/employerMenuData";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 
 const WebsiteHeader = () => {
   const dispatch = useDispatch();
   const router = useRouter();
-
   const [navbar, setNavbar] = useState(false);
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
+  const dropdownRef = useRef(null); // Ref for dropdown menu
 
+  // Handle scroll for fixed header
   const changeBackground = () => {
     if (window.scrollY >= 10) {
       setNavbar(true);
@@ -28,21 +28,41 @@ const WebsiteHeader = () => {
     }
   };
 
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    if (dropdownOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [dropdownOpen]);
+
+  // Handle scroll event
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
     return () => window.removeEventListener("scroll", changeBackground);
   }, []);
 
+  // Handle logout
   const handleLogout = () => {
     dispatch(logout());
     router.push("/");
   };
 
+  // Handle menu item click
   const handleClick = (item, e) => {
     e.preventDefault();
 
     if (item.name !== "Logout") {
-      switch (user.role) {
+      switch (user?.role) {
         case "employer":
           router.push("/panels/employer/dashboard");
           break;
@@ -60,6 +80,24 @@ const WebsiteHeader = () => {
       }
     }
   };
+
+  // Static menu data for all users
+  const menuData = [
+    {
+      id: 1,
+      name: "Dashboard",
+      icon: "la-home",
+      routePath: user?.role
+        ? `/panels/${user.role}/dashboard`
+        : "/panels/employer/dashboard",
+    },
+    {
+      id: 2,
+      name: "Logout",
+      icon: "la-sign-out",
+      routePath: "#",
+    },
+  ];
 
   return (
     <header
@@ -87,7 +125,7 @@ const WebsiteHeader = () => {
 
         <div className="outer-box">
           {isAuthenticated ? (
-            <div className="dropdown dashboard-option">
+            <div className="dropdown dashboard-option" ref={dropdownRef}>
               <button
                 className="dropdown-toggle"
                 role="button"
@@ -103,10 +141,9 @@ const WebsiteHeader = () => {
                 <span className="name">{user?.name}</span>
               </button>
 
-              {/* Dropdown: Always render <ul>, conditionally populate it */}
               <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`}>
                 {dropdownOpen &&
-                  employerMenuData.map((item) => (
+                  menuData.map((item) => (
                     <li
                       className={`${
                         isActiveLink(item.routePath, pathname) ? "active" : ""
@@ -121,9 +158,13 @@ const WebsiteHeader = () => {
                           <i className={`la ${item.icon}`}></i> {item.name}
                         </button>
                       ) : (
-                        <a onClick={(e) => handleClick(item, e)}>
+                        <Link
+                          href={item.routePath}
+                          onClick={(e) => handleClick(item, e)}
+                          className="dropdown-item"
+                        >
                           <i className={`la ${item.icon}`}></i> {item.name}
-                        </a>
+                        </Link>
                       )}
                     </li>
                   ))}

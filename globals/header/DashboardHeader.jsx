@@ -1,14 +1,13 @@
-"use client";
+'use client'
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import employerMenuData from "@/data/employerMenuData";
+import { useEffect, useState, useRef } from "react";
 import HeaderNavContent from "./HeaderNavContent";
 import { isActiveLink } from "../../utils/linkActiveChecker";
 import { usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "@/features/auth/authSlice"; // Apni Redux action import karo
+import { logout } from "@/features/auth/authSlice";
 import { useRouter } from "next/navigation";
 
 const DashboardHeader = ({ headerType }) => {
@@ -16,10 +15,11 @@ const DashboardHeader = ({ headerType }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const { user } = useSelector((state) => state.auth);
-  const pathname = usePathname(); // ✅ FIXED: Use it at the top
-
+  const pathname = usePathname();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null); // Ref for dropdown menu
 
+  // Handle scroll for fixed header
   const changeBackground = () => {
     if (window.scrollY >= 0) {
       setNavbar(true);
@@ -28,6 +28,24 @@ const DashboardHeader = ({ headerType }) => {
     }
   };
 
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    if (dropdownOpen) {
+      document.addEventListener("mousedown", handleOutsideClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [dropdownOpen]);
+
+  // Handle scroll event
   useEffect(() => {
     window.addEventListener("scroll", changeBackground);
     return () => {
@@ -35,9 +53,10 @@ const DashboardHeader = ({ headerType }) => {
     };
   }, []);
 
+  // Handle logout
   const handleLogout = () => {
-    dispatch(logout()); // ✅ FIXED: Use the existing dispatch
-    router.push("/"); // Redirect to home page
+    dispatch(logout());
+    router.push("/");
   };
 
   return (
@@ -65,16 +84,7 @@ const DashboardHeader = ({ headerType }) => {
           </div>
 
           <div className="outer-box">
-            {/* <button className="menu-btn">
-              <span className="count">1</span>
-              <span className="icon la la-heart-o"></span>
-            </button> */}
-
-            {/* <button className="menu-btn">
-              <span className="icon la la-bell"></span>
-            </button> */}
-
-            <div className="dropdown dashboard-option">
+            <div className="dropdown dashboard-option" ref={dropdownRef}>
               <button
                 className="dropdown-toggle"
                 role="button"
@@ -92,27 +102,14 @@ const DashboardHeader = ({ headerType }) => {
 
               {dropdownOpen && (
                 <ul className="dropdown-menu show">
-                  {employerMenuData.map((item) => (
-                    <li
-                      className={`${
-                        isActiveLink(item.routePath, pathname) ? "active" : ""
-                      } mb-1`}
-                      key={item.id}
+                  <li className="mb-1">
+                    <button
+                      onClick={handleLogout}
+                      className="dropdown-item"
                     >
-                      {item.name === "Logout" ? (
-                        <button
-                          onClick={handleLogout}
-                          className="dropdown-item"
-                        >
-                          <i className={`la ${item.icon}`}></i> {item.name}
-                        </button>
-                      ) : (
-                        <Link href={item.routePath}>
-                          <i className={`la ${item.icon}`}></i> {item.name}
-                        </Link>
-                      )}
-                    </li>
-                  ))}
+                      <i className="la la-sign-out"></i> Logout
+                    </button>
+                  </li>
                 </ul>
               )}
             </div>

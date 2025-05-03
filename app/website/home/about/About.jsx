@@ -42,7 +42,7 @@ const About = () => {
             <span className="flaticon-tick"></span>
           </div>
           <span className="title">300k+ Employers</span>
-          <figure className="image">
+          {/* <figure className="image">
             <Image
               width={234}
               height={61}
@@ -50,7 +50,7 @@ const About = () => {
               src="/images/resource/multi-logo.png"
               alt="resource"
             />
-          </figure>
+          </figure> */}
         </div>
       </div>
       {/* <!-- Image Column --> */}

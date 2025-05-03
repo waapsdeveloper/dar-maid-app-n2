@@ -42,12 +42,12 @@ module.exports = [
     active: "",
   },
   
-  {
-    id: 5,
-    name: "Logout",
-    icon: "la-sign-out",
-    routePath: "/",
-    active: "",
-  },
+  // {
+  //   id: 5,
+  //   name: "Logout",
+  //   icon: "la-sign-out",
+  //   routePath: "/",
+  //   active: "",
+  // },
   // ... rest of your original entries
 ];
