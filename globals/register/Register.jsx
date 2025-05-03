@@ -6,6 +6,9 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Form from "./FormContent";
 import Link from "next/link";
 
+import { userService } from "@/services/user.service";
+import { utilityService } from "@/services/utility.service";
+
 
 const Register = () => {
   const router = useRouter(); // Initialize router
@@ -52,8 +55,21 @@ const Register = () => {
 
 
   // Form submission handler with redirect
-  const handleFormSubmit = (formData) => {
+  const handleFormSubmit = async (formData) => {
     console.log("Received data in parent:", formData);
+
+
+    // here we call the API to register the user
+    // After successful registration, we can redirect the user to the appropriate dashboard
+    // For example, if the user is a candidate, redirect to "/panels/employee/profile"
+    const res = await userService.registerUser(formData);
+
+    if(!res){
+      utilityService.showToast("error", "Error", "Something went wrong, please try again later")
+      return
+    }
+    
+
 
     // Determine redirect route based on selected tab
     let redirectRoute = "/";

@@ -1,4 +1,5 @@
 import { dataService } from "./data.service";
+import { networkService } from "./network.service";
 
 
 class UserService {
@@ -27,6 +28,28 @@ class UserService {
         } else {
             return false
         }
+    }
+
+    // register user
+    async registerUser(data) {
+        // create user        
+        let d = await networkService.registerUser(data);
+        console.log(d);
+
+        if(d && d.token && d.user){
+            // set user to storage 
+
+            localStorage.setItem('user', JSON.stringify(d.user));
+
+            // set token to storage
+            localStorage.setItem('token', d.token);
+
+            return d.user
+        } else {
+            return null
+        }
+
+
     }
 
 

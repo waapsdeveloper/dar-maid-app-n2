@@ -11,7 +11,7 @@ const serialize = (obj: Record<string, any>): string =>
 const handleResponse = async (request: Promise<any>, showError = true): Promise<any> => {
   try {
     const response = await request;
-    return response.data.result;
+    return response.data.data || response.data || response;
   } catch (error: any) {
     const err = error.response?.data;
 
@@ -19,7 +19,7 @@ const handleResponse = async (request: Promise<any>, showError = true): Promise<
       alert("Error: " + err.message); // Replace with toast system
     }
 
-    if (error.response?.status === 401) {
+    if (error.response?.code === 401) {
       localStorage.removeItem("token");
       localStorage.removeItem("user_role");
       window.location.href = "/";
@@ -31,6 +31,21 @@ const handleResponse = async (request: Promise<any>, showError = true): Promise<
 
 // 🔄 Export higher-level API
 export const networkService = {
+
+  registerUser: (data: any) => handleResponse(apiService.post("/auth/register", data), false),
+
+
+
+
+
+
+
+
+
+
+
+
+
   get: (endpoint: string, id: any = null, showError = true) =>
     handleResponse(apiService.get(`${endpoint}${id ? "/" + id : ""}`), showError),
 
