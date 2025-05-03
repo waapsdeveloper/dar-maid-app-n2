@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { userService } from "@/services/user.service";
 
 const FormContent = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -10,10 +11,28 @@ const FormContent = ({ onSubmit }) => {
     password: "",
     password_confirmation: "",
   });
+  const [roles, setRoles] = useState([]);
+
+  // Fetch roles on component mount
+  useEffect(() => {
+    const fetchRoles = async () => {
+      try {
+        const fetchedRoles = await userService.getRoles();
+        console.log("Fetched roles:", fetchedRoles);
+        if (fetchedRoles) {
+          setRoles(fetchedRoles);
+        }
+      } catch (error) {
+        console.error("Error fetching roles:", error);
+      }
+    };
+    fetchRoles();
+  }, []);
 
   // Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log("E value:",e);
   };
 
   // Custom form submission handler
@@ -24,7 +43,7 @@ const FormContent = ({ onSubmit }) => {
     console.log("Form Data Submitted:", formData);
 
     // Validation: Check if role is selected
-    if (!formData.role) {
+    if (!formData.role_id) {
       alert("Please select a role.");
       return;
     }
@@ -52,15 +71,16 @@ const FormContent = ({ onSubmit }) => {
         <select
           name="role"
           required
-          value={formData.role}
+          value={formData.role_id}
           onChange={handleChange}
           className="form-control"
         >
           <option value="">Select Role</option>
-          <option value="employer">Employer</option>
-          <option value="employee">Employee</option>
-          <option value="agency">Agency</option>
-          <option value="superadmin">Superadmin</option>
+          {roles.map((role) => (
+            <option key={role} value={role}>
+              {role.charAt(0).toUpperCase() + role.slice(1)}
+            </option>
+          ))}
         </select>
       </div>
       {/* role */}

@@ -37,6 +37,8 @@ export const networkService = {
     handleResponse(apiService.post("/auth/register", data), false),
   loginUser: (data: any) =>
     handleResponse(apiService.post("/auth/login", data), false),
+  getRoles: () =>
+    handleResponse(apiService.get("/roles"), false),
 
   get: (endpoint: string, id: any = null, showError = true) =>
     handleResponse(

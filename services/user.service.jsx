@@ -74,6 +74,23 @@ class UserService {
       return null;
     }
   }
+
+  // Fetch roles
+  async getRoles() {
+    try {
+      // Call getRoles from networkService with correct endpoint
+      let d = await networkService.getRoles();
+      console.log("getRoles response:", d);
+
+      if (d) {
+        return d;
+      }
+      return null;
+    } catch (error) {
+      console.error("Get roles error:", error);
+      return null;
+    }
+  }
 }
 
 // Export a single instance (Singleton pattern)
