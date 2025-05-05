@@ -304,7 +304,7 @@ export const blogItems = [
 export const pageItems = [
   {
     name: "About",
-    routePath: "/about",
+    routePath: "/website/about",
   },
   // {
   //   name: "Pricing",
@@ -312,11 +312,11 @@ export const pageItems = [
   // },
   {
     name: "FAQ's",
-    routePath: "/faq",
+    routePath: "/website/faq",
   },
   {
     name: "Terms",
-    routePath: "/terms",
+    routePath: "/website/terms",
   },
   // {
   //   name: "Invoice",
@@ -324,7 +324,19 @@ export const pageItems = [
   // },
   {
     name: "Contact",
-    routePath: "/contact",
+    routePath: "/website/contact",
+  },
+  {
+    name: "Employees",
+    routePath: "/",
+  },
+  {
+    name: "Employers",
+    routePath: "/",
+  },
+  {
+    name: "Agencies",
+    routePath: "/",
   },
   // {
   //   name: "404",
