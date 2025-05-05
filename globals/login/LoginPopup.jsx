@@ -84,8 +84,11 @@ const LoginPopup = () => {
         }
       }
 
-      // Show success alert
-      // await utilityService.showAlert("Success", "Login successful!", "success");
+      // Remove modal-backdrop if it remains
+      const backdrop = document.querySelector(".modal-backdrop.fade.show");
+      if (backdrop) {
+        backdrop.parentNode.removeChild(backdrop);
+      }
 
       let userData = res.user;
       // Navigate based on role
@@ -108,11 +111,6 @@ const LoginPopup = () => {
       }
     } catch (error) {
       console.error("Login Error:", error);
-      await utilityService.showAlert(
-        "Error",
-        error.message || "Something went wrong, please try again later",
-        "error"
-      );
     }
   };
 
