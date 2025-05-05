@@ -65,15 +65,15 @@ const LoginPopup = () => {
     }
 
     try {
-      const userData = await userService.loginUser(formData);
-      console.log("Login API Response:", userData);
+      const res = await userService.loginUser(formData);
+      console.log("Login API Response:", res);
 
-      if (!userData || !userData.user) {
+      if (!res || !res.user) {
         return;
       }
 
       // Dispatch login action
-      dispatch(login(userData));
+      dispatch(login(res));
 
       // Close modal
       const modal = document.getElementById("loginPopupModal");
@@ -85,10 +85,11 @@ const LoginPopup = () => {
       }
 
       // Show success alert
-      await utilityService.showAlert("Success", "Login successful!", "success");
+      // await utilityService.showAlert("Success", "Login successful!", "success");
 
+      let userData = res.user;
       // Navigate based on role
-      switch (userData.role) {
+      switch (userData.role.slug) {
         case "employer":
           router.push("/panels/employer/dashboard");
           break;
@@ -98,7 +99,7 @@ const LoginPopup = () => {
         case "agency":
           router.push("/panels/agency/dashboard");
           break;
-        case "superadmin":
+        case "super-admin":
           router.push("/panels/superadmin/dashboard");
           break;
         default:
