@@ -1,8 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
+import FaqChild from "./faqchild";
 import WsPageOuter from "@/templates/layouts/ws-page-outer";
 
-const About = () => {
+const FAQs = () => {
   return (
     <WsPageOuter>
      <section className="faqs-section">
@@ -29,4 +28,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default FAQs;

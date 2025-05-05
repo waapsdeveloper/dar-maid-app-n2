@@ -1,14 +1,14 @@
 import dynamic from "next/dynamic";
-import FAQs from "./faq";
+import Terms from "./terms";
 export const metadata = {
-  title: "FAQs || Domesta  - Listing Board",
+  title: "Terms || Domesta  - Listing Board",
   description: "Domesta  - Listing Board",
 };
 
 const index = () => {
   return (
     <>
-      <FAQs />
+      <Terms />
     </>
   );
 };
