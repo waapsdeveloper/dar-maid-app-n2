@@ -328,7 +328,7 @@ export const pageItems = [
   },
   {
     name: "Employees",
-    routePath: "/",
+    routePath: "/website/employees",
   },
   {
     name: "Employers",
