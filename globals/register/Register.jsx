@@ -11,14 +11,14 @@ import { login } from "@/features/auth/authSlice";
 
 
 const Register = () => {
-  
+
   const dispatch = useDispatch();
   const router = useRouter(); // Initialize router
   const modalRef = useRef(null);
   const [selectedTab, setSelectedTab] = useState(0); // Track active tab
 
   useEffect(() => {
-    import("bootstrap/dist/js/bootstrap.bundle.min.js").then((bootstrap) => {
+    import("bootstrap/dist/js/bootstrap.bundle.min.js").then((bootstrap) => { 
       window.bootstrap = bootstrap; // Make Bootstrap available globally
     });
   }, []);
@@ -84,6 +84,10 @@ const Register = () => {
       if (backdrop) {
         backdrop.parentNode.removeChild(backdrop);
       }
+
+      document.body.classList.remove("modal-open"); // Remove Bootstrap's modal-open class
+      document.querySelector(".modal-backdrop").classList.remove("show")
+      document.querySelector(".modal-backdrop").remove();
 
       let userData = res.user;
       // Navigate based on role

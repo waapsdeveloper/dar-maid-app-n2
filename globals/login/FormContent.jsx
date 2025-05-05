@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const FormContent = ({ onSubmit }) => {
+const FormContent = ({ onSubmit, onSwitchRegister }) => {
   const [email, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -20,6 +20,10 @@ const FormContent = ({ onSubmit }) => {
 
     console.log("FormContent submitting:", formData); // Debug log
     onSubmit(formData);
+  };
+
+  const handleSignup = () => {
+    onSwitchRegister(); // Call the function to switch to the registration form
   };
 
   return (
@@ -79,11 +83,7 @@ const FormContent = ({ onSubmit }) => {
             name="log-in"
             onClick={(e) => {
               e.preventDefault();
-              onSubmit({
-                email,
-                password,
-                rememberMe,
-              });
+              handleLogin();
             }}
           >
             Log In
@@ -94,16 +94,16 @@ const FormContent = ({ onSubmit }) => {
       <div className="bottom-box">
         <div className="text">
           Don't have an account?{" "}
-          <Link
-            href="#"
+          <span
             className="call-modal signup"
-            data-bs-toggle="modal"
-            data-bs-target="#registerModal"
+            onClick={handleSignup}
+            style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}
           >
             Signup
-          </Link>
+          </span>
         </div>
       </div>
+      
     </div>
   );
 };
