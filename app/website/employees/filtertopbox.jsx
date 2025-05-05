@@ -122,7 +122,7 @@ const FilterTopBox = () => {
               />
             </figure>
             <h4 className="name">
-              <Link href={`/candidates-single-v1/${candidate.id}`}>
+              <Link href={`/website/employees/profile/${candidate.id}`}>
                 {candidate.name}
               </Link>
             </h4>
@@ -157,7 +157,7 @@ const FilterTopBox = () => {
             {/* End bookmark-btn */}
 
             <Link
-              href={`/candidates-single-v1/${candidate.id}`}
+              href={`/website/employees/${candidate.id}`}
               className="theme-btn btn-style-three"
             >
               <span className="btn-title">View Profile</span>

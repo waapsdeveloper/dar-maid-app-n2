@@ -86,7 +86,36 @@ const nextConfig = {
       {
         source: "/panels/agency/interviews",
         destination: "/admin-panels/agency/interviews",
-      },     
+      },   
+        //website routes
+        {
+          source: "/home",
+          destination: "/website/home",
+        }, 
+        {
+          source: "/about",
+          destination: "/website/about",
+        }, 
+        {
+          source: "/contact",
+          destination: "/website/contact",
+        }, 
+        {
+          source: "/faq",
+          destination: "/website/faq",
+        }, 
+        {
+          source: "/terms",
+          destination: "/website/terms",
+        }, 
+        {
+          source: "/employees",
+          destination: "/website/employees",
+        }, 
+        {
+          source: "/employers",
+          destination: "/website/employers",
+        }, 
     ];
   },
 
