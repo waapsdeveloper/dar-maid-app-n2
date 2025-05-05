@@ -5,18 +5,20 @@ import { useRouter } from "next/navigation"; // Import useRouter
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import Form from "./FormContent";
 import Link from "next/link";
-
+import { useDispatch } from "react-redux";
 import { userService } from "@/services/user.service";
-import { utilityService } from "@/services/utility.service";
+import { login } from "@/features/auth/authSlice";
 
 
 const Register = () => {
+
+  const dispatch = useDispatch();
   const router = useRouter(); // Initialize router
   const modalRef = useRef(null);
   const [selectedTab, setSelectedTab] = useState(0); // Track active tab
 
   useEffect(() => {
-    import("bootstrap/dist/js/bootstrap.bundle.min.js").then((bootstrap) => {
+    import("bootstrap/dist/js/bootstrap.bundle.min.js").then((bootstrap) => { 
       window.bootstrap = bootstrap; // Make Bootstrap available globally
     });
   }, []);
@@ -58,34 +60,80 @@ const Register = () => {
   const handleFormSubmit = async (formData) => {
     console.log("Received data in parent:", formData);
 
+    try {
 
-    // here we call the API to register the user
-    // After successful registration, we can redirect the user to the appropriate dashboard
-    // For example, if the user is a candidate, redirect to "/panels/employee/profile"
-    const res = await userService.registerUser(formData);
+      // here we call the API to register the user
+      // After successful registration, we can redirect the user to the appropriate dashboard
+      // For example, if the user is a candidate, redirect to "/panels/employee/profile"
+      const res = await userService.registerUser(formData);
 
-    if(!res){
-      utilityService.showToast("error", "Error", "Something went wrong, please try again later")
-      return
+      // Dispatch login action
+      dispatch(login(res));
+
+      // Close modal
+      const modal = document.getElementById("loginPopupModal");
+      if (modal) {
+        const modalInstance = bootstrap.Modal.getInstance(modal);
+        if (modalInstance) {
+          modalInstance.hide();
+        }
+      }
+
+      // Remove modal-backdrop if it remains
+      const backdrop = document.querySelector(".modal-backdrop.fade.show");
+      if (backdrop) {
+        backdrop.parentNode.removeChild(backdrop);
+      }
+
+      document.body.classList.remove("modal-open"); // Remove Bootstrap's modal-open class
+      document.querySelector(".modal-backdrop").classList.remove("show")
+      document.querySelector(".modal-backdrop").remove();
+
+      let userData = res.user;
+      // Navigate based on role
+      switch (userData.role.slug) {
+        case "employer":
+          router.push("/panels/employer/dashboard");
+          break;
+        case "employee":
+          router.push("/panels/employee/dashboard");
+          break;
+        case "agency":
+          router.push("/panels/agency/dashboard");
+          break;
+        case "super-admin":
+          router.push("/panels/superadmin/dashboard");
+          break;
+        default:
+          router.push("/login");
+          console.log("role:", userData.role);
+      }
+    } catch (error) {
+      console.error("register  Error:", error);
     }
-    
+
+    // if(!res){
+    //   utilityService.showToast("error", "Error", "Something went wrong, please try again later")
+    //   return
+    // }
 
 
-    // Determine redirect route based on selected tab
-    let redirectRoute = "/";
-    if (selectedTab === 0) {
-      redirectRoute ="/panels/employee/profile";
-    } else if (selectedTab === 1) {
-      redirectRoute = "/panels/agency/profile";
-    } else if (selectedTab === 2) {
-      redirectRoute ="/panels/employer/profile";
-    }
 
-    // alert(`Redirecting to: ${redirectRoute}`);
-    setTimeout(() => {
-      closeModal(); // Close the modal
-      router.push(redirectRoute); // Redirect to the appropriate dashboard
-    }, 1000);
+    // // Determine redirect route based on selected tab
+    // let redirectRoute = "/";
+    // if (selectedTab === 0) {
+    //   redirectRoute ="/panels/employee/profile";
+    // } else if (selectedTab === 1) {
+    //   redirectRoute = "/panels/agency/profile";
+    // } else if (selectedTab === 2) {
+    //   redirectRoute ="/panels/employer/profile";
+    // }
+
+    // // alert(`Redirecting to: ${redirectRoute}`);
+    // setTimeout(() => {
+    //   closeModal(); // Close the modal
+    //   router.push(redirectRoute); // Redirect to the appropriate dashboard
+    // }, 1000);
 
   };
 
@@ -93,46 +141,7 @@ const Register = () => {
     <div className="form-inner">
       <h3>Create a Domesta Account</h3>
 
-      <Tabs selectedIndex={selectedTab} onSelect={handleTabChange}>
-        <div className="form-group register-dual">
-        <TabList
-            className="btn-box"
-            style={{
-              display: "flex",
-              flexWrap: "nowrap",
-              width: "100%",
-              gap: "5px",
-            }}
-          >
-            <Tab style={{ flex: "0 0 33.33%", maxWidth: "33.33%" }}>
-              <button className="theme-btn btn-style-four" style={{ width: "100%" }}>
-                <i className="la la-user"></i> Candidate
-              </button>
-            </Tab>
-            <Tab style={{ flex: "0 0 33.33%", maxWidth: "33.33%" }}>
-              <button className="theme-btn btn-style-four" style={{ width: "100%" }}>
-                <i className="la la-user"></i> Agency
-              </button>
-            </Tab>
-            <Tab style={{ flex: "0 0 33.33%", maxWidth: "33.33%" }}>
-              <button className="theme-btn btn-style-four" style={{ width: "100%" }}>
-                <i className="la la-briefcase"></i> Employer
-              </button>
-            </Tab>
-          </TabList>
-        </div>
-
-        {/* Forms for each tab */}
-        <TabPanel>
-          <Form onSubmit={handleFormSubmit} />
-        </TabPanel>
-        <TabPanel>
-          <Form onSubmit={handleFormSubmit} />
-        </TabPanel>
-        <TabPanel>
-          <Form onSubmit={handleFormSubmit} />
-        </TabPanel>
-      </Tabs>
+      <Form onSubmit={handleFormSubmit} />
 
       <div className="bottom-box">
         <div className="text">

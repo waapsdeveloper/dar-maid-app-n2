@@ -41,7 +41,7 @@ class UserService {
       // Set token to storage
       localStorage.setItem("token", d.token);
 
-      return d.user;
+      return d;
     } else {
       return null;
     }

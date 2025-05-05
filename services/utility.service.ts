@@ -11,6 +11,19 @@ class UtilityService {
     // Placeholder for loader logic
   }
 
+  showToast(message, type) {
+    return Swal.fire({
+      toast: true,
+      position: 'top-end',
+      icon: type, // 'success' or 'error'
+      title: message,
+      showConfirmButton: false,
+      timer: type === 'success' ? 2000 : 3000, // Auto-close: 2s for success, 3s for error
+      timerProgressBar: true,
+      background: type === 'success' ? '#d4edda' : '#f8d7da', // Green for success, red for error
+    });
+  }
+
   showAlert(title, message, type) {
     return Swal.fire({
       title: title,

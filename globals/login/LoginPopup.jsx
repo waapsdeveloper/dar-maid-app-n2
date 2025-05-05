@@ -19,20 +19,20 @@ const LoginPopup = () => {
       const res = await userService.loginUser(formData);
       console.log("Registration API Response:", res);
 
-      if (!res || !res.success) {
-        await utilityService.showAlert(
-          "Error",
-          res?.message || "Something went wrong, please try again later",
-          "error"
-        );
-        return;
-      }
+      // if (!res || !res.success) {
+      //   await utilityService.showAlert(
+      //     "Error",
+      //     res?.message || "Something went wrong, please try again later",
+      //     "error"
+      //   );
+      //   return;
+      // }
 
-      await utilityService.showAlert(
-        "Success",
-        "Registration successful!",
-        "success"
-      );
+      // await utilityService.showAlert(
+      //   "Success",
+      //   "Registration successful!",
+      //   "success"
+      // );
       // Close modal
       const modal = document.getElementById("registerModal");
       if (modal) {
@@ -41,6 +41,9 @@ const LoginPopup = () => {
           modalInstance.hide();
         }
       }
+
+
+
     } catch (error) {
       console.error("Registration Error:", error);
       await utilityService.showAlert(
@@ -48,6 +51,28 @@ const LoginPopup = () => {
         error.message || "Something went wrong, please try again later",
         "error"
       );
+    }
+  };
+
+  // Handle switching to the register modal
+  const handleSwitchRegister = () => {
+    const loginModal = document.getElementById("loginPopupModal");
+    const registerModal = document.getElementById("registerModal");
+
+    if (loginModal) {
+      const loginModalInstance = bootstrap.Modal.getInstance(loginModal);
+      if (loginModalInstance) {
+        loginModalInstance.hide();
+      }
+
+      // document.body.classList.remove("modal-open"); // Remove Bootstrap's modal-open class
+      document.querySelector(".modal-backdrop").classList.remove("show")
+      document.querySelector(".modal-backdrop").remove();
+    }
+
+    if (registerModal) {
+      const registerModalInstance = new bootstrap.Modal(registerModal);
+      registerModalInstance.show();
     }
   };
 
@@ -65,15 +90,15 @@ const LoginPopup = () => {
     }
 
     try {
-      const userData = await userService.loginUser(formData);
-      console.log("Login API Response:", userData);
+      const res = await userService.loginUser(formData);
+      console.log("Login API Response:", res);
 
-      if (!userData || !userData.user) {
+      if (!res || !res.user) {
         return;
       }
 
       // Dispatch login action
-      dispatch(login(userData));
+      dispatch(login(res));
 
       // Close modal
       const modal = document.getElementById("loginPopupModal");
@@ -84,11 +109,19 @@ const LoginPopup = () => {
         }
       }
 
-      // Show success alert
-      await utilityService.showAlert("Success", "Login successful!", "success");
+      // Remove modal-backdrop if it remains
+      const backdrop = document.querySelector(".modal-backdrop.fade.show");
+      if (backdrop) {
+        backdrop.parentNode.removeChild(backdrop);
+      }
 
+      document.body.classList.remove("modal-open"); // Remove Bootstrap's modal-open class
+      document.querySelector(".modal-backdrop").classList.remove("show")
+      document.querySelector(".modal-backdrop").remove();
+
+      let userData = res.user;
       // Navigate based on role
-      switch (userData.role) {
+      switch (userData.role.slug) {
         case "employer":
           router.push("/panels/employer/dashboard");
           break;
@@ -98,7 +131,7 @@ const LoginPopup = () => {
         case "agency":
           router.push("/panels/agency/dashboard");
           break;
-        case "superadmin":
+        case "super-admin":
           router.push("/panels/superadmin/dashboard");
           break;
         default:
@@ -107,11 +140,6 @@ const LoginPopup = () => {
       }
     } catch (error) {
       console.error("Login Error:", error);
-      await utilityService.showAlert(
-        "Error",
-        error.message || "Something went wrong, please try again later",
-        "error"
-      );
     }
   };
 
@@ -130,7 +158,7 @@ const LoginPopup = () => {
             <div className="modal-body">
               <div id="login-modal">
                 <div className="login-form default-form">
-                  <FormContent onSubmit={handleFormSubmit} />
+                  <FormContent onSubmit={handleFormSubmit} onSwitchRegister={handleSwitchRegister} />
                 </div>
               </div>
             </div>
