@@ -1,6 +1,7 @@
 // services/networkService.ts
 
 import { apiService } from "./api.service";
+import { utilityService } from "./utility.service";
 
 const serialize = (obj: Record<string, any>): string =>
   Object.keys(obj)
@@ -18,7 +19,10 @@ const handleResponse = async (
     const err = error.response?.data;
 
     if (showError && err?.message) {
-      alert("Error: " + err.message); // Replace with toast system
+      utilityService.showToast(
+        err.message || "An error occurred. Please try again.",
+        "error",        
+      );
     }
 
     if (error.response?.code === 401) {
@@ -36,7 +40,7 @@ export const networkService = {
   registerUser: (data: any) =>
     handleResponse(apiService.post("/auth/register", data), false),
   loginUser: (data: any) =>
-    handleResponse(apiService.post("/auth/login", data), false),
+    handleResponse(apiService.post("/auth/login", data), true),
   getRoles: () =>
     handleResponse(apiService.get("/roles"), false),
 
