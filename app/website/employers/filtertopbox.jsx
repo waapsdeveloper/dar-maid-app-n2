@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import ListingShowing from "@/components/ListingShowing";
-import topCompanies from "@/data/top-company";
+import employerProfile from "@/data/employer-profile";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addCategory,
@@ -30,88 +30,102 @@ const FilterTopBox = () => {
   // keyword filter
   const keywordFilter = (item) =>
     keyword !== ""
-      ? item?.name?.toLowerCase().includes(keyword?.toLowerCase()) && item
+      ? item?.name?.toLowerCase()?.includes(keyword?.toLowerCase()) && item
       : item;
 
   // location filter
   const locationFilter = (item) =>
     location !== ""
-      ? item?.location?.toLowerCase().includes(location?.toLowerCase())
+      ? item?.location?.toLowerCase()?.includes(location?.toLowerCase())
       : item;
 
   // destination filter
   const destinationFilter = (item) =>
-    item?.destination?.min >= destination?.min &&
-    item?.destination?.max <= destination?.max;
+    destination?.min && destination?.max && item?.destination
+      ? item.destination.min >= destination.min &&
+        item.destination.max <= destination.max
+      : item;
 
   // category filter
   const categoryFilter = (item) =>
     category !== ""
-      ? item?.category?.toLocaleLowerCase() === category?.toLocaleLowerCase()
+      ? item?.category?.toLowerCase() === category?.toLowerCase()
       : item;
 
   // foundation date filter
   const foundationDataFilter = (item) =>
-    item?.foundationDate?.min >= foundationDate?.min &&
-    item?.foundationDate?.max <= foundationDate?.max;
+    foundationDate?.min && foundationDate?.max && item?.foundationDate
+      ? item.foundationDate.min >= foundationDate.min &&
+        item.foundationDate.max <= foundationDate.max
+      : item;
 
   // sort filter
   const sortFilter = (a, b) =>
-    sort === "des" ? a.id > b.id && -1 : a.id < b.id && -1;
+    sort === "des" ? (a.id > b.id ? -1 : 1) : a.id < b.id ? -1 : 1;
 
-  let content = topCompanies
-    ?.slice(perPage.start !== 0 && 12, perPage.end !== 0 ? perPage.end : 20)
-    ?.filter(keywordFilter)
-    ?.filter(locationFilter)
-    ?.filter(destinationFilter)
-    ?.filter(categoryFilter)
-    ?.filter(foundationDataFilter)
-    ?.sort(sortFilter)
-    ?.map((company) => (
-      <div className="company-block-three" key={company.id}>
-        <div className="inner-box">
-          <div className="content">
-            <div className="content-inner">
-              <span className="company-logo">
-                <Image
-                  width={50}
-                  height={50}
-                  src={company.img}
-                  alt="company brand"
-                />
-              </span>
-              <h4>
-                <Link href={`/website/employers/profile/${company.id}`}>
-                  {company.name}
-                </Link>
-              </h4>
-              <ul className="job-info">
-                <li>
-                  <span className="icon flaticon-map-locator"></span>{" "}
-                  {company.location}
-                </li>
-                <li>
-                  <span className="icon flaticon-briefcase"></span>{" "}
-                  {company.jobType}
+  const content = Array.isArray(employerProfile) && employerProfile.length > 0 ? (
+    employerProfile
+      ?.slice(perPage.start || 0, perPage.end || 20)
+      ?.filter(keywordFilter)
+      ?.filter(locationFilter)
+      ?.filter(destinationFilter)
+      ?.filter(categoryFilter)
+      ?.filter(foundationDataFilter)
+      ?.sort(sortFilter)
+      ?.map((company) => (
+        <div className="company-block-three" key={company.id}>
+          <div className="inner-box">
+            <div className="content">
+              <div className="content-inner">
+                <span className="company-logo">
+                  <Image
+                    width={50}
+                    height={50}
+                    src={company.img || "/images/company/fallback.png"}
+                    alt="company brand"
+                    onError={(e) => {
+                      e.target.src = "/images/company/fallback.png";
+                    }}
+                  />
+                </span>
+                <h4>
+                  <Link href={`/website/employers/profile/${company.id}`}>
+                    {company.name || "Unnamed Company"}
+                  </Link>
+                </h4>
+                <ul className="job-info">
+                  <li>
+                    <span className="icon flaticon-map-locator"></span>{" "}
+                    {company.location || "Unknown Location"}
+                  </li>
+                  <li>
+                    <span className="icon flaticon-briefcase"></span>{" "}
+                    {company.jobType || "N/A"}
+                  </li>
+                </ul>
+              </div>
+
+              <ul className="job-other-info">
+                {company.isFeatured ? (
+                  <li className="privacy">Featured</li>
+                ) : null}
+                <li className="time">
+                  Open Jobs – {company.jobNumber || 0}
                 </li>
               </ul>
             </div>
 
-            <ul className="job-other-info">
-              {company.isFeatured ? <li className="privacy">Featured</li> : ""}
+            <div className="text">{company.jobDetails || "No details available"}</div>
 
-              <li className="time">Open Jobs – {company.jobNumber}</li>
-            </ul>
+            <button className="bookmark-btn">
+              <span className="flaticon-bookmark"></span>
+            </button>
           </div>
-
-          <div className="text">{company.jobDetails}</div>
-
-          <button className="bookmark-btn">
-            <span className="flaticon-bookmark"></span>
-          </button>
         </div>
-      </div>
-    ));
+      ))
+  ) : (
+    <p className="text-muted">No companies available</p>
+  );
 
   // per page handler
   const perPageHandler = (e) => {
@@ -140,7 +154,9 @@ const FilterTopBox = () => {
       <div className="ls-switcher">
         <div className="showing-result">
           <div className="text">
-            <strong>{content?.length}</strong> jobs
+            <strong>
+              {Array.isArray(content) ? content.length : 0} jobs
+            </strong>
           </div>
         </div>
         {/* End showing-result */}
@@ -166,7 +182,7 @@ const FilterTopBox = () => {
             >
               Clear All
             </button>
-          ) : undefined}
+          ) : null}
 
           <select
             value={sort}
@@ -181,7 +197,7 @@ const FilterTopBox = () => {
 
           <select
             onChange={perPageHandler}
-            className="chosen-single form-select ms-3 "
+            className="chosen-single form-select ms-3"
             value={JSON.stringify(perPage)}
           >
             <option

@@ -2,21 +2,19 @@
 
 import Link from "next/link";
 import ListingShowing from "@/components/ListingShowing";
-import candidatesData from "@/data/candidates"
+import employeeProfile from "@/data/employee-profile";
 import { useDispatch, useSelector } from "react-redux";
 import { 
     addCandidateGender,
     addCategory,
-    addDatePost,
-    addDestination,
     addKeyword,
     addLocation,
     addPerPage,
     addSort,
     clearExperienceF,
-    clearQualificationF, } from "../../../features/filter/candidateFilterSlice";
+    clearQualificationF, 
+} from "../../../features/filter/candidateFilterSlice";
 import {
-  clearDatePost,
   clearExperience,
   clearQualification,
 } from "../../../features/candidate/candidateSlice";
@@ -26,10 +24,8 @@ const FilterTopBox = () => {
   const {
     keyword,
     location,
-    destination,
     category,
     candidateGender,
-    datePost,
     experiences,
     qualifications,
     sort,
@@ -38,74 +34,59 @@ const FilterTopBox = () => {
 
   const dispatch = useDispatch();
 
-  // keyword filter
-  const keywordFilter = (item) =>
-    keyword !== ""
-      ? item?.name?.toLowerCase().includes(keyword?.toLowerCase()) && item
-      : item;
+  // Helper to extract nested key values
+  const findKeyValue = (keys, keyName, field, fallback = "") => {
+    try {
+      const keyObj = keys?.find((k) => k.key === keyName);
+      const fieldObj = keyObj?.value?.find((v) => v.key === field);
+      return fieldObj?.value || fallback;
+    } catch (error) {
+      return fallback;
+    }
+  };
 
-  // location filter
-  const locationFilter = (item) =>
-    location !== ""
-      ? item?.location?.toLowerCase().includes(location?.toLowerCase())
-      : item;
+  // Helper to determine image source
+  const getImageSrc = (candidate) => {
+    if (candidate?.profilePic) {
+      const cleanedProfilePic = candidate.profilePic
+        .replace(/^\/images\/candidates\//, '')
+        .replace(/^\/images\//, '');
+      return `/images/candidates/${cleanedProfilePic}`;
+    }
+    if (candidate?.keys) {
+      const profileImage = findKeyValue(candidate.keys, "profile", "profileImage", "");
+      if (profileImage) return `/images/candidates/${profileImage}`;
+    }
+    return "/images/candidates/default-avatar.png";
+  };
 
-  // destination filter
-  const destinationFilter = (item) =>
-    item?.destination?.min >= destination?.min &&
-    item?.destination?.max <= destination?.max;
+  // Filters
+  const keywordFilter = (item) => 
+    keyword ? item?.name?.toLowerCase().includes(keyword.toLowerCase()) : true;
 
-  // category filter
-  const categoryFilter = (item) =>
-    category !== ""
-      ? item?.category?.toLocaleLowerCase() === category?.toLocaleLowerCase()
-      : item;
+  const locationFilter = (item) => 
+    location ? findKeyValue(item.keys, "contactInformation", "city", "").toLowerCase().includes(location.toLowerCase()) : true;
 
-  // gender filter
-  const genderFilter = (item) =>
-    candidateGender !== ""
-      ? item?.gender.toLocaleLowerCase() ===
-          candidateGender.toLocaleLowerCase() && item
-      : item;
+  const categoryFilter = (item) => 
+    category ? findKeyValue(item.keys, "employmentDetails", "employeeCategory", "").toLowerCase() === category.toLowerCase() : true;
 
-  // date-posted filter
-  const datePostedFilter = (item) =>
-    datePost !== "all" && datePost !== ""
-      ? item?.created_at
-          ?.toLocaleLowerCase()
-          .split(" ")
-          .join("-")
-          .includes(datePost)
-      : item;
+  const genderFilter = (item) => 
+    candidateGender ? findKeyValue(item.keys, "profile", "gender", "").toLowerCase() === candidateGender.toLowerCase() : true;
 
-  // experience filter
-  const experienceFilter = (item) =>
-    experiences?.length !== 0
-      ? experiences?.includes(
-          item?.experience?.split(" ").join("-").toLocaleLowerCase()
-        )
-      : item;
+  const experienceFilter = (item) => 
+    experiences?.length ? experiences.includes(findKeyValue(item.keys, "employmentDetails", "experience", "").toLowerCase().replace(" ", "-")) : true;
 
-  // qualification filter
-  const qualificationFilter = (item) =>
-    qualifications?.length !== 0
-      ? qualifications?.includes(
-          item?.qualification?.split(" ").join("-").toLocaleLowerCase()
-        )
-      : item;
+  const qualificationFilter = (item) => 
+    qualifications?.length ? qualifications.some((q) => findKeyValue(item.keys, "employmentDetails", "skills", "").toLowerCase().includes(q.toLowerCase())) : true;
 
-  // sort filter
-  const sortFilter = (a, b) =>
-    sort === "des" ? a.id > b.id && -1 : a.id < b.id && -1;
+  const sortFilter = (a, b) => sort === "des" ? b.id - a.id : a.id - a.id;
 
-  let content = candidatesData
-    ?.slice(perPage.start, perPage.end === 0 ? 10 : perPage.end)
+  const content = employeeProfile
+    ?.slice(perPage?.start || 0, perPage?.end || 10)
     ?.filter(keywordFilter)
     ?.filter(locationFilter)
-    ?.filter(destinationFilter)
     ?.filter(categoryFilter)
     ?.filter(genderFilter)
-    ?.filter(datePostedFilter)
     ?.filter(experienceFilter)
     ?.filter(qualificationFilter)
     ?.sort(sortFilter)
@@ -117,8 +98,9 @@ const FilterTopBox = () => {
               <Image
                 width={90}
                 height={90}
-                src={candidate.avatar}
-                alt="candidates"
+                src={getImageSrc(candidate)}
+                alt={candidate.name || "Candidate"}
+                onError={(e) => { e.target.src = "/images/profession.jpeg"; }}
               />
             </figure>
             <h4 className="name">
@@ -126,68 +108,49 @@ const FilterTopBox = () => {
                 {candidate.name}
               </Link>
             </h4>
-
             <ul className="candidate-info">
-              <li className="designation">{candidate.designation}</li>
+              <li className="designation">
+                {findKeyValue(candidate.keys, "profile", "role", "N/A")}
+              </li>
               <li>
-                <span className="icon flaticon-map-locator"></span>{" "}
-                {candidate.location}
+                <span className="icon flaticon-map-locator"></span>
+                {findKeyValue(candidate.keys, "contactInformation", "city", "Unknown")}
               </li>
               <li>
                 <span className="icon flaticon-money"></span> $
-                {candidate.hourlyRate} / hour
+                {findKeyValue(candidate.keys, "employmentDetails", "salary", "0")} / hour
               </li>
             </ul>
-            {/* End candidate-info */}
-
             <ul className="post-tags">
-              {candidate.tags.map((val, i) => (
-                <li key={i}>
-                  <a href="#">{val}</a>
-                </li>
-              ))}
+              {findKeyValue(candidate.keys, "employmentDetails", "skills", "No Skills")
+                .split(", ")
+                .map((val, i) => (
+                  <li key={i}><a href="#">{val}</a></li>
+                ))}
             </ul>
           </div>
-          {/* End content */}
-
           <div className="btn-box">
             <button className="bookmark-btn me-2">
               <span className="flaticon-bookmark"></span>
             </button>
-            {/* End bookmark-btn */}
-
             <Link
-              href={`/website/employees/${candidate.id}`}
+              href={`/website/employees/profile/${candidate.id}`}
               className="theme-btn btn-style-three"
             >
               <span className="btn-title">View Profile</span>
             </Link>
           </div>
-          {/* End btn-box */}
         </div>
       </div>
     ));
 
-  // sort handler
-  const sortHandler = (e) => {
-    dispatch(addSort(e.target.value));
-  };
-
-  // per page handler
-  const perPageHandler = (e) => {
-    const pageData = JSON.parse(e.target.value);
-    dispatch(addPerPage(pageData));
-  };
-
-  // clear handler
+  const sortHandler = (e) => dispatch(addSort(e.target.value));
+  const perPageHandler = (e) => dispatch(addPerPage(JSON.parse(e.target.value)));
   const clearHandler = () => {
     dispatch(addKeyword(""));
     dispatch(addLocation(""));
-    dispatch(addDestination({ min: 0, max: 100 }));
     dispatch(addCategory(""));
     dispatch(addCandidateGender(""));
-    dispatch(addDatePost(""));
-    dispatch(clearDatePost());
     dispatch(clearExperienceF());
     dispatch(clearExperience());
     dispatch(clearQualification());
@@ -203,34 +166,19 @@ const FilterTopBox = () => {
           <div className="show-1023">
             <button
               type="button"
-              className="theme-btn toggle-filters "
+              className="theme-btn toggle-filters"
               data-bs-toggle="offcanvas"
               data-bs-target="#filter-sidebar"
             >
               <span className="icon icon-filter"></span> Filter
             </button>
           </div>
-          {/* Collapsible sidebar button */}
-
           <div className="text">
-            <strong>{content?.length}</strong> jobs
+            <strong>{content?.length || 0}</strong> jobs
           </div>
         </div>
-        {/* End showing-result */}
-
         <div className="sort-by">
-          {keyword !== "" ||
-          location !== "" ||
-          destination.min !== 0 ||
-          destination.max !== 100 ||
-          category !== "" ||
-          candidateGender !== "" ||
-          datePost !== "" ||
-          experiences?.length !== 0 ||
-          qualifications?.length !== 0 ||
-          sort !== "" ||
-          perPage?.start !== 0 ||
-          perPage?.end !== 0 ? (
+          {(keyword || location || category || candidateGender || experiences?.length || qualifications?.length || sort || perPage?.start !== 0 || perPage?.end !== 0) && (
             <button
               className="btn btn-danger text-nowrap me-2"
               style={{ minHeight: "45px", marginBottom: "15px" }}
@@ -238,66 +186,30 @@ const FilterTopBox = () => {
             >
               Clear All
             </button>
-          ) : undefined}
-
+          )}
           <select
             onChange={sortHandler}
             className="chosen-single form-select"
-            value={sort}
+            value={sort || ""}
           >
             <option value="">Sort by (default)</option>
             <option value="asc">Newest</option>
             <option value="des">Oldest</option>
           </select>
-          {/* End select */}
-
           <select
-            className="chosen-single form-select ms-3 "
+            className="chosen-single form-select ms-3"
             onChange={perPageHandler}
-            value={JSON.stringify(perPage)}
+            value={JSON.stringify(perPage || { start: 0, end: 0 })}
           >
-            <option
-              value={JSON.stringify({
-                start: 0,
-                end: 0,
-              })}
-            >
-              All
-            </option>
-            <option
-              value={JSON.stringify({
-                start: 0,
-                end: 15,
-              })}
-            >
-              15 per page
-            </option>
-            <option
-              value={JSON.stringify({
-                start: 0,
-                end: 20,
-              })}
-            >
-              20 per page
-            </option>
-            <option
-              value={JSON.stringify({
-                start: 0,
-                end: 25,
-              })}
-            >
-              25 per page
-            </option>
+            <option value={JSON.stringify({ start: 0, end: 0 })}>All</option>
+            <option value={JSON.stringify({ start: 0, end: 15 })}>15 per page</option>
+            <option value={JSON.stringify({ start: 0, end: 20 })}>20 per page</option>
+            <option value={JSON.stringify({ start: 0, end: 25 })}>25 per page</option>
           </select>
-          {/* End select */}
         </div>
       </div>
-      {/* End top filter bar box */}
-
-      {content}
-
+      {content?.length ? content : <div>No candidates found. Check data or clear filters.</div>}
       <ListingShowing />
-      {/* <!-- Listing Show More --> */}
     </>
   );
 };

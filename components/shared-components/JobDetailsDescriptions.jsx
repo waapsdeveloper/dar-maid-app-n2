@@ -3,7 +3,7 @@ import GalleryBox from "./GalleryBox";
 const JobDetailsDescriptions = () => {
   return (
     <div className="job-detail">
-      <h4>About Company</h4>
+      {/* <h4>About Company</h4>
       <p>
         Moody’s Corporation, often referred to as Moody’s, is an American
         business and financial services company. It is the holding company for
@@ -19,7 +19,7 @@ const JobDetailsDescriptions = () => {
         under MCO. In 2007, Moody’s Corporation was split into two operating
         divisions, Moody’s Investors Service, the rating agency, and Moody’s
         Analytics, with all of its other products.
-      </p>
+      </p> */}
       <div className="row images-outer">
         <GalleryBox />
       </div>

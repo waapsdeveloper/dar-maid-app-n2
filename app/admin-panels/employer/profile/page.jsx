@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import ProfilePage from "./ProfilePage";
 
 export const metadata = {
-  title: "Change Password || Domesta  - Listing Board",
+  title: "Employer Profile || Domesta  - Listing Board",
   description: "Domesta  - Listing Board",
 };
 
