@@ -23,58 +23,92 @@ class UserService {
     }
   }
 
-  // Register user
+
+
   async registerUser(data) {
     if (!data || !data.name || !data.email || !data.password) {
       console.error("Invalid registration data:", data);
+      alert("Registration Failed: Missing required fields.");
       return null;
     }
-
-    // Create user
-    let d = await networkService.registerUser(data);
-    console.log("registerUser response:", d);
-
-    if (d && d.token && d.user) {
-      // Set user to storage
-      localStorage.setItem("user", JSON.stringify(d.user));
-
-      // Set token to storage
-      localStorage.setItem("token", d.token);
-
-      return d;
-    } else {
+  
+    try {
+      const d = await networkService.registerUser(data);
+      console.log("registerUser response:", d);
+  
+      if (d && d.token && d.user) {
+        localStorage.setItem("user", JSON.stringify(d.user));
+        localStorage.setItem("token", d.token);
+  
+        alert("Registration Successful!");
+        return d;
+      } else {
+        console.error("Registration failed. Response missing token or user.");
+        alert("Registration Failed: Invalid response from server.");
+        return null;
+      }
+    } catch (error) {
+      console.error("Error during user registration:", error);
+      alert("Registration Failed: There was an error during registration.");
       return null;
     }
   }
+  
+  // Login user  ---previous code
+  // async loginUser(data) {
+  //   if (!data || !data.email || !data.password) {
+  //     console.error("Invalid login data:", data);
+  //     return null;
+  //   }
 
-  // Login user
+  //   try {
+  //     // Call loginUser from networkService instead of dataService
+  //     let d = await networkService.loginUser(data);
+  //     console.log("loginUser response:", d);
+
+  //     if (d && d.token) {
+  //       // Set user to storage
+  //       localStorage.setItem("user", JSON.stringify(d));
+
+  //       // Set token to storage
+  //       localStorage.setItem("token", d.token);
+
+  //       return d;
+  //     }
+  //     return null;
+  //   } catch (error) {
+  //     console.error("Login error:", error);
+  //     return null;
+  //   }
+  // }
+  
   async loginUser(data) {
     if (!data || !data.email || !data.password) {
       console.error("Invalid login data:", data);
       return null;
     }
-
+  
     try {
-      // Call loginUser from networkService instead of dataService
-      let d = await networkService.loginUser(data);
-      console.log("loginUser response:", d);
-
-      if (d && d.token) {
+      // Assuming networkService is properly set up to handle requests
+      let response = await networkService.loginUser(data);
+      console.log("loginUser response:", response);
+  
+      if (response && response.token) {
         // Set user to storage
-        localStorage.setItem("user", JSON.stringify(d));
-
+        localStorage.setItem("user", JSON.stringify(response));
+  
         // Set token to storage
-        localStorage.setItem("token", d.token);
-
-        return d;
+        localStorage.setItem("token", response.token);
+  
+        return response;
       }
       return null;
     } catch (error) {
-      console.error("Login error:", error);
+      console.error("Error during login:", error);
       return null;
     }
   }
-
+  
   // Fetch roles
   async getRoles() {
     try {
