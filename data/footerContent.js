@@ -4,7 +4,7 @@ module.exports = [
     title: "For Employees",
     menuList: [
       // { name: "Browse Jobs", route: "/job-list-v11" },
-      { name: "Browse Categories", route: "/job-list-v3" },
+      // { name: "Browse Categories", route: "/job-list-v3" },
       { name: "Employee Dashboard", route: "/admin-panels/employee/dashboard" },
       // { name: "Job Alerts", route: "/candidates-dashboard/job-alerts" },
       // {
