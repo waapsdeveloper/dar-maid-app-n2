@@ -1,16 +1,16 @@
 module.exports = [
   {
     id: 1,
-    title: "For Candidates",
+    title: "For Employees",
     menuList: [
       // { name: "Browse Jobs", route: "/job-list-v11" },
       { name: "Browse Categories", route: "/job-list-v3" },
-      { name: "Candidate Dashboard", route: "/candidates-dashboard/dashboard" },
+      { name: "Employee Dashboard", route: "/admin-panels/employee/dashboard" },
       // { name: "Job Alerts", route: "/candidates-dashboard/job-alerts" },
-      {
-        name: "My Bookmarks",
-        route: "/candidates-dashboard/short-listed-jobs",
-      },
+      // {
+      //   name: "My Bookmarks",
+      //   route: "/candidates-dashboard/short-listed-jobs",
+      // },
     ],
   },
   {
@@ -18,10 +18,10 @@ module.exports = [
     title: "For Employers",
     menuList: [
       {
-        name: "Browse Candidates",
-        route: "/candidates-list-v1",
+        name: "Browse Employers",
+        route: "/website/employers",
       },
-      { name: "Employer Dashboard", route: "/employers-dashboard/dashboard" },
+      { name: "Employer Dashboard", route: "/admin-panels/employer/dashboard" },
       // { name: "Add Job", route: "/employers-dashboard/post-jobs" },
       // { name: "Job Packages", route: "/employers-dashboard/packages" },
     ],
@@ -30,18 +30,18 @@ module.exports = [
     id: 3,
     title: "About Us",
     menuList: [
-      { name: "About Us", route: "/about" },
+      { name: "About Us", route: "/website/about" },
       // { name: "Job Page Invoice", route: "/invoice" },
-      { name: "Terms Page", route: "/terms" },
-      { name: "Contact", route: "/contact" },
+      { name: "Terms Page", route: "/website/terms" },
+      { name: "Contact", route: "/website/contact" },
     ],
   },
   {
     id: 4,
     title: "Helpful Resources",
     menuList: [
-      { name: "Terms of Use", route: "/terms" },
-      { name: "Privacy Center", route: "/" },
+      { name: "Terms of Use", route: "/website/terms" },
+      // { name: "Privacy Center", route: "/" },
     ],
   },
 ];

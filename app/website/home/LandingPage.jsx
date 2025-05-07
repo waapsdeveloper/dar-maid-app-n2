@@ -5,11 +5,29 @@ import About from "./about/About";
 import TopCompany from "./topcompany/TopCompany";
 import Candidates from "./candidates/Candidates";
 import WsPageOuter from "@/templates/layouts/ws-page-outer";
+import ListingCategories from "./Listingcategories/ListingCategories";
 
 const LandingPage = () => {
   return (
     <WsPageOuter>
       <Hero />
+      <section className="job-categories ui-job-categories">
+        <div className="auto-container">
+          <div className="sec-title text-center">
+            <h2>Popular Employees Categories</h2>
+            <div className="text">2025 Listings - 293 added today.</div>
+          </div>
+
+          <div
+            className="row "
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+          >
+            {/* <!-- Category Block --> */}
+            <ListingCategories />
+          </div>
+        </div>
+      </section>
       <section className="top-companies">
         <div className="auto-container">
           <div className="sec-title text-center">
