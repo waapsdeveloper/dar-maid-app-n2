@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import FooterContent from "./FooterContent";
+import footerContent from "@/data/footerContent";
 import Rights from "./right";
 
 const CopyrightFooter = ({ footerStyle = "" }) => {
@@ -49,7 +49,25 @@ const CopyrightFooter = ({ footerStyle = "" }) => {
 
             <div className="big-column col-xl-8 col-lg-9 col-md-12">
               <div className="row">
-                <FooterContent />
+                {footerContent.map((item) => (
+                  <div
+                    className="footer-column col-lg-3 col-md-6 col-sm-12"
+                    key={item.id}
+                  >
+                    <div className="footer-widget links-widget">
+                      <h4 className="widget-title">{item.title}</h4>
+                      <div className="widget-content">
+                        <ul className="list">
+                          {item?.menuList?.map((menu, i) => (
+                            <li key={i}>
+                              <Link href={menu.route}>{menu.name}</Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
             {/* End col-xl-8 */}
