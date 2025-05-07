@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import FooterContent from "./FooterContent";
 import Rights from "./right";
 
@@ -14,14 +15,22 @@ const CopyrightFooter = ({ footerStyle = "" }) => {
             <div className="big-column col-xl-4 col-lg-3 col-md-12">
               <div className="footer-column about-widget">
                 <div className="logo">
-                  <a href="#">
+                  <Link href="/" style={{ display: "flex", gap: "10px" }}>
                     <Image
-                      width={154}
-                      height={50}
-                      src="/images/logo.svg"
                       alt="brand"
+                      src="/images/domesta_icon_2.png"
+                      width={50}
+                      height={50}
+                      priority
                     />
-                  </a>
+                    <Image
+                      alt="brand"
+                      src="/images/retro-icon-text.png"
+                      width={150}
+                      height={50}
+                      priority
+                    />
+                  </Link>
                 </div>
                 <p className="phone-num">
                   <span>Call us </span>
