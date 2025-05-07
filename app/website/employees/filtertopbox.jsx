@@ -47,17 +47,17 @@ const FilterTopBox = () => {
 
   // Helper to determine image source
   const getImageSrc = (candidate) => {
-    if (candidate?.profilePic) {
-      const cleanedProfilePic = candidate.profilePic
-        .replace(/^\/images\/candidates\//, '')
-        .replace(/^\/images\//, '');
-      return `/images/candidates/${cleanedProfilePic}`;
-    }
-    if (candidate?.keys) {
-      const profileImage = findKeyValue(candidate.keys, "profile", "profileImage", "");
-      if (profileImage) return `/images/candidates/${profileImage}`;
-    }
-    return "/images/candidates/default-avatar.png";
+    // if (candidate?.profilePic) {
+    //   const cleanedProfilePic = candidate.profilePic
+    //     .replace(/^\/images\/candidates\//, '')
+    //     .replace(/^\/images\//, '');
+    //   return `/images/${cleanedProfilePic}`;
+    // }
+    // if (candidate?.keys) {
+    //   const profileImage = findKeyValue(candidate.keys, "profile", "profileImage", "");
+    //   if (profileImage) return `/images/candidates/${profileImage}`;
+    // }
+    return "/images/profession.jpeg";
   };
 
   // Filters
