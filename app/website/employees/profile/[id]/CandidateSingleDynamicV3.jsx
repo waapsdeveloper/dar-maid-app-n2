@@ -502,34 +502,33 @@ const CandidateSingleDynamicV3 = ({ params }) => {
                         }`}
                       >
                         <div className="card shadow-sm border-0 rounded-3">
-                          <div className="card-body p-4">
+                          <div className="card-body">
+                            <ul className="list-unstyled mb-0 job-overview">
+
                             {getKeyFields(candidate.keys, tab.keyName).length >
                             0 ? (
                               getKeyFields(candidate.keys, tab.keyName).map(
                                 (field, index) => (
-                                  <div
+                                  <li
                                     key={index}
-                                    className="d-flex align-items-center mb-3 border-bottom pb-3"
-                                    style={{ borderColor: "#e9ecef" }}
+                                    className="d-flex align-items-center mb-2 px-0"                                    
                                   >
-                                    <span
-                                      className="fw-bold text-primary me-3"
+                                    <h5
+                                      className=""
                                       style={{
-                                        minWidth: "150px",
-                                        fontSize: "1.1rem",
+                                        minWidth: "180px",
                                       }}
                                     >
                                       {field.key.charAt(0).toUpperCase() +
                                         field.key.slice(1)}
                                       :
-                                    </span>
+                                    </h5>
                                     <span
-                                      className="text-dark"
-                                      style={{ fontSize: "1rem" }}
+                                      className="text-dark"                                      
                                     >
                                       {field.value || "N/A"}
                                     </span>
-                                  </div>
+                                  </li>
                                 )
                               )
                             ) : (
@@ -537,6 +536,9 @@ const CandidateSingleDynamicV3 = ({ params }) => {
                                 No data available
                               </p>
                             )}
+
+                            </ul>
+                            
                           </div>
                         </div>
                       </div>
