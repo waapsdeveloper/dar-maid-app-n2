@@ -1,10 +1,8 @@
-
 'use client'
-
 
 import Link from "next/link";
 import Slider from "react-slick";
-import candidates from "@/data/candidates";
+import employeeProfile from "@/data/employee-profile";
 import Image from "next/image";
 
 const Candidates = () => {
@@ -42,6 +40,32 @@ const Candidates = () => {
     ],
   };
 
+  // Ensure employeeProfile is an array, fallback to empty array if not
+  const candidates = Array.isArray(employeeProfile) ? employeeProfile : [];
+
+  // Helper to extract nested key values
+  const findKeyValue = (keys, keyName, field, fallback = "") => {
+    try {
+      const keyObj = keys?.find((k) => k.key === keyName);
+      const fieldObj = keyObj?.value?.find((v) => v.key === field);
+      return fieldObj?.value || fallback;
+    } catch (error) {
+      return fallback;
+    }
+  };
+
+  // Helper to determine image source
+  const getImageSrc = (candidate) => {
+    if (candidate?.profilePic) {
+      return candidate.profilePic;
+    }
+    if (candidate?.keys) {
+      const profileImage = findKeyValue(candidate.keys, "profile", "profileImage", "");
+      if (profileImage) return `/images/${profileImage}`;
+    }
+    return "/images/profession.jpeg";
+  };
+
   return (
     <>
       <Slider {...settings} arrows={false}>
@@ -52,17 +76,21 @@ const Candidates = () => {
                 <Image
                   width={90}
                   height={90}
-                  src={candidate.avatar}
-                  alt="avatar"
+                  src={getImageSrc(candidate)}
+                  alt={candidate.name || "Candidate"}
+                  onError={(e) => { e.target.src = "/images/candidates/default-avatar.png"; }}
                 />
               </figure>
-              <h4 className="name">{candidate.name}</h4>
-              <span className="designation">{candidate.designation}</span>
+              <h4 className="name">{candidate.name || "Unnamed Candidate"}</h4>
+              <span className="designation">
+                {findKeyValue(candidate.keys, "profile", "role", "N/A")}
+              </span>
               <div className="location">
-                <i className="flaticon-map-locator"></i> {candidate.location}
+                <i className="flaticon-map-locator"></i> 
+                {findKeyValue(candidate.keys, "contactInformation", "city", "Unknown")}
               </div>
               <Link
-                href={`/candidates-single-v1/${candidate.id}`}
+                href={`/website/employees/profile/${candidate.id}`}
                 className="theme-btn btn-style-three"
               >
                 <span className="btn-title">View Profile</span>
