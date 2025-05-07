@@ -15,7 +15,7 @@ const LandingPage = () => {
           <div className="sec-title text-center">
             <h2>Featured Employers</h2>
             <div className="text">
-              Know your worth and find the job that qualify your life
+              Know your worth and find the listing that qualify your life
             </div>
           </div>
           <div className="carousel-outer" data-aos="fade-up">
