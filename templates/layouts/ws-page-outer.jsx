@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import LoginPopup from "@/globals/login/LoginPopup";
 import MobileMenu from "@/globals/header/MobileMenu";
 import WebsiteHeader from "@/globals/header/WebsiteHeader";
-import CopyrightFooter from "@/globals/footer/CopyrightFooter";
+// import CopyrightFooter from "@/globals/footer/CopyrightFooter";
 import WebsiteFooter from "@/globals/footer/WebsiteFooter/WebsiteFooter";
 
 const WsPageOuter = ({ headerType, title, subtitle, children }) => {
@@ -16,7 +16,7 @@ const WsPageOuter = ({ headerType, title, subtitle, children }) => {
       <div className="page-content">
         {children}
       </div>
-      <CopyrightFooter />
+      {/* <CopyrightFooter /> */}
       {/* <WebsiteFooter/> */}
           </div>
   );

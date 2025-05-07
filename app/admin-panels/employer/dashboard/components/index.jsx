@@ -7,7 +7,6 @@ import TopCardBlock from "./components/TopCardBlock";
 import ProfileChart from "./components/ProfileChart";
 import Notification from "./components/Notification";
 import Applicants from "./components/Applicants";
-import CopyrightFooter from "../../CopyrightFooter";
 import MenuToggler from "../../MenuToggler";
 
 const Index = () => {
@@ -88,7 +87,7 @@ const Index = () => {
       </section>
       {/* <!-- End Dashboard --> */}
 
-      <CopyrightFooter />
+      {/* <CopyrightFooter /> */}
       {/* <!-- End Copyright --> */}
     </div>
     // End page-wrapper
