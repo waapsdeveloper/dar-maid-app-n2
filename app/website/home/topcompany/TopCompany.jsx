@@ -3,7 +3,7 @@
 import Slider from "react-slick";
 import Link from "next/link";
 import Image from "next/image";
-import topCompany from "@/data/top-company"
+import employerProfile from "@/data/employer-profile";
 
 const TopCompany = () => {
   const settings = {
@@ -40,8 +40,34 @@ const TopCompany = () => {
     ],
   };
 
-  // Ensure topCompany is an array, fallback to empty array if not
-  const companies = Array.isArray(topCompany) ? topCompany : [];
+  // Ensure employerProfile is an array, fallback to empty array if not
+  const companies = Array.isArray(employerProfile) ? employerProfile : [];
+
+  // Helper to extract nested key values
+  const findKeyValue = (keys, keyName, field, fallback = "") => {
+    try {
+      const keyObj = keys?.find((k) => k.key === keyName);
+      const fieldObj = keyObj?.value?.find((v) => v.key === field);
+      return fieldObj?.value || fallback;
+    } catch (error) {
+      return fallback;
+    }
+  };
+
+  // Helper to determine image source
+  const getImageSrc = (company) => {
+    if (company?.img) {
+      const cleanedImg = company.img
+        .replace(/^\/images\/resource\//, '')
+        .replace(/^\/images\//, '');
+      return `/images/resource/${cleanedImg}`;
+    }
+    if (company?.keys) {
+      const profileImage = findKeyValue(company.keys, "profile", "profileImage", "");
+      if (profileImage) return `/images/resource/${profileImage}`;
+    }
+    return "/images/resource/fallback.png";
+  };
 
   return (
     <Slider {...settings} arrows={false}>
@@ -52,23 +78,24 @@ const TopCompany = () => {
               <Image
                 width={90}
                 height={90}
-                src={company.img}
-                alt="top company"
+                src={getImageSrc(company)}
+                alt={company.name || "Company"}
+                onError={(e) => { e.target.src = "/images/resource/fallback.png"; }}
               />
             </figure>
             <h4 className="name">
-              <Link href={`/employers-single-v1/${company.id}`}>
-                {company.name}
+              <Link href={`/website/employers/profile/${company.id}`}>
+                {company.name || "Unnamed Company"}
               </Link>
             </h4>
             <div className="location">
-              <i className="flaticon-map-locator"></i> {company.location}
+              <i className="flaticon-map-locator"></i> {company.location || "Unknown Location"}
             </div>
             <Link
-              href={`/employers-single-v1/${company.id}`}
+              href={`/website/employers/profile/${company.id}`}
               className="theme-btn btn-style-three"
             >
-              {company.jobNumber} Open Position
+              {company.jobNumber || 0} Open Position
             </Link>
           </div>
         </div>
