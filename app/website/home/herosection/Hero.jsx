@@ -20,7 +20,7 @@ const Hero = () => {
                   <br /> For you!
                 </h3>
                 <div className="text">
-                  Find Jobs, Employment & Career Opportunities
+                  Find Listings, Employment & Career Opportunities
                 </div>
               </div>
 

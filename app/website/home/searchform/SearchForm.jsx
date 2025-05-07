@@ -16,7 +16,7 @@ const SearchForm = () => {
           <input
             type="text"
             name="field_name"
-            placeholder="Job title, keywords, or company"
+            placeholder="Listing title, keywords, or company"
           />
         </div>
         {/* <!-- Form Group --> */}
@@ -33,7 +33,7 @@ const SearchForm = () => {
             className="theme-btn btn-style-one"
             onClick={() => router.push("/job-list-v1")}
           >
-            <span className="btn-title">Find Jobs</span>
+            <span className="btn-title">Find Listings</span>
           </button>
         </div>
       </div>
