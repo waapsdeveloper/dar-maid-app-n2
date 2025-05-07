@@ -290,9 +290,7 @@ const EmployersSingleV3 = ({ params }) => {
                             transform: "translateY(-50%)",
                             flexShrink: 0,
                           }}
-                         
-
- disabled={scrollPosition >= maxScroll}
+                          disabled={scrollPosition >= maxScroll}
                         >
                           <FaChevronRight size={20} />
                         </button>
