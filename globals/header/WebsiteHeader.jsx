@@ -83,20 +83,27 @@ const WebsiteHeader = () => {
 
   return (
     <header
-      className={`main-header ${
-        navbar ? "fixed-header animated slideInDown" : ""
-      }`}
+      className={`main-header ${navbar ? "fixed-header animated slideInDown" : ""
+        }`}
     >
       <div className="main-box">
         <div className="nav-outer">
           <div className="logo-box">
             <div className="logo">
-              <Link href="/">
+              <Link href="/" style={{ display: "flex", gap: "10px" }}>
                 <Image
-                  width={154}
-                  height={50}
-                  src="/images/logo.png"
                   alt="brand"
+                  src="/images/domesta_icon_2.png"
+                  width={50}
+                  height={50}
+                  priority
+                />
+                <Image
+                  alt="brand"
+                  src="/images/retro-icon-text.png"
+                  width={150}
+                  height={50}
+                  priority
                 />
               </Link>
             </div>
