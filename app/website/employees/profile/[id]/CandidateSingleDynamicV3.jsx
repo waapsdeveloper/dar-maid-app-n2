@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import { useState, useRef, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -18,6 +18,15 @@ const CandidateSingleDynamicV3 = ({ params }) => {
   const scrollRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [maxScroll, setMaxScroll] = useState(0);
+
+  // Helper to format field names
+  const formatFieldName = (fieldName) => {
+    // Replace underscores with spaces
+    let formatted = fieldName.replace(/_/g, ' ');
+    // Add space before capital letters and capitalize first letter
+    formatted = formatted.replace(/([A-Z])/g, ' $1').trim();
+    return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+  };
 
   // Helper to extract nested key values
   const findKeyValue = (keys, keyName, field, fallback = "") => {
@@ -519,9 +528,7 @@ const CandidateSingleDynamicV3 = ({ params }) => {
                                         minWidth: "180px",
                                       }}
                                     >
-                                      {field.key.charAt(0).toUpperCase() +
-                                        field.key.slice(1)}
-                                      :
+                                      {formatFieldName(field.key)}:
                                     </h5>
                                     <span
                                       className="text-dark"                                      

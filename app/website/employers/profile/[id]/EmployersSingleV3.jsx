@@ -12,16 +12,19 @@ import WsPageOuter from "@/templates/layouts/ws-page-outer";
 import { useState, useRef, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-export const metadata = {
-  title:
-    "Employers Single Dynamic V3 || Superio - Job Board React NextJS Template",
-  description: "Superio - Job Board React NextJS Template",
-};
-
 const EmployersSingleV3 = ({ params }) => {
   const id = params.id;
   const employer =
     employerProfile.find((item) => String(item.id) === id) || employerProfile[0] || {};
+
+  // Helper to format field names
+  const formatFieldName = (fieldName) => {
+    // Replace underscores with spaces
+    let formatted = fieldName.replace(/_/g, ' ');
+    // Add space before capital letters and capitalize first letter
+    formatted = formatted.replace(/([A-Z])/g, ' $1').trim();
+    return formatted.charAt(0).toUpperCase() + formatted.slice(1);
+  };
 
   // Helper to extract nested key values
   const findKeyValue = (keys, keyName, field, fallback = "N/A") => {
@@ -287,7 +290,9 @@ const EmployersSingleV3 = ({ params }) => {
                             transform: "translateY(-50%)",
                             flexShrink: 0,
                           }}
-                          disabled={scrollPosition >= maxScroll}
+                         
+
+ disabled={scrollPosition >= maxScroll}
                         >
                           <FaChevronRight size={20} />
                         </button>
@@ -315,28 +320,31 @@ const EmployersSingleV3 = ({ params }) => {
                         className={`tab-pane ${activeTab === tab.name ? "active show" : ""}`}
                       >
                         <div className="card shadow-sm border-0 rounded-3">
-                          <div className="card-body p-4">
-                            {getKeyFields(employer.keys, tab.keyName).length > 0 ? (
-                              getKeyFields(employer.keys, tab.keyName).map((field, index) => (
-                                <div
-                                  key={index}
-                                  className="d-flex align-items-center mb-3 border-bottom pb-3"
-                                  style={{ borderColor: "#e9ecef" }}
-                                >
-                                  <span
-                                    className="fw-bold text-primary me-3"
-                                    style={{ minWidth: "150px", fontSize: "1.1rem" }}
+                          <div className="card-body">
+                            <ul className="list-unstyled mb-0 job-overview">
+                              {getKeyFields(employer.keys, tab.keyName).length > 0 ? (
+                                getKeyFields(employer.keys, tab.keyName).map((field, index) => (
+                                  <li
+                                    key={index}
+                                    className="d-flex align-items-center mb-2 px-0"
                                   >
-                                    {field.key.charAt(0).toUpperCase() + field.key.slice(1)}:
-                                  </span>
-                                  <span className="text-dark" style={{ fontSize: "1rem" }}>
-                                    {field.value || "N/A"}
-                                  </span>
-                                </div>
-                              ))
-                            ) : (
-                              <p className="text-muted mb-0">No data available</p>
-                            )}
+                                    <h5
+                                      className=""
+                                      style={{
+                                        minWidth: "180px",
+                                      }}
+                                    >
+                                      {formatFieldName(field.key)}:
+                                    </h5>
+                                    <span className="text-dark">
+                                      {field.value || "N/A"}
+                                    </span>
+                                  </li>
+                                ))
+                              ) : (
+                                <p className="text-muted mb-0">No data available</p>
+                              )}
+                            </ul>
                           </div>
                         </div>
                       </div>
