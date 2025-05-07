@@ -42,21 +42,21 @@ const CandidateSingleDynamicV3 = ({ params }) => {
 
   // Determine image source
   const getImageSrc = () => {
-    if (candidate?.profilePic) {
-      // Remove leading "/images/" if present to avoid double prefix
-      const cleanedProfilePic = candidate.profilePic.replace(/^\/images\//, "");
-      return `/images/candidates/${cleanedProfilePic}`;
-    }
-    if (candidate?.keys) {
-      const profileImage = findKeyValue(
-        candidate.keys,
-        "profile",
-        "profileImage",
-        ""
-      );
-      if (profileImage) return `/images/candidates/${profileImage}`;
-    }
-    return "/images/candidates/default-avatar.png";
+    // if (candidate?.profilePic) {
+    //   // Remove leading "/images/" if present to avoid double prefix
+    //   const cleanedProfilePic = candidate.profilePic.replace(/^\/images\//, "");
+    //   return `/images/candidates/${cleanedProfilePic}`;
+    // }
+    // if (candidate?.keys) {
+    //   const profileImage = findKeyValue(
+    //     candidate.keys,
+    //     "profile",
+    //     "profileImage",
+    //     ""
+    //   );
+    //   if (profileImage) return `/images/candidates/${profileImage}`;
+    // }
+    return "/images/profession.jpeg";
   };
 
   if (!candidate) {

@@ -19,12 +19,20 @@ const index = () => {
       >
         <div className="content">
           <div className="logo">
-            <Link href="/">
+            <Link href="/" style={{ display: "flex", gap: "10px" }}>
               <Image
-                width={154}
-                height={50}
-                src="/images/logo.svg"
                 alt="brand"
+                src="/images/domesta_icon_2.png"
+                width={50}
+                height={50}
+                priority
+              />
+              <Image
+                alt="brand"
+                src="/images/retro-icon-text.png"
+                width={150}
+                height={50}
+                priority
               />
             </Link>
           </div>
