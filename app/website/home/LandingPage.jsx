@@ -14,7 +14,7 @@ const LandingPage = () => {
       <section className="job-categories ui-job-categories">
         <div className="auto-container">
           <div className="sec-title text-center">
-            <h2>Popular Employees Categories</h2>
+            <h2>Services</h2>
             <div className="text">2025 Listings - 293 added today.</div>
           </div>
 
