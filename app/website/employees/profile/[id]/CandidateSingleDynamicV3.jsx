@@ -3,13 +3,22 @@
 import { useState, useRef, useEffect } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import employeeProfile from "@/data/employee-profile";
-import Contact from "@/components/shared-components/Contact";
 import GalleryBox from "@/components/shared-components/GalleryBox";
 import Social from "@/components/social/Social";
 import JobSkills from "@/components/shared-components/JobSkills";
 import AboutVideo from "@/components/shared-components/AboutVideo";
 import Image from "next/image";
 import WsPageOuter from "@/templates/layouts/ws-page-outer";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCalendarAlt,
+  faBirthdayCake,
+  faDollarSign,
+  faMoneyCheckAlt,
+  faVenusMars,
+  faLanguage,
+  faGraduationCap
+} from '@fortawesome/free-solid-svg-icons';
 
 const CandidateSingleDynamicV3 = ({ params }) => {
   const id = params.id;
@@ -171,9 +180,6 @@ const CandidateSingleDynamicV3 = ({ params }) => {
                     height={100}
                     src={getImageSrc()}
                     alt={candidate.name || "Candidate"}
-                    onError={(e) => {
-                      e.target.src = "/images/candidates/default-avatar.png";
-                    }}
                   />
                 </figure>
                 <h4 className="name">{candidate.name || "N/A"}</h4>
@@ -226,13 +232,6 @@ const CandidateSingleDynamicV3 = ({ params }) => {
                     </li>
                   </ul>
                   <div className="btn-box">
-                    {/* <a
-                                            className="theme-btn btn-style-one"
-                                            href={`/images/candidates/${findKeyValue(candidate.keys, "uploadDocument", "file", "sample.pdf")}`}
-                                            download
-                                        >
-                                            Download CV
-                                        </a> */}
                     <button className="bookmark-btn">
                       <i className="flaticon-bookmark"></i>
                     </button>
@@ -251,94 +250,164 @@ const CandidateSingleDynamicV3 = ({ params }) => {
                   <div className="sidebar-widget">
                     <div className="widget-content">
                       <ul className="job-overview">
-                        <li>
-                          <i className="icon icon-calendar"></i>
-                          <h5>Experience:</h5>
-                          <span>
-                            {findKeyValue(
-                              candidate.keys,
-                              "employmentDetails",
-                              "experience",
-                              "0"
-                            )}{" "}
-                            Years
-                          </span>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faCalendarAlt} 
+                            style={{ 
+                              color: "#8C956B", 
+                              width: "16px", 
+                              height: "16px", 
+                              marginRight: "10px" 
+                            }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Experience:</h5>
+                            <span>
+                              {findKeyValue(
+                                candidate.keys,
+                                "employmentDetails",
+                                "experience",
+                                "0"
+                              )}{" "}
+                              Years
+                            </span>
+                          </div>
                         </li>
-                        <li>
-                          <i className="icon icon-expiry"></i>
-                          <h5>Age:</h5>
-                          <span>
-                            {findKeyValue(
-                              candidate.keys,
-                              "profile",
-                              "age",
-                              "N/A"
-                            )}
-                          </span>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faBirthdayCake} 
+                            style={{ 
+                              color: "#8C956B", 
+                              width: "16px", 
+                              height: "16px", 
+                              marginRight: "10px" 
+                            }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Age:</h5>
+                            <span>
+                              {findKeyValue(
+                                candidate.keys,
+                                "profile",
+                                "age",
+                                "N/A"
+                              )}
+                            </span>
+                          </div>
                         </li>
-                        <li>
-                          <i className="icon icon-rate"></i>
-                          <h5>Current Salary:</h5>
-                          <span>
-                            $
-                            {findKeyValue(
-                              candidate.keys,
-                              "employmentDetails",
-                              "salary",
-                              "0"
-                            )}
-                          </span>
-                        </li>
-                        <li>
-                          <i className="icon icon-salary"></i>
-                          <h5>Expected Salary:</h5>
-                          <span>
-                            $
-                            {parseInt(
-                              findKeyValue(
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faDollarSign} 
+                            style={{ 
+                              color: "#8C956B", 
+                              width: "16px", 
+                              height: "16px", 
+                              marginRight: "10px" 
+                            }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Current Salary:</h5>
+                            <span>
+                              $
+                              {findKeyValue(
                                 candidate.keys,
                                 "employmentDetails",
                                 "salary",
                                 "0"
-                              )
-                            ) + 200}
-                          </span>
+                              )}
+                            </span>
+                          </div>
                         </li>
-                        <li>
-                          <i className="icon icon-user-2"></i>
-                          <h5>Gender:</h5>
-                          <span>
-                            {findKeyValue(
-                              candidate.keys,
-                              "profile",
-                              "gender",
-                              "N/A"
-                            )}
-                          </span>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faMoneyCheckAlt} 
+                            style={{ 
+                              color: "#8C956B", 
+                              width: "16px", 
+                              height: "16px", 
+                              marginRight: "10px" 
+                            }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Expected Salary:</h5>
+                            <span>
+                              $
+                              {parseInt(
+                                findKeyValue(
+                                  candidate.keys,
+                                  "employmentDetails",
+                                  "salary",
+                                  "0"
+                                )
+                              ) + 200}
+                            </span>
+                          </div>
                         </li>
-                        <li>
-                          <i className="icon icon-language"></i>
-                          <h5>Language:</h5>
-                          <span>
-                            {findKeyValue(
-                              candidate.keys,
-                              "contactInformation",
-                              "preferred_language",
-                              "English"
-                            )}
-                          </span>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faVenusMars} 
+                            style={{ 
+                              color: "#8C956B", 
+                              width: "16px", 
+                              height: "16px", 
+                              marginRight: "10px" 
+                            }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Gender:</h5>
+                            <span>
+                              {findKeyValue(
+                                candidate.keys,
+                                "profile",
+                                "gender",
+                                "N/A"
+                              )}
+                            </span>
+                          </div>
                         </li>
-                        <li>
-                          <i className="icon icon-degree"></i>
-                          <h5>Education Level:</h5>
-                          <span>
-                            {findKeyValue(
-                              candidate.keys,
-                              "employmentDetails",
-                              "employeeCategory",
-                              "N/A"
-                            )}
-                          </span>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faLanguage} 
+                            style={{ 
+                              color: "#8C956B", 
+                              width: "16px", 
+                              height: "16px", 
+                              marginRight: "10px" 
+                            }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Language:</h5>
+                            <span>
+                              {findKeyValue(
+                                candidate.keys,
+                                "contactInformation",
+                                "preferred_language",
+                                "English"
+                              )}
+                            </span>
+                          </div>
+                        </li>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faGraduationCap} 
+                            style={{ 
+                              color: "#8C956B", 
+                              width: "16px", 
+                              height: "16px", 
+                              marginRight: "10px" 
+                            }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Education Level:</h5>
+                            <span>
+                              {findKeyValue(
+                                candidate.keys,
+                                "employmentDetails",
+                                "employeeCategory",
+                                "N/A"
+                              )}
+                            </span>
+                          </div>
                         </li>
                       </ul>
                     </div>
@@ -366,14 +435,6 @@ const CandidateSingleDynamicV3 = ({ params }) => {
                       </ul>
                     </div>
                   </div>
-                  {/* <div className="sidebar-widget contact-widget">
-                                        <h4 className="widget-title">Contact Us</h4>
-                                        <div className="widget-content">
-                                            <div className="default-form">
-                                                <Contact />
-                                            </div>
-                                        </div>
-                                    </div> */}
                 </aside>
               </div>
 
@@ -460,7 +521,7 @@ const CandidateSingleDynamicV3 = ({ params }) => {
                                 ? "not-allowed"
                                 : "pointer",
                             opacity: scrollPosition >= maxScroll ? 0.5 : 1,
-                            zIndex: 1000,
+                            zIndex: "1000",
                             position: "absolute",
                             right: "0",
                             top: "50%",
@@ -499,118 +560,39 @@ const CandidateSingleDynamicV3 = ({ params }) => {
                         <div className="card shadow-sm border-0 rounded-3">
                           <div className="card-body">
                             <ul className="list-unstyled mb-0 job-overview">
-
-                            {getKeyFields(candidate.keys, tab.keyName).length >
-                            0 ? (
-                              getKeyFields(candidate.keys, tab.keyName).map(
-                                (field, index) => (
-                                  <li
-                                    key={index}
-                                    className="d-flex align-items-center mb-2 px-0"                                    
-                                  >
-                                    <h5
-                                      className=""
-                                      style={{
-                                        minWidth: "180px",
-                                      }}
+                              {getKeyFields(candidate.keys, tab.keyName).length >
+                              0 ? (
+                                getKeyFields(candidate.keys, tab.keyName).map(
+                                  (field, index) => (
+                                    <li
+                                      key={index}
+                                      className="d-flex align-items-center mb-2 px-0"
                                     >
-                                      {formatFieldName(field.key)}:
-                                    </h5>
-                                    <span
-                                      className="text-dark"                                      
-                                    >
-                                      {field.value || "N/A"}
-                                    </span>
-                                  </li>
+                                      <h5
+                                        className=""
+                                        style={{
+                                          minWidth: "180px",
+                                        }}
+                                      >
+                                        {formatFieldName(field.key)}:
+                                      </h5>
+                                      <span className="text-dark">
+                                        {field.value || "N/A"}
+                                      </span>
+                                    </li>
+                                  )
                                 )
-                              )
-                            ) : (
-                              <p className="text-muted mb-0">
-                                No data available
-                              </p>
-                            )}
-
+                              ) : (
+                                <p className="text-muted mb-0">
+                                  No data available
+                                </p>
+                              )}
                             </ul>
-                            
                           </div>
                         </div>
                       </div>
                     ))}
                   </div>
-
-                  {/* <div className="portfolio-outer">
-                    <div className="row">
-                      <GalleryBox />
-                    </div>
-                  </div>
-
-                  <div className="resume-outer theme-blue">
-                    <div className="upper-title">
-                      <h4>Work Experience</h4>
-                    </div>
-                    <div className="resume-block">
-                      <div className="inner">
-                        <span className="name">
-                          {findKeyValue(
-                            candidate.keys,
-                            "workExperience",
-                            "employerName",
-                            "N/A"
-                          )}
-                        </span>
-                        <div className="title-box">
-                          <div className="info-box">
-                            <h3>
-                              {findKeyValue(
-                                candidate.keys,
-                                "workExperience",
-                                "designation",
-                                "N/A"
-                              )}
-                            </h3>
-                            <span>
-                              {findKeyValue(
-                                candidate.keys,
-                                "workExperience",
-                                "employmentLocation",
-                                "N/A"
-                              )}
-                            </span>
-                          </div>
-                          <div className="edit-box">
-                            <span className="year">
-                              {findKeyValue(
-                                candidate.keys,
-                                "workExperience",
-                                "startDate",
-                                "N/A"
-                              ).slice(0, 4)}{" "}
-                              -{" "}
-                              {findKeyValue(
-                                candidate.keys,
-                                "workExperience",
-                                "endDate",
-                                "Present"
-                              ).slice(0, 4)}
-                            </span>
-                          </div>
-                        </div>
-                        <div className="text">
-                          {findKeyValue(
-                            candidate.keys,
-                            "workExperience",
-                            "employerReview",
-                            "No description available"
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="video-outer">
-                    <h4>Intro Video</h4>
-                    <AboutVideo />
-                  </div> */}
                 </div>
               </div>
             </div>

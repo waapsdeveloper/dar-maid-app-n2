@@ -10,6 +10,16 @@ import JobSkills from "@/components/shared-components/JobSkills";
 import AboutVideo from "@/components/shared-components/AboutVideo";
 import Image from "next/image";
 import WsPageOuter from "@/templates/layouts/ws-page-outer";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCalendarAlt,
+  faBirthdayCake,
+  faDollarSign,
+  faMoneyCheckAlt,
+  faVenusMars,
+  faLanguage,
+  faGraduationCap
+} from '@fortawesome/free-solid-svg-icons';
 
 const AgentSingleProfile = ({ params }) => {
   const id = params.id;
@@ -138,9 +148,6 @@ const AgentSingleProfile = ({ params }) => {
                     height={100}
                     src={getImageSrc()}
                     alt={agent.name || "Agent"}
-                    onError={(e) => {
-                      e.target.src = "/images/candidates/default-avatar.png";
-                    }}
                   />
                 </figure>
                 <h4 className="name">{agent.name || "N/A"}</h4>
@@ -192,60 +199,95 @@ const AgentSingleProfile = ({ params }) => {
                   <div className="sidebar-widget">
                     <div className="widget-content">
                       <ul className="job-overview">
-                        <li>
-                          <i className="icon icon-calendar"></i>
-                          <h5>Years in Operation:</h5>
-                          <span>
-                            {findKeyValue(agent.keys, "Legal Compliance", "yearsInOperation", "0")} Years
-                          </span>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faCalendarAlt} 
+                            style={{ color: "#8C956B", width: "16px", height: "16px", marginRight: "10px" }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Years in Operation:</h5>
+                            <span>
+                              {findKeyValue(agent.keys, "Legal Compliance", "yearsInOperation", "0")} Years
+                            </span>
+                          </div>
                         </li>
-                        <li>
-                          <i className="icon icon-expiry"></i>
-                          <h5>License Expiry:</h5>
-                          <span>
-                            {findKeyValue(agent.keys, "Legal Compliance", "licenseExpiryDate", "N/A")}
-                          </span>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faCalendarAlt} 
+                            style={{ color: "#8C956B", width: "16px", height: "16px", marginRight: "10px" }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>License Expiry:</h5>
+                            <span>
+                              {findKeyValue(agent.keys, "Legal Compliance", "licenseExpiryDate", "N/A")}
+                            </span>
+                          </div>
                         </li>
-                        <li>
-                          <i className="icon icon-rate"></i>
-                          <h5>Services Offered:</h5>
-                          <span>
-                            {Array.isArray(findKeyValue(agent.keys, "Services Offering", "servicesProvided", "No Services"))
-                              ? findKeyValue(agent.keys, "Services Offering", "servicesProvided", "No Services").join(", ")
-                              : findKeyValue(agent.keys, "Services Offering", "servicesProvided", "No Services")}
-                          </span>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faGraduationCap} 
+                            style={{ color: "#8C956B", width: "16px", height: "16px", marginRight: "10px" }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Services:</h5>
+                            <span>
+                              {Array.isArray(findKeyValue(agent.keys, "Services Offering", "servicesProvided", "No Services"))
+                                ? findKeyValue(agent.keys, "Services Offering", "servicesProvided", "No Services").join(", ")
+                                : findKeyValue(agent.keys, "Services Offering", "servicesProvided", "No Services")}
+                            </span>
+                          </div>
                         </li>
-                        <li>
-                          <i className="icon icon-salary"></i>
-                          <h5>Countries of Operation:</h5>
-                          <span>
-                            {Array.isArray(findKeyValue(agent.keys, "Services Offering", "countriesOfOperation", "N/A"))
-                              ? findKeyValue(agent.keys, "Services Offering", "countriesOfOperation", "N/A").join(", ")
-                              : findKeyValue(agent.keys, "Services Offering", "countriesOfOperation", "N/A")}
-                          </span>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faLanguage} 
+                            style={{ color: "#8C956B", width: "16px", height: "16px", marginRight: "10px" }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Operation Countries:</h5>
+                            <span>
+                              {Array.isArray(findKeyValue(agent.keys, "Services Offering", "countriesOfOperation", "N/A"))
+                                ? findKeyValue(agent.keys, "Services Offering", "countriesOfOperation", "N/A").join(", ")
+                                : findKeyValue(agent.keys, "Services Offering", "countriesOfOperation", "N/A")}
+                            </span>
+                          </div>
                         </li>
-                        <li>
-                          <i className="icon icon-user-2"></i>
-                          <h5>Agent Type:</h5>
-                          <span>
-                            {findKeyValue(agent.keys, "Legal Compliance", "agencyType", "N/A")}
-                          </span>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faVenusMars} 
+                            style={{ color: "#8C956B", width: "16px", height: "16px", marginRight: "10px" }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Agent Type:</h5>
+                            <span>
+                              {findKeyValue(agent.keys, "Legal Compliance", "agencyType", "N/A")}
+                            </span>
+                          </div>
                         </li>
-                        <li>
-                          <i className="icon icon-language"></i>
-                          <h5>Languages Spoken:</h5>
-                          <span>
-                            {findKeyValue(agent.keys, "Services Offering", "languagesSpoken", "N/A")}
-                          </span>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faLanguage} 
+                            style={{ color: "#8C956B", width: "16px", height: "16px", marginRight: "10px" }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Languages Spoken:</h5>
+                            <span>
+                              {findKeyValue(agent.keys, "Services Offering", "languagesSpoken", "N/A")}
+                            </span>
+                          </div>
                         </li>
-                        <li>
-                          <i className="icon icon-degree"></i>
-                          <h5>Employee Nationalities:</h5>
-                          <span>
-                            {Array.isArray(findKeyValue(agent.keys, "Services Offering", "employeeNationalities", "N/A"))
-                              ? findKeyValue(agent.keys, "Services Offering", "employeeNationalities", "N/A").join(", ")
-                              : findKeyValue(agent.keys, "Services Offering", "employeeNationalities", "N/A")}
-                          </span>
+                        <li style={{ display: "flex", alignItems: "center", marginBottom: "15px" }}>
+                          <FontAwesomeIcon 
+                            icon={faVenusMars} 
+                            style={{ color: "#8C956B", width: "16px", height: "16px", marginRight: "10px" }} 
+                          />
+                          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+                            <h5>Nationalities:</h5>
+                            <span>
+                              {Array.isArray(findKeyValue(agent.keys, "Services Offering", "employeeNationalities", "N/A"))
+                                ? findKeyValue(agent.keys, "Services Offering", "employeeNationalities", "N/A").join(", ")
+                                : findKeyValue(agent.keys, "Services Offering", "employeeNationalities", "N/A")}
+                            </span>
+                          </div>
                         </li>
                       </ul>
                     </div>
