@@ -38,7 +38,7 @@ const Tabs = ({ activeTab, setActiveTab }) => {
       <button
         onClick={() => scroll("left")}
         style={{
-          background: "none",
+          background: "#8C956B",
           border: "none",
           color: "#696969",
           cursor: "pointer",
@@ -114,7 +114,7 @@ const Tabs = ({ activeTab, setActiveTab }) => {
       <button
         onClick={() => scroll("right")}
         style={{
-          background: "none",
+          background: "#8C956B",
           border: "none",
           color: "#696969",
           cursor: "pointer",

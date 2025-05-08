@@ -23,7 +23,7 @@ const ImageBox = () => {
       </div>
       {/* <!-- Info BLock Two --> */}
       <div className="info_block_two" data-aos="fade-in" data-aos-delay="2000">
-        <p>10k+ Candidates</p>
+        <p>10k+ Employees</p>
         <div className="image">
           <Image
             width={206}

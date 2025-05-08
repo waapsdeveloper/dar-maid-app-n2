@@ -46,7 +46,7 @@ const LandingPage = () => {
       <section className="job-section">
         <div className="auto-container">
           <div className="sec-title text-center">
-            <h2>Featured Agencies</h2>
+            <h2>Featured Agents</h2>
             <div className="text">
               Know your worth and find the Agency that qualify your life
             </div>

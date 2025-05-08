@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta
           name="keywords"
-          content="	candidates, career, employment, indeed, job board, job listing, job portal, job postings, job search, job seeker, jobs, recruiters, recruiting, recruitment, resume"
+          content="	employees, career, employment, indeed, job board, job listing, job portal, job postings, job search, job seeker, jobs, recruiters, recruiting, recruitment, resume"
         />
         <meta name="description" content="Domesta  - Listing Board" />
         <meta name="ibthemes" content="ATFN" />

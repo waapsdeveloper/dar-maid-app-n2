@@ -220,7 +220,7 @@ const EmployersSingleV3 = ({ params }) => {
                         <button
                           onClick={scrollLeft}
                           style={{
-                            background: "#1a73e8",
+                            background: "#8C956B",
                             color: "white",
                             border: "none",
                             borderRadius: "50%",
@@ -272,7 +272,7 @@ const EmployersSingleV3 = ({ params }) => {
                         <button
                           onClick={scrollRight}
                           style={{
-                            background: "#1a73e8",
+                            background: "#8C956B",
                             color: "white",
                             border: "none",
                             borderRadius: "50%",

@@ -80,7 +80,7 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
           <button
             onClick={scrollLeft}
             style={{
-              background: "#1a73e8",
+              background: "#8C956B",
               color: "white",
               border: "none",
               borderRadius: "50%",
@@ -132,7 +132,7 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
           <button
             onClick={scrollRight}
             style={{
-              background: "#1a73e8",
+              background: "#8C956B",
               color: "white",
               border: "none",
               borderRadius: "50%",
