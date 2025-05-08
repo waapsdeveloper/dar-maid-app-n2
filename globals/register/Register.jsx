@@ -94,6 +94,7 @@ const Register = () => {
             data-bs-toggle="modal"
             data-bs-dismiss="modal"
             data-bs-target="#loginPopupModal"
+            style={{ cursor: "pointer", textDecoration: "underline" }}
           >
             LogIn
           </Link>

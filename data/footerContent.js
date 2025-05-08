@@ -5,7 +5,7 @@ module.exports = [
     menuList: [
       // { name: "Browse Jobs", route: "/job-list-v11" },
       // { name: "Browse Categories", route: "/job-list-v3" },
-      { name: "Employee Dashboard", route: "/admin-panels/employee/dashboard" },
+      { name: "Browse Employees", route: "/website/employees" },
       // { name: "Job Alerts", route: "/candidates-dashboard/job-alerts" },
       // {
       //   name: "My Bookmarks",
@@ -21,7 +21,7 @@ module.exports = [
         name: "Browse Employers",
         route: "/website/employers",
       },
-      { name: "Employer Dashboard", route: "/admin-panels/employer/dashboard" },
+      // { name: "Employer Dashboard", route: "/admin-panels/employer/dashboard" },
       // { name: "Add Job", route: "/employers-dashboard/post-jobs" },
       // { name: "Job Packages", route: "/employers-dashboard/packages" },
     ],
@@ -32,8 +32,9 @@ module.exports = [
     menuList: [
       { name: "About Us", route: "/website/about" },
       // { name: "Job Page Invoice", route: "/invoice" },
-      { name: "Terms Page", route: "/website/terms" },
+      // { name: "Terms Page", route: "/website/terms" },
       { name: "Contact", route: "/website/contact" },
+      { name: "FAQ's", route: "/website/faq" },
     ],
   },
   {

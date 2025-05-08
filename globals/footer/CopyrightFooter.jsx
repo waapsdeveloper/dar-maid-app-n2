@@ -34,7 +34,7 @@ const CopyrightFooter = ({ footerStyle = "" }) => {
                 </div>
                 <p className="phone-num">
                   <span>Call us </span>
-                  <a href="thebeehost@support.com">123 456 7890</a>
+                  <a >123 456 7890</a>
                 </p>
                 <p className="address">
                   329 Queensberry Street, North Melbourne VIC

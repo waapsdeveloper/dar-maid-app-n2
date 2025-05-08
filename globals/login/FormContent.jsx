@@ -64,13 +64,13 @@ const FormContent = ({ onSubmit, onSwitchRegister }) => {
                 checked={rememberMe} // Controlled input
                 onChange={(e) => setRememberMe(e.target.checked)} // Update state on checkbox change
               />
-              <label htmlFor="remember" className="remember">
+              {/* <label htmlFor="remember" className="remember">
                 <span className="custom-checkbox"></span> Remember me
-              </label>
+              </label> */}
             </div>
-            <a href="#" className="pwd">
+            {/* <a href="#" className="pwd">
               Forgot password?
-            </a>
+            </a> */}
           </div>
         </div>
 
@@ -91,7 +91,7 @@ const FormContent = ({ onSubmit, onSwitchRegister }) => {
           <span
             className="call-modal signup"
             onClick={handleSignup}
-            style={{ cursor: "pointer", color: "blue", textDecoration: "underline" }}
+            style={{ cursor: "pointer", textDecoration: "underline" }}
           >
             Signup
           </span>
