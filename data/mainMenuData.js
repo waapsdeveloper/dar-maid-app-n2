@@ -334,6 +334,10 @@ export const pageItems = [
     name: "Employers",
     routePath: "/website/employers",
   },
+  {
+    name: "Agents",
+    routePath: "/website/agents",
+  },
   // {
   //   name: "Agencies",
   //   routePath: "/",

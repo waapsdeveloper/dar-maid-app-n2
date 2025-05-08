@@ -100,7 +100,7 @@ const DashboardHeader = ({ headerType }) => {
                 <Image
                   alt="avatar"
                   className="thumb"
-                  src="/images/resource/company-6.png"
+                  src={user?.image || "/images/avatar/01.jpg"}
                   width={50}
                   height={50}
                 />
@@ -110,12 +110,13 @@ const DashboardHeader = ({ headerType }) => {
               {dropdownOpen && (
                 <ul className="dropdown-menu show">
                   <li className="mb-1">
-                    <button
-                      onClick={handleLogout}
+                    <Link
+                      href="#"
+                      onClick={(e) => { e.preventDefault(); handleLogout(); }}
                       className="dropdown-item"
                     >
                       <i className="la la-sign-out"></i> Logout
-                    </button>
+                    </Link>
                   </li>
                 </ul>
               )}

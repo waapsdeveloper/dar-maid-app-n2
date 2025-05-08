@@ -84,7 +84,7 @@ const Index = () => {
             }
             key="candidates"
           >
-            Candidates
+           Employees
           </MenuItem>
           <MenuItem
             onClick={() => router.push("/agency")}
@@ -95,7 +95,7 @@ const Index = () => {
             }
             key="candidates"
           >
-            Agency
+            Agents
           </MenuItem>
           <MenuItem
             onClick={() => router.push("/about")}

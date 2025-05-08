@@ -60,24 +60,25 @@ const WebsiteHeader = () => {
   // Handle menu item click
   const handleClick = (item, e) => {
     e.preventDefault();
-
     if (item.name !== "Logout") {
       switch (user?.role) {
         case "employer":
-          router.push("/panels/employer/dashboard");
+          router.push("/admin-panels/employer/dashboard");
           break;
         case "employee":
-          router.push("/panels/employee/dashboard");
+          router.push("/admin-panels/employee/dashboard");
           break;
         case "agency":
-          router.push("/panels/agency/dashboard");
+          router.push("/admin-panels/agency/dashboard");
           break;
         case "superadmin":
-          router.push("/panels/superadmin/dashboard");
+          router.push("/admin-panels/superadmin/dashboard");
           break;
         default:
           router.push("/login");
+
       }
+      console.log("User role:", user?.role); // Debugging log
     }
   };
 
@@ -123,7 +124,7 @@ const WebsiteHeader = () => {
                 <Image
                   alt="avatar"
                   className="thumb"
-                  src="/images/resource/company-6.png"
+                  src={user?.image || "/images/avatar/01.jpg"}
                   width={50}
                   height={50}
                 />
@@ -137,12 +138,13 @@ const WebsiteHeader = () => {
                     return (
                       <li key={item.id || index}>
                         {item.name === "Logout" ? (
-                          <button
-                            onClick={handleLogout}
+                          <Link
+                            href="#"
+                            onClick={(e) => { e.preventDefault(); handleLogout(); }}
                             className="dropdown-item"
                           >
                             <i className={`la ${item.icon}`}></i> {item.name}
-                          </button>
+                          </Link>
                         ) : (
                           <Link
                             href={item.routePath}
