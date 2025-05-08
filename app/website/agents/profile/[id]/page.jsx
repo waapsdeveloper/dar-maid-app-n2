@@ -3,8 +3,8 @@ import agentData from "@/data/agent-profile";
 import WsPageOuter from "@/templates/layouts/ws-page-outer";
 
 export const metadata = {
-    title: "Agent Profile || Superio - Job Board React NextJS Template",
-    description: "Superio - Job Board React NextJS Template",
+    title: "Agent Profile || Domesta",
+    description: "Domesta",
 };
 
 const AgentSingleProfile = dynamic(() => import("./agentsingle"), { ssr: false });

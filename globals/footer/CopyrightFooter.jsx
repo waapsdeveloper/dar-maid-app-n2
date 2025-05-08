@@ -39,8 +39,8 @@ const CopyrightFooter = ({ footerStyle = "" }) => {
                 <p className="address">
                   329 Queensberry Street, North Melbourne VIC
                   <br /> 3051, Australia. <br />
-                  <a href="mailto:support@superio.com" className="email">
-                    support@superio.com
+                  <a href="mailto:support@Domesta.com" className="email">
+                    support@Domesta.com
                   </a>
                 </p>
               </div>

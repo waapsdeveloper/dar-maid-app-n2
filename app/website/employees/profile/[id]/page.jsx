@@ -3,8 +3,8 @@ import employeeProfile from "@/data/employee-profile";
 import WsPageOuter from "@/templates/layouts/ws-page-outer";
 
 export const metadata = {
-    title: "Employee Profile || Superio - Job Board React NextJS Template",
-    description: "Superio - Job Board React NextJS Template",
+    title: "Employee Profile || Domesta ",
+    description: "Domesta ",
 };
 
 const CandidateSingleDynamicV3 = dynamic(() => import("./CandidateSingleDynamicV3"), { ssr: false });
