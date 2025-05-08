@@ -426,13 +426,13 @@ const AgentSingleProfile = ({ params }) => {
                     ))}
                   </div>
 
-                  <div className="portfolio-outer">
+                  {/* <div className="portfolio-outer">
                     <div className="row">
                       <GalleryBox />
                     </div>
-                  </div>
+                  </div> */}
 
-                  <div className="resume-outer theme-blue">
+                  {/* <div className="resume-outer theme-blue">
                     <div className="upper-title">
                       <h4>Work Experience</h4>
                     </div>
@@ -469,7 +469,7 @@ const AgentSingleProfile = ({ params }) => {
                   <div className="video-outer">
                     <h4>Intro Video</h4>
                     <AboutVideo />
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

@@ -25,7 +25,7 @@ const UploadDocument = () => {
     padding: "0.75rem 1.5rem",
     border: "none",
     borderRadius: "0.5rem",
-    backgroundColor: "#1a73e8",
+    backgroundColor: "#8C956B",
     color: "white",
     cursor: "pointer",
     fontSize: "1rem",

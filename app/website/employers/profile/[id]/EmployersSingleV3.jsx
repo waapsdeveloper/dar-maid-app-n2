@@ -190,14 +190,14 @@ const EmployersSingleV3 = ({ params }) => {
                     </div>
                   </div>
 
-                  <div className="sidebar-widget">
+                  {/* <div className="sidebar-widget">
                     <h4 className="widget-title">Job Location</h4>
                     <div className="widget-content">
                       <div style={{ height: "300px", width: "100%" }}>
                         <MapJobFinder />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   {/* <div className="sidebar-widget contact-widget mb-0">
                     <h4 className="widget-title">Contact Us</h4>
@@ -350,9 +350,9 @@ const EmployersSingleV3 = ({ params }) => {
                   </div>
                 </div>
 
-                <JobDetailsDescriptions />
+                {/* <JobDetailsDescriptions /> */}
 
-                <div className="related-jobs">
+                {/* <div className="related-jobs">
                   <div className="title-box">
                     <h3>3 Other listings available</h3>
                     <div className="text">
@@ -361,7 +361,7 @@ const EmployersSingleV3 = ({ params }) => {
                   </div>
 
                   <RelatedJobs />
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
