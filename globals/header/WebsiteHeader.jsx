@@ -15,7 +15,7 @@ const WebsiteHeader = () => {
   const router = useRouter();
   const [navbar, setNavbar] = useState(false);
   const { user, isAuthenticated } = useSelector((state) => state.auth);
-  const [dropdownOpen, setDropdownOpen] = useState(true);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const pathname = usePathname();
   const dropdownRef = useRef(null); // Ref for dropdown menu
 
@@ -30,6 +30,7 @@ const WebsiteHeader = () => {
 
   // Close dropdown on outside click
   useEffect(() => {
+    // const dropdownRef=null;
     const handleOutsideClick = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setDropdownOpen(false);
@@ -61,22 +62,22 @@ const WebsiteHeader = () => {
   const handleClick = (item, e) => {
     e.preventDefault();
     if (item.name !== "Logout") {
-      switch (user?.role) {
+      switch (user?.role?.slug) { // Use `user` instead of `userData`
         case "employer":
-          router.push("/admin-panels/employer/dashboard");
+          router.push("/panels/employer/dashboard");
           break;
         case "employee":
-          router.push("/admin-panels/employee/dashboard");
+          router.push("/panels/employee/dashboard");
           break;
         case "agency":
-          router.push("/admin-panels/agency/dashboard");
+          router.push("/panels/agency/dashboard");
           break;
-        case "superadmin":
-          router.push("/admin-panels/superadmin/dashboard");
+        case "super-admin":
+          router.push("/panels/superadmin/dashboard");
           break;
         default:
-          router.push("/login");
-
+          router.push("/login"); // If role not found, redirect to login
+          console.log("Unknown role:", user?.role);
       }
       console.log("User role:", user?.role); // Debugging log
     }
@@ -124,7 +125,7 @@ const WebsiteHeader = () => {
                 <Image
                   alt="avatar"
                   className="thumb"
-                  src={user?.image || "/images/avatar/01.jpg"}
+                  src={user?.image || "/images/profession.jpeg"}
                   width={50}
                   height={50}
                 />

@@ -100,7 +100,7 @@ const DashboardHeader = ({ headerType }) => {
                 <Image
                   alt="avatar"
                   className="thumb"
-                  src={user?.image || "/images/avatar/01.jpg"}
+                  src={user?.image || "/images/profession.jpeg"}
                   width={50}
                   height={50}
                 />
