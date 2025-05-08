@@ -2,7 +2,7 @@ import React from "react";
 
 const ProfileTabs = ({ activeTab, setActiveTab }) => {
   const tabs = [
-    { name: "MyProfile", label: "Agency Profile" },
+    { name: "MyProfile", label: "Agent Profile" },
     { name: "LegalCompliance", label: "Legal & Compliance" },
     { name: "ServicesOffering", label: "Services Offering" },
   ];

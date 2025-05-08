@@ -8,7 +8,7 @@ import ProfileCards from "./profile-cards";
 import ProfileTabs from "./profile-tabs";
 
 export const metadata = {
-  title: "Agency Profile || Domesta  - Listing Board",
+  title: "Agent Profile || Domesta  - Listing Board",
   description: "Domesta  - Listing Board",
 };
 
@@ -20,7 +20,7 @@ const ProfilePage = () => {
       <DsPageOuter
         headerType={ProfileTypes.AGENCY}
         title="Profile!"
-        subtitle="Showcase Your Agency's Identity"
+        subtitle="Showcase Your Agent's Identity"
         menuData={candidatesMenuData}
       >
         <ProfileTabs activeTab={activeTab} setActiveTab={setActiveTab} />

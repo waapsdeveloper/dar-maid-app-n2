@@ -127,7 +127,7 @@ const EmploymentInfoBox = () => {
           <select name="employee_type" className="chosen-single form-select" required>
             <option value="">Select Type</option>
             <option value="Independent">Independent</option>
-            <option value="Agency Managed">Agency Managed</option>
+            <option value="Agency Managed">Agent Managed</option>
           </select>
         </div>
 

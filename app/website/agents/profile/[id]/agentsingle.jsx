@@ -226,7 +226,7 @@ const AgentSingleProfile = ({ params }) => {
                         </li>
                         <li>
                           <i className="icon icon-user-2"></i>
-                          <h5>Agency Type:</h5>
+                          <h5>Agent Type:</h5>
                           <span>
                             {findKeyValue(agent.keys, "Legal Compliance", "agencyType", "N/A")}
                           </span>
@@ -457,7 +457,7 @@ const AgentSingleProfile = ({ params }) => {
                           </div>
                         </div>
                         <div className="text">
-                          Operating as a {findKeyValue(agent.keys, "Legal Compliance", "agencyType", "N/A")} agency, providing services such as{" "}
+                          Operating as a {findKeyValue(agent.keys, "Legal Compliance", "agencyType", "N/A")} agent, providing services such as{" "}
                           {Array.isArray(findKeyValue(agent.keys, "Services Offering", "servicesProvided", "No Services"))
                             ? findKeyValue(agent.keys, "Services Offering", "servicesProvided", "No Services").join(", ")
                             : findKeyValue(agent.keys, "Services Offering", "servicesProvided", "No Services")}.

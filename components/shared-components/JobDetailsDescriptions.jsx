@@ -26,7 +26,7 @@ const JobDetailsDescriptions = () => {
       <p>
         Moody’s Corporation, often referred to as Moody’s, is an American
         business and financial services company. It is the holding company for
-        Moody’s Investors Service (MIS), an American credit rating agency, and
+        Moody’s Investors Service (MIS), an American credit rating agent, and
         Moody’s Analytics (MA), an American provider of financial analysis
         software and services.
       </p>
@@ -36,7 +36,7 @@ const JobDetailsDescriptions = () => {
         acquired by Dun & Bradstreet in 1962. In 2000, Dun & Bradstreet spun off
         Moody’s Corporation as a separate company that was listed on the NYSE
         under MCO. In 2007, Moody’s Corporation was split into two operating
-        divisions, Moody’s Investors Service, the rating agency, and Moody’s
+        divisions, Moody’s Investors Service, the rating agent, and Moody’s
         Analytics, with all of its other products.
       </p>
     </div>

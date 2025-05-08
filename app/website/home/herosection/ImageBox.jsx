@@ -40,7 +40,7 @@ const ImageBox = () => {
         data-aos-delay="1500"
       >
         <span className="icon flaticon-briefcase"></span>
-        <p>Creative Agency</p>
+        <p>Creative Agent</p>
         <span className="sub-text">Startup</span>
         <span className="right_icon fa fa-check"></span>
       </div>

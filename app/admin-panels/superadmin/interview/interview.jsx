@@ -6,7 +6,7 @@ import { ProfileTypes } from "@/data/globalKeys";
 import FancyTable from "@/templates/tables/fancy-table";
 
 export const metadata = {
-  title: "Agency Interviews || Domesta - Listing Board",
+  title: "Agent Interviews || Domesta - Listing Board",
   description: "Domesta - Listing Board",
 };
 
