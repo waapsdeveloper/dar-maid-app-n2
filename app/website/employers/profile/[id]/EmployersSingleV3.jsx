@@ -136,7 +136,7 @@ const EmployersSingleV3 = ({ params }) => {
                   <h4>{employer?.name || "Unnamed Employer"}</h4>
 
                   <ul className="job-other-info">
-                    <li className="time">Open Jobs – {employer?.jobNumber || 0}</li>
+                    <li className="time">Open Listings – {employer?.jobNumber || 0}</li>
                   </ul>
                 </div>
               </div>
@@ -354,9 +354,9 @@ const EmployersSingleV3 = ({ params }) => {
 
                 <div className="related-jobs">
                   <div className="title-box">
-                    <h3>3 Other jobs available</h3>
+                    <h3>3 Other listings available</h3>
                     <div className="text">
-                      2020 jobs live - 293 added today.
+                      2020 listings live - 293 added today.
                     </div>
                   </div>
 

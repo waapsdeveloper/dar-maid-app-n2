@@ -3,11 +3,11 @@ import SearchForm from "./SearchForm";
 
 const WebsiteFooter = () => {
   const footerMenu1 = [
-    { id: 1, name: "US Jobs", routeLink: "/" },
-    { id: 2, name: "Canada Jobs", routeLink: "/" },
-    { id: 3, name: "UK Jobs", routeLink: "/" },
+    { id: 1, name: "US Listings", routeLink: "/" },
+    { id: 2, name: "Canada Listings", routeLink: "/" },
+    { id: 3, name: "UK Listings", routeLink: "/" },
     { id: 4, name: "Emplois en France", routeLink: "/" },
-    { id: 5, name: "Jobs in Deutschland", routeLink: "/" },
+    { id: 5, name: "Listings in Deutschland", routeLink: "/" },
     { id: 6, name: "Vacatures China", routeLink: "/" },
   ];
 
@@ -39,7 +39,7 @@ const WebsiteFooter = () => {
     <>
       <div className="footer-column col-lg-3 col-md-6 col-sm-12">
         <div className="footer-widget links-widget">
-          <h4 className="widget-title">Find Jobs</h4>
+          <h4 className="widget-title">Find Listings</h4>
           <div className="widget-content">
             <ul className="list">
               {footerMenu1.map((menu) => (

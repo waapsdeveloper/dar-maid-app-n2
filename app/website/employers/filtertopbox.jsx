@@ -110,7 +110,7 @@ const FilterTopBox = () => {
                   <li className="privacy">Featured</li>
                 ) : null}
                 <li className="time">
-                  Open Jobs – {company.jobNumber || 0}
+                  Open Listings – {company.jobNumber || 0}
                 </li>
               </ul>
             </div>
@@ -155,7 +155,7 @@ const FilterTopBox = () => {
         <div className="showing-result">
           <div className="text">
             <strong>
-              {Array.isArray(content) ? content.length : 0} jobs
+              {Array.isArray(content) ? content.length : 0} Listings
             </strong>
           </div>
         </div>

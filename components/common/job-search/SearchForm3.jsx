@@ -35,7 +35,7 @@ const SearchForm3 = () => {
           <select className="chosen-single form-select">
             <option defaultValue="">All Categories</option>
             <option defaultValue="44">Accounting / Finance</option>
-            <option defaultValue="106">Automotive Jobs</option>
+            <option defaultValue="106">Automotive Listings</option>
             <option defaultValue="46">Customer</option>
             <option defaultValue="48">Design</option>
             <option defaultValue="47">Development</option>

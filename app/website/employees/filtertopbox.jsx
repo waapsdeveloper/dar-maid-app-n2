@@ -174,7 +174,7 @@ const FilterTopBox = () => {
             </button>
           </div>
           <div className="text">
-            <strong>{content?.length || 0}</strong> jobs
+            <strong>{content?.length || 0}</strong> Listings
           </div>
         </div>
         <div className="sort-by">

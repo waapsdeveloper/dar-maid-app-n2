@@ -38,7 +38,7 @@ const SearchForm4 = () => {
           <select className="chosen-single form-select">
             <option defaultValue="">All Categories</option>
             <option defaultValue="44">Accounting / Finance</option>
-            <option defaultValue="106">Automotive Jobs</option>
+            <option defaultValue="106">Automotive Listings</option>
             <option defaultValue="46">Customer</option>
             <option defaultValue="48">Design</option>
             <option defaultValue="47">Development</option>
@@ -55,7 +55,7 @@ const SearchForm4 = () => {
             className="theme-btn btn-style-two"
             onClick={() => router.push("/job-list-v6")}
           >
-            Find Jobs
+            Find Listings
           </button>
         </div>
       </div>
