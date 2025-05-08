@@ -33,42 +33,7 @@ const EmployerList = () => {
     { key: "industry", label: "Industry" },
     { key: "startDate", label: "Start Date" },
     { key: "status", label: "Status" },
-    {
-      key: "actions",
-      label: "Actions",
-      render: (row) => (
-        <div style={{ display: "flex", gap: "5px" }}>
-          <button
-            onClick={() => handleContact(row?.id)}
-            style={{
-              padding: "0.3rem 0.8rem",
-              border: "none",
-              borderRadius: "0.3rem",
-              backgroundColor: "#2563eb",
-              color: "white",
-              cursor: "pointer",
-              fontSize: "0.8rem",
-            }}
-          >
-            Contact
-          </button>
-          <button
-            onClick={() => handleRemove(row?.id)}
-            style={{
-              padding: "0.3rem 0.8rem",
-              border: "none",
-              borderRadius: "0.3rem",
-              backgroundColor: "#2563eb",
-              color: "white",
-              cursor: "pointer",
-              fontSize: "0.8rem",
-            }}
-          >
-            Remove
-          </button>
-        </div>
-      ),
-    },
+   
   ];
 
   return (

@@ -35,44 +35,7 @@ const Interview = () => {
     { key: "date", label: "Date" },
     { key: "label", label: "Label" },
     { key: "status", label: "Status" },
-    {
-      key: "actions",
-      label: "Actions",
-      render: (row) => (
-        <div style={{ display: "flex", gap: "5px" }}>
-          {row?.status === "Pending" && (
-            <button
-              onClick={() => handleConfirm(row.id)}
-              style={{
-                padding: "0.3rem 0.8rem",
-                border: "none",
-                borderRadius: "0.3rem",
-                backgroundColor: "#2563eb",
-                color: "white",
-                cursor: "pointer",
-                fontSize: "0.8rem",
-              }}
-            >
-              Confirm
-            </button>
-          )}
-          <button
-            onClick={() => handleCancel(row.id)}
-            style={{
-              padding: "0.3rem 0.8rem",
-              border: "none",
-              borderRadius: "0.3rem",
-              backgroundColor: "#2563eb",
-              color: "white",
-              cursor: "pointer",
-              fontSize: "0.8rem",
-            }}
-          >
-            Cancel
-          </button>
-        </div>
-      ),
-    },
+    
   ];
 
   return (
