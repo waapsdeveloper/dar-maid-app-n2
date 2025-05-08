@@ -15,12 +15,12 @@ const CallToAction = () => {
         </div>
 
         <div className="btn-box">
-          <Link href="/job-list-v6" className="theme-btn btn-style-three">
-            Search Job
+          <Link href="/website/employees" className="theme-btn btn-style-three">
+            Search Listing
           </Link>
-          <Link href="/register" className="theme-btn btn-style-two">
+          {/* <Link href="/register" className="theme-btn btn-style-two">
             Apply Job Now
-          </Link>
+          </Link> */}
         </div>
       </div>
     </section>

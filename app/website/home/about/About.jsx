@@ -19,7 +19,7 @@ const About = () => {
             <li>Capitalize on low hanging fruit to identify</li>
             <li>But I must explain to you how all this</li>
           </ul>
-          <Link href="/register" className="theme-btn btn-style-one bg-blue">
+          <Link href="/" className="theme-btn btn-style-one bg-blue">
             <span className="btn-title">Get Started</span>
           </Link>
         </div>

@@ -58,7 +58,7 @@ const LandingPage = () => {
 
           <div className="btn-box">
             <Link
-              href="/job-list-v1"
+              href="/website/agents"
               className="theme-btn btn-style-one bg-blue"
             >
               <span className="btn-title">Load More Listing</span>
