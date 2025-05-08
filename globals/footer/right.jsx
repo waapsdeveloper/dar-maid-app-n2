@@ -6,13 +6,13 @@ const Rights = () => {
       <div className="auto-container">
         <div className="outer-box">
           <div className="copyright-text">
-            © {new Date().getFullYear()} Domesta by{" "}
+            © {new Date().getFullYear()} Domesta {" "}
             <a
               href="https://themeforest.net/user/ib-themes"
               target="_blank"
               rel="noopener noreferrer"
             >
-              ib-themes
+              
             </a>
             . All Right Reserved.
           </div>
