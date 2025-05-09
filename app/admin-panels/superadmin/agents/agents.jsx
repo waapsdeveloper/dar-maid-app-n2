@@ -64,7 +64,7 @@ const Agents = () => {
     <DsPageOuter
       headerType={ProfileTypes.SUPERADMIN}
       title="Agents"
-      subtitle="Manage Your Agency's Agents!"
+      subtitle="Manage Your Agents!"
     >
       <FancyTable
         fields={agentFields}
