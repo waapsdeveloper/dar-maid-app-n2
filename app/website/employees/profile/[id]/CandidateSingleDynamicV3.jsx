@@ -19,6 +19,7 @@ import {
   faLanguage,
   faGraduationCap
 } from '@fortawesome/free-solid-svg-icons';
+import FancyTable from "@/templates/tables/fancy-table";
 
 const CandidateSingleDynamicV3 = ({ params }) => {
   const id = params.id;
@@ -30,9 +31,8 @@ const CandidateSingleDynamicV3 = ({ params }) => {
 
   // Helper to format field names
   const formatFieldName = (fieldName) => {
-    // Replace underscores with spaces
+    if (!fieldName || typeof fieldName !== 'string') return 'Unknown Field';
     let formatted = fieldName.replace(/_/g, ' ');
-    // Add space before capital letters and capitalize first letter
     formatted = formatted.replace(/([A-Z])/g, ' $1').trim();
     return formatted.charAt(0).toUpperCase() + formatted.slice(1);
   };
@@ -49,18 +49,39 @@ const CandidateSingleDynamicV3 = ({ params }) => {
   };
 
   // Helper to get all key-value pairs for a key
-  const getKeyFields = (keys, keyName) => {
+  const getKeyFields = (keys, keyName, isTable = false) => {
     try {
       const keyObj = keys?.find((k) => k.key === keyName);
-      return keyObj?.value || [];
+      if (!keyObj || !Array.isArray(keyObj.value)) {
+        console.warn(`No valid data found for ${keyName}`);
+        return [];
+      }
+
+      if (isTable) {
+        // For tables, create a single record from key-value pairs
+        const formattedRecord = { id: `${keyName}-0` };
+        keyObj.value.forEach((field) => {
+          if (field.key && field.value !== undefined) {
+            formattedRecord[field.key] = field.value;
+          }
+        });
+        console.log(`Table data for ${keyName}:`, [formattedRecord]);
+        return [formattedRecord];
+      } else {
+        // For list-based tabs, return raw key-value pairs
+        const fields = keyObj.value.filter((field) => field.key && field.value !== undefined);
+        console.log(`List data for ${keyName}:`, fields);
+        return fields;
+      }
     } catch (error) {
+      console.error(`Error processing ${keyName} fields:`, error);
       return [];
     }
   };
 
   // Determine image source
   const getImageSrc = () => {
-    return "/images/profession.jpeg";
+    return candidate?.profilePic || "/images/profession.jpeg";
   };
 
   if (!candidate) {
@@ -76,6 +97,9 @@ const CandidateSingleDynamicV3 = ({ params }) => {
     );
   }
 
+  // Log candidate data for debugging
+  console.log('Candidate data:', candidate);
+
   // Tab configuration
   const tabs = [
     { name: "MyProfile", label: "Employee Profile", keyName: "profile" },
@@ -88,6 +112,7 @@ const CandidateSingleDynamicV3 = ({ params }) => {
       name: "WorkExperiencesBox",
       label: "Work Experiences",
       keyName: "workExperience",
+      isTable: true
     },
     {
       name: "EmploymentDetails",
@@ -98,6 +123,7 @@ const CandidateSingleDynamicV3 = ({ params }) => {
       name: "UploadDocument",
       label: "Upload Document",
       keyName: "uploadDocument",
+      isTable: true
     },
     {
       name: "ApplicationManagement",
@@ -114,6 +140,36 @@ const CandidateSingleDynamicV3 = ({ params }) => {
       label: "Social Networks",
       keyName: "socialNetwork",
     },
+  ];
+
+  // Fields for Work Experience Table
+  const workExperienceFields = [
+    { name: "employerName", label: "Employer Name", key: "employerName", render: (row) => row.employerName || 'N/A' },
+    { name: "employmentLocation", label: "Employment Location", key: "employmentLocation", render: (row) => row.employmentLocation || 'N/A' },
+    { name: "employerPhone", label: "Employer Phone", key: "employerPhone", render: (row) => row.employerPhone || 'N/A' },
+    { name: "employerEmail", label: "Employer Email", key: "employerEmail", render: (row) => row.employerEmail || 'N/A' },
+    { name: "country", label: "Country", key: "country", render: (row) => row.country || 'N/A' },
+    { name: "startDate", label: "Start Date", key: "startDate", render: (row) => row.startDate || 'N/A' },
+    { name: "endDate", label: "End Date", key: "endDate", render: (row) => row.endDate || 'N/A' },
+    { name: "designation", label: "Designation", key: "designation", render: (row) => row.designation || 'N/A' },
+    { name: "previousSalary", label: "Previous Salary", key: "previousSalary", render: (row) => row.previousSalary || 'N/A' },
+    { name: "benefits", label: "Benefits", key: "benefits", render: (row) => row.benefits || 'N/A' },
+    { name: "rating", label: "Rating", key: "rating", render: (row) => row.rating || 'N/A' },
+    { name: "employerReview", label: "Employer Review", key: "employerReview", render: (row) => row.employerReview || 'N/A' },
+    { name: "petsExperience", label: "Pets Experience", key: "petsExperience", render: (row) => row.petsExperience || 'N/A' },
+    { name: "comfortableWithPets", label: "Comfortable with Pets", key: "comfortableWithPets", render: (row) => row.comfortableWithPets || 'N/A' },
+  ];
+
+  // Fields for Upload Document Table (all 8 keys)
+  const uploadDocumentFields = [
+    { name: "category", label: "Category", key: "category", render: (row) => row.category || 'N/A' },
+    { name: "file", label: "File", key: "file", render: (row) => row.file || 'N/A' },
+    { name: "expiryDate", label: "Expiry Date", key: "expiryDate", render: (row) => row.expiryDate || 'N/A' },
+    { name: "currentStatus", label: "Current Status", key: "currentStatus", render: (row) => row.currentStatus || 'N/A' },
+    { name: "issuingCountry", label: "Issuing Country", key: "issuingCountry", render: (row) => row.issuingCountry || 'N/A' },
+    { name: "currentLocation", label: "Current Location", key: "currentLocation", render: (row) => row.currentLocation || 'N/A' },
+    { name: "workAvailableImmediately", label: "Work Available Immediately", key: "workAvailableImmediately", render: (row) => row.workAvailableImmediately || 'N/A' },
+    { name: "numberOfDays", label: "Number of Days", key: "numberOfDays", render: (row) => row.numberOfDays || 'N/A' },
   ];
 
   // Scroll handlers
@@ -521,7 +577,7 @@ const CandidateSingleDynamicV3 = ({ params }) => {
                                 ? "not-allowed"
                                 : "pointer",
                             opacity: scrollPosition >= maxScroll ? 0.5 : 1,
-                            zIndex: "1000",
+                            zIndex: 1000,
                             position: "absolute",
                             right: "0",
                             top: "50%",
@@ -559,35 +615,43 @@ const CandidateSingleDynamicV3 = ({ params }) => {
                       >
                         <div className="card shadow-sm border-0 rounded-3">
                           <div className="card-body">
-                            <ul className="list-unstyled mb-0 job-overview">
-                              {getKeyFields(candidate.keys, tab.keyName).length >
-                              0 ? (
-                                getKeyFields(candidate.keys, tab.keyName).map(
-                                  (field, index) => (
-                                    <li
-                                      key={index}
-                                      className="d-flex align-items-center mb-2 px-0"
-                                    >
-                                      <h5
-                                        className=""
-                                        style={{
-                                          minWidth: "180px",
-                                        }}
+                            {tab.isTable ? (
+                              <FancyTable
+                                fields={tab.name === "WorkExperiencesBox" ? workExperienceFields : uploadDocumentFields}
+                                data={getKeyFields(candidate.keys, tab.keyName, true)}
+                                title={tab.name === "WorkExperiencesBox" ? "Work Experiences" : "Uploaded Documents"}
+                                filterOptions={[]}
+                              />
+                            ) : (
+                              <ul className="list-unstyled mb-0 job-overview">
+                                {getKeyFields(candidate.keys, tab.keyName).length > 0 ? (
+                                  getKeyFields(candidate.keys, tab.keyName).map(
+                                    (field, index) => (
+                                      <li
+                                        key={index}
+                                        className="d-flex align-items-center mb-2 px-0"
                                       >
-                                        {formatFieldName(field.key)}:
-                                      </h5>
-                                      <span className="text-dark">
-                                        {field.value || "N/A"}
-                                      </span>
-                                    </li>
+                                        <h5
+                                          className=""
+                                          style={{
+                                            minWidth: "180px",
+                                          }}
+                                        >
+                                          {formatFieldName(field.key)}:
+                                        </h5>
+                                        <span className="text-dark">
+                                          {field.value || "N/A"}
+                                        </span>
+                                      </li>
+                                    )
                                   )
-                                )
-                              ) : (
-                                <p className="text-muted mb-0">
-                                  No data available
-                                </p>
-                              )}
-                            </ul>
+                                ) : (
+                                  <p className="text-muted mb-0">
+                                    No data available
+                                  </p>
+                                )}
+                              </ul>
+                            )}
                           </div>
                         </div>
                       </div>
