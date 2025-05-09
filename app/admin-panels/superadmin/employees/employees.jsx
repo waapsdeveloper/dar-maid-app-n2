@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useState } from "react";
+import React from "react";
 import DsPageOuter from "@/templates/layouts/ds-page-outer";
 import { ProfileTypes } from "@/data/globalKeys";
 import FancyTable from "@/templates/tables/fancy-table";
+import employeeProfile from "@/data/employee-profile";
 
 export const metadata = {
   title: "Agent Profile || Domesta - Listing Board",
@@ -11,45 +12,67 @@ export const metadata = {
 };
 
 const EmployeesList = () => {
-  // Dummy data for employees
-  const [employees, setEmployees] = useState([
-    { id: 1, name: "John Doe", position: "Nanny", hireDate: "2024-11-01", status: "Active" },
-    { id: 2, name: "Jane Smith", position: "Driver", hireDate: "2024-09-15", status: "Active" },
-    { id: 3, name: "Mike Brown", position: "Housekeeper", hireDate: "2024-07-20", status: "Inactive" },
-  ]);
+  // Helper to format field names
+  const formatFieldName = (fieldName) => {
+    if (!fieldName || typeof fieldName !== 'string') return 'Unknown Field';
+    let formatted = fieldName.replace(/_/g, ' ');
+    formatted = formatted.replace(/([A-Z])/g, ' $1').trim();
+    return formatted
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
 
-  // Handle Contact and Remove actions
+  // Helper to extract nested key values
+  const findKeyValue = (keys, keyName, field, fallback = "N/A") => {
+    try {
+      const keyObj = keys?.find((k) => k.key === keyName);
+      const fieldObj = keyObj?.value?.find((v) => v.key === field);
+      return fieldObj?.value || fallback;
+    } catch (error) {
+      return fallback;
+    }
+  };
+
+  // Get all profile fields dynamically
+  const profileFields = employeeProfile[0]?.keys
+    .find((k) => k.key === "profile")
+    ?.value.map((field) => ({
+      key: field.key,
+      label: formatFieldName(field.key),
+    })) || [];
+
+  // Map employeeProfile to table data
+  const employees = employeeProfile.map((employee) => {
+    const row = { id: employee.id };
+    profileFields.forEach((field) => {
+      row[field.key] = findKeyValue(employee.keys, "profile", field.key, "N/A");
+    });
+    return row;
+  });
+
+  // Handle Contact and Remove actions (kept for future use)
   const handleContact = (id) => {
     console.log(`Contact employee with ID: ${id}`);
   };
 
   const handleRemove = (id) => {
-    setEmployees(employees.filter(employee => employee.id !== id));
+    console.log(`Remove employee with ID: ${id}`);
   };
 
-  // Field configurations for employees table
-  const employeeFields = [
-    { key: "name", label: "Name" },
-    { key: "position", label: "Position" },
-    { key: "hireDate", label: "Hire Date" },
-    { key: "status", label: "Status" },
-  ];
-
   return (
-    <>
-      <DsPageOuter
-        headerType={ProfileTypes.SUPERADMIN}
-        title="Employees List!"
-        subtitle="Keep Your Crew Connected"
-      >
-        <FancyTable
-          fields={employeeFields}
-          data={employees}
-          title="Employees"
-          filterOptions={[]}
-        />
-      </DsPageOuter>
-    </>
+    <DsPageOuter
+      headerType={ProfileTypes.SUPERADMIN}
+      title="Employees List!"
+      subtitle="Keep Your Crew Connected"
+    >
+      <FancyTable
+        fields={profileFields}
+        data={employees}
+        title="Employees"
+        filterOptions={[]}
+      />
+    </DsPageOuter>
   );
 };
 

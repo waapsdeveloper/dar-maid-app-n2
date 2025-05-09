@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useState } from "react";
+import React from "react";
 import DsPageOuter from "@/templates/layouts/ds-page-outer";
 import { ProfileTypes } from "@/data/globalKeys";
 import FancyTable from "@/templates/tables/fancy-table";
+import agentData from "@/data/agent-profile";
 
 export const metadata = {
   title: "Agents || Domesta - Listing Board",
@@ -11,46 +12,67 @@ export const metadata = {
 };
 
 const Agents = () => {
-  // Dummy data for agents
-  const [agents, setAgents] = useState([
-    { id: 1, name: "Lisa Carter", role: "Recruitment Agent", joinDate: "2024-06-10", status: "Active" },
-    { id: 2, name: "Tom Wilson", role: "Visa Consultant", joinDate: "2024-08-22", status: "Active" },
-    { id: 3, name: "Sarah Lee", role: "Hiring Manager", joinDate: "2024-03-15", status: "Inactive" },
-  ]);
+  // Helper to format field names
+  const formatFieldName = (fieldName) => {
+    if (!fieldName || typeof fieldName !== 'string') return 'Unknown Field';
+    let formatted = fieldName.replace(/_/g, ' ');
+    formatted = formatted.replace(/([A-Z])/g, ' $1').trim();
+    return formatted
+      .split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
 
-  // Handle Contact and Remove actions
+  // Helper to extract nested key values
+  const findKeyValue = (keys, keyName, field, fallback = "N/A") => {
+    try {
+      const keyObj = keys?.find((k) => k.key === keyName);
+      const fieldObj = keyObj?.value?.find((v) => v.key === field);
+      return fieldObj?.value || fallback;
+    } catch (error) {
+      return fallback;
+    }
+  };
+
+  // Get all Agent Profile fields dynamically
+  const agentFields = agentData[0]?.keys
+    .find((k) => k.key === "Agent Profile")
+    ?.value.map((field) => ({
+      key: field.key,
+      label: formatFieldName(field.key),
+    })) || [];
+
+  // Map agentData to table data
+  const agents = agentData.map((agent) => {
+    const row = { id: agent.id };
+    agentFields.forEach((field) => {
+      row[field.key] = findKeyValue(agent.keys, "Agent Profile", field.key, "N/A");
+    });
+    return row;
+  });
+
+  // Handle Contact and Remove actions (kept for future use)
   const handleContact = (id) => {
     console.log(`Contact agent with ID: ${id}`);
   };
 
   const handleRemove = (id) => {
-    setAgents(agents.filter(agent => agent.id !== id));
+    console.log(`Remove agent with ID: ${id}`);
   };
 
-  // Field configurations for agents table
-  const agentFields = [
-    { key: "name", label: "Name" },
-    { key: "role", label: "Role" },
-    { key: "joinDate", label: "Join Date" },
-    { key: "status", label: "Status" },
-   
-  ];
-
   return (
-    <>
-      <DsPageOuter
-        headerType={ProfileTypes.SUPERADMIN}
+    <DsPageOuter
+      headerType={ProfileTypes.SUPERADMIN}
+      title="Agents"
+      subtitle="Manage Your Agency's Agents!"
+    >
+      <FancyTable
+        fields={agentFields}
+        data={agents}
         title="Agents"
-        subtitle="Manage Your Agency's Agents!"
-      >
-        <FancyTable
-          fields={agentFields}
-          data={agents}
-          title="Agents"
-          filterOptions={[]}
-        />
-      </DsPageOuter>
-    </>
+        filterOptions={[]}
+      />
+    </DsPageOuter>
   );
 };
 
