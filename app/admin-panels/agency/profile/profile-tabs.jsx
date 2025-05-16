@@ -6,7 +6,6 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
     { name: "LegalCompliance", label: "Legal & Compliance" },
     { name: "ServicesOffering", label: "Services Offering" },
   ];
-
   return (
     <div className="mb-4">
       <div className="d-flex align-items-center justify-content-between position-relative">
@@ -18,7 +17,9 @@ const ProfileTabs = ({ activeTab, setActiveTab }) => {
             <button
               key={tab.name}
               onClick={() => setActiveTab(tab.name)}
-              className={`theme-btn ${activeTab === tab.name ? "btn-style-one" : "btn-style-three"}`}
+              className={`theme-btn ${
+                activeTab === tab.name ? "btn-style-one" : "btn-style-three"
+              }`}
               style={{ flexShrink: 0 }}
             >
               {tab.label}

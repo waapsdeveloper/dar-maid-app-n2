@@ -11,14 +11,14 @@ export const metadata = {
 };
 
 const EmployeesList = () => {
-  // Dummy data for employees
+ 
   const [employees, setEmployees] = useState([
     { id: 1, name: "John Doe", position: "Nanny", hireDate: "2024-11-01", status: "Active" },
     { id: 2, name: "Jane Smith", position: "Driver", hireDate: "2024-09-15", status: "Active" },
     { id: 3, name: "Mike Brown", position: "Housekeeper", hireDate: "2024-07-20", status: "Inactive" },
   ]);
 
-  // Handle Contact and Remove actions
+ 
   const handleContact = (id) => {
     console.log(`Contact employee with ID: ${id}`);
   };
@@ -27,7 +27,7 @@ const EmployeesList = () => {
     setEmployees(employees.filter(employee => employee.id !== id));
   };
 
-  // Field configurations for employees table
+ 
   const employeeFields = [
     { key: "name", label: "Name" },
     { key: "position", label: "Position" },

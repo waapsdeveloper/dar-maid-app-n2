@@ -58,7 +58,7 @@ const JobApplied = () => {
             </div>
           </div>
         </div>
-        // End job-block
+     
       ))}
     </>
   );

@@ -11,14 +11,14 @@ export const metadata = {
 };
 
 const Interview = () => {
-  // Dummy data for interviews
+  
   const [interviews, setInterviews] = useState([
     { id: 1, title: "Interview with John", date: "2025-05-01", label: "Upcoming", status: "Pending" },
     { id: 2, title: "Interview with Sarah", date: "2025-05-03", label: "Upcoming", status: "Confirmed" },
     { id: 3, title: "Interview with Mike", date: "2025-04-20", label: "Past", status: "Confirmed" },
   ]);
 
-  // Handle Confirm and Cancel actions
+ 
   const handleConfirm = (id) => {
     setInterviews(interviews.map(interview =>
       interview.id === id ? { ...interview, status: "Confirmed" } : interview
@@ -29,7 +29,7 @@ const Interview = () => {
     setInterviews(interviews.filter(interview => interview.id !== id));
   };
 
-  // Field configurations for interviews table
+ 
   const interviewFields = [
     { key: "title", label: "Title" },
     { key: "date", label: "Date" },

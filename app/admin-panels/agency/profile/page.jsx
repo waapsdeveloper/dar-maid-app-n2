@@ -5,7 +5,6 @@ export const metadata = {
   title: "Agent Profile || Domesta  - Listing Board",
   description: "Domesta  - Listing Board",
 };
-
 const index = () => {
   return (
     <>
