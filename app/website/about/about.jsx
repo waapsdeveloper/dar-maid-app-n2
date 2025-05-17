@@ -1,12 +1,12 @@
 import Image from "next/image";
 import WsPageOuter from "@/templates/layouts/ws-page-outer";
-import ImgBox from "./imgbox";
-import IntroDescriptions from "./introdescription";
-import Funfact from "./funfact";
-import CallToAction from "./calltoaction";
-import Testimonial from "./testimonial";
-import Block from "./block";
-import Partner from "./partner";
+import ImgBox from "./components/imgbox";
+import IntroDescriptions from "./components/introdescription";
+import Funfact from "./components/funfact";
+import CallToAction from "./components/calltoaction";
+import Testimonial from "./components/testimonial";
+import Block from "./components/block";
+import Partner from "./components/partner";
 
 const About = () => {
   return (

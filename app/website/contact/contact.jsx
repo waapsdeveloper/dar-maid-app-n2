@@ -1,6 +1,6 @@
-import MapBox from "./mapbox";
-import ContactForm from "./contactform";
-import Address from "./address";
+import MapBox from "./components/mapbox";
+import ContactForm from "./components/contactform";
+import Address from "./components/address";
 import WsPageOuter from "@/templates/layouts/ws-page-outer";
 
 const Contact = () => {
